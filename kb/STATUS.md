@@ -16,7 +16,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | R3 | Dataset facts and licences | research | Sat 23:00 | done | `kb/research/DATASETS.md`. JMuBEN has no healthy or miner (those are in JMuBEN2). MMS-TTS Kikuyu and NLLB are CC BY-NC 4.0 |
 | R4 | season.json | research | Sat 23:30 | done | `kb/research/season.json` (engine placeholder shape), method in `SEASON.md`. Pre-rains = 4 weeks before onset (assumption). content-voice / engine: copy to `app/src/content/season.json` |
 | M1 | Data download, manifest, dedupe, splits | ml | Sat 22:30 | done | 6 datasets, rotation-aware dedupe (992 groups; 216 Uganda phoma images were JMuBEN copies, excluded). `app/ml/manifest.csv`. not_leaf is thin (407 PlantDoc images) |
-| M2 | Train v1 | ml | Sun 00:30 | doing | CPU run on cloud VM, tmux `ml-train`, ETA about 02:00 CEST. Epoch 1 in-domain val acc 0.991 (inflated: augmented crops, few independent leaves). Laptop GPU can rerun the same script |
+| M2 | Train v1 | ml | Sun 00:30 | doing | v1 (epoch 3) committed as provisional in `app/public/model/`: in-domain test 0.974, **Uganda 0.180, RoCoLe 0.0** (99% called not_leaf). Shortcut learning, see Decision 16. v2 training on cloud VM, tmux `ml-v2`, ETA about 03:30 CEST |
 | M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | doing | cloud sub-agent writing `calibrate.py`, tested on smoke checkpoint; runs on v1 when M2 finishes |
 | M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | doing | cloud sub-agent writing `export.py` to the engine contract |
 | M5 | EVALUATION.md | ml | Sun 02:00 | doing | cloud sub-agent writing `evaluate.py` (in-domain, Uganda, RoCoLe, coverage curve) |

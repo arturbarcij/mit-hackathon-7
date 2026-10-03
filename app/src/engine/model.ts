@@ -140,3 +140,11 @@ export async function classifyLeaf(img: ImageBitmap): Promise<LeafResult> {
   const probs = await runTensor(loaded, preprocessBitmap(img, config.input));
   return leafResultFromProbs(probs, config.threshold, quality, config.version);
 }
+
+/** Test hook: runs the loaded real model on an already preprocessed tensor and returns calibrated probabilities. */
+export async function inferProbsForTest(tensor: Float32Array): Promise<Record<Label, number>> {
+  await loadModel();
+  const loaded = (await loading) as Loaded;
+  if (loaded.mock) throw new Error('inferProbsForTest needs the real model');
+  return runTensor(loaded, tensor);
+}

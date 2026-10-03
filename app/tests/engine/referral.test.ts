@@ -3,7 +3,7 @@ import { buildReferral, checkDate, meanConfidencePercent, parseReferral, smsLink
 import { leaves, makeCheck } from './helpers';
 import { summarisePlot } from '../../src/engine/plot';
 
-const GSM7_BASIC = /^[A-Za-z0-9 :_\-]*$/;
+const GSM7_BASIC = /^[A-Za-z0-9 :_-]*$/;
 
 describe('referral', () => {
   it('matches the CONTRACTS.md format', () => {

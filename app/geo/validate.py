@@ -1,7 +1,9 @@
 """Check public/geo outputs against kb/geo/CONTRACT.md. Exit 1 on any failure."""
 import json
 import math
+import re
 import sys
+from datetime import date
 
 import config as C
 
@@ -71,8 +73,26 @@ def main():
     check((C.OUT / "ndvi_change.png").stat().st_size > 1000, "overlay image missing")
     noor = next((o for o in oj["plots"] if o["plotId"] == "OCC0412-2"), None)
     check(noor is not None and noor["status"] == "outlier", "contract example plot OCC0412-2 must be flagged")
-    text = (C.OUT / "outliers.json").read_text()
-    check("\u2014" not in text, "em dash in outliers.json")
+    vp = json.loads((C.OUT / "visit_plan.json").read_text())
+    rs = json.loads((C.OUT / "referrals_seed.json").read_text())
+    no_nan(vp, "visit_plan"); no_nan(rs, "referrals_seed")
+    check(rs["synthetic"] is True and vp["synthetic"]["referrals"], "referral seed must be tagged synthetic")
+    sms_re = re.compile(r"^JANI1 M:\S+ P:\d+ D:\d{8} N:\d+ R:\d+ C:\d+ H:\d+ L:\d+ U:\d+ A:[a-z_]+ Q:\d+ X:(act|wait|ask)$")
+    check(15 <= len(rs["referrals"]) <= 20, "seed referrals should number 15 to 20")
+    for r in rs["referrals"]:
+        check(r["synthetic"] is True and r["geoPlotId"] in ids, f"{r['id']} synthetic or plot link")
+        check(bool(sms_re.match(r["sms"])) and len(r["sms"]) <= 160 and r["sms"].isascii(), f"{r['id']} SMS format")
+        check(r["sms"].startswith(f"JANI1 M:{r['member_id']} P:{r['plot_id']} "), f"{r['id']} SMS does not match its fields")
+        check(date.fromisoformat(r["check_date"]).weekday() >= 5, f"{r['id']} check date is not a weekend")
+        check(sum(r["counts"].values()) + r["uncertain"] == 10, f"{r['id']} counts do not add to 10")
+    stops = vp["route"]["stops"]
+    check(len(stops) <= vp["assumptions"]["capacityPerVisitDay"], "route longer than capacity")
+    check(all(s["plotId"] in ids and s["tier"] == "A" for s in stops), "route stop not a tier A plot")
+    check(all(r["signals"] for r in vp["ranking"]), "ranked plot without a stated signal")
+    check(vp["route"]["totalKm"] <= vp["route"]["randomOrderMeanKm"] + 0.01, "optimised route longer than random order")
+    check(all("priorityPoints" in f["properties"] and f["properties"]["tier"] in "ABC" for f in gj["features"]), "plots.geojson priority fields")
+    text = (C.OUT / "outliers.json").read_text() + (C.OUT / "visit_plan.json").read_text() + (C.OUT / "referrals_seed.json").read_text()
+    check("\u2014" not in text, "em dash in geo outputs")
 
     if errors:
         print("FAIL")

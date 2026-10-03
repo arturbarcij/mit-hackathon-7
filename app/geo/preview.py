@@ -29,9 +29,18 @@ def main():
             cx = sum(x for x, _ in ring) / len(ring)
             cy = sum(y for _, y in ring) / len(ring)
             ax.annotate(p["plotId"], (cx, cy), xytext=(4, 4), textcoords="offset points", fontsize=6.5, zorder=4)
+    vp = json.loads((C.OUT / "visit_plan.json").read_text())
+    off = vp["assumptions"]["office"]
+    path = [(off["lon"], off["lat"])] + [(st["lon"], st["lat"]) for st in vp["route"]["stops"]] + [(off["lon"], off["lat"])]
+    ax.plot(*zip(*path), color="#1a3d8f", lw=1.6, ls="--", zorder=5)
+    ax.scatter([off["lon"]], [off["lat"]], marker="s", s=60, color="#1a3d8f", zorder=6)
+    ax.annotate("office", (off["lon"], off["lat"]), xytext=(5, -10), textcoords="offset points", fontsize=7, color="#1a3d8f", zorder=6)
+    for st in vp["route"]["stops"]:
+        ax.scatter([st["lon"]], [st["lat"]], s=170, color="white", edgecolor="#1a3d8f", lw=1.5, zorder=6)
+        ax.annotate(str(st["stop"]), (st["lon"], st["lat"]), ha="center", va="center", fontsize=8, weight="bold", color="#1a3d8f", zorder=7)
     ax.set_xlim(w, e); ax.set_ylim(s, n); ax.set_aspect(1 / 0.999)
     ax.set_title("Mathira West, Nyeri: synthetic plots on real Sentinel-2 NDVI change\n"
-                 "(overlay: red = canopy loss vs prior dry seasons, green = gain)", fontsize=10)
+                 f"(overlay: red = canopy loss, green = gain. Dashed line: one visit day, {vp['route']['totalKm']} km, {len(vp['route']['stops'])} stops)", fontsize=10)
     ax.legend(handles=[Patch(color=COL["outlier"], label=f"outlier ({oj['counts']['outlier']})"),
                        Patch(color=COL["unsure"], label=f"unsure ({oj['counts']['unsure']})"),
                        Patch(color=COL["normal"], label=f"normal ({oj['counts']['normal']})")], loc="lower left")

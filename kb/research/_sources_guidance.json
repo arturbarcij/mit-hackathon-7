@@ -1,0 +1,83 @@
+[
+  {
+    "id": "S1",
+    "title": "Coffee Leaf Rust (Hemileia vastatrix) in Kenya: A Review. Agronomy 2021, 11(12), 2590. Gichuru E., Alwora G., Gimase J., Kathurima C. et al. (KALRO Coffee Research Institute)",
+    "publisher": "MDPI (Agronomy), CC BY 4.0",
+    "year": 2021,
+    "url": "https://www.mdpi.com/2073-4395/11/12/2590",
+    "accessed": "2026-10-03",
+    "used_for": "rust symptoms, rust timing East of Rift, copper spray schedule and repeat interval, cultural control, resistant varieties"
+  },
+  {
+    "id": "S2",
+    "title": "Identification and management of coffee berry disease (CBD) and coffee leaf rust (CLR). Kathurima E.K., Alwora G., et al.",
+    "publisher": "Kenya Agricultural and Livestock Research Organization (KALRO)",
+    "year": 2017,
+    "url": "https://kalroerepository.kalro.org/bitstreams/0d03d608-8deb-4571-98ab-894c77c52b76/download",
+    "accessed": "2026-10-03",
+    "used_for": "rust symptoms, about 20% leaves with rust threshold for curative spray, 21-day copper interval, CBD symptoms and berry susceptibility window"
+  },
+  {
+    "id": "S3",
+    "title": "Kenya Coffee Sustainability Manual (KCSM), compiled by the Coffee Research Institute for the Kenya Coffee Platform",
+    "publisher": "Kenya Coffee Platform / Global Coffee Platform (KALRO CRI technical content)",
+    "year": 2020,
+    "url": "https://www.globalcoffeeplatform.org/wp-content/uploads/2021/03/KCS-MANUAL-review-03112020.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "rust symptoms and spray rounds, 20% severe threshold for systemic, leaf miner symptoms and management, CBD symptoms, brown eye spot as minor, resistant varieties, pruning timing, protective clothing"
+  },
+  {
+    "id": "S4",
+    "title": "Arabica coffee leaf images dataset for coffee leaf disease detection and classification (JMuBEN, JMuBEN2). Jepkoech J., Mugo D.M., Kenduiywo B.K., Too E.C. Data in Brief",
+    "publisher": "Elsevier (Data in Brief), via PubMed Central",
+    "year": 2021,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8165403/",
+    "accessed": "2026-10-03",
+    "used_for": "pathologist symptom descriptions for rust, phoma, leaf miner and cercospora as labelled in Kirinyaga, Kenya"
+  },
+  {
+    "id": "S5",
+    "title": "Fact sheet: Coffee brown-eye spot (142). Pacific Pests, Pathogens and Weeds",
+    "publisher": "LucidCentral (Pacific Pests, Pathogens and Weeds fact sheets)",
+    "year": null,
+    "url": "https://apps.lucidcentral.org/ppp/text/web_full/entities/coffee_browneye_spot_142.htm",
+    "accessed": "2026-10-03",
+    "used_for": "cercospora (brown eye spot) symptoms and conditions"
+  },
+  {
+    "id": "S6",
+    "title": "Cercospora Leaf Spot and Berry Blotch of Coffee (PD-41)",
+    "publisher": "University of Hawaii at Manoa, College of Tropical Agriculture and Human Resources (CTAHR)",
+    "year": null,
+    "url": "https://www.ctahr.hawaii.edu/oc/freepubs/pdf/PD-41.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "cercospora symptoms (yellow halo, premature leaf fall)"
+  },
+  {
+    "id": "S7",
+    "title": "Temporal analysis of Phoma leaf spot of coffee plants at different altitudes. Silva H.R., Pozza E.A., et al. Revista Ceres vol. 72",
+    "publisher": "Revista Ceres (Universidade Federal de Vicosa), via SciELO",
+    "year": 2025,
+    "url": "https://www.scielo.br/j/rceres/a/Ps7bPpthwDkzZYzxJ4nWbmc/?lang=en",
+    "accessed": "2026-10-03",
+    "used_for": "phoma damage, wind and cold as conditions, altitude effect"
+  },
+  {
+    "id": "S8",
+    "title": "Guidelines for personal protection when handling and applying pesticides. International Code of Conduct on Pesticide Management",
+    "publisher": "FAO and WHO",
+    "year": 2020,
+    "url": "https://iris.who.int/bitstream/handle/10665/330917/9789240000223-eng.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "minimum PPE, hygiene, weather limits for spraying, storage, empty containers, vulnerable groups"
+  },
+  {
+    "id": "S9",
+    "title": "Coffee Rust Forecast Systems: Development of a Warning Platform in a Minas Gerais State, Brazil. Agronomy 2021, 11(11), 2284",
+    "publisher": "MDPI (Agronomy)",
+    "year": 2021,
+    "url": "https://www.mdpi.com/2073-4395/11/11/2284",
+    "accessed": "2026-10-03",
+    "used_for": "non-Kenyan comparison: 5% incidence trigger for fungicide in Brazil"
+  }
+]

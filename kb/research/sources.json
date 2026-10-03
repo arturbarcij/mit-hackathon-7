@@ -1,0 +1,542 @@
+[
+  {
+    "id": "S1",
+    "title": "Coffee Leaf Rust (Hemileia vastatrix) in Kenya: A Review. Agronomy 2021, 11(12), 2590. Gichuru E., Alwora G., Gimase J., Kathurima C. et al. (KALRO Coffee Research Institute)",
+    "publisher": "MDPI (Agronomy), CC BY 4.0",
+    "year": 2021,
+    "url": "https://www.mdpi.com/2073-4395/11/12/2590",
+    "accessed": "2026-10-03",
+    "used_for": "rust symptoms, rust timing East of Rift, copper spray schedule and repeat interval, cultural control, resistant varieties"
+  },
+  {
+    "id": "S2",
+    "title": "Identification and management of coffee berry disease (CBD) and coffee leaf rust (CLR). Kathurima E.K., Alwora G., et al.",
+    "publisher": "Kenya Agricultural and Livestock Research Organization (KALRO)",
+    "year": 2017,
+    "url": "https://kalroerepository.kalro.org/bitstreams/0d03d608-8deb-4571-98ab-894c77c52b76/download",
+    "accessed": "2026-10-03",
+    "used_for": "rust symptoms, about 20% leaves with rust threshold for curative spray, 21-day copper interval, CBD symptoms and berry susceptibility window"
+  },
+  {
+    "id": "S3",
+    "title": "Kenya Coffee Sustainability Manual (KCSM), compiled by the Coffee Research Institute for the Kenya Coffee Platform",
+    "publisher": "Kenya Coffee Platform / Global Coffee Platform (KALRO CRI technical content)",
+    "year": 2020,
+    "url": "https://www.globalcoffeeplatform.org/wp-content/uploads/2021/03/KCS-MANUAL-review-03112020.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "rust symptoms and spray rounds, 20% severe threshold for systemic, leaf miner symptoms and management, CBD symptoms, brown eye spot as minor, resistant varieties, pruning timing, protective clothing"
+  },
+  {
+    "id": "S4",
+    "title": "Arabica coffee leaf images dataset for coffee leaf disease detection and classification (JMuBEN, JMuBEN2). Jepkoech J., Mugo D.M., Kenduiywo B.K., Too E.C. Data in Brief",
+    "publisher": "Elsevier (Data in Brief), via PubMed Central",
+    "year": 2021,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8165403/",
+    "accessed": "2026-10-03",
+    "used_for": "pathologist symptom descriptions for rust, phoma, leaf miner and cercospora as labelled in Kirinyaga, Kenya"
+  },
+  {
+    "id": "S5",
+    "title": "Fact sheet: Coffee brown-eye spot (142). Pacific Pests, Pathogens and Weeds",
+    "publisher": "LucidCentral (Pacific Pests, Pathogens and Weeds fact sheets)",
+    "year": null,
+    "url": "https://apps.lucidcentral.org/ppp/text/web_full/entities/coffee_browneye_spot_142.htm",
+    "accessed": "2026-10-03",
+    "used_for": "cercospora (brown eye spot) symptoms and conditions"
+  },
+  {
+    "id": "S6",
+    "title": "Cercospora Leaf Spot and Berry Blotch of Coffee (PD-41)",
+    "publisher": "University of Hawaii at Manoa, College of Tropical Agriculture and Human Resources (CTAHR)",
+    "year": null,
+    "url": "https://www.ctahr.hawaii.edu/oc/freepubs/pdf/PD-41.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "cercospora symptoms (yellow halo, premature leaf fall)"
+  },
+  {
+    "id": "S7",
+    "title": "Temporal analysis of Phoma leaf spot of coffee plants at different altitudes. Silva H.R., Pozza E.A., et al. Revista Ceres vol. 72",
+    "publisher": "Revista Ceres (Universidade Federal de Vicosa), via SciELO",
+    "year": 2025,
+    "url": "https://www.scielo.br/j/rceres/a/Ps7bPpthwDkzZYzxJ4nWbmc/?lang=en",
+    "accessed": "2026-10-03",
+    "used_for": "phoma damage, wind and cold as conditions, altitude effect"
+  },
+  {
+    "id": "S8",
+    "title": "Guidelines for personal protection when handling and applying pesticides. International Code of Conduct on Pesticide Management",
+    "publisher": "FAO and WHO",
+    "year": 2020,
+    "url": "https://iris.who.int/bitstream/handle/10665/330917/9789240000223-eng.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "minimum PPE, hygiene, weather limits for spraying, storage, empty containers, vulnerable groups"
+  },
+  {
+    "id": "S9",
+    "title": "Coffee Rust Forecast Systems: Development of a Warning Platform in a Minas Gerais State, Brazil. Agronomy 2021, 11(11), 2284",
+    "publisher": "MDPI (Agronomy)",
+    "year": 2021,
+    "url": "https://www.mdpi.com/2073-4395/11/11/2284",
+    "accessed": "2026-10-03",
+    "used_for": "non-Kenyan comparison: 5% incidence trigger for fungicide in Brazil"
+  },
+  {
+    "id": "afa-yearbook-2022-23",
+    "title": "Kenya Coffee Year Book 2022/23",
+    "publisher": "Agriculture and Food Authority, Coffee Directorate",
+    "year": 2024,
+    "url": "https://www.kenyacoffee.co.ke/resources/2023/Coffee%20Book%20Year%202023-24-compressed.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "3c, 9a, 9b, 9c, 10b, 10c, 10d, 10e: production, smallholder share, cooperatives, area, yield per tree models, trees per ha"
+  },
+  {
+    "id": "agronomy_2021_clr_review",
+    "title": "Coffee Leaf Rust (Hemileia vastatrix) in Kenya: A Review. Agronomy 11(12):2590 (Gichuru, Alwora, Gimase, Kathurima)",
+    "publisher": "MDPI",
+    "year": 2021,
+    "url": "https://www.mdpi.com/2073-4395/11/12/2590",
+    "accessed": "2026-10-03",
+    "used_for": "Spray timing: mid October just before short rains; late February or early March for long rains. Used to place the pre-rains windows"
+  },
+  {
+    "id": "astgs-2019",
+    "title": "Agricultural Sector Transformation and Growth Strategy 2019-2029 (long version)",
+    "publisher": "Ministry of Agriculture, Livestock, Fisheries and Irrigation, Kenya",
+    "year": 2019,
+    "url": "https://kilimo.go.ke/wp-content/uploads/2024/10/ASTGS-Long-version.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "NOT FOUND log for item 1 (no current ratio found)"
+  },
+  {
+    "id": "ca-annual-2024-25",
+    "title": "Communications Authority of Kenya Annual Report FY 2024-2025",
+    "publisher": "Communications Authority of Kenya",
+    "year": 2026,
+    "url": "http://www.ca.go.ke/sites/default/files/2026-07/Annual%20Report%20FY%202024-2025.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "6a, 6b: population coverage by generation, handset mix"
+  },
+  {
+    "id": "ca-q4-2024-25",
+    "title": "Fourth Quarter Sector Statistics Report for the Financial Year 2024/2025",
+    "publisher": "Communications Authority of Kenya",
+    "year": 2025,
+    "url": "https://www.ca.go.ke/sites/default/files/2025-09/Sector%20Statistics%20Report%20Q4%202024-2025_1.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "NOT FOUND log for item 6 (national figures only)"
+  },
+  {
+    "id": "constitution-2010",
+    "title": "Constitution of Kenya, 2010, Article 7",
+    "publisher": "Kenya Law (National Council for Law Reporting)",
+    "year": 2010,
+    "url": "https://new.kenyalaw.org/akn/ke/act/2010/constitution/eng@2010-09-03",
+    "accessed": "2026-10-03",
+    "used_for": "7a: Kiswahili national language"
+  },
+  {
+    "id": "cv_access_change",
+    "title": "We're Changing Access to Older Versions of Common Voice datasets",
+    "publisher": "Mozilla Data Collective",
+    "year": 2025,
+    "url": "https://community.mozilladatacollective.com/were-changing-access-to-older-versions-of-common-voice-datasets/",
+    "accessed": "2026-10-03",
+    "used_for": "Common Voice download terms (validated email, no re-share)"
+  },
+  {
+    "id": "cv_hf_notice",
+    "title": "mozilla-foundation/common_voice_17_0 README",
+    "publisher": "Hugging Face",
+    "year": 2025,
+    "url": "https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0",
+    "accessed": "2026-10-03",
+    "used_for": "Notice that Common Voice moved exclusively to Mozilla Data Collective in October 2025"
+  },
+  {
+    "id": "cv_mdc_org",
+    "title": "Common Voice organisation page",
+    "publisher": "Mozilla Data Collective",
+    "year": 2026,
+    "url": "https://datacollective.mozillafoundation.org/organization/cmfh0j9o10006ns07jq45h7xk",
+    "accessed": "2026-10-03",
+    "used_for": "Common Voice 26.0 Swahili file size (20.88 GB)"
+  },
+  {
+    "id": "ds_bracol",
+    "title": "BRACOL - A Brazilian Arabica Coffee Leaf images dataset to identification and quantification of coffee diseases and pests",
+    "publisher": "Mendeley Data (Krohling, Esgario, Ventura)",
+    "year": 2019,
+    "url": "https://data.mendeley.com/datasets/yy2k5y8mxg/1",
+    "accessed": "2026-10-03",
+    "used_for": "BRACOL licence, capture conditions, file size, direct link"
+  },
+  {
+    "id": "ds_coleaf",
+    "title": "CoLeaf DATASET",
+    "publisher": "Mendeley Data (Tuesta-Monteza, Mejia-Cabrera, Arcila-Diaz)",
+    "year": 2023,
+    "url": "https://data.mendeley.com/datasets/brfgw46wzb/2",
+    "accessed": "2026-10-03",
+    "used_for": "CoLeaf-DB licence, file sizes"
+  },
+  {
+    "id": "ds_cv_sw_27",
+    "title": "Common Voice Scripted Speech 27.0 - Swahili",
+    "publisher": "Mozilla Data Collective",
+    "year": 2026,
+    "url": "https://mozilladatacollective.com/datasets/cmu5sgles002zo1071nphgtby",
+    "accessed": "2026-10-03",
+    "used_for": "Common Voice Swahili licence, hours, clips, speakers"
+  },
+  {
+    "id": "ds_jmuben",
+    "title": "JMuBEN",
+    "publisher": "Mendeley Data (Jepkoech, Kenduiywo, Mugo, Chebet)",
+    "year": 2021,
+    "url": "https://data.mendeley.com/datasets/t2r6rszp5c/1",
+    "accessed": "2026-10-03",
+    "used_for": "JMuBEN licence, image count, file list and sizes, direct links"
+  },
+  {
+    "id": "ds_jmuben2",
+    "title": "JMuBEN2",
+    "publisher": "Mendeley Data (Jepkoech, Mugo, Kenduiywo, Chebet)",
+    "year": 2021,
+    "url": "https://data.mendeley.com/datasets/tgv3zb82nd/1",
+    "accessed": "2026-10-03",
+    "used_for": "JMuBEN2 licence, classes (healthy, miner), file sizes, direct links"
+  },
+  {
+    "id": "ds_plantdoc",
+    "title": "PlantDoc-Dataset (Cropped-PlantDoc)",
+    "publisher": "GitHub (pratikkayal)",
+    "year": 2020,
+    "url": "https://github.com/pratikkayal/PlantDoc-Dataset",
+    "accessed": "2026-10-03",
+    "used_for": "PlantDoc licence, class list and image counts from repo tree, repo size"
+  },
+  {
+    "id": "ds_rocole",
+    "title": "RoCoLe: A robusta coffee leaf images dataset",
+    "publisher": "Mendeley Data (Parraga-Alava, Cusme, Loor, Santander)",
+    "year": 2019,
+    "url": "https://data.mendeley.com/datasets/c5yvn32dzg/2",
+    "accessed": "2026-10-03",
+    "used_for": "RoCoLe licence, file sizes, class counts from RoCoLe-classes.xlsx"
+  },
+  {
+    "id": "ds_uganda",
+    "title": "A Machine Learning Dataset for Classification of Common Coffee Leaf Diseases in Uganda.",
+    "publisher": "Mendeley Data (Chelangat, Anirwoth, Mayanja, Sserwadda; Soroti University)",
+    "year": 2025,
+    "url": "https://data.mendeley.com/datasets/k36wnd6knb/1",
+    "accessed": "2026-10-03",
+    "used_for": "Uganda licence, class counts, capture conditions, augmentation, file listing (zero-byte and duplicate-size files)"
+  },
+  {
+    "id": "efi-eudr-kenya-coffee",
+    "title": "Preparedness check of Kenya for the EU Deforestation Regulation: coffee",
+    "publisher": "European Forest Institute",
+    "year": 2026,
+    "url": "https://efi.int/sites/default/files/2026-01/kenya-preparedness-check-coffee-efi.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "9d: 1.2 million coffee farmers estimate, cooperative membership numbers"
+  },
+  {
+    "id": "ethnologue-kik",
+    "title": "Gikuyu (kik) language page",
+    "publisher": "Ethnologue (SIL International)",
+    "year": 2026,
+    "url": "https://www.ethnologue.com/language/kik/",
+    "accessed": "2026-10-03",
+    "used_for": "NOT FOUND log for item 7 (bot check, paywalled)"
+  },
+  {
+    "id": "faostat-qcl-africa",
+    "title": "FAOSTAT Crops and livestock products, bulk download Production_Crops_Livestock_E_Africa",
+    "publisher": "FAO",
+    "year": 2025,
+    "url": "https://bulks-faostat.fao.org/production/Production_Crops_Livestock_E_Africa.zip",
+    "accessed": "2026-10-03",
+    "used_for": "3a, 3b: Kenya coffee green production, yield, area 2014-2024"
+  },
+  {
+    "id": "findex-mm-all",
+    "title": "Global Findex Database: Mobile money account (% age 15+), Kenya",
+    "publisher": "World Bank",
+    "year": 2025,
+    "url": "https://api.worldbank.org/v2/country/KEN/indicator/mobileaccount.t.d?source=28&format=json",
+    "accessed": "2026-10-03",
+    "used_for": "5b (all adults)"
+  },
+  {
+    "id": "findex-mm-female",
+    "title": "Global Findex Database: Mobile money account, female (% age 15+), Kenya",
+    "publisher": "World Bank",
+    "year": 2025,
+    "url": "https://api.worldbank.org/v2/country/KEN/indicator/mobileaccount.t.d.1?source=28&format=json",
+    "accessed": "2026-10-03",
+    "used_for": "5a"
+  },
+  {
+    "id": "findex-mm-male",
+    "title": "Global Findex Database: Mobile money account, male (% age 15+), Kenya",
+    "publisher": "World Bank",
+    "year": 2025,
+    "url": "https://api.worldbank.org/v2/country/KEN/indicator/mobileaccount.t.d.2?source=28&format=json",
+    "accessed": "2026-10-03",
+    "used_for": "5b"
+  },
+  {
+    "id": "gichuru-2021",
+    "title": "Coffee Leaf Rust (Hemileia vastatrix) in Kenya: A Review, Agronomy 11(12):2590",
+    "publisher": "MDPI (KALRO Coffee Research Institute authors)",
+    "year": 2021,
+    "url": "https://www.mdpi.com/2073-4395/11/12/2590",
+    "accessed": "2026-10-03",
+    "used_for": "2a, 2b, 2c: rust loss, rust peaks, spray timing"
+  },
+  {
+    "id": "gsma-mggr-2024",
+    "title": "The Mobile Gender Gap Report 2024",
+    "publisher": "GSMA",
+    "year": 2024,
+    "url": "https://www.gsma.com/wp-content/uploads/2025/12/The-Mobile-Gender-Gap-Report-2024.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "4c: mobile ownership by gender, Kenya 2023"
+  },
+  {
+    "id": "gsma-mggr-2025",
+    "title": "The Mobile Gender Gap Report 2025",
+    "publisher": "GSMA",
+    "year": 2025,
+    "url": "https://www.gsma.com/wp-content/uploads/2025/12/The-Mobile-Gender-Gap-Report-2025.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "4a, 4b: mobile and smartphone ownership by gender, Kenya 2024"
+  },
+  {
+    "id": "guardian-2024",
+    "title": "High tech, high yields? The Kenyan farmers deploying AI to increase productivity",
+    "publisher": "The Guardian",
+    "year": 2024,
+    "url": "https://www.theguardian.com/world/2024/sep/30/high-tech-high-yields-the-kenyan-farmers-deploying-ai-to-increase-productivity",
+    "accessed": "2026-10-03",
+    "used_for": "1d: reuse of 1:1093"
+  },
+  {
+    "id": "kasep-2023",
+    "title": "Kenya Agricultural Sector Extension Policy (KASEP)",
+    "publisher": "Ministry of Agriculture and Livestock Development, Kenya",
+    "year": 2023,
+    "url": "https://kilimo.go.ke/wp-content/uploads/2024/10/KENYA-AGRICULTURAL-SECTOR-EXTENSION-POLICY-2023.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "1a, 1b, 1f: extension ratio statement, 1:600 target, farming households"
+  },
+  {
+    "id": "kilimonews-extension",
+    "title": "Where are the extension workers?",
+    "publisher": "Kilimo News",
+    "year": 2019,
+    "url": "https://kilimonews.co.ke/general-news/where-are-extension-workers/",
+    "accessed": "2026-10-03",
+    "used_for": "1e: 1:1000 national, 1:2000 county; last recruitment 2006 (article undated, year approximate)"
+  },
+  {
+    "id": "kmd_nyeri_mam_2026",
+    "title": "Nyeri County outlook for long rains, March-April-May 2026 (Ref MET/NYERI/2/SEASONAL/10-2-2026)",
+    "publisher": "Kenya Meteorological Department, County Meteorological Services Office, Nyeri",
+    "year": 2026,
+    "url": "https://meteo.go.ke/documents/2607/Nyeri_County_MAM_2026_Seasonal_forecast.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "Cross-check for one season only (a forecast, not a climatology): onset 2nd to 3rd week of March, cessation 3rd to 4th week of May 2026"
+  },
+  {
+    "id": "knbs-census-2019-results",
+    "title": "2019 Kenya Population and Housing Census Results",
+    "publisher": "Kenya National Bureau of Statistics",
+    "year": 2019,
+    "url": "https://www.knbs.or.ke/2019-kenya-population-and-housing-census-results/",
+    "accessed": "2026-10-03",
+    "used_for": "7d: total population 47,564,296"
+  },
+  {
+    "id": "knbs-census-2019-vol4",
+    "title": "2019 Kenya Population and Housing Census Volume IV: Distribution of Population by Socio-Economic Characteristics",
+    "publisher": "Kenya National Bureau of Statistics",
+    "year": 2019,
+    "url": "https://www.knbs.or.ke/wp-content/uploads/2023/09/2019-Kenya-population-and-Housing-Census-Volume-4-Distribution-of-Population-by-Socio-Economic-Characteristics.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "7c: Kikuyu largest ethnic group"
+  },
+  {
+    "id": "moalf_nyeri_crp_2016",
+    "title": "Climate Risk Profile for Nyeri County. Kenya County Climate Risk Profile Series",
+    "publisher": "Ministry of Agriculture, Livestock and Fisheries, Kenya (via CGSpace)",
+    "year": 2016,
+    "url": "https://exa.ai/library/publication/tphxsg2src2 (index copy read; original CGSpace handle not confirmed)",
+    "accessed": "2026-10-03",
+    "used_for": "Cross-check and gap: some zones (LH2, LH3, LH4) have a third, middle rain in July and August"
+  },
+  {
+    "id": "model_mms_tts_kik",
+    "title": "facebook/mms-tts-kik",
+    "publisher": "Meta AI (Hugging Face)",
+    "year": 2023,
+    "url": "https://huggingface.co/facebook/mms-tts-kik",
+    "accessed": "2026-10-03",
+    "used_for": "MMS-TTS Kikuyu licence (CC BY-NC 4.0), tokeniser settings, file size"
+  },
+  {
+    "id": "model_nllb_600m",
+    "title": "facebook/nllb-200-distilled-600M",
+    "publisher": "Meta AI (Hugging Face)",
+    "year": 2022,
+    "url": "https://huggingface.co/facebook/nllb-200-distilled-600M",
+    "accessed": "2026-10-03",
+    "used_for": "NLLB-200 licence (CC BY-NC 4.0), kik_Latn and swh_Latn codes, file size"
+  },
+  {
+    "id": "mugendi-2015",
+    "title": "The Relationship between Adoption of Coffee Certification Standards and Productivity in Nyeri County in Kenya, Asian Journal of Business and Management 3(6)",
+    "publisher": "Asian Online Journals",
+    "year": 2015,
+    "url": "https://www.ajouronline.com/index.php/AJBM/article/view/3270/1784",
+    "accessed": "2026-10-03",
+    "used_for": "10a: Nyeri average 3.0 kg cherry per tree (MOALF 2014), survey mean 5.40 kg"
+  },
+  {
+    "id": "nasa_power_climatology_2001_2020",
+    "title": "NASA POWER Climatology API, PRECTOTCORR, point -0.42, 36.95, January 2001 to December 2020",
+    "publisher": "NASA Langley Research Center, POWER Project",
+    "year": 2026,
+    "url": "https://power.larc.nasa.gov/api/temporal/climatology/point?parameters=PRECTOTCORR&community=AG&latitude=-0.42&longitude=36.95&format=JSON",
+    "accessed": "2026-10-03",
+    "used_for": "Second check on the monthly pattern over a different period"
+  },
+  {
+    "id": "nasa_power_daily_1991_2020",
+    "title": "NASA POWER Daily API, PRECTOTCORR (bias-corrected precipitation), point -0.42, 36.95, 1991-01-01 to 2020-12-31, community AG (source: MERRA-2)",
+    "publisher": "NASA Langley Research Center, POWER Project",
+    "year": 2026,
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=PRECTOTCORR&community=AG&latitude=-0.42&longitude=36.95&start=19910101&end=20201231&format=JSON",
+    "accessed": "2026-10-03",
+    "used_for": "Daily climatology, dekadal means, onset and cessation by cumulative anomaly (climatology and per year)"
+  },
+  {
+    "id": "nasa_power_monthly_1991_2020",
+    "title": "NASA POWER Monthly API, PRECTOTCORR, point -0.42, 36.95, 1991 to 2020, community AG",
+    "publisher": "NASA Langley Research Center, POWER Project",
+    "year": 2026,
+    "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=PRECTOTCORR&community=AG&latitude=-0.42&longitude=36.95&start=1991&end=2020&format=JSON",
+    "accessed": "2026-10-03",
+    "used_for": "Monthly means 1991 to 2020 (check on the daily totals)"
+  },
+  {
+    "id": "nyeri_cidp_2013",
+    "title": "Nyeri County Integrated Development Plan 2013 to 2017, section 1.2.3 Climatic Conditions",
+    "publisher": "County Government of Nyeri",
+    "year": 2013,
+    "url": "https://www.nyeri.go.ke/wp-content/uploads/2018/09/CIDP-Final-2013-to-2017.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "Cross-check: long rains March to May, short rains October to December"
+  },
+  {
+    "id": "nyeri_pcra_2023",
+    "title": "Nyeri County Participatory Climate Risk Assessment Report, May 2023 (Figure 1: monthly rainfall climatology 1983 to 2018)",
+    "publisher": "County Government of Nyeri",
+    "year": 2023,
+    "url": "https://www.nyeri.go.ke/wp-content/uploads/2025/12/PCRA-report-Nyeri-County-2024-5.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "Cross-check: bimodal, long rains March to May peaking April, short rains October to December peaking November, lowest month February"
+  },
+  {
+    "id": "odongo-aiw-2014",
+    "title": "Farmers' access to knowledge sources and ICT in Kenya (Odongo), Agricultural Information Worldwide vol. 6, pp. 133-137",
+    "publisher": "IAALD (hosted by FAO FSN Forum)",
+    "year": 2014,
+    "url": "https://assets.fsnforum.fao.org/public/discussions/contributions/aiw6-(16)-pp133-137-Odongo.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "1c: 1:1093 extension officer to farm household ratio"
+  },
+  {
+    "id": "paper_bracol",
+    "title": "Deep learning for classification and severity estimation of coffee leaf biotic stress (Computers and Electronics in Agriculture 169, 105162; arXiv 1907.11561)",
+    "publisher": "Elsevier / arXiv",
+    "year": 2020,
+    "url": "https://arxiv.org/abs/1907.11561",
+    "accessed": "2026-10-03",
+    "used_for": "BRACOL per-class and severity counts"
+  },
+  {
+    "id": "paper_coleaf",
+    "title": "CoLeaf-DB: Peruvian coffee leaf images dataset for coffee leaf nutritional deficiencies detection and classification (Data in Brief 48, 109226)",
+    "publisher": "Elsevier (Data in Brief)",
+    "year": 2023,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10293970/",
+    "accessed": "2026-10-03",
+    "used_for": "CoLeaf-DB per-class counts, location, camera"
+  },
+  {
+    "id": "paper_jmuben",
+    "title": "Arabica coffee leaf images dataset for coffee leaf disease detection and classification (Data in Brief 36, 107142)",
+    "publisher": "Elsevier (Data in Brief)",
+    "year": 2021,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8165403/",
+    "accessed": "2026-10-03",
+    "used_for": "JMuBEN and JMuBEN2 per-class counts, location (Mutira, Kirinyaga), camera, preprocessing"
+  },
+  {
+    "id": "paper_plantdoc",
+    "title": "PlantDoc: A Dataset for Visual Plant Disease Detection (CoDS-COMAD 2020)",
+    "publisher": "ACM / arXiv 1911.10317",
+    "year": 2020,
+    "url": "https://arxiv.org/abs/1911.10317",
+    "accessed": "2026-10-03",
+    "used_for": "PlantDoc total data points, internet-scraped origin"
+  },
+  {
+    "id": "paper_rocole",
+    "title": "RoCoLe: A robusta coffee leaf images dataset for evaluation of machine learning based methods in plant diseases recognition (Data in Brief 25, 104414)",
+    "publisher": "Elsevier (Data in Brief)",
+    "year": 2019,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/31516934/",
+    "accessed": "2026-10-03",
+    "used_for": "RoCoLe capture conditions, location, severity method"
+  },
+  {
+    "id": "paper_sbc_wsis_bracol",
+    "title": "SBC WSIS workshop paper describing BRACOL classes (Portuguese)",
+    "publisher": "Sociedade Brasileira de Computação (SOL)",
+    "year": 2025,
+    "url": "https://sol.sbc.org.br/index.php/wsis/article/download/33672/33464/",
+    "accessed": "2026-10-03",
+    "used_for": "Secondary hint that BRACOL brown leaf spot corresponds to Phoma (unconfirmed); year not verified"
+  },
+  {
+    "id": "safaricom-data-faq",
+    "title": "FAQs on Safaricom Data Bundles",
+    "publisher": "Safaricom",
+    "year": 2026,
+    "url": "https://www.safaricom.co.ke/media-center-landing/frequently-asked-questions/safaricom-data-bundles",
+    "accessed": "2026-10-03",
+    "used_for": "8b: daily plan prices (page undated; conflicts with 8a)"
+  },
+  {
+    "id": "safaricom-data-terms",
+    "title": "Terms and Conditions for Safaricom PrePay and PostPay Data Bundles",
+    "publisher": "Safaricom",
+    "year": 2026,
+    "url": "https://www.safaricom.co.ke/media-center-landing/terms-and-conditions/terms-and-conditions-for-safaricom-prepay-and-postpay-data-bundles",
+    "accessed": "2026-10-03",
+    "used_for": "8a: daily bundle prices, out-of-bundle rate (page undated)"
+  },
+  {
+    "id": "statskenya-ethnicity",
+    "title": "Tribe and Ethnicity in Kenya - Number of People by Tribe",
+    "publisher": "Stats Kenya",
+    "year": 2019,
+    "url": "https://statskenya.co.ke/at-stats-kenya/about/tribe-and-ethnicity-in-kenya-number-of-people-by-tribe/93/",
+    "accessed": "2026-10-03",
+    "used_for": "7b: Kikuyu ethnic population 8,148,668 (secondary, quoting 2019 census Vol IV)"
+  }
+]

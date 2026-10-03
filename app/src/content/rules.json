@@ -1,0 +1,86 @@
+[
+  {
+    "if": { "uncertain_gte": 3 },
+    "then": "too_many_unsure",
+    "assumption": true,
+    "note": "3 unclear leaves in a sample is an assumption. No Kenyan incidence threshold was found (GUIDANCE section 6)."
+  },
+  {
+    "if": { "dominant": "not_leaf" },
+    "then": "not_a_leaf",
+    "assumption": false,
+    "note": "The photo is not counted as a coffee-leaf problem."
+  },
+  {
+    "if": { "distinct_problems_gte": 2 },
+    "then": "mixed_problems",
+    "assumption": true,
+    "note": "Two different problem labels: do not pick a treatment. The cut-off is an assumption, officer to confirm."
+  },
+  {
+    "if": { "dominant": "rust", "affected_gte": 3, "window": "pre_short_rains" },
+    "then": "rust_high_pre_rains",
+    "assumption": true,
+    "note": "affected_gte 3 is an assumption, officer to confirm. The pre-short-rains window follows season.json (S03, S33), plus 14 days before the edge because those edges are plus or minus two weeks."
+  },
+  {
+    "if": { "dominant": "rust", "affected_gte": 3, "window": "pre_long_rains" },
+    "then": "rust_high_pre_rains",
+    "assumption": true,
+    "note": "Same card as the short-rains spray window. Long-rains sprays start in late February (S03). affected_gte 3 is an assumption."
+  },
+  {
+    "if": { "dominant": "rust", "affected_gte": 3, "window": "short_rains" },
+    "then": "rust_high_in_rains",
+    "assumption": true,
+    "note": "affected_gte 3 is an assumption. During rains, ask before spraying."
+  },
+  {
+    "if": { "dominant": "rust", "affected_gte": 3, "window": "long_rains" },
+    "then": "rust_high_in_rains",
+    "assumption": true,
+    "note": "affected_gte 3 is an assumption."
+  },
+  {
+    "if": { "dominant": "rust", "affected_gte": 3, "window": "dry" },
+    "then": "rust_high_dry",
+    "assumption": true,
+    "note": "affected_gte 3 is an assumption. Outside the published spray starts, ask before spraying."
+  },
+  {
+    "if": { "dominant": "rust", "affected_lte": 2 },
+    "then": "rust_low",
+    "assumption": true,
+    "note": "1 or 2 affected leaves counted as few. Assumption, officer to confirm."
+  },
+  {
+    "if": { "dominant": "cercospora" },
+    "then": "cercospora",
+    "assumption": true,
+    "note": "No Kenyan treatment source. The card asks the officer. Symptom wording is from a non-Kenyan sheet (S18)."
+  },
+  {
+    "if": { "dominant": "phoma" },
+    "then": "phoma",
+    "assumption": true,
+    "note": "No Kenyan treatment source. The card asks the officer. Symptoms are from non-Kenyan pages (S42, S43)."
+  },
+  {
+    "if": { "dominant": "miner" },
+    "then": "miner",
+    "assumption": false,
+    "note": "Symptoms and the do-not-spray line are from Infonet Biovision, Kenya (S17). No product is named."
+  },
+  {
+    "if": { "dominant": "healthy", "affected_lte": 0 },
+    "then": "healthy_all",
+    "assumption": false,
+    "note": "No problem label in the sample."
+  },
+  {
+    "if": {},
+    "then": "ask_officer",
+    "assumption": false,
+    "note": "Catch-all when no earlier rule matches."
+  }
+]

@@ -27,8 +27,8 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | U1 | Lovable project, routes, farmer flow with mocks | ui | Sat 23:30 | todo | |
 | U2 | Officer dashboard, tables, seed data | ui | Sun 08:00 | todo | |
 | U3 | Wire real engine hooks, publish live URL | ui | Sun 09:30 | todo | needs E1 |
-| C1 | answers.json + rules.json | content-voice | Sat 23:00 | todo | needs R2 |
-| C2 | Swahili + Kikuyu translations | content-voice | Sat 23:30 | todo | |
+| C1 | answers.json + rules.json | content-voice | Sat 23:00 | doing | cloud sub-agent, branch `cursor/wave1-research-engine-82ab`, built against the PR #2 engine shapes |
+| C2 | Swahili + Kikuyu translations | content-voice | Sat 23:30 | doing | text only, machine-drafted, needs L3 review |
 | C3 | Audio rendered (ElevenLabs, MMS) | content-voice | Sun 00:30 | todo | needs L2 |
 | D1 | Doc skeletons | docs | Sat 22:30 | todo | |
 | D2 | DATA_CARD, RESPONSIBLE_AI, LANGUAGES, REPLICATION | docs | Sun 10:30 | todo | needs R1, R3, M5 |

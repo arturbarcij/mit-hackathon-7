@@ -49,6 +49,11 @@ Share of years with short-rains onset by date: 13% by 1 Oct, 47% by 15 Oct, 87% 
 
 The current window was far wetter than normal. Plots are scored against nearby plots, which cancels most area-wide effects, but small canopy changes should be read with care. This is exposed in `outliers.json` as `context.ndviWindowRain`.
 
+## Cross-checks against the research files
+- **Rain onset.** `kb/research/season.json` (NASA POWER at 36.95 E, 0.42 S, its own onset method) gives a short-rains median of 16 Oct counting from 15 Sep (middle half of years 7 to 28 Oct) and a long-rains median of 20 Mar. Geo's rule at 37.07 E, 0.46 S gives 19 Oct and 21 Mar. Two methods and two grid points agree to within three days, so the spread (about two to three weeks between years) is a real feature of the data and not an artefact. `kb/research/raw/` also notes a KMSA forecast of onset in the second to third week of October for the coffee counties in 2026.
+- **Yield level (E3).** Cooperatives delivered 414.7 kg/ha of clean coffee in 2023/24 and the national figure for 2024 is 435.7 kg/ha. The synthetic plots deliver a median of about 2,500 to 3,150 kg cherry per ha in the three prior seasons. At an assumed cherry-to-clean ratio of 6 to 1 (**assumption, not in the kb, officer to confirm**) that is about 410 to 525 kg/ha clean. Same range as the national figures. It is a sanity check on scale, not a validation: the synthetic baseline comes from the Nyeri per-tree figure, not from E3.
+- **Do not claim a national decline.** E3 says Kenya's yield series is not a steady fall. The synthetic "decline" here is a planted plot-level scenario and a 13% cooperative-wide dip tied to the weak 2025 short rains. It illustrates the tool and says nothing about Kenya.
+
 ## Planted scenarios and results (synthetic, seed 20261004)
 | Scenario | Count | What was planted | Result |
 |---|---|---|---|

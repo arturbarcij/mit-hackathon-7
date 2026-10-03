@@ -11,16 +11,16 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | L2 | Fill `app/backend/.env` with keys | Arthur | Sat 21:30 | todo | |
 | L3 | Find a Swahili speaker to review answers (10 min, Sun morning) | Arthur | Sun 09:00 | todo | |
 | L4 | Android phone for demo (or emulation, stated) | Arthur | Sun 10:00 | todo | |
-| R1 | Problem evidence table | research | Sat 22:30 | todo | |
-| R2 | Agronomy guidance | research | Sat 23:00 | todo | |
-| R3 | Dataset facts and licences | research | Sat 23:00 | todo | |
-| R4 | season.json | research | Sat 23:30 | todo | |
+| R1 | Problem evidence table | research | Sat 22:30 | doing | cloud sub-agent, branch `cursor/wave1-research-engine-82ab` |
+| R2 | Agronomy guidance | research | Sat 23:00 | doing | cloud sub-agent, same branch |
+| R3 | Dataset facts and licences | research | Sat 23:00 | doing | cloud sub-agent, same branch |
+| R4 | season.json | research | Sat 23:30 | doing | cloud sub-agent, same branch |
 | M1 | Data download, manifest, dedupe, splits | ml | Sat 22:30 | todo | needs R3 (can start from ml.md list) |
 | M2 | Train v1 | ml | Sun 00:30 | todo | |
 | M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | todo | |
 | M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | todo | |
 | M5 | EVALUATION.md | ml | Sun 02:00 | todo | |
-| E1 | Engine with mock model + hooks | engine | Sat 23:30 | todo | needs L1 |
+| E1 | Engine with mock model + hooks | engine | Sat 23:30 | doing | cloud sub-agents: types, plot, referral, quality. Mock model, decide, hooks still todo |
 | E2 | PWA offline caching | engine | Sun 00:30 | todo | |
 | E3 | Real model integrated, parity in browser | engine | Sun 08:30 | todo | needs M4 |
 | E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | todo | |
@@ -49,3 +49,4 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 
 ## Log
 - Sat 21:00: kb set up, six agent briefs written.
+- Sat 23:00: wave 1 of sub-agents started from a cloud agent (see `kb/SUBAGENTS.md`): R1 to R4 and engine pure modules. Local agents: do not start these rows.

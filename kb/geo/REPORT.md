@@ -36,7 +36,7 @@ The low 2023 NDVI follows the poor 2022 short rains. 2023/24 was very wet. This 
 ## Planted scenarios (synthetic) and results
 | Scenario | Count | What was planted | Expected | Result |
 |---|---|---|---|---|
-| `decline_with_canopy_loss` | 4 | Deliveries x0.45, plot on a real NDVI-loss patch | `outlier`, `drop_with_canopy_loss` | 3 exact. 1 flagged `canopy_loss` (delivery z -2.95, just inside the threshold) |
+| `decline_with_canopy_loss` | 4 | Deliveries x0.45, plot on a real NDVI-loss patch | `outlier`, `drop_with_canopy_loss` | 4 exact (one only through the corroboration rule: delivery z -2.95, canopy z -11) |
 | `delivery_gap_canopy_ok` | 4 | Deliveries x0.40, stable real NDVI | `outlier`, `drop_canopy_normal` | 3 caught. 1 missed (delivery z -2.67) |
 | `over_delivery` | 2 | Deliveries x2.3 | `outlier`, `delivery_spike` | 2 caught |
 | `canopy_loss_early` | 2 | Normal deliveries, real NDVI-loss patch | `outlier`, `canopy_loss` | 2 caught |
@@ -45,15 +45,37 @@ The low 2023 NDVI follows the poor 2022 short rains. 2023/24 was very wet. This 
 | `missing_record` | 1 | No delivery this season | `unsure` | 1 abstained |
 | `normal` | 63 | Nothing | `normal` | 63 normal, 0 false flags |
 
-Overall: 78 of 80 plots got the expected status and reason. Cooperative median change this season: -12.5% (area-wide drop, flagged as context, not against any member).
+Overall: 79 of 80 plots got the expected status and reason. Cooperative median change this season: -12.5% (area-wide drop, flagged as context, not against any member).
 
-**What these numbers prove:** the rules do what they say on data built to test them. **What they do not prove:** anything about a real cooperative. The scenarios and the noise were written by us, so the hit rate mostly reflects how far the planted effects sit from the noise we chose. The two misses are honest: a 55 to 60% fall can sit inside the threshold when a member's past seasons were noisy.
+### Seed sweep (30 synthetic registries, real NDVI and rainfall fixed)
+`app/geo/sweep.py`, output `app/geo/data/sweep.json`. One seed flatters the model, so the registry was rebuilt 30 times.
+| Measure | Mean | Worst seed |
+|---|---|---|
+| Plots with the expected status and reason | 97.4% | 92.5% |
+| Planted problems caught (status right) | 92.4% | 76.5% |
+| Normal plots flagged per seed (of 63) | 0.4 | 2 |
+
+Weakest scenarios over 30 seeds: `delivery_gap_canopy_ok` was missed 22 of 120 times (18%), `over_delivery` 9 of 60 (15%). Both are deliveries that moved by a factor of 2 to 2.5 with 15% noise and a spread in the cooperative's own history; some land inside z of 3. Abstentions (`new_member`, `tiny_plot`, `missing_record`) fired every time. Eight normal plots over 30 seeds became `unsure` (thin pixels), and three were flagged `outlier` by chance.
+
+### Seed sweep (30 synthetic registries, real NDVI and rainfall fixed)
+`app/geo/sweep.py`, output `app/geo/data/sweep.json`. One seed flatters a model, so the registry and noise were rebuilt 30 times.
+| Measure | Result |
+|---|---|
+| Plots with expected status and reason | 97% on average, 93% in the worst seed |
+| Planted cases given the expected status | 92% on average, 77% in the worst seed |
+| Normal plots flagged as outlier | 3 in 1,890 plot-runs; 8 more marked unsure (thin pixels), 0 to 2 per seed |
+| `over_delivery` (x2.3) missed | 9 of 60 |
+| `delivery_gap_canopy_ok` (x0.40) missed | 22 of 120 (18%) |
+
+Misses are mostly deliveries-only signals, where there is no satellite corroboration and the member's own noise sits close to the threshold. We did not lower the threshold to win these back: it would raise false flags on real, noisier data.
+
+**What these numbers prove:** the rules do what they say on data built to test them. **What they do not prove:** anything about a real cooperative. The scenarios and the noise were written by us, so the hit rate mostly reflects how far the planted effects sit from the noise we chose. The remaining miss is honest: a 55% fall with a normal canopy can sit inside the threshold when the cooperative's own spread is wide. We did not lower the threshold to catch it.
 
 ## Limits and what the data does not cover
 - **No real delivery data.** Thresholds are set by reasoning, not tuned on real records. A real cooperative would need to check the false-flag rate on its own history first.
 - **NDVI is not coffee health.** Loss can mean stumping or pruning (normal practice), felling, a new building, intercrop removal or disease. It cannot see leaf rust directly. That is the leaf check's job.
 - **Shade trees and intercrops** mix into each 10 m pixel. Smallholder coffee plots of 0.15 ha are only about 15 pixels.
-- **Regional gradient.** The north of the area shows a broad real NDVI decline in early 2026 (northern third, prior median 0.69 to 0.61) that is not plot-specific. Clear-observation counts are the same north and south (12 to 13), so it is not cloud. Peer scores use the whole area, so northern plots lean towards canopy flags. A local-neighbourhood baseline (for example 500 m) would fix this; not built.
+- **Regional gradient.** The north of the area shows a broad real NDVI decline in early 2026 (northern third, prior median 0.69 to 0.61; plot median change -0.003 in the south, -0.059 in the north). It is not cloud: clear-observation counts are the same north and south (12 to 13). To stop it reading as plot-level loss, the canopy score compares each plot with its 12 nearest plots, not the whole area. This cost no hits on the planted scenarios. The cause of the gradient is unknown to us (rain timing, land-use change, or a processing effect).
 - **One dry season per year.** January to mid March only. The July to September cool dry season is often overcast in the highlands and is not used.
 - **Rainfall is one value for all plots.** NASA POWER is about 0.5 x 0.625 degrees. It gives context, not per-plot cause. CHIRPS (about 5 km) would be the next step.
 - **Registry quality.** Tree counts are the weakest number in any real registry. `above_plausible_yield` exists because a wrong tree count looks exactly like an outlier.
@@ -63,7 +85,8 @@ Overall: 78 of 80 plots got the expected status and reason. Cooperative median c
 Member numbers only, no names. Plot polygons in a real deployment are personal data: they should stay on the cooperative's systems with member consent, and the public demo uses synthetic polygons only.
 
 ## Files
-- Code: `app/geo/` (`config.py`, `fetch_ndvi.py`, `fetch_rain.py`, `make_plots.py`, `outliers.py`, `run.sh`)
-- Committed derived data: `app/geo/data/` (`rainfall.json`, `ndvi_scenes.json`, `registry.geojson`, `truth.json`, `eval.json`)
+- Code: `app/geo/` (`config.py`, `fetch_ndvi.py`, `fetch_rain.py`, `make_plots.py`, `outliers.py`, `validate.py`, `sweep.py`, `preview.py`, `run.sh`)
+- Preview image: `kb/geo/preview.png`
+- Committed derived data: `app/geo/data/` (`rainfall.json`, `ndvi_scenes.json`, `registry.geojson`, `truth.json`, `eval.json`, `sweep.json`)
 - Outputs: `app/public/geo/` (`plots.geojson`, `outliers.json`, `ndvi_change.png`)
 - Contract: `kb/geo/CONTRACT.md`

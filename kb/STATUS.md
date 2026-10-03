@@ -32,7 +32,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | C3 | Audio rendered (ElevenLabs, MMS) | content-voice | Sun 00:30 | todo | needs L2 |
 | G1 | Real data: Sentinel-2 dry-season NDVI (Earth Search, SCL mask) and NASA POWER rainfall, Mathira West, Nyeri | geo | Sun 02:00 | done | 4 composites (Jan to mid Mar 2023 to 2026, 12 to 15 scenes each); rainfall 1991 to Sep 2026. NDVI kept, no cut |
 | G2 | Synthetic registry (80 plots, 66 members) and deliveries with planted scenarios, labelled synthetic | geo | Sun 02:00 | done | Noor is OCC0412-2 (`drop_with_canopy_loss`) |
-| G3 | Robust-z outlier model, reason codes, abstention; `public/geo/plots.geojson`, `outliers.json`, `ndvi_change.png` | geo | Sun 02:00 | done | 78 of 80 planted cases as expected, 0 false flags on 63 normal (synthetic). Contract `kb/geo/CONTRACT.md`, report `kb/geo/REPORT.md` |
+| G3 | Robust-z outlier model, reason codes, abstention; `public/geo/plots.geojson`, `outliers.json`, `ndvi_change.png` | geo | Sun 02:00 | done | 79 of 80 planted cases as expected, 0 false flags on 63 normal; over 30 seeds 97% match, 92% of planted problems caught, 0.4 false flags per 63 (all synthetic). Contract `kb/geo/CONTRACT.md`, report `kb/geo/REPORT.md` |
 | D1 | Doc skeletons | docs | Sat 22:30 | todo | |
 | D2 | DATA_CARD, RESPONSIBLE_AI, LANGUAGES, REPLICATION | docs | Sun 10:30 | todo | needs R1, R3, M5 |
 | D3 | README final | docs | Sun 11:00 | todo | |
@@ -56,3 +56,4 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 ## Log
 - Sat 21:00: kb set up, six agent briefs written.
 - Sat 23:00: geo G1 to G3 done. Sentinel-2 and NASA POWER both working.
+- Sat 23:30: geo: local canopy baseline, corroboration rule, contract validator, 30-seed sweep, preview map.

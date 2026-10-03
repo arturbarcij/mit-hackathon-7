@@ -63,7 +63,7 @@ interface PlotResult {
   metrics: {
     kgCherry: number | null; kgPerTree: number | null; kgPerTreeBaseline: number | null;
     changePct: number | null; zDelivery: number | null; priorSeasons: number;
-    ndvi: number | null; ndviBaseline: number | null; ndviChange: number | null; zNdvi: number | null;
+    ndvi: number | null; ndviBaseline: number | null; ndviChange: number | null; ndviLocalChange: number | null; zNdvi: number | null;
     clearPx: number; totalPx: number;
   };
   synthetic: true;
@@ -73,12 +73,12 @@ interface PlotResult {
 ## Reason codes
 | Code | Rule | Next step |
 |---|---|---|
-| `drop_with_canopy_loss` | delivery z at or below -3 and NDVI z at or below -2 | `visit` |
+| `drop_with_canopy_loss` | delivery z at or below -3 and NDVI z at or below -2; or delivery z at or below -2 when NDVI z is at or below -3 (two signals corroborate) | `visit` |
 | `drop_canopy_normal` | delivery z at or below -3 and NDVI z above -1.5. Could be side-selling, late picking or a record gap. The UI must not accuse. | `call_member` |
 | `delivery_drop` | delivery z at or below -3, canopy not readable or unclear | (with abstain) `ask_officer` |
 | `delivery_spike` | delivery z at or above +3 | `call_member` |
 | `above_plausible_yield` | over 10 kg cherry per registered tree | `check_records` |
-| `canopy_loss` | NDVI z at or below -3, deliveries not flagged | `visit` |
+| `canopy_loss` | NDVI z at or below -3, deliveries not flagged. NDVI z is against the 12 nearest plots, so regional shifts cancel | `visit` |
 
 ## Abstain codes (status `unsure`, next step `ask_officer`)
 | Code | Rule |

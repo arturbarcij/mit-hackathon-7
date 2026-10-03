@@ -47,6 +47,13 @@ SETS = {
                            desc="RoCoLe held-out set (Ecuador Robusta; healthy, rust levels 1-4 mapped to rust), never trained on"),
     "rocole_red_spider_mite": dict(split="heldout_rocole", labels=["unmapped"],
                                    desc="RoCoLe red spider mite (no matching class; out of scope)"),
+    # v2 (manifest_v2.csv)
+    "heldout_uganda_test": dict(split="heldout_uganda_test", labels=CLASSES,
+                                desc="Uganda test portion (35% of the Uganda set by duplicate group; healthy, rust, phoma); "
+                                     "other Uganda groups were used for v2 training and calibration"),
+    "synthetic_blank_pages": dict(split="test_synthetic_pages", labels=["not_leaf"],
+                                  desc="SYNTHETIC exercise-book pages with no leaf (two thirds through the clutter generator: "
+                                       "random pen strokes, rectangles, skin-tone blob); desired: not_leaf or abstain"),
 }
 
 
@@ -74,7 +81,9 @@ def scores(logits, rows, temperature, threshold, desc, closed_set=True):
            "abstention_rate": float(1 - accepted.mean()) if len(rows) else None,
            "predicted_counts": {CLASSES[k]: int(v) for k, v in Counter(pred.tolist()).items()},
            "accepted_predicted_counts": {CLASSES[k]: int(v) for k, v in Counter(pred[accepted].tolist()).items()},
-           "rate_abstain_or_not_leaf": float((~accepted | (pred == CLASSES.index("not_leaf"))).mean()) if len(rows) else None}
+           "rate_abstain_or_not_leaf": float((~accepted | (pred == CLASSES.index("not_leaf"))).mean()) if len(rows) else None,
+           "rate_predicted_not_leaf": float((pred == CLASSES.index("not_leaf")).mean()) if len(rows) else None,
+           "rate_accepted_as_not_leaf": float((accepted & (pred == CLASSES.index("not_leaf"))).mean()) if len(rows) else None}
     if not closed_set or not len(rows):
         return out, p
     y = np.array([CLASSES.index(r["label"]) for r in rows])

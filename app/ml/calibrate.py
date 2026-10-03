@@ -5,7 +5,12 @@ The temperature minimises val negative log-likelihood. The chosen threshold is t
 probability at which accuracy on accepted val images is at least --target (default 0.95), which gives the
 highest coverage that meets the target. Thresholds for 0.98 and 0.99 are reported too.
 
+With --splits A B (v2: val and uganda_calib), logits from all splits are pooled for the temperature, and the
+threshold must reach the target on every split separately (the highest of the per-split thresholds). If that is
+impossible at --target, --fallback-target is tried and the result says so ("fallback_used").
+
 Real run:   python app/ml/calibrate.py --ckpt app/ml/runs/<run>/best.pt
+v2 run:     python app/ml/calibrate.py --ckpt <best.pt> --manifest app/ml/manifest_v2.csv --splits val uganda_calib --fallback-target 0.90
 Smoke run:  python app/ml/calibrate.py --ckpt app/ml/runs/smoke/best.pt --max-per-class 30 --out /tmp/mlx/calibration.json
 """
 import argparse
@@ -95,6 +100,9 @@ def main():
     ap.add_argument("--manifest", default=str(ML / "manifest.csv"))
     ap.add_argument("--data-root", default=str(ROOT / "data_raw"))
     ap.add_argument("--split", default="val")
+    ap.add_argument("--splits", nargs="*", default=None, help="several splits, pooled; overrides --split")
+    ap.add_argument("--fallback-target", type=float, default=None,
+                    help="if --target cannot be met on every split, use this target instead and say so")
     ap.add_argument("--max-per-class", type=int, default=0, help="0 = whole val split")
     ap.add_argument("--target", type=float, default=0.95, help="accepted-val accuracy the shipped threshold must reach")
     ap.add_argument("--report-targets", type=float, nargs="*", default=[0.95, 0.98, 0.99])
@@ -106,9 +114,13 @@ def main():
     a = ap.parse_args()
 
     set_threads(a.threads)
-    rows = load_split(Path(a.manifest), a.split, a.max_per_class, a.seed, labels=CLASSES)
+    splits = a.splits or [a.split]
+    rows = []
+    for sp in splits:
+        rows += load_split(Path(a.manifest), sp, a.max_per_class, a.seed, labels=CLASSES)
+    part = np.array([r["split"] for r in rows])
     counts = Counter(r["label"] for r in rows)
-    print(f"{a.split}: {len(rows)} images {dict(counts)}")
+    print(f"{splits}: {len(rows)} images {dict(counts)}")
     model, ckpt = load_model(a.ckpt)
     logits, y = collect_logits(model, rows, Path(a.data_root), a.batch_size, a.workers)
 
@@ -116,14 +128,41 @@ def main():
     p1, pt = softmax_t(logits, 1.0), softmax_t(logits, t)
     pred, conf1, conf = pt.argmax(1), p1.max(1), pt.max(1)
     correct = pred == y
-    targets = {f"{x:.2f}": threshold_for(conf, correct, x) for x in sorted(set(a.report_targets) | {a.target})}
+    def joint(target):
+        """Threshold meeting the target on the pooled set and on every split separately."""
+        res = {"pooled": threshold_for(conf, correct, target)}
+        if len(splits) > 1:
+            for sp in splits:
+                m = part == sp
+                res[sp] = threshold_for(conf[m], correct[m], target)
+        reached = all(r["reached"] for r in res.values())
+        out = dict(res["pooled"])
+        out.update({"reached": reached, "per_split": res})
+        if reached:
+            out["threshold"] = max(r["threshold"] for r in res.values())
+        return out
+
+    all_targets = sorted(set(a.report_targets) | {a.target} | ({a.fallback_target} if a.fallback_target else set()))
+    targets = {f"{x:.2f}": joint(x) for x in all_targets}
     chosen = dict(targets[f"{a.target:.2f}"])
+    chosen["fallback_used"] = False
+    if not chosen["reached"] and a.fallback_target:
+        print(f"WARNING: accepted accuracy {a.target} is NOT reachable on every split; using fallback target {a.fallback_target}")
+        chosen = dict(targets[f"{a.fallback_target:.2f}"])
+        chosen.update({"fallback_used": True, "original_target": a.target})
     if chosen["reached"]:
         threshold = chosen["threshold"]
     else:
         threshold = 1.0
-        print(f"WARNING: accepted val accuracy never reaches {a.target}; threshold falls back to 1.0 (abstain on almost everything)")
+        print(f"WARNING: accepted accuracy never reaches {chosen['target']}; threshold falls back to 1.0 (abstain on almost everything)")
     accepted = conf >= threshold
+    per_split = {}
+    for sp in splits:
+        m = part == sp
+        per_split[sp] = {"n": int(m.sum()), "accuracy": float(correct[m].mean()),
+                         "coverage_at_threshold": float(accepted[m].mean()),
+                         "accepted_accuracy": float(correct[m & accepted].mean()) if (m & accepted).any() else None,
+                         "nll_after": nll(logits[m], y[m], t), "ece_15_bins_after": ece(conf[m], correct[m])}
 
     per_class = {}
     for k, c in enumerate(CLASSES):
@@ -135,8 +174,10 @@ def main():
     tc, cov, acc = coverage_curve(conf, correct)
     step = max(1, len(tc) // 200)
     result = {
-        "test_set": f"{a.split} split (JMuBEN, JMuBEN2, BRACOL, PlantDoc not_leaf)"
+        "test_set": (f"{a.split} split (JMuBEN, JMuBEN2, BRACOL, PlantDoc not_leaf)" if len(splits) == 1 and splits[0] == "val"
+                     else f"pooled splits {splits} of {Path(a.manifest).name}")
                     + (f", at most {a.max_per_class} images per class" if a.max_per_class else ", all images"),
+        "splits": splits,
         "checkpoint": str(a.ckpt), "checkpoint_sha256": sha256_file(a.ckpt), "arch": ckpt["arch"], "epoch": ckpt.get("epoch"),
         "command": " ".join([os.path.basename(sys.executable)] + sys.argv),
         "preprocessing": "engine (export.engine_tensor): centre square of shorter side resized to 224, ImageNet mean/std",
@@ -149,11 +190,13 @@ def main():
         "nll": {"before": nll(logits, y, 1.0), "after": nll(logits, y, t)},
         "ece_15_bins": {"before": ece(conf1, p1.argmax(1) == y), "after": ece(conf, correct)},
         "per_class_at_threshold": per_class,
+        "per_split_at_threshold": per_split,
         "curve": {"threshold": tc[::step].tolist(), "coverage": cov[::step].tolist(), "accuracy": acc[::step].tolist()},
     }
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
     Path(a.out).write_text(json.dumps(result, indent=2))
-    print(json.dumps({k: result[k] for k in ("test_set", "n", "temperature", "threshold", "targets", "accuracy_all", "nll", "ece_15_bins")}, indent=2))
+    print(json.dumps({k: result[k] for k in ("test_set", "n", "temperature", "threshold", "chosen", "accuracy_all", "nll",
+                                             "ece_15_bins", "per_split_at_threshold")}, indent=2))
     print(f"wrote {a.out}")
 
 

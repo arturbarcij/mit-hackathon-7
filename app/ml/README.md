@@ -131,3 +131,30 @@ Smoke test of the three scripts (outputs only under `/tmp/mlx/`, numbers meaning
 .venv-ml/bin/python app/ml/evaluate.py --model-dir /tmp/mlx/model --calibration /tmp/mlx/calibration.json \
   --export-report /tmp/mlx/export_report.json --max-per-class 30 --out /tmp/mlx/metrics.json --fig-dir /tmp/mlx/figures
 ```
+
+## v2: fixing the "real photo = not_leaf" shortcut (3 to 4 Oct)
+
+v1 called 99% of RoCoLe coffee leaves `not_leaf`: every coffee training image was a tight crop and every
+`not_leaf` image a cluttered field photo. v2 changes (lead decision):
+
+1. `build_manifest.py --v2` writes `manifest_v2.csv` (v1 `manifest.csv` is reproduced byte for byte without
+   the flag). In-domain train/val/test are identical to v1. Uganda is split by duplicate group into
+   `uganda_train` 1,501, `uganda_calib` 452 and `heldout_uganda_test` 1,051, stratified by class; the 216
+   JMuBEN copies stay excluded. RoCoLe stays fully held out. 300 SYNTHETIC blank pages form `test_synthetic_pages`.
+2. `synth.py` (SYNTHETIC data): exercise-book pages (off-white to grey, optional blue rules and red margin,
+   lighting gradient, noise), coffee crops pasted with a leaf-shaped mask (BRACOL: saturation mask) at 35 to 90%
+   of the frame with a soft shadow and random rotation, and clutter (pen strokes, rectangles, skin-tone blob).
+3. Training (`train.py` new options): 60% of coffee draws are composited, 70% of those onto a page and 30% onto a
+   crop of a PlantDoc field photo (an addition to the lead's spec, because RoCoLe leaves are photographed on the
+   plant with soil and weeds behind). `not_leaf` = PlantDoc (60% as close-up crops) plus 400 virtual SYNTHETIC
+   blank pages, fixed at 12.5% of draws. Uganda rows weigh 2x within their class. In-domain train capped at
+   2,500 images per class for JMuBEN and JMuBEN2 (BRACOL and PlantDoc uncapped). Initialised from
+   `runs/v1-cpu-e3/best.pt`, lr 3e-4, 24,000 draws per epoch, best epoch on the mean macro F1 of in-domain val
+   and `uganda_calib`.
+4. `calibrate.py --splits val uganda_calib`: temperature on both pooled; the threshold must reach the target on
+   each split separately (`--fallback-target 0.90` if not).
+5. `evaluate.py` adds `heldout_uganda_test` and `synthetic_blank_pages`, and reports `rate_predicted_not_leaf`.
+
+Run folder `runs/v2-cpu-20261003-2317/`: `train_cmd.sh`, `post_cmd.sh` (calibrate, export, evaluate into the run
+folder), `publish_cmd.sh` (same into `app/public/model`, `calibration.json`, `metrics.json`, `figures/`),
+`eval_v1/metrics.json` (v1 on the v2 test sets) and `eval_v2/metrics.json`. All ran in tmux session `ml-v2`.

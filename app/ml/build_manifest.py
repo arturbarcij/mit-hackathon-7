@@ -8,7 +8,12 @@ near-duplicates when the Hamming distance is 6 or less between one image and any
 Near-duplicates are grouped with union-find, and whole groups go to one split.
 Train sets get a 70/15/15 split stratified by class; held-out sets get split=heldout_<name>.
 
-Usage: python app/ml/build_manifest.py [--workers 4]
+v2 (--v2, writes manifest_v2.csv and manifest_v2_stats.json; manifest.csv is untouched): the Uganda set is
+split by duplicate group into uganda_train 50%, uganda_calib 15% and heldout_uganda_test 35%, stratified by
+class, and synthetic exercise-book pages with no leaf (test_synthetic_pages, label not_leaf, source
+synthetic_page) are generated into data_raw/synthetic/pages_test/. RoCoLe stays fully held out.
+
+Usage: python app/ml/build_manifest.py [--workers 4] [--v2]
 """
 import argparse
 import csv
@@ -142,10 +147,44 @@ def group(hashes: list[list[int]], chunk: int = 256) -> tuple[list[int], int]:
     return [find(parent, i) for i in range(n)], pairs
 
 
+def split_groups(groups_by_class: dict, fractions: dict, split: list) -> None:
+    """Assign whole (already shuffled) groups to splits per class, greedily by image count, biggest groups first."""
+    for groups in groups_by_class.values():
+        groups.sort(key=len, reverse=True)
+        total = sum(len(g) for g in groups)
+        target = {k: f * total for k, f in fractions.items()}
+        filled = {k: 0 for k in fractions}
+        for g in groups:
+            s = max(target, key=lambda k: (target[k] - filled[k]) / target[k])
+            for i in g:
+                split[i] = s
+            filled[s] += len(g)
+
+
+def synthetic_pages(n: int, seed: int) -> list[Path]:
+    import synth
+    out = DATA_RAW / "synthetic" / "pages_test"
+    out.mkdir(parents=True, exist_ok=True)
+    rng = random.Random(seed)
+    paths = []
+    for k in range(n):
+        p = out / f"page_{k:04d}.jpg"
+        img = synth.blank_page(rng, with_clutter=k % 3 != 0)
+        if not p.exists():
+            img.save(p, "JPEG", quality=rng.randint(60, 92))
+        paths.append(p)
+    return paths
+
+
 def main() -> None:
+    global OUT, STATS
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--v2", action="store_true", help="Uganda train/calib/test split and synthetic test pages")
+    ap.add_argument("--synthetic-pages", type=int, default=300)
     a = ap.parse_args()
+    if a.v2:
+        OUT, STATS = OUT.with_name("manifest_v2.csv"), STATS.with_name("manifest_v2_stats.json")
 
     rows = collect()
     print(f"collected {len(rows)} images")
@@ -191,17 +230,9 @@ def main() -> None:
         if tm:
             cls = Counter(rows[i][3] for i in tm).most_common(1)[0][0]
             train_groups[cls].append(tm)
-    for cls, groups in train_groups.items():
+    for groups in train_groups.values():
         rng.shuffle(groups)
-        groups.sort(key=len, reverse=True)  # place big groups first so they land in train
-        total = sum(len(g) for g in groups)
-        target = {"train": 0.70 * total, "val": 0.15 * total, "test": 0.15 * total}
-        filled = {"train": 0, "val": 0, "test": 0}
-        for g in groups:
-            s = max(target, key=lambda k: (target[k] - filled[k]) / target[k])
-            for i in g:
-                split[i] = s
-            filled[s] += len(g)
+    split_groups(train_groups, {"train": 0.70, "val": 0.15, "test": 0.15}, split)
     overlap = {i for m in mixed for i in m if not is_train[i]}
     for i, r in enumerate(rows):
         if i in overlap:
@@ -210,6 +241,23 @@ def main() -> None:
             split[i] = f"heldout_{r[4]}"
         elif split[i] is None:
             split[i] = "excluded"  # train-set image whose label we do not use (e.g. BRACOL mixed stress)
+
+    if a.v2:
+        ug = defaultdict(list)
+        for r, m in members.items():
+            um = [i for i in m if split[i] == "heldout_uganda"]
+            if um:
+                ug[Counter(rows[i][3] for i in um).most_common(1)[0][0]].append(um)
+        urng = random.Random(SEED + 1)
+        for cls in sorted(ug):
+            urng.shuffle(ug[cls])
+        split_groups(ug, {"uganda_train": 0.50, "uganda_calib": 0.15, "heldout_uganda_test": 0.35}, split)
+        for p in synthetic_pages(a.synthetic_pages, SEED):
+            rows.append((p, "synthetic_page", "synthetic blank page", "not_leaf", None))
+            split.append("test_synthetic_pages")
+            roots.append(-1)
+        stats["v2"] = {"uganda_split": "by duplicate group, 50/15/35 per class (seed 43)",
+                       "synthetic_pages": a.synthetic_pages}
 
     with open(OUT, "w", newline="") as f:
         w = csv.writer(f)

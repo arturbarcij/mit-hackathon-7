@@ -2,31 +2,47 @@
  "synthetic": true,
  "note": "Scores on planted synthetic scenarios. They show the logic works as designed, not that it works on real cooperatives.",
  "plots": 80,
- "matchedExpected": 79,
+ "matchedExpected": 78,
  "plantedCaught": 16,
  "planted": 17,
- "normalFlagged": 0,
+ "normalFlagged": 1,
  "normal": 63,
  "confusion": {
   "canopy_loss_early -> outlier": 2,
   "decline_with_canopy_loss -> outlier": 4,
-  "delivery_gap_canopy_ok -> normal": 1,
   "delivery_gap_canopy_ok -> outlier": 3,
+  "delivery_gap_canopy_ok -> unsure": 1,
   "missing_record -> unsure": 1,
   "new_member -> unsure": 2,
-  "normal -> normal": 63,
+  "normal -> normal": 62,
+  "normal -> outlier": 1,
   "over_delivery -> outlier": 2,
   "tiny_plot -> unsure": 2
  },
  "mismatches": [
   {
-   "plotId": "OCC0384-1",
-   "scenario": "delivery_gap_canopy_ok",
-   "status": "normal",
-   "reasons": [],
+   "plotId": "OCC0459-1",
+   "scenario": "normal",
+   "status": "outlier",
+   "reasons": [
+    "canopy_loss"
+   ],
    "abstain": [],
-   "zDelivery": -2.67,
-   "zNdvi": -0.41
+   "zDelivery": 0.2,
+   "zNdvi": -3.33
+  },
+  {
+   "plotId": "OCC0694-1",
+   "scenario": "delivery_gap_canopy_ok",
+   "status": "unsure",
+   "reasons": [
+    "delivery_drop"
+   ],
+   "abstain": [
+    "canopy_signal_unclear"
+   ],
+   "zDelivery": -4.63,
+   "zNdvi": -1.66
   }
  ]
 }

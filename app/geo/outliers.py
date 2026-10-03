@@ -82,6 +82,8 @@ def r(x, n=3):
 def main():
     reg = json.loads((C.DATA / "registry.geojson").read_text())
     rain = json.loads((C.DATA / "rainfall.json").read_text())
+    sup_path = C.DATA / "season_support.json"
+    sup = json.loads(sup_path.read_text()) if sup_path.exists() else None
     rasters = {}
     for s in C.COFFEE_YEARS:
         with rasterio.open(C.CACHE / f"ndvi_{s.replace('/', '-')}.tif") as src:
@@ -231,6 +233,16 @@ def main():
                          "longRainsAnomalyPct": rc["long_rains"]["anomalyPct"],
                          "coffeeYearTotalMm": rc["coffeeYearTotalMm"],
                          "climatology": rain["climatology"]["years"], "source": "NASA POWER PRECTOTCORR"},
+            "ndviWindowRain": None if sup is None else {
+                **sup["ndviWindowRain"][C.CURRENT_SEASON],
+                "caveat": "The current NDVI window was much wetter than usual, so it is less comparable with drier prior windows. "
+                          "Plots are scored against nearby plots, which cancels most of this, but treat small canopy changes with care."},
+            "shortRains": None if sup is None else {
+                "medianOnset": sup["short_rains"]["climatology1991to2020"]["medianDate"],
+                "sdDays": sup["short_rains"]["climatology1991to2020"]["sdDays"],
+                "shareOnsetBefore15Oct": sup["short_rains"]["shareOnsetBefore"]["15 Oct"],
+                "onsetConfirmedThisYear": sup["thisYear"]["shortRainsOnsetConfirmed"],
+                "dataEnd": sup["thisYear"]["dataEnd"], "source": "NASA POWER, simplified onset rule (assumption)"},
             "ndviSeasonMedians": {s: r(float(np.nanmedian(a))) for s, a in rasters.items()},
         },
         "overlay": {"image": "/geo/ndvi_change.png", "bounds": OVERLAY_BOUNDS,

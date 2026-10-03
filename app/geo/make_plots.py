@@ -70,7 +70,13 @@ def main():
     change = cur - prior
     rel = change - np.nanmedian(change)
     smooth = uniform_filter(np.nan_to_num(rel), size=5)
-    vegetated = (prior >= 0.55) & (prior <= 0.88)  # woody, evergreen in the dry season, not dense forest
+    # Coffee is evergreen: keep land that is green in the wet season too and whose NDVI
+    # barely moves between dry (2025) and wet (2025) seasons. Annual crops and bare
+    # fields swing more. This is a plausibility filter, not a coffee map.
+    with rasterio.open(C.CACHE / "ndvi_wet-2025.tif") as src:
+        wet = src.read(1)
+    perennial = (wet >= 0.60) & (np.abs(ndvi["2024/25"] - wet) <= 0.15)
+    vegetated = (prior >= 0.55) & (prior <= 0.88) & perennial
 
     x0, y1 = transform.c, transform.f
     x1, y0 = x0 + shape[1] * 10, y1 - shape[0] * 10
@@ -91,9 +97,9 @@ def main():
             if px.sum() == 0:
                 continue
             if need == "loss_patch":
-                ok = np.nanmedian(rel[px]) <= -0.12 and np.nanmedian(prior[px]) >= 0.55
+                ok = np.nanmedian(rel[px]) <= -0.12 and vegetated[px].mean() >= 0.7
             elif need == "tiny":
-                ok = np.nanmedian(prior[px]) >= 0.55
+                ok = vegetated[px].mean() >= 0.7
             else:
                 ok = vegetated[px].mean() >= 0.8 and abs(np.nanmedian(rel[px])) <= 0.06
             if ok:
@@ -178,7 +184,9 @@ def main():
             if s not in seasons:
                 continue
             kg = trees * base * AREA_FACTOR[s] * rng.lognormal(0, NOISE_SD)
-            if s == C.CURRENT_SEASON:
+            if s == C.CURRENT_SEASON and (p["member"], p["plot"]) == NOOR:
+                kg = trees * base * AREA_FACTOR[s] * 0.40   # scripted demo plot: a clear, noise-free drop
+            elif s == C.CURRENT_SEASON:
                 if p["mult"] is None:
                     deliveries.append({"season": s, "kgCherry": None})
                     continue

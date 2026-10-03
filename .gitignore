@@ -5,3 +5,14 @@ desktop.ini
 *.pem
 node_modules/
 dist/
+.mcp.json
+.cursor/mcp.json
+app/geo/cache/
+data_raw/
+web/
+
+# challenge brief is not ours to redistribute
+*.pdf
+
+# full copies of third-party pages, kept locally for quote checks only
+kb/research/raw/

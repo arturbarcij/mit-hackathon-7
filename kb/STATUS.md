@@ -13,7 +13,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | L4 | Android phone for demo (or emulation, stated) | Arthur | Sun 10:00 | todo | |
 | R1 | Problem evidence table | research | Sat 22:30 | doing | cloud sub-agent, branch `cursor/wave1-research-engine-82ab` |
 | R2 | Agronomy guidance | research | Sat 23:00 | doing | cloud sub-agent, same branch |
-| R3 | Dataset facts and licences | research | Sat 23:00 | doing | cloud sub-agent, same branch |
+| R3 | Dataset facts and licences | research | Sat 23:00 | done | `kb/research/DATASETS.md`. JMuBEN has no healthy or miner (those are in JMuBEN2). MMS-TTS Kikuyu and NLLB are CC BY-NC 4.0 |
 | R4 | season.json | research | Sat 23:30 | done | `kb/research/season.json` (engine placeholder shape), method in `SEASON.md`. Pre-rains = 4 weeks before onset (assumption). content-voice / engine: copy to `app/src/content/season.json` |
 | M1 | Data download, manifest, dedupe, splits | ml | Sat 22:30 | doing | cloud sub-agent, branch `cursor/wave1-research-engine-82ab`; also a CPU v1 training run as fallback for M2 |
 | M2 | Train v1 | ml | Sun 00:30 | todo | |

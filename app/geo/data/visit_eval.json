@@ -1,0 +1,27 @@
+{
+ "synthetic": true,
+ "note": "Geo signals only (no referrals), scored on our own planted scenarios. Shows the ranking logic works as designed, not that it works in the field.",
+ "plots": 80,
+ "plantedProblems": 12,
+ "randomPrecision": 0.15,
+ "precisionRecall": {
+  "top8": {
+   "hits": 7,
+   "precision": 0.88,
+   "recall": 0.58
+  },
+  "top12": {
+   "hits": 10,
+   "precision": 0.83,
+   "recall": 0.83
+  }
+ },
+ "plantedCanopyLossInTopCapacity": 6,
+ "plantedCanopyLoss": 6,
+ "route": {
+  "stops": 8,
+  "optimisedKm": 18.0,
+  "randomOrderMeanKm": 28.1,
+  "savingPct": 36.0
+ }
+}

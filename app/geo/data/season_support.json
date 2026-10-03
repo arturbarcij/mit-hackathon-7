@@ -1,0 +1,124 @@
+{
+ "source": "NASA POWER daily PRECTOTCORR (mm/day), community AG",
+ "point": {
+  "lon": 37.07,
+  "lat": -0.46
+ },
+ "definition": {
+  "onset": "first day from the search start where 3 days total at least 20 mm and no run of more than 7 days under 1 mm in the next 21 days",
+  "searchStart": {
+   "short_rains": "15 Sep",
+   "long_rains": "1 Mar"
+  },
+  "status": "assumption: simplified onset rule on a coarse model grid, not the Kenya Met Department definition"
+ },
+ "short_rains": {
+  "yearsWithOnset": 35,
+  "yearsChecked": 35,
+  "climatology1991to2020": {
+   "medianDate": "19 Oct",
+   "earliest": "17 Sep",
+   "latest": "08 Dec",
+   "sdDays": 17.3,
+   "years": 30
+  },
+  "byYear": {
+   "2019": "2019-09-25",
+   "2020": "2020-09-22",
+   "2021": "2021-10-18",
+   "2022": "2022-10-29",
+   "2023": "2023-10-04",
+   "2024": "2024-11-04",
+   "2025": "2025-10-02"
+  },
+  "shareOnsetBefore": {
+   "1 Oct": 0.13,
+   "15 Oct": 0.47,
+   "31 Oct": 0.87,
+   "15 Nov": 0.97
+  }
+ },
+ "long_rains": {
+  "yearsWithOnset": 36,
+  "yearsChecked": 36,
+  "climatology1991to2020": {
+   "medianDate": "21 Mar",
+   "earliest": "01 Mar",
+   "latest": "22 Apr",
+   "sdDays": 14.9,
+   "years": 30
+  },
+  "byYear": {
+   "2019": "2019-04-22",
+   "2020": "2020-03-24",
+   "2021": "2021-03-15",
+   "2022": "2022-03-24",
+   "2023": "2023-03-20",
+   "2024": "2024-03-23",
+   "2025": "2025-03-08",
+   "2026": "2026-03-01"
+  },
+  "shareOnsetBefore": {
+   "15 Mar": 0.33,
+   "1 Apr": 0.73,
+   "15 Apr": 0.9
+  }
+ },
+ "thisYear": {
+  "dataEnd": "2026-09-30",
+  "shortRainsOnsetConfirmed": false,
+  "september2026Mm": 68.0,
+  "september1991to2020MeanMm": 56.6,
+  "septemberZ": 0.47,
+  "last7DaysMm": 6.7,
+  "note": "POWER stops at 30 Sep. The farmer app works from a bundled calendar, not live rain."
+ },
+ "monthlyMeanMm1991to2020": {
+  "1": 59,
+  "2": 38,
+  "3": 103,
+  "4": 210,
+  "5": 145,
+  "6": 64,
+  "7": 60,
+  "8": 70,
+  "9": 57,
+  "10": 130,
+  "11": 183,
+  "12": 94
+ },
+ "suggestedWindows": {
+  "note": "Proposal for the research agent. Months from POWER monthly means; onset dates from the rule above.",
+  "pre_short_rains": "about 15 Sep to the median short-rains onset (19 Oct)",
+  "short_rains": "19 Oct to about 15 Dec",
+  "pre_long_rains": "about 15 Feb to the median long-rains onset (21 Mar)",
+  "long_rains": "21 Mar to about 31 May",
+  "dry": "the rest (Jun to mid Sep, Jan to mid Feb)"
+ },
+ "ndviWindowRain": {
+  "2022/23": {
+   "window": "2023-01-01/2023-03-15",
+   "rainMm": 88.5,
+   "climatologyMm": 137.2,
+   "z": -0.52
+  },
+  "2023/24": {
+   "window": "2024-01-01/2024-03-15",
+   "rainMm": 324.1,
+   "climatologyMm": 137.2,
+   "z": 2.0
+  },
+  "2024/25": {
+   "window": "2025-01-01/2025-03-15",
+   "rainMm": 138.3,
+   "climatologyMm": 137.2,
+   "z": 0.01
+  },
+  "2025/26": {
+   "window": "2026-01-01/2026-03-15",
+   "rainMm": 396.3,
+   "climatologyMm": 137.2,
+   "z": 2.77
+  }
+ }
+}

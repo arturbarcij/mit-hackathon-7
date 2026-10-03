@@ -35,6 +35,10 @@ DRY_SEASONS = {
     "2024/25": ("2025-01-01", "2025-03-15"),
     "2025/26": ("2026-01-01", "2026-03-15"),
 }
+# Wet-season reference (long rains, April to June 2025). Evergreen coffee stays green
+# in both seasons; annual crops and bare fields do not. Used only to place plots on
+# land that looks perennial. Scene cloud limit is looser here because the rains are cloudy.
+EXTRA_COMPOSITES = {"wet-2025": ("2025-04-01", "2025-06-30")}
 CURRENT_SEASON = "2025/26"
 COFFEE_YEARS = list(DRY_SEASONS.keys())   # coffee year runs 1 Oct to 30 Sep
 
@@ -60,7 +64,7 @@ Z_CORROBORATED = 2.0   # delivery drop threshold when canopy loss (z <= -3) back
 Z_CANOPY_NORMAL = -1.5  # NDVI change z above this counts as "canopy looks normal"
 LOCAL_K = 12            # nearest plots used as the local canopy baseline
 MIN_PRIOR_SEASONS = 2   # fewer prior deliveries than this: abstain
-MIN_CLEAR_PIXELS = 15   # fewer clear 10 m pixels in the current composite: abstain
+MIN_CLEAR_PIXELS = 10   # matches MIN_AREA_HA: 0.10 ha is about 10 Sentinel-2 pixels
 MIN_CLEAR_FRACTION = 0.5
 MIN_AREA_HA = 0.10      # below about 10 Sentinel-2 pixels: abstain on NDVI
 MAX_KG_PER_TREE = 10.0  # above this is beyond reported good-practice yields in

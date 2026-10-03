@@ -50,7 +50,7 @@ def band_meta(asset):
 def composite(client, season, start, end, bounds, shape):
     items = list(client.search(
         collections=[C.S2_COLLECTION], bbox=C.BBOX, datetime=f"{start}/{end}",
-        query={"eo:cloud_cover": {"lt": C.SCENE_CLOUD_MAX}},
+        query={"eo:cloud_cover": {"lt": 90 if season.startswith("wet") else C.SCENE_CLOUD_MAX}},
     ).items())
     items = [i for i in items if f"_{C.S2_TILE}_" in i.id]
     stack, log = [], []
@@ -103,7 +103,8 @@ def main():
     bounds, transform, shape = utm_grid()
     client = Client.open(C.STAC_URL)
     scenes = {}
-    for season, (start, end) in C.DRY_SEASONS.items():
+    jobs = {**C.DRY_SEASONS, **C.EXTRA_COMPOSITES}
+    for season, (start, end) in jobs.items():
         med, nobs, log = composite(client, season, start, end, bounds, shape)
         scenes[season] = {"window": f"{start}/{end}", "scenesUsed": sum(1 for l in log if l.get("used")), "scenes": log}
         path = C.CACHE / f"ndvi_{season.replace('/', '-')}.tif"

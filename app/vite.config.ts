@@ -9,7 +9,7 @@ export default defineConfig({
     // PWA settings below are owned by the engine agent.
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg'],
+      includeAssets: ['favicon.svg', 'pwa-192.png', 'pwa-512.png', 'pwa-maskable-512.png'],
       manifest: {
         name: 'Jani',
         short_name: 'Jani',
@@ -19,10 +19,15 @@ export default defineConfig({
         display: 'standalone',
         background_color: '#ffffff',
         theme_color: '#2f6b3a',
-        icons: [{ src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' }],
+        icons: [
+          { src: 'pwa-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+          { src: 'pwa-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          { src: 'pwa-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+        ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,mjs,css,html,svg,png,json,onnx,wasm,mp3}'],
+        globPatterns: ['**/*.{js,mjs,css,html,svg,png,json,onnx,wasm,gz,mp3}'],
         maximumFileSizeToCacheInBytes: 15 * 1024 * 1024,
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,

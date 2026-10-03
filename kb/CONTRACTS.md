@@ -81,6 +81,9 @@ stopAudio(), configureSync(target), lastInferenceTimeMs()
 saveCheck(c: Check, photos?: Blob[])                    // photos optional second argument
 ```
 
+### Model runtime delivery
+`public/ort/` holds `ort-wasm-simd-threaded.mjs` and `ort-wasm-simd-threaded.wasm.gz` (gzipped on purpose to keep the offline precache small). Regenerate with `npm run copy:ort`. Do not add a raw `.wasm` next to it.
+
 ### Usage notes for the ui agent
 - `useEngine()` returns `{ status: 'loading'|'ready'|'error', ready, mock, version, error }`. Show the visible "mock model" badge whenever `mock` is true. `mock` is also true when the real model files are not deployed yet (the engine logs a console warning).
 - `useCheck({ lang, memberId?, plotId?, target? })` runs one check. `addPhoto(file)` returns `{ accepted, result }`. If `accepted` is false the photo failed the quality gate (`result.quality.reason` is `blurry`, `dark` or `too_small`): play the `retake_blurry` / `retake_dark` card and ask for a retake. Leaves the model is unsure about are accepted and show as `?`.

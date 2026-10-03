@@ -49,6 +49,25 @@ async function sha256Hex(bytes: ArrayBuffer): Promise<string | null> {
 /** A missing model (404, or the dev server answering with index.html) is reported as such, not as corruption. */
 class ModelMissing extends Error {}
 
+const WASM_FILE = 'ort-wasm-simd-threaded.wasm.gz';
+
+async function gunzip(bytes: Uint8Array): Promise<Uint8Array> {
+  if (typeof DecompressionStream === 'undefined') throw new Error('This browser cannot unpack the model runtime. Update Chrome.');
+  const stream = new Blob([bytes as BlobPart]).stream().pipeThrough(new DecompressionStream('gzip'));
+  return new Uint8Array(await new Response(stream).arrayBuffer());
+}
+
+/**
+ * The runtime is shipped gzipped so the offline precache holds 2.9 MB instead of 11.2 MB. If a host or the
+ * browser already unpacked it (Content-Encoding), the gzip magic bytes are absent and we use it as is.
+ */
+export async function fetchWasmBinary(url: string): Promise<Uint8Array> {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`ONNX runtime download failed: HTTP ${res.status}`);
+  const bytes = new Uint8Array(await res.arrayBuffer());
+  return bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzip(bytes) : bytes;
+}
+
 async function loadReal(): Promise<Loaded> {
   let config: ModelConfig;
   try {
@@ -76,13 +95,11 @@ async function loadReal(): Promise<Loaded> {
   }
 
   const ort = await import('onnxruntime-web/wasm');
-  // Absolute URLs on purpose: the Vite dev server appends "?import" to dynamic imports that start with "/",
+  // Absolute URL on purpose: the Vite dev server appends "?import" to dynamic imports that start with "/",
   // which breaks the runtime's own import of the glue file from public/.
   const ortBase = new URL(`${base()}ort/`, globalThis.location?.href ?? 'http://localhost/').href;
-  ort.env.wasm.wasmPaths = {
-    mjs: `${ortBase}ort-wasm-simd-threaded.mjs`,
-    wasm: `${ortBase}ort-wasm-simd-threaded.wasm`,
-  };
+  ort.env.wasm.wasmPaths = { mjs: `${ortBase}ort-wasm-simd-threaded.mjs` };
+  ort.env.wasm.wasmBinary = await fetchWasmBinary(`${ortBase}${WASM_FILE}`);
   ort.env.wasm.numThreads = 1;
   ort.env.wasm.proxy = false;
   const session = await ort.InferenceSession.create(new Uint8Array(bytes), {

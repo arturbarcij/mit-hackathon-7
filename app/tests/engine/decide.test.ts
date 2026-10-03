@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
   answerById,
@@ -203,3 +205,46 @@ describe('season windows', () => {
     expect(seasonWindow(new Date(2026, 9, 4))).toBe('pre_short_rains');
   });
 });
+
+describe('research season calendar (kb/research/season.json, Mathira West, NASA POWER 1991 to 2020)', () => {
+  const research = JSON.parse(readFileSync(join(process.cwd(), 'tests/fixtures/content/season.research.json'), 'utf8'));
+  const ranges = normaliseSeason(research);
+  const at = (m: number, d: number) => seasonWindowFrom(ranges, new Date(2026, m - 1, d));
+
+  it('parses every window and handles the dry season that wraps the new year', () => {
+    expect(ranges).toHaveLength(6);
+    expect(at(1, 10)).toBe('dry');
+    expect(at(2, 14)).toBe('dry');
+    expect(at(2, 15)).toBe('pre_long_rains');
+    expect(at(12, 16)).toBe('dry');
+  });
+
+  it('puts the demo date (4 October) before the short rains and 15 October inside them', () => {
+    expect(at(10, 4)).toBe('pre_short_rains');
+    expect(at(10, 14)).toBe('pre_short_rains');
+    expect(at(10, 15)).toBe('short_rains');
+    expect(at(9, 16)).toBe('dry');
+    expect(at(9, 17)).toBe('pre_short_rains');
+  });
+
+  it('has no gaps or overlaps: every day of 2026 falls in exactly one listed window', () => {
+    for (let m = 1; m <= 12; m++)
+      for (let d = 1; d <= new Date(2026, m, 0).getDate(); d++) {
+        const hits = ranges.filter((r) => inRangeForTest(r, m, d));
+        expect(hits.length, `${m}/${d}`).toBe(1);
+      }
+  });
+
+  it('the bundled src/content/season.json is the research file', () => {
+    const bundled = JSON.parse(readFileSync(join(process.cwd(), 'src/content/season.json'), 'utf8'));
+    expect(bundled.placeholder).toBe(false);
+    expect(seasonWindow(new Date(2026, 9, 4))).toBe('pre_short_rains');
+  });
+});
+
+function inRangeForTest(r: { startMonth: number; startDay: number; endMonth: number; endDay: number }, m: number, d: number): boolean {
+  const s = r.startMonth * 100 + r.startDay;
+  const e = r.endMonth * 100 + r.endDay;
+  const n = m * 100 + d;
+  return s <= e ? n >= s && n <= e : n >= s || n <= e;
+}

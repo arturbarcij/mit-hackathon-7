@@ -35,8 +35,18 @@ test('service worker precaches the model, WASM runtime and app', async ({ page }
   });
   expect(cached.some((u) => u.endsWith('/model/leaf.onnx'))).toBe(true);
   expect(cached.some((u) => u.endsWith('/model/model.json'))).toBe(true);
-  expect(cached.some((u) => u.endsWith('ort-wasm-simd-threaded.wasm'))).toBe(true);
+  expect(cached.some((u) => u.endsWith('ort-wasm-simd-threaded.wasm.gz'))).toBe(true);
   expect(cached.some((u) => u.endsWith('ort-wasm-simd-threaded.mjs'))).toBe(true);
+});
+
+test('manifest is installable: PNG icons at 192 and 512 px exist', async ({ page, request }) => {
+  await page.goto('/');
+  const manifest = await (await request.get('/manifest.webmanifest')).json();
+  expect(manifest.display).toBe('standalone');
+  const sizes = manifest.icons.filter((i: any) => i.type === 'image/png').map((i: any) => i.sizes);
+  expect(sizes).toContain('192x192');
+  expect(sizes).toContain('512x512');
+  for (const icon of manifest.icons) expect((await request.get('/' + icon.src)).ok(), icon.src).toBe(true);
 });
 
 test('real ONNX runtime matches onnxruntime (Python) on the reference tensor', async ({ page }) => {

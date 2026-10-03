@@ -23,7 +23,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | E1 | Engine with mock model + hooks | engine | Sat 23:30 | done | Branch `cursor/engine-offline-core-d90f`, PR to main. Usage notes in CONTRACTS.md. Content is read from `src/content/*.json` when present, else engine placeholders. |
 | E2 | PWA offline caching | engine | Sun 00:30 | done | vite-plugin-pwa precaches onnx, wasm, mjs, mp3. Offline reload and full check proven in Chromium (see E4). Raw precache is over budget once model and audio land, see Requests. |
 | E3 | Real model integrated, parity in browser | engine | Sun 08:30 | doing | ORT-web (1.22.0, WASM, 1 thread) loads and runs a fixture ONNX in prod build and Vite dev; matches Python onnxruntime within 1e-4. Waiting on M4 (`public/model/*`, `ml/parity_samples/`). Until then `mock: true` is reported. |
-| E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | doing | 100 vitest + 6 Playwright pass, also from a clean clone with `npm ci` (output below). GitHub Actions workflow `engine.yml` runs them. Parity-on-real-images test is written and skipped until `ml/parity_samples/expected.json` exists. Not yet run on a real Android phone. |
+| E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | doing | 107 vitest + 7 Playwright pass, also from a clean clone with `npm ci` (output below). GitHub Actions workflow `engine.yml` runs them. Parity-on-real-images test is written and skipped until `ml/parity_samples/expected.json` exists. Not yet run on a real Android phone. |
 | U1 | Lovable project, routes, farmer flow with mocks | ui | Sat 23:30 | todo | |
 | U2 | Officer dashboard, tables, seed data | ui | Sun 08:00 | todo | |
 | U3 | Wire real engine hooks, publish live URL | ui | Sun 09:30 | todo | needs E1 |
@@ -40,14 +40,14 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | Item | Target | Measured |
 |---|---|---|
 | leaf.onnx | at most 5 MB | not delivered yet (ml) |
-| Total offline precache | at most 15 MB | App shell + engine + ORT runtime: about 11.4 MB raw (WASM runtime alone is 11.2 MB raw, 2.9 MB gzip). Before model and audio. Over budget once they land, see Requests. |
+| Total offline precache | at most 15 MB | **3.1 MiB** now (app shell, engine, gzipped ORT runtime 2.8 MiB, fixture model, icons). Expect about 3.1 + model (at most 5) + audio (at most 4) = 12 MiB at worst, inside budget. |
 | Audio total | at most 4 MB | |
 | Inference per leaf (4x throttle) | under 1 s | Chrome 148, 4x CPU throttle, **fixture model only (not coffee)**: ORT load 0.55 s; 3000x2250 photo to result 0.10 to 0.15 s. Re-measure with leaf.onnx. |
 
 ## Requests between agents
-- **lead (budget decision):** onnxruntime-web 1.22.0 needs `ort-wasm-simd-threaded.wasm`, 11.2 MB raw (2.9 MB gzip on the wire). That alone is over the 15 MB precache target once model (up to 5 MB) and audio (up to 4 MB) are added: about 20 MB raw, about 10 MB transferred if the host gzips wasm (Lovable, Vercel and Netlify do). Options: (a) accept and report both raw and transferred sizes honestly in EVALUATION.md, (b) build a minimal ORT with only the operators in leaf.onnx (about 1 to 2 MB, needs a few hours of C++ build), (c) older ORT is no smaller (1.17.3 is 10.5 MB). Engine default: (a).
+- **lead (budget): resolved by engine.** The ORT WASM runtime (11.2 MB raw) is now stored gzipped in `public/ort/ort-wasm-simd-threaded.wasm.gz` (2.8 MiB) and inflated in the browser (`DecompressionStream`, gzip magic check so a host that already unpacks it also works). Precache is 3.1 MiB before the real model and audio. No action needed. Cost: about 50 ms extra at model load.
 - **ml:** the browser test reads `ml/parity_samples/expected.json` as `{ "<file name>": { "label": "rust", "probs": { "healthy": 0.01, "rust": 0.97, ... } } }` next to the 10 images. If you use another layout, tell engine. Probabilities must be post-temperature. If your eval resizes to 256 then crops 224, add `"resize_to": 256` inside `model.json` `input`; the engine honours it. Fill `sha256` (the engine verifies it on load) and `threshold`.
-- **ui:** (1) PWA installability needs PNG icons at 192 and 512 px; the manifest currently points at `favicon.svg`. Add `public/pwa-192.png` and `public/pwa-512.png` and tell engine to wire them (manifest is in `vite.config.ts`). (2) Call `syncPending()` when `useOnline()` becomes true. (3) Show the "mock model" badge when `useEngine().mock` is true.
+- **ui:** (1) PWA icons: engine added `public/pwa-192.png`, `pwa-512.png` and `pwa-maskable-512.png` (simple leaf mark, replace with your artwork under the same names) and wired the manifest. (2) Call `syncPending()` when `useOnline()` becomes true. (3) Show the "mock model" badge when `useEngine().mock` is true.
 - **content-voice / research:** two contract notes in CONTRACTS.md change requests (`uncertain_lte`; season window names, including `pre_short_rains`).
 - **engine (own note):** `vitest.config.ts`, `playwright.config.ts`, `vite.harness.config.ts` and `scripts/copy-ort.mjs` sit in `app/` root. They are test and build helpers only.
 
@@ -59,10 +59,11 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 ```
 npx vitest run
  Test Files  10 passed (10)
-      Tests  100 passed (100)
+      Tests  107 passed (107)
 
 npx playwright test   (production build, service worker, Chromium)
   ok  service worker precaches the model, WASM runtime and app
+  ok  manifest is installable (PNG icons 192 and 512 px)
   ok  real ONNX runtime matches onnxruntime (Python) on the reference tensor   (|dp| < 1e-4)
   ok  full ten-leaf check works in airplane mode  (rust x6 / healthy x3 / unsure x1 -> rust_high_pre_rains, SMS <= 160 chars, saved to IndexedDB, blur/dark/tiny rejected)
   ok  overlapping classify calls are queued and all succeed
@@ -78,3 +79,5 @@ What these do and do not show: the pipeline (decode, quality gate, preprocess, W
 - **Robustness.** Inference calls are queued (ORT rejects overlapping runs) and the model is warmed up on load. The browser is asked to keep our data (`storage.persist`) once main consent is given. If saving fails, `useCheck().saveError` is set and the decision still stands.
 - **Dev server.** ORT now loads under `vite` dev as well as in the production build.
 - **Seen on the way:** openresearch.sh (open-source workspace for running AI research agents and parallel experiments). Not an engine concern, no runtime AI in the client; it could help the ml agent run training sweeps.
+- **Season calendar integrated.** Research's `season.json` (R4, Mathira West, NASA POWER 1991 to 2020) is copied to `app/src/content/season.json` as the hand-off asked; the engine reads it directly and tests cover every day of 2026 (4 Oct is `pre_short_rains`, 15 Oct is `short_rains`). content-voice: `answers.json` and `rules.json` are still engine placeholders; drop yours into `app/src/content/` and the engine picks them up with no code change. If your first rule table fails an engine test, the failing test names the rule.
+- **Still open (not engine work or not possible from here):** E3 needs the ml agent's `public/model/leaf.onnx`, `model.json` and `ml/parity_samples/`; quality thresholds need 20 real phone photos; no run on a real Android phone yet.

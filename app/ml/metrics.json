@@ -1,0 +1,633 @@
+{
+  "model": {
+    "version": "v1-provisional-e3-2026-10-04",
+    "file": "leaf.onnx",
+    "bytes": 1642557,
+    "sha256": "cc6b114a19f4673cd34cfcffd43f0b45fb323a96bc92ff3fed9bfb8a97b8cb4f",
+    "temperature": 1.2414171130003073,
+    "threshold": 0.29790427289834387,
+    "arch": "mobilenetv3_small_100"
+  },
+  "command": "python app/ml/evaluate.py --max-per-class 1000",
+  "inference": "int8 ONNX via onnxruntime CPU, 1 thread, engine preprocessing; no quality gate applied",
+  "sample_cap_per_class": 1000,
+  "test_sets": {
+    "in_domain_test": {
+      "test_set": "in-domain test split: JMuBEN, JMuBEN2, BRACOL, PlantDoc not_leaf (Kenya, Brazil; pHash-grouped)",
+      "n": 5061,
+      "label_counts": {
+        "healthy": 1000,
+        "phoma": 1000,
+        "miner": 1000,
+        "rust": 1000,
+        "cercospora": 1000,
+        "not_leaf": 61
+      },
+      "source_counts": {
+        "jmuben2": 1989,
+        "jmuben": 2903,
+        "plantdoc": 61,
+        "bracol": 108
+      },
+      "abstention_rate": 0.0,
+      "predicted_counts": {
+        "healthy": 1003,
+        "phoma": 1035,
+        "miner": 1037,
+        "rust": 1002,
+        "cercospora": 922,
+        "not_leaf": 62
+      },
+      "accepted_predicted_counts": {
+        "healthy": 1003,
+        "phoma": 1035,
+        "miner": 1037,
+        "rust": 1002,
+        "cercospora": 922,
+        "not_leaf": 62
+      },
+      "rate_abstain_or_not_leaf": 0.012250543370875321,
+      "classes_scored": [
+        "healthy",
+        "rust",
+        "cercospora",
+        "phoma",
+        "miner",
+        "not_leaf"
+      ],
+      "accuracy": 0.9741157873937957,
+      "macro_f1": 0.9768283720287716,
+      "per_class": {
+        "healthy": {
+          "precision": 0.9970089730807578,
+          "recall": 1.0,
+          "f1": 0.9985022466300549,
+          "n": 1000
+        },
+        "rust": {
+          "precision": 0.9810379241516967,
+          "recall": 0.983,
+          "f1": 0.9820179820179821,
+          "n": 1000
+        },
+        "cercospora": {
+          "precision": 0.9978308026030369,
+          "recall": 0.92,
+          "f1": 0.9573361082206036,
+          "n": 1000
+        },
+        "phoma": {
+          "precision": 0.9555555555555556,
+          "recall": 0.989,
+          "f1": 0.971990171990172,
+          "n": 1000
+        },
+        "miner": {
+          "precision": 0.9421407907425265,
+          "recall": 0.977,
+          "f1": 0.9592538046146294,
+          "n": 1000
+        },
+        "not_leaf": {
+          "precision": 0.9838709677419355,
+          "recall": 1.0,
+          "f1": 0.991869918699187,
+          "n": 61
+        }
+      },
+      "confusion": {
+        "labels": [
+          "healthy",
+          "rust",
+          "cercospora",
+          "phoma",
+          "miner",
+          "not_leaf"
+        ],
+        "rows": "true",
+        "cols": "predicted (argmax, before abstention)",
+        "matrix": [
+          [
+            1000,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            983,
+            1,
+            7,
+            8,
+            0
+          ],
+          [
+            1,
+            15,
+            920,
+            22,
+            42,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            989,
+            10,
+            1
+          ],
+          [
+            1,
+            4,
+            1,
+            17,
+            977,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            61
+          ]
+        ]
+      },
+      "selective": {
+        "threshold": 0.29790427289834387,
+        "coverage": 1.0,
+        "accepted_accuracy": 0.9741157873937957,
+        "n_accepted": 5061
+      },
+      "ece_15_bins": 0.016924024995740188,
+      "per_source_accuracy": {
+        "bracol": 0.6944444444444444,
+        "jmuben": 0.9707199448846021,
+        "jmuben2": 0.9934640522875817,
+        "plantdoc": 1.0
+      }
+    },
+    "not_leaf_test": {
+      "test_set": "not_leaf rows of the in-domain test split (PlantDoc non-coffee leaves)",
+      "n": 61,
+      "label_counts": {
+        "not_leaf": 61
+      },
+      "source_counts": {
+        "plantdoc": 61
+      },
+      "abstention_rate": 0.0,
+      "predicted_counts": {
+        "not_leaf": 61
+      },
+      "accepted_predicted_counts": {
+        "not_leaf": 61
+      },
+      "rate_abstain_or_not_leaf": 1.0
+    },
+    "heldout_uganda": {
+      "test_set": "Uganda held-out set (healthy, rust, phoma), never trained on; excluded_heldout_dup_of_train rows not used",
+      "n": 2894,
+      "label_counts": {
+        "rust": 1000,
+        "phoma": 894,
+        "healthy": 1000
+      },
+      "source_counts": {
+        "uganda": 2894
+      },
+      "abstention_rate": 0.0003455425017276914,
+      "predicted_counts": {
+        "phoma": 829,
+        "not_leaf": 933,
+        "miner": 486,
+        "rust": 142,
+        "healthy": 198,
+        "cercospora": 306
+      },
+      "accepted_predicted_counts": {
+        "phoma": 828,
+        "not_leaf": 933,
+        "miner": 486,
+        "rust": 142,
+        "healthy": 198,
+        "cercospora": 306
+      },
+      "rate_abstain_or_not_leaf": 0.3227366966136835,
+      "classes_scored": [
+        "healthy",
+        "rust",
+        "phoma"
+      ],
+      "accuracy": 0.18037318590186593,
+      "macro_f1": 0.24462872676020106,
+      "per_class": {
+        "healthy": {
+          "precision": 0.9949494949494949,
+          "recall": 0.197,
+          "f1": 0.328881469115192,
+          "n": 1000
+        },
+        "rust": {
+          "precision": 0.33098591549295775,
+          "recall": 0.047,
+          "f1": 0.08231173380035026,
+          "n": 1000
+        },
+        "phoma": {
+          "precision": 0.3353437876960193,
+          "recall": 0.31096196868008946,
+          "f1": 0.3226929773650609,
+          "n": 894
+        }
+      },
+      "confusion": {
+        "labels": [
+          "healthy",
+          "rust",
+          "cercospora",
+          "phoma",
+          "miner",
+          "not_leaf"
+        ],
+        "rows": "true",
+        "cols": "predicted (argmax, before abstention)",
+        "matrix": [
+          [
+            197,
+            16,
+            166,
+            377,
+            132,
+            112
+          ],
+          [
+            1,
+            47,
+            61,
+            174,
+            116,
+            601
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            79,
+            79,
+            278,
+            238,
+            220
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selective": {
+        "threshold": 0.29790427289834387,
+        "coverage": 0.9996544574982723,
+        "accepted_accuracy": 0.18043553404770135,
+        "n_accepted": 2893
+      },
+      "ece_15_bins": 0.6795572780479238,
+      "per_source_accuracy": {
+        "uganda": 0.18037318590186593
+      }
+    },
+    "heldout_rocole": {
+      "test_set": "RoCoLe held-out set (Ecuador Robusta; healthy, rust levels 1-4 mapped to rust), never trained on",
+      "n": 1393,
+      "label_counts": {
+        "healthy": 791,
+        "rust": 602
+      },
+      "source_counts": {
+        "rocole": 1393
+      },
+      "abstention_rate": 0.0,
+      "predicted_counts": {
+        "not_leaf": 1383,
+        "phoma": 10
+      },
+      "accepted_predicted_counts": {
+        "not_leaf": 1383,
+        "phoma": 10
+      },
+      "rate_abstain_or_not_leaf": 0.9928212491026561,
+      "classes_scored": [
+        "healthy",
+        "rust"
+      ],
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "healthy": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "n": 791
+        },
+        "rust": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "n": 602
+        }
+      },
+      "confusion": {
+        "labels": [
+          "healthy",
+          "rust",
+          "cercospora",
+          "phoma",
+          "miner",
+          "not_leaf"
+        ],
+        "rows": "true",
+        "cols": "predicted (argmax, before abstention)",
+        "matrix": [
+          [
+            0,
+            0,
+            0,
+            8,
+            0,
+            783
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            600
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selective": {
+        "threshold": 0.29790427289834387,
+        "coverage": 1.0,
+        "accepted_accuracy": 0.0,
+        "n_accepted": 1393
+      },
+      "ece_15_bins": 0.9961225767372014,
+      "per_source_accuracy": {
+        "rocole": 0.0
+      }
+    },
+    "rocole_red_spider_mite": {
+      "test_set": "RoCoLe red spider mite (no matching class; out of scope)",
+      "n": 167,
+      "label_counts": {
+        "unmapped": 167
+      },
+      "source_counts": {
+        "rocole": 167
+      },
+      "abstention_rate": 0.0,
+      "predicted_counts": {
+        "not_leaf": 166,
+        "phoma": 1
+      },
+      "accepted_predicted_counts": {
+        "not_leaf": 166,
+        "phoma": 1
+      },
+      "rate_abstain_or_not_leaf": 0.9940119760479041,
+      "note": "No class fits red spider mite. Desired behaviour is abstention or not_leaf; any accepted disease label is a wrong answer."
+    }
+  },
+  "worked_examples": [
+    {
+      "test_set": "in_domain_test",
+      "path": "jmuben2/extracted/Healthy-20210326T083815Z-001/Healthy/1 (3025).jpg",
+      "true": "healthy",
+      "top3": [
+        [
+          "healthy",
+          0.9999993273738831
+        ],
+        [
+          "phoma",
+          6.724575199439776e-07
+        ],
+        [
+          "not_leaf",
+          1.332138655889627e-10
+        ]
+      ],
+      "accepted": true
+    },
+    {
+      "test_set": "in_domain_test",
+      "path": "jmuben2/extracted/Healthy-20210326T083815Z-001/Healthy/2 (4275).jpg",
+      "true": "healthy",
+      "top3": [
+        [
+          "healthy",
+          0.9998996471436224
+        ],
+        [
+          "not_leaf",
+          5.885301794928737e-05
+        ],
+        [
+          "phoma",
+          2.653430187928688e-05
+        ]
+      ],
+      "accepted": true
+    },
+    {
+      "test_set": "in_domain_test",
+      "path": "jmuben/extracted/Leaf rust-20210326T083416Z-001/Leaf rust/2 (15).jpg",
+      "true": "rust",
+      "top3": [
+        [
+          "rust",
+          0.9999998055249678
+        ],
+        [
+          "cercospora",
+          1.4122980927774837e-07
+        ],
+        [
+          "not_leaf",
+          4.796917509367378e-08
+        ]
+      ],
+      "accepted": true
+    }
+  ],
+  "figures": [
+    "accuracy_vs_coverage.png",
+    "confusion_heldout_rocole.png",
+    "confusion_heldout_uganda.png",
+    "confusion_in_domain_test.png"
+  ],
+  "calibration": {
+    "test_set": "val split (JMuBEN, JMuBEN2, BRACOL, PlantDoc not_leaf), at most 500 images per class",
+    "n": 2561,
+    "temperature": 1.2414171130003073,
+    "threshold": 0.29790427289834387,
+    "chosen": {
+      "target": 0.95,
+      "reached": true,
+      "threshold": 0.29790427289834387,
+      "coverage": 1.0,
+      "accepted_accuracy": 0.9726669269816478,
+      "n_accepted": 2561,
+      "threshold_used": 0.29790427289834387
+    },
+    "targets": {
+      "0.95": {
+        "target": 0.95,
+        "reached": true,
+        "threshold": 0.29790427289834387,
+        "coverage": 1.0,
+        "accepted_accuracy": 0.9726669269816478,
+        "n_accepted": 2561
+      },
+      "0.98": {
+        "target": 0.98,
+        "reached": true,
+        "threshold": 0.5115072934862754,
+        "coverage": 0.9902381882077314,
+        "accepted_accuracy": 0.9818611987381703,
+        "n_accepted": 2536
+      },
+      "0.99": {
+        "target": 0.99,
+        "reached": true,
+        "threshold": 0.7000372388535244,
+        "coverage": 0.9746192893401016,
+        "accepted_accuracy": 0.9903846153846154,
+        "n_accepted": 2496
+      }
+    },
+    "nll": {
+      "before": 0.06479158471248637,
+      "after": 0.06264008408555248
+    },
+    "ece_15_bins": {
+      "before": 0.014610214524112415,
+      "after": 0.01278338997662739
+    },
+    "checkpoint_sha256": "748888cbb9012a28f66266778db3e119c3addf7cf5ebe8298fe0280b60adb64d",
+    "note": "fitted on PyTorch fp32 val logits; the shipped model is int8"
+  },
+  "export": {
+    "bytes": {
+      "onnx_fp32": 6103320,
+      "onnx_int8": 1642557
+    },
+    "parity": {
+      "test_set": "in-domain test split, class-balanced sample",
+      "n": 50,
+      "label_counts": {
+        "healthy": 9,
+        "rust": 9,
+        "cercospora": 8,
+        "phoma": 8,
+        "miner": 8,
+        "not_leaf": 8
+      },
+      "top1_agreement": {
+        "pytorch_vs_onnx_fp32": 1.0,
+        "pytorch_vs_onnx_int8": 1.0,
+        "onnx_fp32_vs_onnx_int8": 1.0,
+        "pytorch_engine_preproc_vs_pytorch_train_eval_tf": 1.0
+      },
+      "max_abs_prob_diff_after_temperature": {
+        "pytorch_vs_onnx_fp32": 2.5373223945246437e-06,
+        "pytorch_vs_onnx_int8": 0.022006942332785107
+      },
+      "relative_logit_error_int8": 0.05509481951594353,
+      "accuracy_on_sample": {
+        "pytorch": 0.96,
+        "onnx_int8": 0.96
+      }
+    },
+    "failures": [],
+    "quantisation": "int8 weight-only QDQ: per-channel symmetric int8 Conv/Gemm weights with DequantizeLinear, float activations",
+    "opset": 17
+  },
+  "latency": {
+    "runs": 200,
+    "threads": 1,
+    "inference_ms": {
+      "mean": 4.747350779962289,
+      "median": 4.413870999997016,
+      "p90": 5.261348700696544
+    },
+    "decode_and_preprocess_ms_median": 26.768328500111238,
+    "sample_image_size": [
+      1600,
+      800
+    ],
+    "machine": {
+      "platform": "Linux-6.12.94+-x86_64-with-glibc2.39",
+      "processor": "x86_64",
+      "cpu_count": 4,
+      "loadavg_1m_at_start": 5.02099609375
+    },
+    "note": "onnxruntime CPU in Python, not onnxruntime-web on a phone; inference only unless stated",
+    "sample_source": "BRACOL test photo"
+  }
+}

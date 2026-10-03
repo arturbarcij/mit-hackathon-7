@@ -1,0 +1,159 @@
+{
+  "model_sha256": "cc6b114a19f4673cd34cfcffd43f0b45fb323a96bc92ff3fed9bfb8a97b8cb4f",
+  "model_version": "v1-provisional-e3-2026-10-04",
+  "temperature": 1.2414171130003073,
+  "threshold": 0.29790427289834387,
+  "note": "expected.json probs are after temperature, from the int8 ONNX model with the engine preprocessing; images re-encoded without EXIF or ICC.",
+  "samples": {
+    "00_healthy.jpg": {
+      "source_path": "bracol/extracted/yy2k5y8mxg-1/BRACOL_coffee_leaf_ images_datasets/coffee-datasets/coffee-datasets/leaf/images/203.jpg",
+      "source": "bracol",
+      "true_label": "healthy",
+      "size": [
+        448,
+        224
+      ],
+      "file_bytes": 16086,
+      "engine_quality_python_port": {
+        "blur": 0.4384460073714614,
+        "brightness": 153.63743606567382
+      },
+      "resize_path": "pixel copy"
+    },
+    "01_rust.jpg": {
+      "source_path": "bracol/extracted/yy2k5y8mxg-1/BRACOL_coffee_leaf_ images_datasets/coffee-datasets/coffee-datasets/leaf/images/1253.jpg",
+      "source": "bracol",
+      "true_label": "rust",
+      "size": [
+        448,
+        224
+      ],
+      "file_bytes": 15604,
+      "engine_quality_python_port": {
+        "blur": 0.39567404455983785,
+        "brightness": 174.24001794433593
+      },
+      "resize_path": "pixel copy"
+    },
+    "02_rust.jpg": {
+      "source_path": "bracol/extracted/yy2k5y8mxg-1/BRACOL_coffee_leaf_ images_datasets/coffee-datasets/coffee-datasets/leaf/images/1517.jpg",
+      "source": "bracol",
+      "true_label": "rust",
+      "size": [
+        896,
+        448
+      ],
+      "file_bytes": 49650,
+      "engine_quality_python_port": {
+        "blur": 0.40443818589954345,
+        "brightness": 194.59681912231446
+      },
+      "resize_path": "engine resizes 448 -> 224"
+    },
+    "03_cercospora.jpg": {
+      "source_path": "bracol/extracted/yy2k5y8mxg-1/BRACOL_coffee_leaf_ images_datasets/coffee-datasets/coffee-datasets/leaf/images/1677.jpg",
+      "source": "bracol",
+      "true_label": "cercospora",
+      "size": [
+        448,
+        224
+      ],
+      "file_bytes": 16019,
+      "engine_quality_python_port": {
+        "blur": 0.4225931794059418,
+        "brightness": 176.7324459838867
+      },
+      "resize_path": "pixel copy"
+    },
+    "04_cercospora.jpg": {
+      "source_path": "bracol/extracted/yy2k5y8mxg-1/BRACOL_coffee_leaf_ images_datasets/coffee-datasets/coffee-datasets/leaf/images/1642.jpg",
+      "source": "bracol",
+      "true_label": "cercospora",
+      "size": [
+        448,
+        224
+      ],
+      "file_bytes": 14656,
+      "engine_quality_python_port": {
+        "blur": 0.39229815189582856,
+        "brightness": 145.7156520690918
+      },
+      "resize_path": "pixel copy"
+    },
+    "05_phoma.jpg": {
+      "source_path": "bracol/extracted/yy2k5y8mxg-1/BRACOL_coffee_leaf_ images_datasets/coffee-datasets/coffee-datasets/leaf/images/426.jpg",
+      "source": "bracol",
+      "true_label": "phoma",
+      "size": [
+        448,
+        224
+      ],
+      "file_bytes": 14342,
+      "engine_quality_python_port": {
+        "blur": 0.3613170936095005,
+        "brightness": 177.50751354980468
+      },
+      "resize_path": "pixel copy"
+    },
+    "06_phoma.jpg": {
+      "source_path": "bracol/extracted/yy2k5y8mxg-1/BRACOL_coffee_leaf_ images_datasets/coffee-datasets/coffee-datasets/leaf/images/468.jpg",
+      "source": "bracol",
+      "true_label": "phoma",
+      "size": [
+        448,
+        224
+      ],
+      "file_bytes": 16363,
+      "engine_quality_python_port": {
+        "blur": 0.3832774714878188,
+        "brightness": 179.74047863769533
+      },
+      "resize_path": "pixel copy"
+    },
+    "07_miner.jpg": {
+      "source_path": "bracol/extracted/yy2k5y8mxg-1/BRACOL_coffee_leaf_ images_datasets/coffee-datasets/coffee-datasets/leaf/images/1178.jpg",
+      "source": "bracol",
+      "true_label": "miner",
+      "size": [
+        448,
+        224
+      ],
+      "file_bytes": 18354,
+      "engine_quality_python_port": {
+        "blur": 0.4250312462885235,
+        "brightness": 144.94341970825195
+      },
+      "resize_path": "pixel copy"
+    },
+    "08_miner.jpg": {
+      "source_path": "bracol/extracted/yy2k5y8mxg-1/BRACOL_coffee_leaf_ images_datasets/coffee-datasets/coffee-datasets/leaf/images/1061.jpg",
+      "source": "bracol",
+      "true_label": "miner",
+      "size": [
+        896,
+        448
+      ],
+      "file_bytes": 51243,
+      "engine_quality_python_port": {
+        "blur": 0.46592452736848566,
+        "brightness": 144.25836630249023
+      },
+      "resize_path": "engine resizes 448 -> 224"
+    },
+    "09_not_leaf.jpg": {
+      "source_path": "plantdoc/images/Tomato_Early_blight_leaf/EBTomato.jpg",
+      "source": "plantdoc",
+      "true_label": "not_leaf",
+      "size": [
+        448,
+        672
+      ],
+      "file_bytes": 88653,
+      "engine_quality_python_port": {
+        "blur": 0.31075593055604706,
+        "brightness": 95.16235393823099
+      },
+      "resize_path": "engine resizes 448 -> 224"
+    }
+  }
+}

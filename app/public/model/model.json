@@ -1,0 +1,34 @@
+{
+  "version": "v1-provisional-e3-2026-10-04",
+  "labels": [
+    "healthy",
+    "rust",
+    "cercospora",
+    "phoma",
+    "miner",
+    "not_leaf"
+  ],
+  "input": {
+    "size": 224,
+    "resize": "shorter_side_then_center_crop",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "layout": "NCHW",
+    "range": "0-1"
+  },
+  "temperature": 1.2414171130003073,
+  "threshold": 0.29790427289834387,
+  "sha256": "cc6b114a19f4673cd34cfcffd43f0b45fb323a96bc92ff3fed9bfb8a97b8cb4f",
+  "bytes": 1642557,
+  "arch": "mobilenetv3_small_100",
+  "quantisation": "int8 weight-only QDQ",
+  "threshold_target_val_accuracy": 0.95
+}

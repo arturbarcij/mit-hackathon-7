@@ -1,0 +1,70 @@
+{
+  "command": "python app/ml/train.py --device auto --epochs 10 --patience 2 --max-val-per-class 500 --out app/ml/runs/v1-cpu-20261003-2150",
+  "args": {
+    "manifest": "/workspace/app/ml/manifest.csv",
+    "data_root": "/workspace/data_raw",
+    "model": "mobilenetv3_small_100",
+    "device": "auto",
+    "epochs": 10,
+    "batch_size": 64,
+    "lr": null,
+    "weight_decay": 0.02,
+    "freeze_backbone": false,
+    "max_train_per_class": 0,
+    "max_val_per_class": 500,
+    "samples_per_epoch": 0,
+    "patience": 2,
+    "num_workers": null,
+    "threads": null,
+    "max_steps": 0,
+    "seed": 42,
+    "out": "app/ml/runs/v1-cpu-20261003-2150"
+  },
+  "device": "cpu",
+  "lr": 0.0005,
+  "num_workers": 3,
+  "torch_threads": 4,
+  "classes": [
+    "healthy",
+    "rust",
+    "cercospora",
+    "phoma",
+    "miner",
+    "not_leaf"
+  ],
+  "train_counts": {
+    "healthy": 12724,
+    "not_leaf": 285,
+    "cercospora": 5466,
+    "phoma": 4818,
+    "miner": 12054,
+    "rust": 6210
+  },
+  "val_counts": {
+    "cercospora": 500,
+    "miner": 500,
+    "rust": 500,
+    "healthy": 500,
+    "phoma": 500,
+    "not_leaf": 61
+  },
+  "samples_per_epoch": 41557,
+  "input": {
+    "size": 224,
+    "resize": "shorter_side_then_center_crop",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "layout": "NCHW",
+    "range": "0-1"
+  },
+  "torch": "2.14.1+cpu",
+  "timm": "1.0.30"
+}

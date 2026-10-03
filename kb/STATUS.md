@@ -17,9 +17,9 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | R4 | season.json | research | Sat 23:30 | done | `kb/research/season.json` (engine placeholder shape), method in `SEASON.md`. Pre-rains = 4 weeks before onset (assumption). content-voice / engine: copy to `app/src/content/season.json` |
 | M1 | Data download, manifest, dedupe, splits | ml | Sat 22:30 | done | 6 datasets, rotation-aware dedupe (992 groups; 216 Uganda phoma images were JMuBEN copies, excluded). `app/ml/manifest.csv`. not_leaf is thin (407 PlantDoc images) |
 | M2 | Train v1 | ml | Sun 00:30 | doing | CPU run on cloud VM, tmux `ml-train`, ETA about 02:00 CEST. Epoch 1 in-domain val acc 0.991 (inflated: augmented crops, few independent leaves). Laptop GPU can rerun the same script |
-| M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | todo | |
-| M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | todo | |
-| M5 | EVALUATION.md | ml | Sun 02:00 | todo | |
+| M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | doing | cloud sub-agent writing `calibrate.py`, tested on smoke checkpoint; runs on v1 when M2 finishes |
+| M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | doing | cloud sub-agent writing `export.py` to the engine contract |
+| M5 | EVALUATION.md | ml | Sun 02:00 | doing | cloud sub-agent writing `evaluate.py` (in-domain, Uganda, RoCoLe, coverage curve) |
 | E1 | Engine with mock model + hooks | engine | Sat 23:30 | todo | needs L1 |
 | E2 | PWA offline caching | engine | Sun 00:30 | todo | |
 | E3 | Real model integrated, parity in browser | engine | Sun 08:30 | todo | needs M4 |

@@ -1,0 +1,76 @@
+[
+  {
+    "if": {"uncertain_gte": 3},
+    "then": "too_many_unsure",
+    "assumption": true,
+    "note": "officer to confirm. No Kenyan incidence threshold was found (GUIDANCE section 6)."
+  },
+  {
+    "if": {"dominant": "not_leaf"},
+    "then": "not_a_leaf"
+  },
+  {
+    "if": {"distinct_problems_gte": 2},
+    "then": "mixed_problems",
+    "assumption": true,
+    "note": "officer to confirm. No Kenyan incidence threshold was found (GUIDANCE section 6)."
+  },
+  {
+    "if": {"dominant": "rust", "affected_gte": 3, "window": "pre_short_rains"},
+    "then": "rust_high_pre_rains",
+    "assumption": true,
+    "note": "officer to confirm. No Kenyan incidence threshold was found (GUIDANCE section 6)."
+  },
+  {
+    "if": {"dominant": "rust", "affected_gte": 3, "window": "short_rains"},
+    "then": "rust_high_in_rains",
+    "assumption": true,
+    "note": "officer to confirm. No Kenyan incidence threshold was found (GUIDANCE section 6)."
+  },
+  {
+    "if": {"dominant": "rust", "affected_gte": 3, "window": "pre_long_rains"},
+    "then": "rust_high_pre_long_rains",
+    "assumption": true,
+    "note": "officer to confirm. No Kenyan incidence threshold was found (GUIDANCE section 6)."
+  },
+  {
+    "if": {"dominant": "rust", "affected_gte": 3, "window": "long_rains"},
+    "then": "rust_high_in_rains",
+    "assumption": true,
+    "note": "officer to confirm. No Kenyan incidence threshold was found (GUIDANCE section 6)."
+  },
+  {
+    "if": {"dominant": "rust", "affected_gte": 3, "window": "dry"},
+    "then": "rust_high_dry",
+    "assumption": true,
+    "note": "officer to confirm. No Kenyan incidence threshold was found (GUIDANCE section 6)."
+  },
+  {
+    "if": {"dominant": "rust", "affected_gte": 1},
+    "then": "rust_low",
+    "assumption": true,
+    "note": "officer to confirm. No Kenyan incidence threshold was found (GUIDANCE section 6)."
+  },
+  {
+    "if": {"dominant": "cercospora"},
+    "then": "cercospora"
+  },
+  {
+    "if": {"dominant": "phoma"},
+    "then": "phoma"
+  },
+  {
+    "if": {"dominant": "miner"},
+    "then": "miner"
+  },
+  {
+    "if": {"dominant": "healthy", "affected_lte": 0},
+    "then": "healthy_all",
+    "assumption": true,
+    "note": "officer to confirm. No Kenyan incidence threshold was found (GUIDANCE section 6)."
+  },
+  {
+    "if": {},
+    "then": "ask_officer"
+  }
+]

@@ -1,0 +1,422 @@
+[
+  {
+    "id": "how_to_pick_leaves",
+    "kind": "guidance",
+    "severity": "ok",
+    "text": {
+      "en": "Pick ten leaves from the rows that look worst, including leaves from inside the bush. Bring them home and lay them on a plain page.",
+      "sw": "Chagua majani kumi kutoka safu zinazoonekana mbaya zaidi, pamoja na majani ya ndani ya mti. Yalete nyumbani na uyapange juu ya ukurasa wazi.",
+      "kik": null
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "how_to_photograph",
+    "kind": "guidance",
+    "severity": "ok",
+    "text": {
+      "en": "In daylight, photograph each leaf on the plain page, then turn it over and photograph the underside. Hold the phone steady so the leaf fills the photo.",
+      "sw": "Mchana, piga picha ya kila jani juu ya ukurasa wazi, kisha geuza na upige upande wa chini wa jani. Shika simu bila kutetemeka ili jani lijaze picha.",
+      "kik": null
+    },
+    "sources": ["S03", "S17", "GUIDANCE#rust-symptoms"],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "retake_blurry",
+    "kind": "guidance",
+    "severity": "watch",
+    "text": {
+      "en": "This photo is blurry. Hold the phone still and take it again.",
+      "sw": "Picha hii si wazi. Shika simu bila kutetemeka na upige tena.",
+      "kik": null
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "retake_dark",
+    "kind": "guidance",
+    "severity": "watch",
+    "text": {
+      "en": "This photo is too dark. Move into daylight and take it again.",
+      "sw": "Picha hii ni nyeusi mno. Nenda kwenye mwanga wa mchana na upige tena.",
+      "kik": null
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "not_a_leaf",
+    "kind": "guidance",
+    "severity": "watch",
+    "text": {
+      "en": "This does not look like a coffee leaf. Lay one coffee leaf flat on the page and take the photo again.",
+      "sw": "Hii haionekani kama jani la kahawa. Weka jani moja la kahawa juu ya ukurasa na upige tena.",
+      "kik": null
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "healthy_all",
+    "kind": "result",
+    "severity": "ok",
+    "text": {
+      "en": "These leaves show no yellow powder, brown spots, or dry patches on top. Choose act, wait, or ask the officer.",
+      "sw": "Majani haya hayaonyeshi unga wa manjano, madoa ya kahawia, wala mabaka makavu juu. Chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "A clear photo is not the whole plot. This tool did not check berries, roots, or leaves you did not bring.",
+      "sw": "Picha iliyo wazi si shamba lote. Zana hii haikukagua matunda, mizizi, wala majani usiyoleta."
+    },
+    "sources": ["S03", "S17", "GUIDANCE#rust-symptoms"],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "rust_low",
+    "kind": "result",
+    "severity": "watch",
+    "text": {
+      "en": "A few leaves show yellow to orange powder on the underside, which is coffee leaf rust. Watch the rows, and choose act, wait, or ask the officer.",
+      "sw": "Majani machache yana unga wa manjano hadi machungwa upande wa chini wa jani, yaani kutu ya majani ya kahawa. Angalia safu, kisha chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "No Kenyan guide gives a leaf count that means you must spray, so an officer must confirm this.",
+      "sw": "Hakuna mwongozo wa Kenya unaosema majani mangapi yanahitaji dawa, kwa hiyo afisa athibitishe hili."
+    },
+    "sources": ["S03", "S17", "GUIDANCE#rust-symptoms", "GUIDANCE#thresholds"],
+    "assumption": true,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "rust_high_pre_rains",
+    "kind": "result",
+    "severity": "act",
+    "text": {
+      "en": "Many leaves show yellow to orange powder on the underside, which is coffee leaf rust. Ask the cooperative which copper product and how much for mid-October, before the short rains, with a second spray about three weeks later, wear covering clothes, gloves and boots, and choose act, wait, or ask the officer.",
+      "sw": "Majani mengi yana unga wa manjano hadi machungwa upande wa chini wa jani, yaani kutu ya majani ya kahawa. Kabla ya mvua za vuli, katikati ya Oktoba, uliza ushirika ni dawa gani na kiasi gani, rudia baada ya wiki tatu, vaa nguo zinazofunika mwili, glavu na buti, kisha chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "The dates come from a Kenyan review. No Kenyan guide says how many leaves must show rust, so an officer must confirm this count.",
+      "sw": "Tarehe za dawa zimetoka mapitio ya Kenya. Hakuna mwongozo wa Kenya unaosema majani mangapi yaonyeshe kutu, kwa hiyo afisa athibitishe idadi hii."
+    },
+    "sources": ["S03", "S17", "S20", "GUIDANCE#rust-symptoms", "GUIDANCE#rust-timing", "GUIDANCE#ppe", "GUIDANCE#thresholds"],
+    "assumption": true,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "rust_high_in_rains",
+    "kind": "result",
+    "severity": "act",
+    "text": {
+      "en": "Many leaves show yellow to orange powder on the underside, and the rains are on. Ask the cooperative if a spray is due about three weeks after the first, which copper product and how much, wear covering clothes, gloves and boots, and choose act, wait, or ask the officer.",
+      "sw": "Majani mengi yana unga wa manjano hadi machungwa upande wa chini wa jani, na mvua zinaendelea. Uliza ushirika kama dawa inahitajika baada ya wiki tatu tangu ya kwanza, ni dawa gani na kiasi gani, vaa nguo zinazofunika mwili, glavu na buti, kisha chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "The three-week gap comes from a Kenyan review. No Kenyan guide says how many leaves must show rust, so an officer must confirm this count.",
+      "sw": "Kipindi cha wiki tatu kimetoka mapitio ya Kenya. Hakuna mwongozo wa Kenya unaosema majani mangapi yaonyeshe kutu, kwa hiyo afisa athibitishe idadi hii."
+    },
+    "sources": ["S03", "S17", "S20", "GUIDANCE#rust-symptoms", "GUIDANCE#rust-timing", "GUIDANCE#ppe", "GUIDANCE#thresholds"],
+    "assumption": true,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "rust_high_dry",
+    "kind": "result",
+    "severity": "act",
+    "text": {
+      "en": "Many leaves show yellow to orange powder on the underside. Prune so the leaves can dry, ask the cooperative which copper product and how much before the next rains, wear covering clothes, gloves and boots, and choose act, wait, or ask the officer.",
+      "sw": "Majani mengi yana unga wa manjano hadi machungwa upande wa chini wa jani. Pogoa ili majani yakauke, uliza ushirika ni dawa gani na kiasi gani kabla ya mvua ijayo, vaa nguo zinazofunika mwili, glavu na buti, kisha chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "Spray dates in the Kenyan review are before the rains, not in this drier spell. No Kenyan guide says how many leaves must show rust.",
+      "sw": "Tarehe za dawa katika mapitio ya Kenya ni kabla ya mvua, si katika kipindi hiki kikavu. Hakuna mwongozo wa Kenya unaosema majani mangapi yaonyeshe kutu."
+    },
+    "sources": ["S03", "S17", "S20", "GUIDANCE#rust-symptoms", "GUIDANCE#rust-pruning", "GUIDANCE#ppe", "GUIDANCE#thresholds"],
+    "assumption": true,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "rust_high_pre_long_rains",
+    "kind": "result",
+    "severity": "act",
+    "text": {
+      "en": "Many leaves show yellow to orange powder on the underside, which is coffee leaf rust. For the long rains, the first spray is late February or early March, then about three weeks later: ask the cooperative which copper product and how much, wear covering clothes, gloves and boots, and choose act, wait, or ask the officer.",
+      "sw": "Majani mengi yana unga wa manjano hadi machungwa upande wa chini wa jani, yaani kutu ya majani ya kahawa. Kwa mvua za masika, dawa ya kwanza ni mwishoni mwa Februari au mapema Machi, halafu baada ya wiki tatu: uliza ushirika ni dawa gani na kiasi gani, vaa nguo zinazofunika mwili, glavu na buti, kisha chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "The dates come from a Kenyan review. No Kenyan guide says how many leaves must show rust, so an officer must confirm this count.",
+      "sw": "Tarehe za dawa zimetoka mapitio ya Kenya. Hakuna mwongozo wa Kenya unaosema majani mangapi yaonyeshe kutu, kwa hiyo afisa athibitishe idadi hii."
+    },
+    "sources": ["S03", "S17", "S20", "GUIDANCE#rust-symptoms", "GUIDANCE#rust-timing", "GUIDANCE#ppe", "GUIDANCE#thresholds"],
+    "assumption": true,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "cercospora",
+    "kind": "result",
+    "severity": "ask",
+    "text": {
+      "en": "Brown spots with a pale centre and a yellow ring can be brown eye spot, often when trees are short of food. Choose act, wait, or ask the officer.",
+      "sw": "Madoa ya kahawia yenye katikati iliyofifia na pete ya manjano yanaweza kuwa ugonjwa wa madoa ya jicho, hasa miti isiyopata chakula cha kutosha. Chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "This sign is from a Pacific fact sheet, not a Kenyan guide, and this tool gives no spray time.",
+      "sw": "Ishara hii imetoka karatasi ya Pasifiki, si mwongozo wa Kenya. Zana hii haisemi wakati wa kunyunyizia."
+    },
+    "sources": ["S18", "GUIDANCE#cercospora"],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "phoma",
+    "kind": "result",
+    "severity": "ask",
+    "text": {
+      "en": "Dark round spots, or a shoot tip that dries and dies back, can be Phoma, often in cool, windy, damp weather. Choose act, wait, or ask the officer.",
+      "sw": "Madoa meusi ya duara, au ncha ya chipukizi inayokauka na kufa, yanaweza kuwa Phoma, hasa wakati wa baridi, upepo na unyevu. Chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "These signs come from pages outside Kenya, not a Kenyan guide, and this tool gives no spray time.",
+      "sw": "Ishara hizi zimetoka kurasa za nje ya Kenya, si mwongozo wa Kenya. Zana hii haisemi wakati wa kunyunyizia."
+    },
+    "sources": ["S42", "S43", "GUIDANCE#phoma"],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "miner",
+    "kind": "result",
+    "severity": "ask",
+    "text": {
+      "en": "Brown dry patches on the top of the leaf can be leaf miner. Do not spray on your own, because sprays can kill helpful wasps, and choose act, wait, or ask the officer.",
+      "sw": "Mabaka ya kahawia kavu juu ya jani yanaweza kuwa viwavi wanaochimba ndani ya jani. Usinyunyizie dawa peke yako, kwa sababu dawa zinaweza kuua nyigu wasaidizi, kisha chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "An officer must say what to do. This tool cannot check the wasps or the moths on your trees.",
+      "sw": "Afisa ndiye aseme la kufanya. Zana hii haiwezi kuangalia nyigu wala nondo kwenye miti yako."
+    },
+    "sources": ["S17", "GUIDANCE#miner"],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "mixed_problems",
+    "kind": "result",
+    "severity": "ask",
+    "text": {
+      "en": "The leaves show more than one problem, so this tool will not pick one action. Choose act, wait, or ask the officer.",
+      "sw": "Majani yanaonyesha zaidi ya tatizo moja, kwa hiyo zana hii haitachagua hatua moja. Chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "No Kenyan guide says when two problems on the same check should change the action.",
+      "sw": "Hakuna mwongozo wa Kenya unaosema matatizo mawili kwenye ukaguzi mmoja yabadili hatua."
+    },
+    "sources": ["GUIDANCE#thresholds"],
+    "assumption": true,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "too_many_unsure",
+    "kind": "result",
+    "severity": "ask",
+    "text": {
+      "en": "Too many photos are unclear, so this tool will not guess. Choose act, wait, or ask the officer.",
+      "sw": "Picha nyingi mno si wazi, kwa hiyo zana hii haitakisia. Chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "No Kenyan guide says how many unclear photos are too many, so an officer must confirm.",
+      "sw": "Hakuna mwongozo wa Kenya unaosema picha ngapi zisizo wazi ni nyingi mno. Afisa athibitishe."
+    },
+    "sources": ["GUIDANCE#thresholds"],
+    "assumption": true,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "ask_officer",
+    "kind": "result",
+    "severity": "ask",
+    "text": {
+      "en": "This tool is not sure what these leaves show, so it will not name a spray. Choose act, wait, or ask the officer.",
+      "sw": "Zana hii haina uhakika majani haya yanaonyesha nini, kwa hiyo haitataja dawa. Chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "The photos do not match a clear rule, so no product and no spray time are given.",
+      "sw": "Picha hazilingani na kanuni iliyo wazi, kwa hiyo hakuna dawa wala muda wa kunyunyizia."
+    },
+    "sources": ["GUIDANCE#thresholds"],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "berries_out_of_scope",
+    "kind": "result",
+    "severity": "ask",
+    "text": {
+      "en": "Dark sunken spots on green berries are coffee berry disease, and this tool does not check berries. Choose act, wait, or ask the officer.",
+      "sw": "Madoa meusi yaliyozama kwenye matunda mabichi ni ugonjwa wa matunda ya kahawa, na zana hii haikagua matunda. Chagua: chukua hatua, subiri, au uliza afisa wa ugani.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "This check looked at leaves only. Berry disease needs the officer.",
+      "sw": "Ukaguzi huu uliangalia majani tu. Ugonjwa wa matunda unahitaji afisa wa ugani."
+    },
+    "sources": ["S17", "GUIDANCE#cbd"],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "other_crop",
+    "kind": "result",
+    "severity": "ask",
+    "text": {
+      "en": "This tool checks coffee leaves only. Choose act, wait, or ask the officer about any other crop.",
+      "sw": "Zana hii inakagua majani ya kahawa tu. Chagua: chukua hatua, subiri, au uliza afisa wa ugani kuhusu zao lingine lolote.",
+      "kik": null
+    },
+    "not_sure": {
+      "en": "Maize, beans, and other crops are outside this check.",
+      "sw": "Mahindi, maharagwe, na mazao mengine yako nje ya ukaguzi huu."
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "consent_main",
+    "kind": "flow",
+    "severity": "ok",
+    "text": {
+      "en": "Jani keeps this check on this phone. Nothing is sent unless you later choose to share it.",
+      "sw": "Jani huhifadhi ukaguzi huu kwenye simu hii. Hakuna kinachotumwa hadi mkulima achague kushiriki baadaye.",
+      "kik": null
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "consent_photos",
+    "kind": "flow",
+    "severity": "ok",
+    "text": {
+      "en": "Photos stay on this phone unless you say yes. Say yes only if the officer may see these photos.",
+      "sw": "Picha zinabaki kwenye simu hii hadi useme ndiyo. Sema ndiyo tu ikiwa afisa wa ugani anaweza kuziona.",
+      "kik": null
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "decision_act",
+    "kind": "flow",
+    "severity": "act",
+    "text": {
+      "en": "You chose to act. Ask the cooperative which product and how much, and wear covering clothes, gloves and boots.",
+      "sw": "Umechagua kuchukua hatua. Uliza ushirika ni dawa gani na kiasi gani, na vaa nguo zinazofunika mwili, glavu na buti.",
+      "kik": null
+    },
+    "sources": ["S03", "S20", "GUIDANCE#rust-product", "GUIDANCE#ppe"],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "decision_wait",
+    "kind": "flow",
+    "severity": "ok",
+    "text": {
+      "en": "You chose to wait. Check these rows again if the leaves get worse.",
+      "sw": "Umechagua kusubiri. Kagua safu hizi tena ikiwa majani yanazidi kuwa mabaya.",
+      "kik": null
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "decision_ask",
+    "kind": "flow",
+    "severity": "ask",
+    "text": {
+      "en": "You chose to ask the officer. The next screen prepares a short message that you send yourself.",
+      "sw": "Umechagua kuuliza afisa wa ugani. Skrini inayofuata inaandaa ujumbe mfupi utakaotuma mwenyewe.",
+      "kik": null
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "referral_ready",
+    "kind": "flow",
+    "severity": "ask",
+    "text": {
+      "en": "The message is ready, and you send it yourself. Nothing goes out until you press send.",
+      "sw": "Ujumbe uko tayari, na unautuma mwenyewe. Hakuna kinachotoka hadi ubonyeze tuma.",
+      "kik": null
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  },
+  {
+    "id": "language_name",
+    "kind": "flow",
+    "severity": "ok",
+    "text": {
+      "en": "English",
+      "sw": "Kiswahili",
+      "kik": null
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": {"sw": "draft", "kik": "not_translated"},
+    "reviewed_by": null
+  }
+]

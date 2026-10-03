@@ -20,7 +20,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | todo | |
 | M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | todo | |
 | M5 | EVALUATION.md | ml | Sun 02:00 | todo | |
-| E1 | Engine with mock model + hooks | engine | Sat 23:30 | doing | cloud sub-agents: types, plot, referral, quality. Mock model, decide, hooks still todo |
+| E1 | Engine with mock model + hooks | engine | Sat 23:30 | todo | needs L1 |
 | E2 | PWA offline caching | engine | Sun 00:30 | todo | |
 | E3 | Real model integrated, parity in browser | engine | Sun 08:30 | todo | needs M4 |
 | E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | todo | |
@@ -49,4 +49,4 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 
 ## Log
 - Sat 21:00: kb set up, six agent briefs written.
-- Sat 23:00: wave 1 of sub-agents started from a cloud agent (see `kb/SUBAGENTS.md`): R1 to R4 and engine pure modules. Local agents: do not start these rows.
+- Sat 23:00: wave 1 of sub-agents started from a cloud agent (see `kb/SUBAGENTS.md`): R1 to R4. Engine work dropped here because PR #2 covers it. Local agents: do not start R1 to R4.

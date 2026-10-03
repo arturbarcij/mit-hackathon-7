@@ -6,3 +6,4 @@ desktop.ini
 node_modules/
 dist/
 data_raw/
+.venv-ml/

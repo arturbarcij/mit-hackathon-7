@@ -25,23 +25,23 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | todo | bundled at the end of train.py |
 | M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | todo | |
 | M5 | EVALUATION.md | ml | Sun 02:00 | todo | |
-| E1 | Engine with mock model + hooks | engine | Sat 23:30 | todo | needs L1 |
-| E2 | PWA offline caching | engine | Sun 00:30 | todo | |
-| E3 | Real model integrated, parity in browser | engine | Sun 08:30 | todo | needs M4 |
-| E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | todo | |
+| E1 | Engine with mock model + hooks | engine | Sat 23:30 | done | Mock is the default until leaf.onnx exists. Hooks in src/hooks/useEngine.ts. |
+| E2 | PWA offline caching | engine | Sun 00:30 | doing | vite-plugin-pwa on. Production precache 8 files, 389 KB, without model or audio. Airplane-mode test not run. |
+| E3 | Real model integrated, parity in browser | engine | Sun 08:30 | todo | needs M4. No leaf.onnx in this checkout. |
+| E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | doing | vitest: 9 files, 29 tests passed. Playwright offline test not run. |
 | EC1 | PWA offline proof on a Lovable mirror (TanStack Start, ort wasm, Playwright offline), bundle size | engine-cowork (Claude Cowork) | Sun 00:45 | doing | recipe for E2/E4 lands in kb/engine-cowork/pwa/; never edits app/src/engine or app/tests |
 | EC2 | Preprocessing parity harness: train.py eval_transform reproduced in TS, ort-web vs Python onnxruntime, ort wasm size | engine-cowork (Claude Cowork) | Sun 00:45 | doing | kb/engine-cowork/parity/; feeds E3 |
 | EC3 | Contract test suite for CONTRACTS.md, Lovable UI compatibility audit, L3 prompt draft | engine-cowork (Claude Cowork) | Sun 00:45 | doing | kb/engine-cowork/conformance/; feeds E1 and E4 |
 | U1 | Lovable project, routes, farmer flow with mocks | ui | Sat 23:30 | done | project 4619dfd1-32ea-4daa-aaf8-89b51321cbe1, workspace MIT HACKATHON 7 (workspace_01m41rmrvcea8v9c7rxmerc4ar); editor https://lovable.dev/projects/4619dfd1-32ea-4daa-aaf8-89b51321cbe1 ; knowledge set |
 | U0 | Connect Lovable to GitHub (new repo jani-web), clone into MIT_Hackathon_7/web | Arthur | Sat 23:15 | todo | Lovable creates a new repo; web/ is git-ignored by the root repo |
 | U2 | Officer dashboard, tables, seed data, outlier map (L2 sent) | ui | Sun 00:15 | doing | message umsg_01m41rsrzhf1brge8fntzkh6t1 |
-| U3 | Wire real engine hooks, publish live URL | ui | Sun 09:30 | todo | needs E1 |
-| C1 | answers.json + rules.json | content-voice | Sat 23:00 | done | reviewed against GUIDANCE.md; QA content checks pass; thresholds all flagged assumption |
-| C2 | Swahili + Kikuyu translations | content-voice | Sat 23:30 | partial | Swahili draft only (Gemini check not run). Kikuyu 8 core drafted by Claude, low confidence, not native-reviewed; see kb/content/REVIEW_LOG.md |
-| C3 | Audio rendered (ElevenLabs, MMS) | content-voice | Sun 00:30 | todo | needs L2 |
-| D1 | Doc skeletons | docs | Sat 22:30 | done | Skeletons and research-derived sections filled. Open TODO(owner) and [PENDING: ml] markers are in app/README.md and app/docs/*. |
-| D2 | DATA_CARD, RESPONSIBLE_AI, LANGUAGES, REPLICATION | docs | Sun 10:30 | todo | needs R1, R3, M5 |
-| D3 | README final | docs | Sun 11:00 | todo | |
+| U3 | Wire real engine hooks, publish live URL | ui | Sun 09:30 | doing | Local farmer and officer screens call the mock engine. Live URL not published. Real model still needs E3. |
+| C1 | answers.json + rules.json | content-voice | Sat 23:00 | done | 26 ids, English and Swahili. Thresholds flagged assumption. See kb/content/REVIEW_LOG.md. |
+| C2 | Swahili + Kikuyu translations | content-voice | Sat 23:30 | partial | Swahili is draft, not human-reviewed. Kikuyu text is null on every id (not invented). Eight core ids still need a native speaker. |
+| C3 | Audio rendered (ElevenLabs, MMS) | content-voice | Sun 00:30 | todo | Scripts written. No .env key, so no mp3. render_audio.py exits 0 without calling the network. |
+| D1 | Doc skeletons | docs | Sat 22:30 | done | README and docs filled from research. Model metrics stay [PENDING: ml]. |
+| D2 | DATA_CARD, RESPONSIBLE_AI, LANGUAGES, REPLICATION | docs | Sun 10:30 | doing | Files exist. Coverage, threshold and accuracy stay [PENDING: ml]. |
+| D3 | README final | docs | Sun 11:00 | doing | Live URL not published. Sizes pending engine and ml. |
 | G1 | Synthetic plots + Sentinel-2 STAC working | geo | Sat 23:45 | todo | Cursor chat 3 |
 | G2 | NDVI per plot per dry season | geo | Sun 01:15 | todo | cut line 02:00 |
 | G3 | Deliveries, rainfall, outlier model, outputs | geo | Sun 01:45 | todo | |
@@ -67,10 +67,10 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 ## Measured budgets
 | Item | Target | Measured |
 |---|---|---|
-| leaf.onnx | at most 5 MB | |
-| Total offline precache | at most 15 MB | |
-| Audio total | at most 4 MB | |
-| Inference per leaf (4x throttle) | under 1 s | |
+| leaf.onnx | at most 5 MB | not in this checkout |
+| Total offline precache | at most 15 MB | 389 KB, 8 files, production build, no model and no audio |
+| Audio total | at most 4 MB | 0 (no clips rendered) |
+| Inference per leaf (4x throttle) | under 1 s | not measured |
 
 ## Requests between agents
 - engine-cowork to engine: Cowork runs three helper lanes in parallel with you (EC1 to EC3). They write only to kb/engine-cowork/** and never touch app/src/engine or app/tests. Adopt what helps: a proven PWA recipe for Lovable's TanStack Start stack, a TS preprocessing module matching train.py eval_transform (Resize(224) on the shorter side with PIL bilinear, centre crop, ImageNet normalisation), and a vitest suite that checks any engine against CONTRACTS.md. Heads-up: Lovable's mock engine drifts from CONTRACTS (summarisePlot semantics, free-text referral instead of JANI1, hard-coded cards instead of rules.json and answers.json).
@@ -106,3 +106,4 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 - Sat 23:20: Cowork (Claude) started engine-cowork helper lanes EC1 to EC3 in parallel with the Cursor engine agent; outputs in kb/engine-cowork/.
 - Sun 00:20: Claude (lead). Sent Lovable follow-up umsg_01m41tcrs5fw281bgepzf47hgx (answers.json text per language, 160-char referral with member/plot/date, remove auto officer role, insert cap, synthetic badges, publish). PWA left to engine-cowork. Untracked the challenge PDF and ignored *.pdf; QA secrets_git now passes. PDF is still in the initial commit history and kb/ is tracked: decide before making the repo public. Gemini prompt: kb/prompts/09b_gemini_crosscheck.md.
 - Sun (early): research verified and shipped kb/research. JSON valid, all cited S-ids defined, wild set 254 files present with no ND licence, 176 price rows with KES derivation checked, pass-2 quotes match saved pages. kb/research/raw/ (third-party page copies) is git-ignored and stays local. raw/crosscheck_cowork_20261003.md lists upgrades (CA 4G 97.3%, KMSA OND onset, ElevenLabs v3 Swahili) not yet merged into EVIDENCE.
+- Sun 01:20: started the lanes that had no files in this repo. content-voice answer bank (Swahili draft, Kikuyu not translated). engine mock plus 29 vitest passes and PWA precache 389 KB. Farmer flow and simulated officer queue call the engine. Docs filled from research with [PENDING: ml]. ML scripts compile and refuse to invent metrics. No leaf.onnx. No audio. Training data is not in this checkout. QA, judge, redteam and pitch briefs are not in kb/agents, so those lanes were not started.

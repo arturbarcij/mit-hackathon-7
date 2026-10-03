@@ -1,0 +1,146 @@
+[
+  {
+    "if": {
+      "uncertain_gte": 3
+    },
+    "then": "too_many_unsure",
+    "assumption": true,
+    "note": "Abstain when 3 or more leaves are unsure. Our design threshold, officer to confirm."
+  },
+  {
+    "if": {
+      "dominant": "not_leaf"
+    },
+    "then": "not_a_leaf",
+    "note": "Engine sets not_leaf dominant when at least half the photos are not leaves."
+  },
+  {
+    "if": {
+      "distinct_problems_gte": 2
+    },
+    "then": "mixed_problems",
+    "assumption": true,
+    "note": "Leaves disagree: abstain and refer. Our design, officer to confirm."
+  },
+  {
+    "if": {
+      "dominant": "rust",
+      "affected_gte": 2,
+      "window": [
+        "pre_short_rains",
+        "pre_long_rains"
+      ]
+    },
+    "then": "rust_high_pre_rains",
+    "assumption": true,
+    "sources": [
+      "GUIDANCE#rust-threshold",
+      "GUIDANCE#rust-copper-timing",
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "note": "2 of 10 leaves maps the Kenyan 20% figure (for systemic sprays) to a 10-leaf sample. Assumption, officer to confirm."
+  },
+  {
+    "if": {
+      "dominant": "rust",
+      "affected_gte": 2,
+      "window": [
+        "short_rains",
+        "long_rains"
+      ]
+    },
+    "then": "rust_high_in_rains",
+    "assumption": true,
+    "sources": [
+      "GUIDANCE#rust-threshold",
+      "S2",
+      "S3"
+    ],
+    "note": "2 of 10 leaves. Assumption, officer to confirm."
+  },
+  {
+    "if": {
+      "dominant": "rust",
+      "affected_gte": 2,
+      "window": "dry"
+    },
+    "then": "rust_high_dry",
+    "assumption": true,
+    "sources": [
+      "GUIDANCE#rust-threshold",
+      "S2",
+      "S3"
+    ],
+    "note": "2 of 10 leaves. Assumption, officer to confirm."
+  },
+  {
+    "if": {
+      "dominant": "rust",
+      "affected_gte": 1,
+      "window": [
+        "pre_short_rains",
+        "pre_long_rains"
+      ]
+    },
+    "then": "rust_low_pre_rains",
+    "assumption": true,
+    "sources": [
+      "GUIDANCE#rust-copper-timing",
+      "S1",
+      "S3"
+    ],
+    "note": "1 rust leaf before the rains. Copper before the rains is calendar based (S1, S3). Band is an assumption, officer to confirm."
+  },
+  {
+    "if": {
+      "dominant": "rust",
+      "affected_gte": 1
+    },
+    "then": "rust_low",
+    "assumption": true,
+    "note": "1 rust leaf outside the pre-rains windows. Assumption, officer to confirm."
+  },
+  {
+    "if": {
+      "dominant": "cercospora",
+      "affected_gte": 1
+    },
+    "then": "cercospora",
+    "assumption": true,
+    "note": "No published threshold for cercospora (GUIDANCE#rust-threshold). Any leaf triggers the card. officer to confirm."
+  },
+  {
+    "if": {
+      "dominant": "phoma",
+      "affected_gte": 1
+    },
+    "then": "phoma",
+    "assumption": true,
+    "note": "No published threshold for phoma. Any leaf triggers the card. officer to confirm."
+  },
+  {
+    "if": {
+      "dominant": "miner",
+      "affected_gte": 1
+    },
+    "then": "miner",
+    "assumption": true,
+    "note": "No published threshold for leaf miner. Any leaf triggers the card. officer to confirm."
+  },
+  {
+    "if": {
+      "dominant": "healthy",
+      "affected_lte": 0,
+      "uncertain_lte": 0
+    },
+    "then": "healthy_all",
+    "note": "Healthy only when no leaf has a problem and no leaf is unsure. Healthy with 1 or 2 unsure leaves falls through to ask_officer."
+  },
+  {
+    "if": {},
+    "then": "ask_officer",
+    "note": "Catch-all. Must stay last."
+  }
+]

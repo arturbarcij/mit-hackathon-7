@@ -1,0 +1,7 @@
+desktop.ini
+.env
+.env.*
+!.env.example
+*.pem
+node_modules/
+dist/

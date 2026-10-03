@@ -1,0 +1,14 @@
+---
+description: Jani hackathon project rules
+alwaysApply: true
+---
+
+This workspace is Jani, a Small AI entry for the World Bank x Hack-Nation hackathon (Annex B, Agriculture). Deadline Sun 4 Oct 2026, 15:00 CEST; freeze 13:30.
+
+- Read `kb/MASTER_PROMPT.md` before any task. It is the source of truth.
+- If the user names an agent (research, ml, engine, ui, content-voice, docs), follow `kb/agents/<name>.md` and edit only the paths it owns (see `kb/OWNERSHIP.md`).
+- Shared types and formats: `kb/CONTRACTS.md`. Status: `kb/STATUS.md`. Settled decisions: `kb/DECISIONS.md` (do not reopen).
+- The git repo is `app/`. Lovable also pushes to `main`: pull before push, small commits prefixed with the agent name, never force-push.
+- Never commit or print `app/backend/.env`. Never put secrets in `VITE_*` variables (they ship to the browser).
+- No runtime LLM or AI API calls in the client. All farmer-facing text comes from `src/content/answers.json`.
+- Plain British English, no em dashes.

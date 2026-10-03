@@ -79,3 +79,55 @@ Log: `app/ml/runs/v1-cpu-20261003-2150/train.log`. A `DONE` file appears in the 
 Watch it with `tmux -f /exec-daemon/tmux.portal.conf attach -t ml-train` or `tail -f` on the log.
 
 On a GPU the same command works unchanged (`--device auto` picks CUDA).
+
+## After training
+
+Run from `/workspace` once the run folder has a `DONE` file. Replace `<run>` with the run folder name
+(for the v1 CPU run: `v1-cpu-20261003-2150`). All three scripts use one CPU thread by default
+(`--threads` on calibrate and export raises it once training has stopped).
+
+```bash
+# 1. Temperature scaling and abstention threshold on the whole val split -> app/ml/calibration.json
+.venv-ml/bin/python app/ml/calibrate.py --ckpt app/ml/runs/<run>/best.pt
+
+# 2. ONNX export, int8 quantisation, parity -> app/public/model/leaf.onnx, model.json,
+#    app/ml/parity_samples/ (10 JPEGs + expected.json + samples.json), app/ml/export_report.json
+.venv-ml/bin/python app/ml/export.py --ckpt app/ml/runs/<run>/best.pt --version v1-2026-10-04
+
+# 3. Evaluation of the shipped int8 model -> app/ml/metrics.json, app/ml/figures/*.png
+.venv-ml/bin/python app/ml/evaluate.py
+```
+
+What each step checks:
+- `calibrate.py` picks the lowest threshold whose accepted val accuracy is at least 95% (`--target`), and
+  reports coverage there and the thresholds for 98% and 99%. If 95% is never reached it writes threshold 1.0
+  and `chosen.reached: false`, and `export.py` then refuses to write the model.
+- `export.py` exits with an error and writes nothing to `app/public/model/` if the int8 file is over 5 MB,
+  or top-1 agreement with PyTorch on 50 test images is below 95%. `--quant auto` (default) tries static QDQ
+  first and falls back to int8 weight-only QDQ (int8 weights, float activations) when static QDQ fails the
+  agreement check. Static QDQ failed on the smoke checkpoint and on the v1 epoch-1 checkpoint (30 to 40%
+  agreement): per-tensor uint8 ranges cannot hold MobileNetV3's early depthwise and squeeze-excite activations.
+  `export_report.json` records both results. `--force` is for smoke tests only.
+- `evaluate.py` refuses to run if `model.json` sha256 or bytes do not match `leaf.onnx`, like the engine.
+  Every metric sits under the name of its test set. The quality gate is not applied, so in-domain numbers
+  include the 128 px JMuBEN crops the app itself would reject as too small; `per_source_accuracy` separates them.
+
+Preprocessing in all three scripts is `export.engine_tensor`, a copy of the engine: EXIF orientation applied,
+longer side limited to 1600 px, centre square of the shorter side resized to 224 in one step (PIL bilinear),
+RGB 0-1, ImageNet mean and std, NCHW. Parity JPEGs are re-encoded without EXIF or ICC profiles; seven have a
+shorter side of exactly 224 px (the engine crop is a pixel copy) and three are larger (the engine resizes).
+
+Engine check once the real files exist (engine branch `cursor/engine-offline-core-d90f`, folder `app/`):
+the Playwright test `real model: parity samples match when present` in `tests/e2e/offline.spec.ts` reads
+`public/model/` and `ml/parity_samples/` and compares `classifyFile` probabilities with `expected.json`
+(tolerance 0.02). Run it with `npm ci && npx playwright install chromium && npm run test:e2e` after the
+model files and parity samples are on that branch.
+
+Smoke test of the three scripts (outputs only under `/tmp/mlx/`, numbers meaningless):
+```bash
+.venv-ml/bin/python app/ml/calibrate.py --ckpt app/ml/runs/smoke/best.pt --max-per-class 30 --out /tmp/mlx/calibration.json
+.venv-ml/bin/python app/ml/export.py --ckpt app/ml/runs/smoke/best.pt --calibration /tmp/mlx/calibration.json \
+  --out-dir /tmp/mlx/model --parity-dir /tmp/mlx/parity_samples --report /tmp/mlx/export_report.json --force
+.venv-ml/bin/python app/ml/evaluate.py --model-dir /tmp/mlx/model --calibration /tmp/mlx/calibration.json \
+  --export-report /tmp/mlx/export_report.json --max-per-class 30 --out /tmp/mlx/metrics.json --fig-dir /tmp/mlx/figures
+```

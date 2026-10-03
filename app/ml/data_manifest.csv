@@ -1,0 +1,7 @@
+dataset,url,licence,images,our use
+JMuBEN (Kenya Arabica: cercospora; rust; phoma),https://data.mendeley.com/datasets/t2r6rszp5c/1,CC BY 4.0,22588,"train/val/test. Contains augmented copies (128x128 crops); grouped by perceptual hash before splitting"
+JMuBEN2 (Kenya Arabica: healthy; miner),https://data.mendeley.com/datasets/tgv3zb82nd/1,CC BY 4.0,35958,"train/val/test. 35962 files; 3 .bak duplicates skipped; 1 empty file"
+BRACOL (Brazil Arabica; smartphone photos),https://data.mendeley.com/datasets/yy2k5y8mxg/1,CC BY 4.0,1401,"train/val/test. Mendeley zip is truncated: 1401 of 1747 leaf images recovered. 59 with mixed predominant stress (code 5) excluded"
+PlantDoc (non-coffee leaves; sampled),https://github.com/pratikkayal/PlantDoc-Dataset,CC BY 4.0,407,"not_leaf class. Up to 15 images per class from the train folder (28 classes, seed 42)"
+Uganda coffee leaf set (healthy; rust; phoma),https://data.mendeley.com/datasets/k36wnd6knb/1,CC BY 4.0,3220,"held-out test only. 102 files are empty at source. 216 phoma images are near-duplicates of JMuBEN images and are excluded from held-out evaluation"
+RoCoLe (Ecuador Robusta; healthy; rust levels 1-4; red spider mite),https://data.mendeley.com/datasets/c5yvn32dzg/2,CC BY 4.0,1560,"held-out test only. Rust levels mapped to rust; 167 red spider mite images kept as unmapped for the out-of-distribution check"

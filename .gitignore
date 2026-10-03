@@ -5,3 +5,4 @@ desktop.ini
 *.pem
 node_modules/
 dist/
+data_raw/

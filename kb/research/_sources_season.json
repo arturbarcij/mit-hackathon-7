@@ -1,0 +1,74 @@
+[
+  {
+    "id": "nasa_power_daily_1991_2020",
+    "title": "NASA POWER Daily API, PRECTOTCORR (bias-corrected precipitation), point -0.42, 36.95, 1991-01-01 to 2020-12-31, community AG (source: MERRA-2)",
+    "publisher": "NASA Langley Research Center, POWER Project",
+    "year": 2026,
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=PRECTOTCORR&community=AG&latitude=-0.42&longitude=36.95&start=19910101&end=20201231&format=JSON",
+    "accessed": "2026-10-03",
+    "used_for": "Daily climatology, dekadal means, onset and cessation by cumulative anomaly (climatology and per year)"
+  },
+  {
+    "id": "nasa_power_monthly_1991_2020",
+    "title": "NASA POWER Monthly API, PRECTOTCORR, point -0.42, 36.95, 1991 to 2020, community AG",
+    "publisher": "NASA Langley Research Center, POWER Project",
+    "year": 2026,
+    "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=PRECTOTCORR&community=AG&latitude=-0.42&longitude=36.95&start=1991&end=2020&format=JSON",
+    "accessed": "2026-10-03",
+    "used_for": "Monthly means 1991 to 2020 (check on the daily totals)"
+  },
+  {
+    "id": "nasa_power_climatology_2001_2020",
+    "title": "NASA POWER Climatology API, PRECTOTCORR, point -0.42, 36.95, January 2001 to December 2020",
+    "publisher": "NASA Langley Research Center, POWER Project",
+    "year": 2026,
+    "url": "https://power.larc.nasa.gov/api/temporal/climatology/point?parameters=PRECTOTCORR&community=AG&latitude=-0.42&longitude=36.95&format=JSON",
+    "accessed": "2026-10-03",
+    "used_for": "Second check on the monthly pattern over a different period"
+  },
+  {
+    "id": "agronomy_2021_clr_review",
+    "title": "Coffee Leaf Rust (Hemileia vastatrix) in Kenya: A Review. Agronomy 11(12):2590 (Gichuru, Alwora, Gimase, Kathurima)",
+    "publisher": "MDPI",
+    "year": 2021,
+    "url": "https://www.mdpi.com/2073-4395/11/12/2590",
+    "accessed": "2026-10-03",
+    "used_for": "Spray timing: mid October just before short rains; late February or early March for long rains. Used to place the pre-rains windows"
+  },
+  {
+    "id": "nyeri_pcra_2023",
+    "title": "Nyeri County Participatory Climate Risk Assessment Report, May 2023 (Figure 1: monthly rainfall climatology 1983 to 2018)",
+    "publisher": "County Government of Nyeri",
+    "year": 2023,
+    "url": "https://www.nyeri.go.ke/wp-content/uploads/2025/12/PCRA-report-Nyeri-County-2024-5.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "Cross-check: bimodal, long rains March to May peaking April, short rains October to December peaking November, lowest month February"
+  },
+  {
+    "id": "nyeri_cidp_2013",
+    "title": "Nyeri County Integrated Development Plan 2013 to 2017, section 1.2.3 Climatic Conditions",
+    "publisher": "County Government of Nyeri",
+    "year": 2013,
+    "url": "https://www.nyeri.go.ke/wp-content/uploads/2018/09/CIDP-Final-2013-to-2017.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "Cross-check: long rains March to May, short rains October to December"
+  },
+  {
+    "id": "moalf_nyeri_crp_2016",
+    "title": "Climate Risk Profile for Nyeri County. Kenya County Climate Risk Profile Series",
+    "publisher": "Ministry of Agriculture, Livestock and Fisheries, Kenya (via CGSpace)",
+    "year": 2016,
+    "url": "https://exa.ai/library/publication/tphxsg2src2 (index copy read; original CGSpace handle not confirmed)",
+    "accessed": "2026-10-03",
+    "used_for": "Cross-check and gap: some zones (LH2, LH3, LH4) have a third, middle rain in July and August"
+  },
+  {
+    "id": "kmd_nyeri_mam_2026",
+    "title": "Nyeri County outlook for long rains, March-April-May 2026 (Ref MET/NYERI/2/SEASONAL/10-2-2026)",
+    "publisher": "Kenya Meteorological Department, County Meteorological Services Office, Nyeri",
+    "year": 2026,
+    "url": "https://meteo.go.ke/documents/2607/Nyeri_County_MAM_2026_Seasonal_forecast.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "Cross-check for one season only (a forecast, not a climatology): onset 2nd to 3rd week of March, cessation 3rd to 4th week of May 2026"
+  }
+]

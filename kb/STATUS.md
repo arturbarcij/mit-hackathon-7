@@ -30,7 +30,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | C1 | answers.json + rules.json | content-voice | Sat 23:00 | done | 30 cards, 13 rules, season.json copied. PR #2 engine: 107 tests pass with this content. Check with `python3 app/backend/scripts/validate_content.py`. 2-of-10 rust trigger is an assumption, officer to confirm |
 | C2 | Swahili + Kikuyu translations | content-voice | Sat 23:30 | doing | text done: Swahili all 30, Kikuyu 8 core cards, machine-drafted. Needs L3 native review via `kb/content/ANSWERS_REVIEW.md`. Audio (C3) not started, needs L2 |
 | C3 | Audio rendered (ElevenLabs, MMS) | content-voice | Sun 00:30 | todo | needs L2 |
-| D1 | Doc skeletons | docs | Sat 22:30 | doing | cloud sub-agent, branch `cursor/wave1-research-engine-82ab`; also first drafts of DATA_CARD and RESPONSIBLE_AI |
+| D1 | Doc skeletons | docs | Sat 22:30 | done | all 7 docs in `app/docs/`, `app/src/content/sources.json`, `app/LICENSE` (MIT). DATA_CARD and RESPONSIBLE_AI are full drafts; EVALUATION waits on ml |
 | D2 | DATA_CARD, RESPONSIBLE_AI, LANGUAGES, REPLICATION | docs | Sun 10:30 | todo | needs R1, R3, M5 |
 | D3 | README final | docs | Sun 11:00 | todo | |
 | V1 | Three videos recorded and checked | Arthur (pitch later) | Sun 12:45 | todo | |
@@ -50,6 +50,8 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 - **research to pitch and docs (R1):** problem statement extension figure: KASEP 2023 says the ratio "has not improved" and targets 1:600 by 2029; quote with "1 officer per 1,093 farm households vs FAO-recommended 1:400" (Odongo 2013/14, secondary, older). Not the Kilimo Trust X post. Check GSMA smartphone chart values by eye before using on screen.
 - **research to geo (R1):** 3.0 kg cherry per tree confirmed but secondary and 2013/14; 1,300 trees per ha applies to traditional varieties only (Ruiru 11 is 2,500 to 3,300). Add that caveat in `kb/geo/REPORT.md`.
 - **content-voice to engine (C1):** engine decide tests only use 0 or 3 unsure leaves and no `pre_long_rains` date. Add a test date in late February and unsure counts 1 and 2 so the real rules are exercised. Healthy plus 1 or 2 unsure leaves deliberately returns `ask_officer`, not `healthy_all`.
+- **docs to engine (D1 review of PR #2 against Section 8), pass/fail gate risk, please fix before freeze:** (1) check results are saved on the phone even without main consent; either gate saving on consent or change the consent card wording with content-voice. (2) `sync.ts` photo upload expects public URLs; photos must stay private to the officer (signed URLs or private bucket). (3) PIN falls back to a weak hash on plain HTTP; acceptable on HTTPS only, say so in RESPONSIBLE_AI.md. (4) No separate OOD score: abstention relies on the `not_leaf` class plus threshold; docs now say so, add an OOD score only if ml has time. (5) Silent mock fallback when the model is missing: ui must show the mock badge.
+- **docs to ui:** missing Kikuyu clips silently fall back to Swahili; show a small "Swahili" label when that happens.
 - **lead to master prompt:** Section 6.1 JMuBEN row is wrong (22,591 images are rust, cercospora, phoma only) and the Uganda count is 3,322 files, not 3,312. Fix in the next master prompt edit.
 
 ## Log

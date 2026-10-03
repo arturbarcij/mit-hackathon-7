@@ -1,0 +1,335 @@
+[
+  {
+    "id": "how_to_pick_leaves",
+    "kind": "guidance",
+    "severity": "ok",
+    "text": {
+      "en": "[placeholder] Pick ten leaves from the rows that look worst. Lay them on a plain page."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "how_to_photograph",
+    "kind": "guidance",
+    "severity": "ok",
+    "text": {
+      "en": "[placeholder] Put one leaf on the page in daylight. Take the photo from above."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "retake_blurry",
+    "kind": "guidance",
+    "severity": "watch",
+    "text": {
+      "en": "[placeholder] The photo is blurry. Hold still and try again."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "retake_dark",
+    "kind": "guidance",
+    "severity": "watch",
+    "text": {
+      "en": "[placeholder] The photo is too dark. Move into daylight and try again."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "not_a_leaf",
+    "kind": "guidance",
+    "severity": "ask",
+    "text": {
+      "en": "[placeholder] This does not look like a coffee leaf. Try again with a coffee leaf."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "healthy_all",
+    "kind": "result",
+    "severity": "ok",
+    "text": {
+      "en": "[placeholder] The leaves look healthy."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null,
+    "not_sure": {
+      "en": "[placeholder] The tool can only read leaves, not berries or roots."
+    }
+  },
+  {
+    "id": "rust_low",
+    "kind": "result",
+    "severity": "watch",
+    "text": {
+      "en": "[placeholder] A few leaves show rust. Watch the rows and check again next week."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null,
+    "not_sure": {
+      "en": "[placeholder] The tool is not sure how far the rust has spread."
+    }
+  },
+  {
+    "id": "rust_high_pre_rains",
+    "kind": "result",
+    "severity": "act",
+    "text": {
+      "en": "[placeholder] Rust is on many leaves and the rains are close. Ask the cooperative about protecting the new leaves."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null,
+    "not_sure": {
+      "en": "[placeholder] The tool does not know the right product or dose."
+    }
+  },
+  {
+    "id": "rust_high_in_rains",
+    "kind": "result",
+    "severity": "act",
+    "text": {
+      "en": "[placeholder] Rust is on many leaves during the rains. Ask the officer what to do."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null,
+    "not_sure": {
+      "en": "[placeholder] The tool does not know the right product or dose."
+    }
+  },
+  {
+    "id": "rust_high_dry",
+    "kind": "result",
+    "severity": "watch",
+    "text": {
+      "en": "[placeholder] Rust is on many leaves in the dry season. Ask the officer before the next rains."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null,
+    "not_sure": {
+      "en": "[placeholder] The tool does not know the right product or dose."
+    }
+  },
+  {
+    "id": "cercospora",
+    "kind": "result",
+    "severity": "watch",
+    "text": {
+      "en": "[placeholder] Some leaves show brown eye spot. Ask the officer about feeding and shade."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null,
+    "not_sure": {
+      "en": "[placeholder] The tool is not sure about the cause."
+    }
+  },
+  {
+    "id": "phoma",
+    "kind": "result",
+    "severity": "watch",
+    "text": {
+      "en": "[placeholder] Some leaves show phoma. Ask the officer what to do."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null,
+    "not_sure": {
+      "en": "[placeholder] The tool is not sure about the cause."
+    }
+  },
+  {
+    "id": "miner",
+    "kind": "result",
+    "severity": "watch",
+    "text": {
+      "en": "[placeholder] Some leaves show leaf miner. Ask the officer what to do."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null,
+    "not_sure": {
+      "en": "[placeholder] The tool is not sure about the cause."
+    }
+  },
+  {
+    "id": "mixed_problems",
+    "kind": "result",
+    "severity": "ask",
+    "text": {
+      "en": "[placeholder] More than one problem is showing. Ask the officer to visit."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null,
+    "not_sure": {
+      "en": "[placeholder] The tool cannot separate mixed problems."
+    }
+  },
+  {
+    "id": "too_many_unsure",
+    "kind": "result",
+    "severity": "ask",
+    "text": {
+      "en": "[placeholder] The tool is not sure about too many leaves. Ask the officer."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null,
+    "not_sure": {
+      "en": "[placeholder] Too many leaves were unclear."
+    }
+  },
+  {
+    "id": "ask_officer",
+    "kind": "result",
+    "severity": "ask",
+    "text": {
+      "en": "[placeholder] The tool is not sure. Ask the officer."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null,
+    "not_sure": {
+      "en": "[placeholder] The tool does not have enough to give an answer."
+    }
+  },
+  {
+    "id": "berries_out_of_scope",
+    "kind": "out_of_scope",
+    "severity": "ask",
+    "text": {
+      "en": "[placeholder] Berry problems are outside what this tool can read. Ask the officer."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "other_crop",
+    "kind": "out_of_scope",
+    "severity": "ask",
+    "text": {
+      "en": "[placeholder] This tool only reads coffee leaves."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "consent_main",
+    "kind": "flow",
+    "severity": "ok",
+    "text": {
+      "en": "[placeholder] Jani keeps your photos and results on this phone. Nothing is sent unless you choose."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "consent_photos",
+    "kind": "flow",
+    "severity": "ok",
+    "text": {
+      "en": "[placeholder] You can also share your photos with the officer. You can say no."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "decision_act",
+    "kind": "flow",
+    "severity": "ok",
+    "text": {
+      "en": "[placeholder] You chose to act."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "decision_wait",
+    "kind": "flow",
+    "severity": "ok",
+    "text": {
+      "en": "[placeholder] You chose to wait."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "decision_ask",
+    "kind": "flow",
+    "severity": "ok",
+    "text": {
+      "en": "[placeholder] You chose to ask the officer."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "referral_ready",
+    "kind": "flow",
+    "severity": "ok",
+    "text": {
+      "en": "[placeholder] Your message is ready. Press send on your phone."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  },
+  {
+    "id": "language_name",
+    "kind": "flow",
+    "severity": "ok",
+    "text": {
+      "en": "[placeholder] English"
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": {},
+    "reviewed_by": null
+  }
+]

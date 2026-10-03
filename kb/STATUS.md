@@ -16,10 +16,10 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | R3 | Dataset facts and licences | research | Sat 23:00 | done | `kb/research/DATASETS.md`. JMuBEN has no healthy or miner (those are in JMuBEN2). MMS-TTS Kikuyu and NLLB are CC BY-NC 4.0 |
 | R4 | season.json | research | Sat 23:30 | done | `kb/research/season.json` (engine placeholder shape), method in `SEASON.md`. Pre-rains = 4 weeks before onset (assumption). content-voice / engine: copy to `app/src/content/season.json` |
 | M1 | Data download, manifest, dedupe, splits | ml | Sat 22:30 | done | 6 datasets, rotation-aware dedupe (992 groups; 216 Uganda phoma images were JMuBEN copies, excluded). `app/ml/manifest.csv`. not_leaf is thin (407 PlantDoc images) |
-| M2 | Train v1 | ml | Sun 00:30 | doing | v1 (epoch 3) committed as provisional in `app/public/model/`: in-domain test 0.974, **Uganda 0.180, RoCoLe 0.0** (99% called not_leaf). Shortcut learning, see Decision 16. v2 training on cloud VM, tmux `ml-v2`, ETA about 03:30 CEST |
-| M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | doing | cloud sub-agent writing `calibrate.py`, tested on smoke checkpoint; runs on v1 when M2 finishes |
-| M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | doing | cloud sub-agent writing `export.py` to the engine contract |
-| M5 | EVALUATION.md | ml | Sun 02:00 | doing | cloud sub-agent writing `evaluate.py` (in-domain, Uganda, RoCoLe, coverage curve) |
+| M2 | Train v1 | ml | Sun 00:30 | done | v2 shipped in `app/public/model/` (v2-2026-10-04, 1.64 MB). Uganda test (same farms as uganda_train, not cross-country): acc 0.838, F1 0.866, abstains 54.7%, accepted accuracy 98.7%. RoCoLe: abstains 97.8%, rust recall 0.03 (safe, not useful). v1 was Uganda 0.17, RoCoLe 0.0 |
+| M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | done | v2: temperature 0.971, threshold 0.985 (95% accepted accuracy on Uganda calib at 46% coverage). Blank pages accepted as a disease: 2 of 300 (v1: 125) |
+| M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | doing | `export.py` works: 1.64 MB weight-only int8, 10 parity samples, engine preprocessing matched within 3e-7 in Node. v2 parity samples regenerated. Browser e2e parity not run yet (engine: copy `app/public/model/*` and `app/ml/parity_samples/` to the engine branch, then `npm run test:e2e`) |
+| M5 | EVALUATION.md | ml | Sun 02:00 | doing | `evaluate.py` works, v1 metrics in `app/ml/metrics.json`. EVALUATION.md waits for v2 |
 | E1 | Engine with mock model + hooks | engine | Sat 23:30 | todo | needs L1 |
 | E2 | PWA offline caching | engine | Sun 00:30 | todo | |
 | E3 | Real model integrated, parity in browser | engine | Sun 08:30 | todo | needs M4 |

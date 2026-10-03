@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "jani-leaf-model-card.schema.json",
+  "title": "Jani leaf model card",
+  "description": "Expected shape of app/public/model/model.json. export.py writes that file only after a real checkpoint has been exported and quantised. This schema is not a trained model and it does not claim metrics.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "labels", "input", "temperature", "threshold", "sha256", "bytes"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^v[0-9]+-[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "examples": ["v1-2026-10-04"]
+    },
+    "labels": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {"type": "string"},
+      "const": ["healthy", "rust", "cercospora", "phoma", "miner", "not_leaf"]
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["size", "resize", "mean", "std", "layout", "range"],
+      "properties": {
+        "size": {"type": "integer", "const": 224},
+        "resize": {"type": "string", "const": "shorter_side_then_center_crop"},
+        "mean": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {"type": "number"},
+          "const": [0.485, 0.456, 0.406]
+        },
+        "std": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {"type": "number"},
+          "const": [0.229, 0.224, 0.225]
+        },
+        "layout": {"type": "string", "const": "NCHW"},
+        "range": {"type": "string", "const": "0-1"}
+      }
+    },
+    "temperature": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 100,
+      "description": "Fitted on the validation split. Not a placeholder."
+    },
+    "threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence cut fitted so accepted validation accuracy is at least 0.95 when that cut exists."
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 of the quantised leaf.onnx bytes."
+    },
+    "bytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5242880,
+      "description": "Size of leaf.onnx. Hard cap is 5 MiB (5242880 bytes)."
+    }
+  }
+}

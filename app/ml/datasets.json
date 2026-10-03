@@ -1,0 +1,176 @@
+{
+  "note": "Facts copied from kb/research/DATASETS.md (accessed 3 Oct 2026). images_counted is null when that file did not count images. Stated figures are the record's own text and are not relabelled as counts.",
+  "datasets": [
+    {
+      "name": "JMuBEN",
+      "role": "train",
+      "licence": "CC BY 4.0",
+      "url": "https://data.mendeley.com/datasets/t2r6rszp5c/1",
+      "doi": "10.17632/t2r6rszp5c.1",
+      "classes": ["rust", "cercospora", "phoma"],
+      "images_counted": 22588,
+      "images_stated": 22591,
+      "bytes": 549107532,
+      "files": [
+        {
+          "filename": "cercospora.zip",
+          "url": "https://data.mendeley.com/public-files/datasets/t2r6rszp5c/files/8657d2a2-c9a1-4733-9dbc-00c83aa3575a/file_downloaded",
+          "bytes": 252204134,
+          "images_counted": 7681,
+          "folder": "Cerscospora",
+          "extension_note": "7681 .jpg"
+        },
+        {
+          "filename": "leaf_rust.zip",
+          "url": "https://data.mendeley.com/public-files/datasets/t2r6rszp5c/files/8c7c2915-f979-43f6-b3fd-b3bc7407da87/file_downloaded",
+          "bytes": 69450673,
+          "images_counted": 8336,
+          "folder": "Leaf rust",
+          "extension_note": "8192 .jpg + 144 .jpeg"
+        },
+        {
+          "filename": "phoma.zip",
+          "url": "https://data.mendeley.com/public-files/datasets/t2r6rszp5c/files/82625dd3-e908-4224-93b5-06a3b74f0c8a/file_downloaded",
+          "bytes": 227452725,
+          "images_counted": 6571,
+          "folder": "Phoma",
+          "extension_note": "6571 .jpg"
+        }
+      ]
+    },
+    {
+      "name": "JMuBEN2",
+      "role": "train",
+      "licence": "CC BY 4.0",
+      "url": "https://data.mendeley.com/datasets/tgv3zb82nd/1",
+      "doi": "10.17632/tgv3zb82nd.1",
+      "classes": ["healthy", "miner"],
+      "images_counted": 35962,
+      "bytes": 1291694151,
+      "files": [
+        {
+          "filename": "healthy.zip",
+          "url": "https://data.mendeley.com/public-files/datasets/tgv3zb82nd/files/d126777d-c495-4b7a-846a-c0228540ea10/file_downloaded",
+          "bytes": 566927674,
+          "images_counted": 18984,
+          "folder": "Healthy"
+        },
+        {
+          "filename": "miner.zip",
+          "url": "https://data.mendeley.com/public-files/datasets/tgv3zb82nd/files/f6d37632-6349-4be9-9af0-c3177dbfaa8a/file_downloaded",
+          "bytes": 724766477,
+          "images_counted": 16978,
+          "folder": "Miner"
+        }
+      ]
+    },
+    {
+      "name": "BRACOL",
+      "role": "train",
+      "licence": "CC BY 4.0",
+      "url": "https://data.mendeley.com/datasets/yy2k5y8mxg/1",
+      "doi": "10.17632/yy2k5y8mxg.1",
+      "classes": ["healthy", "miner", "rust", "brown leaf spot", "cercospora leaf spot"],
+      "images_counted": null,
+      "images_stated_leaf": 1747,
+      "images_stated_symptom": 2147,
+      "bytes": 164516964,
+      "note": "Inner zip was not counted (remotezip failed). Leaf and symptom figures are stated by the record. No phoma class.",
+      "files": [
+        {
+          "filename": "BRACOL_coffee_leaf_ images_datasets.zip",
+          "url": "https://data.mendeley.com/public-files/datasets/yy2k5y8mxg/files/c16b08ee-3ca6-4bf0-8f4e-4285a53a4a24/file_downloaded",
+          "bytes": 164516964,
+          "images_counted": null
+        }
+      ]
+    },
+    {
+      "name": "Uganda",
+      "role": "held-out",
+      "licence": "CC BY 4.0",
+      "url": "https://data.mendeley.com/datasets/k36wnd6knb/1",
+      "api": "https://data.mendeley.com/public-api/datasets/k36wnd6knb",
+      "download": "api",
+      "doi": "10.17632/k36wnd6knb.1",
+      "classes": ["healthy", "rust", "phoma"],
+      "images_counted": 3322,
+      "images_stated": 3312,
+      "bytes": 25409168,
+      "class_counts_stated": {"healthy": 1179, "clr": 1023, "phoma": 1110},
+      "prefix_counts_counted": {"1_": 1179, "1200_": 1033, "2300_": 1110},
+      "prefix_to_class": "not stated in the record"
+    },
+    {
+      "name": "RoCoLe",
+      "role": "held-out",
+      "licence": "CC BY 4.0",
+      "url": "https://data.mendeley.com/datasets/c5yvn32dzg/2",
+      "api": "https://data.mendeley.com/public-api/datasets/c5yvn32dzg",
+      "download": "api",
+      "doi": "10.17632/c5yvn32dzg.2",
+      "classes": ["healthy", "rust", "red spider mite"],
+      "images_counted": 1560,
+      "api_entries": 1565,
+      "bytes": 2270913636,
+      "skip_files": ["RoCoLe-voc.tar.gz"],
+      "note": "1560 jpg counted. Four images per plant (390 plants). Skip the VOC archive (697591506 bytes). Labels are in RoCoLe-classes.xlsx (39437 bytes) and RoCoLE-csv.csv (2220101 bytes)."
+    },
+    {
+      "name": "PlantDoc",
+      "role": "negatives",
+      "licence": "CC BY 4.0",
+      "url": "https://github.com/pratikkayal/PlantDoc-Dataset",
+      "download": "git",
+      "classes": ["not_leaf"],
+      "images_counted": null,
+      "repo_size_kb_stated": 955318,
+      "class_folder_count_stated": {"train": 28, "test": 27},
+      "source_crops_stated": [
+        "apple",
+        "bell pepper",
+        "blueberry",
+        "cherry",
+        "corn",
+        "peach",
+        "potato",
+        "raspberry",
+        "soybean",
+        "squash",
+        "strawberry",
+        "tomato",
+        "grape"
+      ],
+      "note": "No coffee class. Image counts were not checked. Repo size includes git history; the download script clones with depth 1."
+    },
+    {
+      "name": "CoLeaf-DB",
+      "role": "future",
+      "licence": "CC BY 4.0",
+      "url": "https://data.mendeley.com/datasets/brfgw46wzb/2",
+      "api": "https://data.mendeley.com/public-api/datasets/brfgw46wzb",
+      "download": "api",
+      "doi": "10.17632/brfgw46wzb.2",
+      "classes": ["boron", "iron", "potassium", "calcium", "magnesium", "manganese", "nitrogen", "others", "healthy"],
+      "images_counted": null,
+      "images_stated": 1006,
+      "healthy_images_counted": 6,
+      "bytes": 2061021043,
+      "healthy_zip_bytes": 11178182,
+      "healthy_zip_url": "https://data.mendeley.com/public-files/datasets/brfgw46wzb/files/b220d2f4-8c02-429a-96c1-059923c1fd90/file_downloaded",
+      "zip_bytes": {
+        "boron": 186714966,
+        "calcium": 321785132,
+        "healthy": 11178182,
+        "iron": 137875321,
+        "magnesium": 184900756,
+        "manganese": 206554169,
+        "more-deficiencies": 252725783,
+        "nitrogen": 155553075,
+        "phosphorus": 388135476,
+        "potassium": 215598183
+      },
+      "note": "Nutrient deficiency extension. Not used to train the six-class leaf model. Skipped unless --include-future is passed. Other zip URLs are not listed here because DATASETS.md only published the healthy file URL."
+    }
+  ]
+}

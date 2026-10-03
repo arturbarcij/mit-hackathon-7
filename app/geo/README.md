@@ -18,8 +18,19 @@ pip install -r requirements.txt
 | 2 | `fetch_rain.py` | `cache/power_daily.json` (git-ignored), `data/rainfall.json` |
 | 3 | `make_plots.py` | `data/registry.geojson`, `data/truth.json` (synthetic) |
 | 4 | `outliers.py` | `public/geo/plots.geojson`, `public/geo/outliers.json`, `public/geo/ndvi_change.png`, `data/eval.json` |
+| 5 | `validate.py` | Checks the outputs against `kb/geo/CONTRACT.md` (run by `run.sh`) |
+
+Optional: `sweep.py` scores the model over 30 seeds (`data/sweep.json`); `preview.py` draws `kb/geo/preview.png`.
 
 Steps 3 and 4 are deterministic (fixed seed) and run offline once the cache exists.
+
+Checks and review (offline):
+
+| Script | What |
+|---|---|
+| `validate.py` | Checks outputs against `kb/geo/CONTRACT.md`; exits 1 on failure. Run by `run.sh`. |
+| `sweep.py` | Rebuilds the synthetic registry for 30 seeds and scores the model: `data/sweep.json`. |
+| `preview.py` | Static map for review: `kb/geo/preview.png`. |
 
 ## Data
 
@@ -33,7 +44,8 @@ Steps 3 and 4 are deterministic (fixed seed) and run offline once the cache exis
 Robust z-scores, no machine learning. For each plot:
 
 - Delivery score: log of this season's kg cherry per registered tree over the median of its prior seasons, scored against the cooperative median and MAD.
-- Canopy score: plot median NDVI this dry season minus the median of prior dry seasons, scored the same way.
+- Canopy score: plot median NDVI this dry season minus the median of prior dry seasons, minus the median of that change over the 12 nearest plots, scored against the spread of those residuals.
+- A moderate delivery drop (z -2) counts when the canopy loss is strong (z -3); otherwise the delivery threshold is z -3.
 
 Peer-relative scores cancel area-wide effects such as a dry year. Reason codes, abstention rules and the output format are in `kb/geo/CONTRACT.md`. Results and limits are in `kb/geo/REPORT.md`.
 

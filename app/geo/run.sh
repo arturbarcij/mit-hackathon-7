@@ -6,3 +6,5 @@ python3 fetch_ndvi.py   # Sentinel-2 dry-season NDVI composites -> cache/
 python3 fetch_rain.py   # NASA POWER rainfall -> data/rainfall.json
 python3 make_plots.py   # synthetic registry and planted scenarios -> data/
 python3 outliers.py     # robust-z model -> ../public/geo/
+python3 validate.py    # contract check
+python3 validate.py     # check outputs against kb/geo/CONTRACT.md

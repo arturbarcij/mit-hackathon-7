@@ -15,7 +15,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | R2 | Agronomy guidance | research | Sat 23:00 | doing | cloud sub-agent, same branch |
 | R3 | Dataset facts and licences | research | Sat 23:00 | doing | cloud sub-agent, same branch |
 | R4 | season.json | research | Sat 23:30 | doing | cloud sub-agent, same branch |
-| M1 | Data download, manifest, dedupe, splits | ml | Sat 22:30 | todo | needs R3 (can start from ml.md list) |
+| M1 | Data download, manifest, dedupe, splits | ml | Sat 22:30 | doing | cloud sub-agent, branch `cursor/wave1-research-engine-82ab`; also a CPU v1 training run as fallback for M2 |
 | M2 | Train v1 | ml | Sun 00:30 | todo | |
 | M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | todo | |
 | M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | todo | |

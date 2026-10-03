@@ -76,7 +76,13 @@ async function loadReal(): Promise<Loaded> {
   }
 
   const ort = await import('onnxruntime-web/wasm');
-  ort.env.wasm.wasmPaths = `${base()}ort/`;
+  // Absolute URLs on purpose: the Vite dev server appends "?import" to dynamic imports that start with "/",
+  // which breaks the runtime's own import of the glue file from public/.
+  const ortBase = new URL(`${base()}ort/`, globalThis.location?.href ?? 'http://localhost/').href;
+  ort.env.wasm.wasmPaths = {
+    mjs: `${ortBase}ort-wasm-simd-threaded.mjs`,
+    wasm: `${ortBase}ort-wasm-simd-threaded.wasm`,
+  };
   ort.env.wasm.numThreads = 1;
   ort.env.wasm.proxy = false;
   const session = await ort.InferenceSession.create(new Uint8Array(bytes), {

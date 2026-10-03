@@ -8,7 +8,7 @@
     "threshold": 0.9853873628681449,
     "arch": "mobilenetv3_small_100"
   },
-  "command": "python app/ml/evaluate.py --manifest app/ml/manifest_v2.csv --sets in_domain_test heldout_uganda_test heldout_rocole rocole_red_spider_mite synthetic_blank_pages",
+  "command": "python app/ml/evaluate.py --model-dir app/ml/runs/v2-cpu-20261003-2317/model --calibration app/ml/runs/v2-cpu-20261003-2317/calibration.json --export-report app/ml/runs/v2-cpu-20261003-2317/export_report.json --manifest app/ml/manifest_v2.csv --sets in_domain_test heldout_uganda_test heldout_rocole rocole_red_spider_mite synthetic_blank_pages --out app/ml/runs/v2-cpu-20261003-2317/eval_v2/metrics.json --fig-dir app/ml/runs/v2-cpu-20261003-2317/eval_v2/figures",
   "inference": "int8 ONNX via onnxruntime CPU, 1 thread, engine preprocessing; no quality gate applied",
   "sample_cap_per_class": null,
   "test_sets": {
@@ -834,11 +834,11 @@
     "runs": 200,
     "threads": 1,
     "inference_ms": {
-      "mean": 4.356638419967567,
-      "median": 4.342084500422061,
-      "p90": 4.435219300466997
+      "mean": 4.42322495994631,
+      "median": 4.407630999594403,
+      "p90": 4.496448499776307
     },
-    "decode_and_preprocess_ms_median": 26.373623000836233,
+    "decode_and_preprocess_ms_median": 25.90750699982891,
     "sample_image_size": [
       1600,
       800
@@ -847,7 +847,7 @@
       "platform": "Linux-6.12.94+-x86_64-with-glibc2.39",
       "processor": "x86_64",
       "cpu_count": 4,
-      "loadavg_1m_at_start": 0.96630859375
+      "loadavg_1m_at_start": 1.09521484375
     },
     "note": "onnxruntime CPU in Python, not onnxruntime-web on a phone; inference only unless stated",
     "sample_source": "BRACOL test photo"

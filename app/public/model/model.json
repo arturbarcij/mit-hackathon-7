@@ -1,5 +1,5 @@
 {
-  "version": "v1-provisional-e3-2026-10-04",
+  "version": "v2-2026-10-04",
   "labels": [
     "healthy",
     "rust",
@@ -24,9 +24,9 @@
     "layout": "NCHW",
     "range": "0-1"
   },
-  "temperature": 1.2414171130003073,
-  "threshold": 0.29790427289834387,
-  "sha256": "cc6b114a19f4673cd34cfcffd43f0b45fb323a96bc92ff3fed9bfb8a97b8cb4f",
+  "temperature": 0.9710367855854688,
+  "threshold": 0.9853873628681449,
+  "sha256": "ba7e11cb9611166b51b0e7efbdd07f720b0863bccb2d3c8c88e1bbd9ad703b9c",
   "bytes": 1642557,
   "arch": "mobilenetv3_small_100",
   "quantisation": "int8 weight-only QDQ",

@@ -1,151 +1,151 @@
 {
   "00_healthy.jpg": {
-    "label": "healthy",
+    "label": "unsure",
     "top": "healthy",
-    "confidence": 0.7286976644427058,
-    "abstained": false,
+    "confidence": 0.9263709895206291,
+    "abstained": true,
     "probs": {
-      "healthy": 0.7286976644427058,
-      "rust": 0.02537942993075346,
-      "cercospora": 0.06879870940785,
-      "phoma": 0.10466742000393627,
-      "miner": 0.07149164133272232,
-      "not_leaf": 0.0009651348820320827
+      "healthy": 0.9263709895206291,
+      "rust": 0.00970355985615371,
+      "cercospora": 0.009543774311265579,
+      "phoma": 0.011041211771137692,
+      "miner": 0.04164137417739711,
+      "not_leaf": 0.0016990903634168473
     },
     "true_label": "healthy"
   },
   "01_rust.jpg": {
-    "label": "rust",
+    "label": "unsure",
     "top": "rust",
-    "confidence": 0.9906669574506575,
-    "abstained": false,
+    "confidence": 0.8039711860821472,
+    "abstained": true,
     "probs": {
-      "healthy": 6.895750477205853e-06,
-      "rust": 0.9906669574506575,
-      "cercospora": 0.007237410388217922,
-      "phoma": 7.03923052350359e-05,
-      "miner": 0.0018143845643544178,
-      "not_leaf": 0.00020395954105819746
+      "healthy": 0.00032003478188613686,
+      "rust": 0.8039711860821472,
+      "cercospora": 0.1149732358611657,
+      "phoma": 0.006841187390084979,
+      "miner": 0.07063890337401109,
+      "not_leaf": 0.0032554525107050102
     },
     "true_label": "rust"
   },
   "02_rust.jpg": {
-    "label": "rust",
+    "label": "unsure",
     "top": "rust",
-    "confidence": 0.9969730193198295,
-    "abstained": false,
+    "confidence": 0.9771851536422904,
+    "abstained": true,
     "probs": {
-      "healthy": 9.576242497800917e-06,
-      "rust": 0.9969730193198295,
-      "cercospora": 0.002425039085464109,
-      "phoma": 1.2078967983977543e-05,
-      "miner": 0.000294040146629604,
-      "not_leaf": 0.00028624623759507397
+      "healthy": 0.0009152353552621064,
+      "rust": 0.9771851536422904,
+      "cercospora": 0.016859304875955237,
+      "phoma": 0.0007831516456930697,
+      "miner": 0.001997799918445945,
+      "not_leaf": 0.0022593545623533977
     },
     "true_label": "rust"
   },
   "03_cercospora.jpg": {
-    "label": "cercospora",
-    "top": "cercospora",
-    "confidence": 0.41370558691029197,
-    "abstained": false,
+    "label": "unsure",
+    "top": "phoma",
+    "confidence": 0.6523308479437351,
+    "abstained": true,
     "probs": {
-      "healthy": 0.01200801553446056,
-      "rust": 0.2745254253493253,
-      "cercospora": 0.41370558691029197,
-      "phoma": 0.2578597391309097,
-      "miner": 0.036024975834551914,
-      "not_leaf": 0.0058762572404605015
+      "healthy": 0.04184996969342124,
+      "rust": 0.02023722513848979,
+      "cercospora": 0.19589466076910272,
+      "phoma": 0.6523308479437351,
+      "miner": 0.0862190394084328,
+      "not_leaf": 0.0034682570468183736
     },
     "true_label": "cercospora"
   },
   "04_cercospora.jpg": {
-    "label": "rust",
+    "label": "unsure",
     "top": "rust",
-    "confidence": 0.989059450879037,
-    "abstained": false,
+    "confidence": 0.6888474866620196,
+    "abstained": true,
     "probs": {
-      "healthy": 5.225531997548576e-06,
-      "rust": 0.989059450879037,
-      "cercospora": 0.006337027876693248,
-      "phoma": 0.0004470050783611668,
-      "miner": 0.0032304859706397964,
-      "not_leaf": 0.0009208046632714063
+      "healthy": 0.005954827021557585,
+      "rust": 0.6888474866620196,
+      "cercospora": 0.14204399439080898,
+      "phoma": 0.05714628239920318,
+      "miner": 0.08008353066679574,
+      "not_leaf": 0.02592387885961506
     },
     "true_label": "cercospora"
   },
   "05_phoma.jpg": {
     "label": "phoma",
     "top": "phoma",
-    "confidence": 0.999835539073381,
+    "confidence": 0.9990224895882102,
     "abstained": false,
     "probs": {
-      "healthy": 3.9028306657829426e-05,
-      "rust": 1.4227044337516416e-06,
-      "cercospora": 2.3508740385351324e-05,
-      "phoma": 0.999835539073381,
-      "miner": 2.1651343195028313e-06,
-      "not_leaf": 9.83360408224882e-05
+      "healthy": 0.0009252933144296549,
+      "rust": 2.9206522250988755e-06,
+      "cercospora": 1.3326745315477229e-05,
+      "phoma": 0.9990224895882102,
+      "miner": 1.382353932988446e-06,
+      "not_leaf": 3.458734588655279e-05
     },
     "true_label": "phoma"
   },
   "06_phoma.jpg": {
-    "label": "phoma",
+    "label": "unsure",
     "top": "phoma",
-    "confidence": 0.9746378026327648,
-    "abstained": false,
+    "confidence": 0.9541943390230889,
+    "abstained": true,
     "probs": {
-      "healthy": 0.0022710525677605404,
-      "rust": 0.002725722868058276,
-      "cercospora": 0.01130416192909882,
-      "phoma": 0.9746378026327648,
-      "miner": 0.00838952751678425,
-      "not_leaf": 0.0006717324855332288
+      "healthy": 0.031774159681083616,
+      "rust": 0.003141082741733358,
+      "cercospora": 0.004001394284293874,
+      "phoma": 0.9541943390230889,
+      "miner": 0.0037497237199151188,
+      "not_leaf": 0.0031393005498851437
     },
     "true_label": "phoma"
   },
   "07_miner.jpg": {
-    "label": "miner",
+    "label": "unsure",
     "top": "miner",
-    "confidence": 0.3338712352607348,
-    "abstained": false,
+    "confidence": 0.6453895275876259,
+    "abstained": true,
     "probs": {
-      "healthy": 0.005508715983226885,
-      "rust": 0.22799602301393834,
-      "cercospora": 0.30675642010271775,
-      "phoma": 0.12173635726984831,
-      "miner": 0.3338712352607348,
-      "not_leaf": 0.004131248369534051
+      "healthy": 0.00798544770479286,
+      "rust": 0.014035814893877426,
+      "cercospora": 0.06360994549395092,
+      "phoma": 0.2501085984016497,
+      "miner": 0.6453895275876259,
+      "not_leaf": 0.01887066591810315
     },
     "true_label": "miner"
   },
   "08_miner.jpg": {
-    "label": "rust",
-    "top": "rust",
-    "confidence": 0.5721849809762024,
-    "abstained": false,
+    "label": "unsure",
+    "top": "miner",
+    "confidence": 0.9501459716448999,
+    "abstained": true,
     "probs": {
-      "healthy": 0.0007519104602951767,
-      "rust": 0.5721849809762024,
-      "cercospora": 0.07461290911985982,
-      "phoma": 0.1086586177453768,
-      "miner": 0.2384223058786632,
-      "not_leaf": 0.005369275819602606
+      "healthy": 0.00033791867360852013,
+      "rust": 0.009087297445461804,
+      "cercospora": 0.021905934985667338,
+      "phoma": 0.014959968392382388,
+      "miner": 0.9501459716448999,
+      "not_leaf": 0.0035629088579799714
     },
     "true_label": "miner"
   },
   "09_not_leaf.jpg": {
-    "label": "not_leaf",
+    "label": "unsure",
     "top": "not_leaf",
-    "confidence": 1.0,
-    "abstained": false,
+    "confidence": 0.5931173434011601,
+    "abstained": true,
     "probs": {
-      "healthy": 1.950434771028102e-28,
-      "rust": 2.2746454805213032e-26,
-      "cercospora": 9.694457661107226e-25,
-      "phoma": 6.173202394249064e-27,
-      "miner": 1.2125783505996543e-24,
-      "not_leaf": 1.0
+      "healthy": 0.005637462335167913,
+      "rust": 0.006216139388753457,
+      "cercospora": 0.03688214952832555,
+      "phoma": 0.18674069731089218,
+      "miner": 0.17140620803570078,
+      "not_leaf": 0.5931173434011601
     },
     "true_label": "not_leaf"
   }

@@ -2,7 +2,7 @@
   "checkpoint": "app/ml/runs/v2-cpu-20261003-2317/best.pt",
   "arch": "mobilenetv3_small_100",
   "epoch": 1,
-  "command": "python app/ml/export.py --ckpt app/ml/runs/v2-cpu-20261003-2317/best.pt --calibration app/ml/calibration.json --manifest app/ml/manifest_v2.csv --quant auto --version v2-2026-10-04",
+  "command": "python app/ml/export.py --ckpt app/ml/runs/v2-cpu-20261003-2317/best.pt --calibration app/ml/runs/v2-cpu-20261003-2317/calibration.json --manifest app/ml/manifest_v2.csv --quant auto --version v2-2026-10-04 --out-dir app/ml/runs/v2-cpu-20261003-2317/model --parity-dir app/ml/runs/v2-cpu-20261003-2317/parity_samples --report app/ml/runs/v2-cpu-20261003-2317/export_report.json",
   "opset": 17,
   "quantisation": "int8 weight-only QDQ: per-channel symmetric int8 Conv/Gemm weights with DequantizeLinear, float activations",
   "quantisation_method": "weight_only",
@@ -97,7 +97,7 @@
     "threshold_target_val_accuracy": 0.95
   },
   "parity_samples": {
-    "dir": "/workspace/app/ml/parity_samples",
+    "dir": "app/ml/runs/v2-cpu-20261003-2317/parity_samples",
     "n": 10
   }
 }

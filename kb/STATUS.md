@@ -12,7 +12,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | L3 | Find a Swahili speaker to review answers (10 min, Sun morning) | Arthur | Sun 09:00 | todo | |
 | L4 | Android phone for demo (or emulation, stated) | Arthur | Sun 10:00 | todo | |
 | R1 | Problem evidence table | research | Sat 22:30 | doing | cloud sub-agent, branch `cursor/wave1-research-engine-82ab` |
-| R2 | Agronomy guidance | research | Sat 23:00 | doing | cloud sub-agent, same branch |
+| R2 | Agronomy guidance | research | Sat 23:00 | done | `kb/research/GUIDANCE.md`. Copper mid Oct before short rains, repeat after 3 weeks (S1). Only Kenyan threshold: about 20% rust leaves for a curative spray via officer (S2). No published copper trigger; 2 of 10 is an assumption |
 | R3 | Dataset facts and licences | research | Sat 23:00 | done | `kb/research/DATASETS.md`. JMuBEN has no healthy or miner (those are in JMuBEN2). MMS-TTS Kikuyu and NLLB are CC BY-NC 4.0 |
 | R4 | season.json | research | Sat 23:30 | done | `kb/research/season.json` (engine placeholder shape), method in `SEASON.md`. Pre-rains = 4 weeks before onset (assumption). content-voice / engine: copy to `app/src/content/season.json` |
 | M1 | Data download, manifest, dedupe, splits | ml | Sat 22:30 | doing | cloud sub-agent, branch `cursor/wave1-research-engine-82ab`; also a CPU v1 training run as fallback for M2 |
@@ -45,7 +45,9 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | Inference per leaf (4x throttle) | under 1 s | |
 
 ## Requests between agents
-(none yet)
+- **research to ml (R3):** (1) healthy and miner come from JMuBEN2 (Mendeley tgv3zb82nd), not JMuBEN. (2) JMuBEN and JMuBEN2 contain rotated and flipped copies: hash all 8 rotations and flips before grouping near-duplicates. (3) Uganda set has 102 zero-byte files and likely duplicates; drop empties and dedupe before using it as a held-out test. (4) BRACOL "brown leaf spot" is probably phoma but unconfirmed; check folder names before mapping, drop if unclear.
+- **research to docs and content-voice (R3):** `facebook/mms-tts-kik` and NLLB-200 are CC BY-NC 4.0. Do not commit the weights; label Kikuyu audio and text as non-commercial in LANGUAGES.md and DATA_CARD.md. PlantDoc images are web-scraped: do not re-host them in the repo.
+- **lead to master prompt:** Section 6.1 JMuBEN row is wrong (22,591 images are rust, cercospora, phoma only) and the Uganda count is 3,322 files, not 3,312. Fix in the next master prompt edit.
 
 ## Log
 - Sat 21:00: kb set up, six agent briefs written.

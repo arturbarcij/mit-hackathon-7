@@ -11,7 +11,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | L2 | Fill `app/backend/.env` with keys | Arthur | Sat 21:30 | todo | |
 | L3 | Find a Swahili speaker to review answers (10 min, Sun morning) | Arthur | Sun 09:00 | todo | |
 | L4 | Android phone for demo (or emulation, stated) | Arthur | Sun 10:00 | todo | |
-| R1 | Problem evidence table | research | Sat 22:30 | doing | cloud sub-agent, branch `cursor/wave1-research-engine-82ab` |
+| R1 | Problem evidence table | research | Sat 22:30 | done | `kb/research/EVIDENCE.md`, all sources merged in `kb/research/sources.json` (60). Coffee-county coverage and Gikuyu speaker count NOT FOUND. Do not use the Kilimo Trust figure (unverifiable) |
 | R2 | Agronomy guidance | research | Sat 23:00 | done | `kb/research/GUIDANCE.md`. Copper mid Oct before short rains, repeat after 3 weeks (S1). Only Kenyan threshold: about 20% rust leaves for a curative spray via officer (S2). No published copper trigger; 2 of 10 is an assumption |
 | R3 | Dataset facts and licences | research | Sat 23:00 | done | `kb/research/DATASETS.md`. JMuBEN has no healthy or miner (those are in JMuBEN2). MMS-TTS Kikuyu and NLLB are CC BY-NC 4.0 |
 | R4 | season.json | research | Sat 23:30 | done | `kb/research/season.json` (engine placeholder shape), method in `SEASON.md`. Pre-rains = 4 weeks before onset (assumption). content-voice / engine: copy to `app/src/content/season.json` |

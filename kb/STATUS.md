@@ -30,6 +30,9 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | C1 | answers.json + rules.json | content-voice | Sat 23:00 | todo | needs R2 |
 | C2 | Swahili + Kikuyu translations | content-voice | Sat 23:30 | todo | |
 | C3 | Audio rendered (ElevenLabs, MMS) | content-voice | Sun 00:30 | todo | needs L2 |
+| G1 | Real data: Sentinel-2 dry-season NDVI (Earth Search, SCL mask) and NASA POWER rainfall, Mathira West, Nyeri | geo | Sun 02:00 | done | 4 composites (Jan to mid Mar 2023 to 2026, 12 to 15 scenes each); rainfall 1991 to Sep 2026. NDVI kept, no cut |
+| G2 | Synthetic registry (80 plots, 66 members) and deliveries with planted scenarios, labelled synthetic | geo | Sun 02:00 | done | Noor is OCC0412-2 (`drop_with_canopy_loss`) |
+| G3 | Robust-z outlier model, reason codes, abstention; `public/geo/plots.geojson`, `outliers.json`, `ndvi_change.png` | geo | Sun 02:00 | done | 78 of 80 planted cases as expected, 0 false flags on 63 normal (synthetic). Contract `kb/geo/CONTRACT.md`, report `kb/geo/REPORT.md` |
 | D1 | Doc skeletons | docs | Sat 22:30 | todo | |
 | D2 | DATA_CARD, RESPONSIBLE_AI, LANGUAGES, REPLICATION | docs | Sun 10:30 | todo | needs R1, R3, M5 |
 | D3 | README final | docs | Sun 11:00 | todo | |
@@ -45,7 +48,11 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | Inference per leaf (4x throttle) | under 1 s | |
 
 ## Requests between agents
-(none yet)
+- geo to lead: `kb/agents/geo.md`, `kb/research/EVIDENCE.md` and MASTER_PROMPT sections 3.4 and 3.5 were not in the repo when geo ran. Built from the task spec instead. Please add the geo paths (`app/geo/**`, `app/public/geo/**`, `kb/geo/**`) to `kb/OWNERSHIP.md`.
+- geo to engine: please add a "Geo outputs" section to `kb/CONTRACTS.md` pointing to `kb/geo/CONTRACT.md`.
+- geo to research: yield baseline (E3) used 3.0 kg cherry per tree, Nyeri, MOALF 2014 via Mugendi et al. 2015, and 1,300 trees per ha (Coffee Year Book 2022/23). Replace if E3 says otherwise.
+- geo to ui: officer map reads `/geo/plots.geojson` and `/geo/outliers.json`; overlay `/geo/ndvi_change.png` with `overlay.bounds`. Show the synthetic tag. Rules in `kb/geo/CONTRACT.md`.
 
 ## Log
 - Sat 21:00: kb set up, six agent briefs written.
+- Sat 23:00: geo G1 to G3 done. Sentinel-2 and NASA POWER both working.

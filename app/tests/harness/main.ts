@@ -67,7 +67,24 @@ function mountProbe() {
   createRoot(host).render(createElement(Probe));
 }
 
+/** Applies a synthetic degradation to a real photo and returns the quality numbers the engine sees. */
+async function qualityOf(file: File, opts: { blurPx?: number; brightness?: number; maxSide?: number } = {}) {
+  const bmp = await engine.bitmapFromFile(file, opts.maxSide ?? 1600);
+  let target: ImageBitmap = bmp;
+  if (opts.blurPx || opts.brightness) {
+    const c = document.createElement('canvas');
+    c.width = bmp.width;
+    c.height = bmp.height;
+    const ctx = c.getContext('2d')!;
+    ctx.filter = `${opts.blurPx ? `blur(${opts.blurPx}px)` : ''} ${opts.brightness ? `brightness(${opts.brightness})` : ''}`.trim();
+    ctx.drawImage(bmp, 0, 0);
+    target = await createImageBitmap(c);
+  }
+  return { width: bmp.width, height: bmp.height, ...engine.checkQuality(target) };
+}
+
 (window as unknown as { __jani: unknown }).__jani = {
+  qualityOf,
   mountProbe,
   cropBytes,
   engine,

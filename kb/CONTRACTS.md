@@ -102,7 +102,7 @@ Example: `JANI1 M:OCC0412 P:2 D:20261004 N:10 R:6 C:0 H:0 L:1 U:1 A:rust_high_pr
 `JANI1` is the format version. Member ID is the cooperative membership number (the existing registry). No names.
 
 ## QualityResult details
-`brightness` is the mean luma (0 to 255) of a 256 px copy. `blur` is a sharpness score, higher is sharper: Laplacian variance divided by brightness squared (exposure independent). Typical sharp leaf on a sheet is about 0.005; below 0.0012 the photo is rejected as `blurry`. Show the numbers only in debug views.
+`brightness` is the mean luma (0 to 255) of a 256 px copy; below 45 the photo is rejected as `dark`. `blur` is a blur extent from 0 (sharp) to 1 (blurry), higher is blurrier (re-blur method of Crete et al. 2007); above 0.6 the photo is rejected as `blurry`. Exposure independent. Tuned on real BRACOL and Uganda photos. Show the numbers only in debug views.
 
 ## PlotSummary details
 `dominant` is the most common problem label (ties: rust, cercospora, phoma, miner). It is `not_leaf` only when at least half of the photos are not leaves, `healthy` when no leaf has a problem but at least one is healthy, and `none` otherwise. Leaves the model is unsure about, or whose photo failed the quality gate, count in `uncertain` and never in a class. `affected` counts rust, cercospora, phoma and miner leaves.

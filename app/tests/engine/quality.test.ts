@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { assessQuality, BLUR_MIN, BRIGHTNESS_MIN, laplacianVariance, lumaFromRgba } from '../../src/engine/quality';
+import { assessQuality, blurExtent, BLUR_MAX, BRIGHTNESS_MIN, lumaFromRgba } from '../../src/engine/quality';
 
 function noise(w: number, h: number, level = 128, amp = 100): Float32Array {
   const g = new Float32Array(w * h);
@@ -66,8 +66,7 @@ describe('quality gate', () => {
     }
     const dimSharp = assessQuality(leafOnSheet(W, H, 0.35), W, H, 4000, 3000);
     const brightSharp = assessQuality(leafOnSheet(W, H, 1), W, H, 4000, 3000);
-    expect(dimSharp.blur / brightSharp.blur).toBeGreaterThan(0.8);
-    expect(dimSharp.blur / brightSharp.blur).toBeLessThan(1.25);
+    expect(Math.abs(dimSharp.blur - brightSharp.blur)).toBeLessThan(0.02);
   });
 
   it('still rejects a blurred leaf on a sheet', () => {
@@ -79,11 +78,11 @@ describe('quality gate', () => {
   it('accepts a sharp, well lit image', () => {
     const q = assessQuality(noise(W, H), W, H, 3000, 2250);
     expect(q.ok).toBe(true);
-    expect(q.blur).toBeGreaterThan(BLUR_MIN);
+    expect(q.blur).toBeLessThan(BLUR_MAX);
   });
 
   it('rejects a blurred image', () => {
-    const q = assessQuality(boxBlur(noise(W, H), W, H, 3), W, H, 3000, 2250);
+    const q = assessQuality(boxBlur(noise(W, H), W, H, 8), W, H, 3000, 2250);
     expect(q.ok).toBe(false);
     expect(q.reason).toBe('blurry');
   });
@@ -101,8 +100,27 @@ describe('quality gate', () => {
     expect(q.reason).toBe('too_small');
   });
 
-  it('measures a flat image as zero blur', () => {
-    expect(laplacianVariance(new Float32Array(W * H).fill(100), W, H)).toBe(0);
+  it('measures a flat image as fully blurred and tiny buffers as blurred', () => {
+    expect(blurExtent(new Float32Array(W * H).fill(100), W, H)).toBe(1);
+    expect(blurExtent(new Float32Array(4), 2, 2)).toBe(1);
+  });
+
+  it('blur extent rises as an image is blurred more', () => {
+    const base = leafOnSheet(W, H, 1);
+    const a = blurExtent(base, W, H);
+    const b = blurExtent(boxBlur(base, W, H, 1), W, H);
+    const c = blurExtent(boxBlur(base, W, H, 3), W, H);
+    expect(a).toBeLessThan(b);
+    expect(b).toBeLessThan(c);
+    expect(a).toBeGreaterThanOrEqual(0);
+    expect(c).toBeLessThanOrEqual(1);
+  });
+
+  it('does not call a sharp smooth surface with a few veins blurry', () => {
+    // Close-up of a healthy leaf: flat green with thin bright lines, like the Uganda crops.
+    const g = new Float32Array(W * H).fill(120);
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if ((x + y * 0.3) % 24 < 1.5) g[y * W + x] = 190;
+    expect(assessQuality(g, W, H, 256, 256).reason).toBeUndefined();
   });
 
   it('converts RGBA to luma', () => {

@@ -96,7 +96,7 @@
   "done": "Done",
   "again": "New check",
   "too_small": "The photo is too small. Move closer and take it again.",
-  "fewer_note": "You photographed {{n}} leaves. The usual sample is 10.",
+  "fewer_note": "Leaf count: {{n}}. The usual sample is 10.",
   "fill_plot": "Fill 10 synthetic leaves",
   "fill_note": "Synthetic plot, not a farm: 6 rust, 3 healthy, 1 unclear.",
   "photo_error": "This photo could not be read. Try another.",

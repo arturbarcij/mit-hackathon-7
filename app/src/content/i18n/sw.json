@@ -96,7 +96,7 @@
   "done": "Tayari",
   "again": "Uangalizi mpya",
   "too_small": "Picha ni ndogo. Sogea karibu na upige tena.",
-  "fewer_note": "Umechukua majani {{n}}. Sampuli ya kawaida ni 10.",
+  "fewer_note": "Idadi ya majani: {{n}}. Sampuli ya kawaida ni 10.",
   "fill_plot": "Jaza majani 10 ya mfano",
   "fill_note": "Shamba la mfano, si shamba halisi: kutu 6, salama 3, moja si wazi.",
   "photo_error": "Picha haikusomwa. Jaribu nyingine.",

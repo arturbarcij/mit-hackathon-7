@@ -26,7 +26,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | todo | |
 | M5 | EVALUATION.md | ml | Sun 02:00 | todo | |
 | E1 | Engine with mock model + hooks | engine | Sat 23:30 | done | Mock labels, quality gate, rules, referral, IndexedDB, farmer flow and officer queue in the app. Real ONNX still waits on M4. |
-| E2 | PWA offline caching | engine | Sun 00:30 | done | vite-plugin-pwa. Precache 348 KiB before model and audio. Browser offline pass still to confirm. |
+| E2 | PWA offline caching | engine | Sun 00:30 | done | vite-plugin-pwa. Precache 348 KiB before model and audio. Production preview reloaded from the service worker while Chrome DevTools was set to offline. |
 | E3 | Real model integrated, parity in browser | engine | Sun 08:30 | todo | needs M4 |
 | E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | todo | |
 | EC1 | PWA offline proof on a Lovable mirror (TanStack Start, ort wasm, Playwright offline), bundle size | engine-cowork (Claude Cowork) | Sun 00:45 | doing | recipe for E2/E4 lands in kb/engine-cowork/pwa/; never edits app/src/engine or app/tests |
@@ -106,4 +106,5 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 - Sat 23:20: Cowork (Claude) started engine-cowork helper lanes EC1 to EC3 in parallel with the Cursor engine agent; outputs in kb/engine-cowork/.
 - Sun 00:20: Claude (lead). Sent Lovable follow-up umsg_01m41tcrs5fw281bgepzf47hgx (answers.json text per language, 160-char referral with member/plot/date, remove auto officer role, insert cap, synthetic badges, publish). PWA left to engine-cowork. Untracked the challenge PDF and ignored *.pdf; QA secrets_git now passes. PDF is still in the initial commit history and kb/ is tracked: decide before making the repo public. Gemini prompt: kb/prompts/09b_gemini_crosscheck.md.
 - Sun 00:45: engine shipped the offline farmer flow with a mock model, fixed answer bank, rule table, referral SMS, and a simulated officer queue. No trained model and no voice clips yet.
+- Sun 01:10: browser pass on the production preview at 360px. Fill-10 summary was 6 rust and 1 unsure, card rust_high_pre_rains, referral JANI1 under 160 characters, blur sample could not be kept, offline reload served the app. Officer seed now inserts the syn-01 to syn-16 rows even when a farmer check is already marked synthetic. Chrome DevTools offline does not change navigator.onLine, so the header pill stayed "On the network".
 - Sun (early): research verified and shipped kb/research. JSON valid, all cited S-ids defined, wild set 254 files present with no ND licence, 176 price rows with KES derivation checked, pass-2 quotes match saved pages. kb/research/raw/ (third-party page copies) is git-ignored and stays local. raw/crosscheck_cowork_20261003.md lists upgrades (CA 4G 97.3%, KMSA OND onset, ElevenLabs v3 Swahili) not yet merged into EVIDENCE.

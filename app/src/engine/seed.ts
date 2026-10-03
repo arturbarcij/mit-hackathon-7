@@ -53,13 +53,15 @@ function row(
 
 export async function seedReferralsIfEmpty(): Promise<void> {
   const existing = await listReferrals()
-  if (existing.some((item) => item.synthetic)) return
+  const ids = new Set(existing.map((item) => item.id))
   for (let i = 0; i < ROWS.length; i++) {
     const item = ROWS[i]
     if (!item) continue
+    const id = `syn-${String(i + 1).padStart(2, '0')}`
+    if (ids.has(id)) continue
     await saveReferral({
       ...item,
-      id: `syn-${String(i + 1).padStart(2, '0')}`,
+      id,
       createdAt: `${item.checkDate.slice(0, 4)}-${item.checkDate.slice(4, 6)}-${item.checkDate.slice(6, 8)}T08:00:00.000Z`,
     })
   }

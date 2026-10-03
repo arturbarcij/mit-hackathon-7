@@ -9,3 +9,4 @@ python3 make_plots.py   # synthetic registry and planted scenarios -> data/
 python3 outliers.py     # robust-z model -> ../public/geo/
 python3 visit_plan.py   # officer visit plan, seed referrals -> ../public/geo/
 python3 validate.py     # check outputs against kb/geo/CONTRACT.md
+python3 -m pytest -q test_geo.py   # unit tests for the decision rules and the committed outputs

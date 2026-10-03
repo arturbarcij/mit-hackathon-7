@@ -1,6 +1,6 @@
 {
  "version": "geo-1",
- "generatedAt": "2026-10-03T21:32:45Z",
+ "generatedAt": "2026-10-03T21:39:27Z",
  "season": "2025/26",
  "area": {
   "name": "Mathira West, Nyeri County, Kenya (reference area)",
@@ -97,7 +97,7 @@
  },
  "legend": {
   "delivery_drop": "Deliveries fell much more than at other members",
-  "drop_with_canopy_loss": "Deliveries fell and the satellite shows less green canopy than last years",
+  "drop_with_canopy_loss": "Deliveries fell and the satellite shows less green canopy than in past years",
   "drop_canopy_normal": "Deliveries fell but the canopy looks normal: may be sold elsewhere, picked late, or a record gap. Ask, do not assume",
   "delivery_spike": "Deliveries rose much more than at other members",
   "above_plausible_yield": "Deliveries per registered tree are above good-practice yields: check the tree count and who delivered",

@@ -12,6 +12,7 @@ Proposed for `kb/CONTRACTS.md` under "Geo outputs" (engine owns that file; see R
 | `/geo/ndvi_change.png` | Real NDVI change overlay, RGBA, WGS84 | about 210 KB |
 | `/geo/visit_plan.json` | Ranked plots, tiers, one-day route for the officer | about 30 KB |
 | `/geo/referrals_seed.json` | 18 synthetic leaf-check referrals for the dashboard seed | about 10 KB |
+| `/geo/map.html` | Standalone Leaflet officer map that reads the files above. Reference implementation and fallback if the Lovable map slips. Needs internet for tiles and Leaflet (CDN) | 10 KB |
 
 ## `plots.geojson`
 FeatureCollection, top-level `synthetic: true`, `season`. Each feature `properties`:

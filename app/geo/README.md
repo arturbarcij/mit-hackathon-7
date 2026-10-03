@@ -22,6 +22,8 @@ pip install -r requirements.txt
 | 4b | `visit_plan.py` | `public/geo/visit_plan.json`, `public/geo/referrals_seed.json`, priority fields in `plots.geojson`, `data/visit_eval.json` |
 | 5 | `validate.py` | Checks the outputs against `kb/geo/CONTRACT.md` (run by `run.sh`) |
 
+Open `public/geo/map.html` through any static server (for example `python3 -m http.server` in `public/geo`) to see the officer map. `python3 -m pytest test_geo.py` runs the unit tests.
+
 Optional: `sweep.py` scores the model over 30 seeds (`data/sweep.json`); `preview.py` draws `kb/geo/preview.png`.
 
 Steps 3 and 4 are deterministic (fixed seed) and run offline once the cache exists.

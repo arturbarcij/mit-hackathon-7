@@ -117,6 +117,7 @@ Member numbers only, no names. Plot polygons in a real deployment are personal d
 ## Files
 - Code: `app/geo/` (`config.py`, `fetch_ndvi.py`, `fetch_rain.py`, `season.py`, `make_plots.py`, `outliers.py`, `visit_plan.py`, `validate.py`, `sweep.py`, `preview.py`, `run.sh`)
 - Committed derived data: `app/geo/data/` (`rainfall.json`, `season_support.json`, `ndvi_scenes.json`, `registry.geojson`, `truth.json`, `eval.json`, `visit_eval.json`, `sweep.json`)
-- Outputs: `app/public/geo/` (`plots.geojson`, `outliers.json`, `ndvi_change.png`, `visit_plan.json`, `referrals_seed.json`)
-- Preview: `kb/geo/preview.png`
+- Outputs: `app/public/geo/` (`plots.geojson`, `outliers.json`, `ndvi_change.png`, `visit_plan.json`, `referrals_seed.json`, `map.html`)
+- Tests: `app/geo/test_geo.py` (18 tests on the decision rules, scoring, route, referral format and the committed outputs)
+- Preview: `kb/geo/preview.png` (static), `kb/geo/map_screenshot.png` (`/geo/map.html` rendered in headless Chrome)
 - Contract: `kb/geo/CONTRACT.md`

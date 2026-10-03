@@ -31,7 +31,7 @@ PRIOR = [s for s in C.COFFEE_YEARS if s != C.CURRENT_SEASON]
 
 LEGEND = {  # officer-facing labels; farmer-facing text lives in answers.json
     "delivery_drop": "Deliveries fell much more than at other members",
-    "drop_with_canopy_loss": "Deliveries fell and the satellite shows less green canopy than last years",
+    "drop_with_canopy_loss": "Deliveries fell and the satellite shows less green canopy than in past years",
     "drop_canopy_normal": "Deliveries fell but the canopy looks normal: may be sold elsewhere, picked late, or a record gap. Ask, do not assume",
     "delivery_spike": "Deliveries rose much more than at other members",
     "above_plausible_yield": "Deliveries per registered tree are above good-practice yields: check the tree count and who delivered",
@@ -62,6 +62,59 @@ def z(x, med, mad):
     if x is None or not np.isfinite(x) or mad <= 0:
         return None
     return (x - med) / mad
+
+
+def classify(zd, zn, *, area_ha, clear_px, total_px, kg_missing, prior_n, kg_per_tree):
+    """Decide status, reasons and abstentions for one plot from its two z-scores.
+
+    zd: delivery z (None if not computable). zn: local canopy z (None if not computable).
+    Returns (status, confidence, next_step, reasons, abstain).
+    """
+    reasons, abstain = [], []
+    clear_frac = clear_px / max(1, total_px)
+    ndvi_ok = True
+    if area_ha < C.MIN_AREA_HA:
+        abstain.append("plot_too_small"); ndvi_ok = False
+    elif clear_px < C.MIN_CLEAR_PIXELS or clear_frac < C.MIN_CLEAR_FRACTION:
+        abstain.append("few_clear_pixels"); ndvi_ok = False
+    if kg_missing:
+        abstain.append("missing_delivery_record")
+    elif prior_n < C.MIN_PRIOR_SEASONS:
+        abstain.append("short_history")
+    delivery_ok = not any(a in abstain for a in ("missing_delivery_record", "short_history"))
+
+    # Two independent signals may corroborate each other: a moderate delivery drop
+    # counts when the canopy has also clearly fallen.
+    strong_canopy_loss = ndvi_ok and zn is not None and zn <= -C.Z_FLAG
+    drop_limit = C.Z_CORROBORATED if strong_canopy_loss else C.Z_FLAG
+    if zd is not None and delivery_ok and zd <= -drop_limit:
+        if not ndvi_ok or zn is None:
+            reasons.append("delivery_drop")
+        elif zn <= -2.0:
+            reasons.append("drop_with_canopy_loss")
+        elif zn > C.Z_CANOPY_NORMAL:
+            reasons.append("drop_canopy_normal")
+        else:
+            reasons.append("delivery_drop"); abstain.append("canopy_signal_unclear")
+    elif zd is not None and delivery_ok and zd >= C.Z_FLAG:
+        reasons.append("delivery_spike")
+    if kg_per_tree is not None and kg_per_tree > C.MAX_KG_PER_TREE:
+        reasons.append("above_plausible_yield")
+    if strong_canopy_loss and "drop_with_canopy_loss" not in reasons:
+        reasons.append("canopy_loss")
+
+    if abstain and (reasons or not delivery_ok or not ndvi_ok):
+        status, confidence, next_step = "unsure", "low", "ask_officer"
+    elif reasons:
+        status, confidence = "outlier", "high"
+        next_step = NEXT_STEP.get(reasons[0], "ask_officer")
+    else:
+        status, confidence, next_step = "normal", "high", "none"
+    # A normal delivery pattern with unusable NDVI is still "normal" on deliveries,
+    # but we say the canopy was not checked.
+    if status == "normal" and not ndvi_ok:
+        status, confidence, next_step = "unsure", "low", "ask_officer"
+    return status, confidence, next_step, reasons, abstain
 
 
 def plot_ndvi(poly_utm, rasters, transform, shape):
@@ -127,53 +180,11 @@ def main():
     out_plots, features = [], []
     for x in rows:
         p = x["p"]
-        reasons, abstain = [], []
         zd = z(x["log_change"], d_med, d_mad)
         zn = z(None if x["nd_change"] is None else x["nd_change"] - x["nd_local"], n_med, n_mad)
-        clear_frac = x["nd_cur"]["clearPx"] / max(1, x["nd_cur"]["totalPx"])
-        ndvi_ok = True
-        if p["areaHa"] < C.MIN_AREA_HA:
-            abstain.append("plot_too_small"); ndvi_ok = False
-        elif x["nd_cur"]["clearPx"] < C.MIN_CLEAR_PIXELS or clear_frac < C.MIN_CLEAR_FRACTION:
-            abstain.append("few_clear_pixels"); ndvi_ok = False
-        if x["cur_kg"] is None:
-            abstain.append("missing_delivery_record")
-        elif x["prior_n"] < C.MIN_PRIOR_SEASONS:
-            abstain.append("short_history")
-        delivery_ok = not any(a in abstain for a in ("missing_delivery_record", "short_history"))
-
-        # Two independent signals may corroborate each other: a moderate delivery drop
-        # counts when the canopy has also clearly fallen.
-        strong_canopy_loss = ndvi_ok and zn is not None and zn <= -C.Z_FLAG
-        drop_limit = C.Z_CORROBORATED if strong_canopy_loss else C.Z_FLAG
-        if zd is not None and zd <= -drop_limit:
-            if not ndvi_ok or zn is None:
-                reasons.append("delivery_drop")
-            elif zn <= -2.0:
-                reasons.append("drop_with_canopy_loss")
-            elif zn > C.Z_CANOPY_NORMAL:
-                reasons.append("drop_canopy_normal")
-            else:
-                reasons.append("delivery_drop"); abstain.append("canopy_signal_unclear")
-        elif zd is not None and zd >= C.Z_FLAG:
-            reasons.append("delivery_spike")
-        if x["cur_kpt"] is not None and x["cur_kpt"] > C.MAX_KG_PER_TREE:
-            reasons.append("above_plausible_yield")
-        if strong_canopy_loss and "drop_with_canopy_loss" not in reasons:
-            reasons.append("canopy_loss")
-
-        if abstain and (reasons or not delivery_ok or not ndvi_ok):
-            status, confidence = "unsure", "low"
-            next_step = "ask_officer"
-        elif reasons:
-            status, confidence = "outlier", "high"
-            next_step = NEXT_STEP.get(reasons[0], "ask_officer")
-        else:
-            status, confidence, next_step = "normal", "high", "none"
-        # A normal delivery pattern with unusable NDVI is still "normal" on deliveries,
-        # but we say the canopy was not checked.
-        if status == "normal" and not ndvi_ok:
-            status, confidence, next_step = "unsure", "low", "ask_officer"
+        status, confidence, next_step, reasons, abstain = classify(
+            zd, zn, area_ha=p["areaHa"], clear_px=x["nd_cur"]["clearPx"], total_px=x["nd_cur"]["totalPx"],
+            kg_missing=x["cur_kg"] is None, prior_n=x["prior_n"], kg_per_tree=x["cur_kpt"])
 
         scores = [abs(v) for v in (zd, zn) if v is not None]
         rec = {

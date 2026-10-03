@@ -4,6 +4,8 @@ desktop.ini
 !.env.example
 *.pem
 node_modules/
+__pycache__/
+*.pyc
 dist/
 .mcp.json
 .cursor/mcp.json

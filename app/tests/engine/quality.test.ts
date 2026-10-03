@@ -40,7 +40,42 @@ function boxBlur(src: Float32Array, w: number, h: number, passes: number): Float
 const W = 256;
 const H = 192;
 
+/** A grey "sheet" with three dark leaf-shaped ellipses and a midrib, the capture protocol in miniature. */
+function leafOnSheet(w: number, h: number, exposure: number): Float32Array {
+  const g = new Float32Array(w * h).fill(235 * exposure);
+  for (let k = 0; k < 3; k++) {
+    const cx = (w * (k + 1)) / 4;
+    const cy = h / 2;
+    const rx = w / 8;
+    const ry = h / 6;
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const e = ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2;
+        if (e <= 1) g[y * w + x] = (Math.abs(y - cy) < 1 ? 170 : 85) * exposure;
+      }
+    }
+  }
+  return g;
+}
+
 describe('quality gate', () => {
+  it('judges sharpness independently of exposure', () => {
+    for (const exposure of [1, 0.6, 0.35]) {
+      const q = assessQuality(leafOnSheet(W, H, exposure), W, H, 4000, 3000);
+      expect(q.reason, `exposure ${exposure}`).toBeUndefined();
+    }
+    const dimSharp = assessQuality(leafOnSheet(W, H, 0.35), W, H, 4000, 3000);
+    const brightSharp = assessQuality(leafOnSheet(W, H, 1), W, H, 4000, 3000);
+    expect(dimSharp.blur / brightSharp.blur).toBeGreaterThan(0.8);
+    expect(dimSharp.blur / brightSharp.blur).toBeLessThan(1.25);
+  });
+
+  it('still rejects a blurred leaf on a sheet', () => {
+    const blurred = boxBlur(leafOnSheet(W, H, 1), W, H, 4);
+    const q = assessQuality(blurred, W, H, 4000, 3000);
+    expect(q.reason).toBe('blurry');
+  });
+
   it('accepts a sharp, well lit image', () => {
     const q = assessQuality(noise(W, H), W, H, 3000, 2250);
     expect(q.ok).toBe(true);

@@ -112,6 +112,17 @@ export async function getConsent(): Promise<Consent> {
 export async function setConsent(c: Consent): Promise<void> {
   const rec: StoredConsent = { main: c.main, photos: c.main && c.photos, updatedAt: new Date().toISOString() };
   await (await db()).put('meta', rec, 'consent');
+  if (rec.main) void requestPersistentStorage();
+}
+
+/** Asks the browser not to evict our data when the phone is short of space. Best effort; the answer is not needed. */
+export async function requestPersistentStorage(): Promise<boolean> {
+  try {
+    if (typeof navigator === 'undefined' || !navigator.storage?.persist) return false;
+    return (await navigator.storage.persisted()) || (await navigator.storage.persist());
+  } catch {
+    return false;
+  }
 }
 
 export async function clearAll(): Promise<void> {

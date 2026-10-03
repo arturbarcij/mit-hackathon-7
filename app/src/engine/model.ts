@@ -89,7 +89,10 @@ async function loadReal(): Promise<Loaded> {
     executionProviders: ['wasm'],
     graphOptimizationLevel: 'all',
   });
-  return { mock: false, version: config.version, config, session, ort };
+  const loaded: Loaded = { mock: false, version: config.version, config, session, ort };
+  // The first run compiles kernels and allocates buffers; pay that cost now, not on the farmer's first photo.
+  await runTensor(loaded, new Float32Array(3 * config.input.size * config.input.size)).catch(() => undefined);
+  return loaded;
 }
 
 async function init(): Promise<Loaded> {
@@ -114,12 +117,29 @@ export function loadModel(): Promise<{ version: string; mock: boolean }> {
   return loading.then(({ version, mock }) => ({ version, mock }));
 }
 
+async function ensureLoaded(): Promise<Loaded> {
+  await loadModel();
+  return loading as Promise<Loaded>;
+}
+
 export function lastInferenceTimeMs(): number {
   return lastInferenceMs;
 }
 
+/** onnxruntime-web rejects overlapping run() calls on one session, so inference is queued. */
+let queue: Promise<unknown> = Promise.resolve();
+function serial<T>(task: () => Promise<T>): Promise<T> {
+  const result = queue.then(task, task);
+  queue = result.catch(() => undefined);
+  return result;
+}
+
 /** Runs the network on a preprocessed tensor and returns calibrated probabilities. */
-export async function runTensor(loaded: Loaded, tensor: Float32Array): Promise<Record<Label, number>> {
+export function runTensor(loaded: Loaded, tensor: Float32Array): Promise<Record<Label, number>> {
+  return serial(() => runTensorNow(loaded, tensor));
+}
+
+async function runTensorNow(loaded: Loaded, tensor: Float32Array): Promise<Record<Label, number>> {
   const { session, ort, config } = loaded;
   if (!session || !ort || !config) throw new Error('Model is not loaded');
   const size = config.input.size;
@@ -134,8 +154,7 @@ export async function runTensor(loaded: Loaded, tensor: Float32Array): Promise<R
 }
 
 export async function classifyLeaf(img: ImageBitmap): Promise<LeafResult> {
-  await loadModel();
-  const loaded = (await loading) as Loaded;
+  const loaded = await ensureLoaded();
   const quality = checkQuality(img);
   if (loaded.mock) {
     if (!quality.ok) return leafResultFromBadQuality(quality, MOCK_VERSION);
@@ -149,8 +168,7 @@ export async function classifyLeaf(img: ImageBitmap): Promise<LeafResult> {
 
 /** Test hook: runs the loaded real model on an already preprocessed tensor and returns calibrated probabilities. */
 export async function inferProbsForTest(tensor: Float32Array): Promise<Record<Label, number>> {
-  await loadModel();
-  const loaded = (await loading) as Loaded;
+  const loaded = await ensureLoaded();
   if (loaded.mock) throw new Error('inferProbsForTest needs the real model');
   return runTensor(loaded, tensor);
 }

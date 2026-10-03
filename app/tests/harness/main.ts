@@ -1,5 +1,9 @@
+import { createElement, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
 import * as engine from '../../src/engine';
+import { useCheck, useConsent, useEngine, useOnline } from '../../src/hooks/useEngine';
 import { inferProbsForTest } from '../../src/engine/model';
+import { cropForModel } from '../../src/engine/preprocess';
 
 type Rgb = [number, number, number];
 
@@ -37,7 +41,35 @@ function referenceTensor(): Float32Array {
   return t;
 }
 
+/** RGB bytes of the 224 x 224 crop the model would see, for comparison with a Python reference. */
+async function cropBytes(file: File, resizeTo?: number): Promise<number[]> {
+  const bmp = await engine.bitmapFromFile(file);
+  const data = cropForModel(bmp, { size: 224, resize: 'shorter_side_then_center_crop', resize_to: resizeTo, mean: [0, 0, 0], std: [1, 1, 1], layout: 'NCHW', range: '0-1' }).data;
+  const out: number[] = [];
+  for (let i = 0; i < data.length; i += 4) out.push(data[i], data[i + 1], data[i + 2]);
+  return out;
+}
+
+/** Mounts a component that uses the real hooks and publishes their latest values on window.__probe. */
+function mountProbe() {
+  function Probe() {
+    const eng = useEngine();
+    const check = useCheck({ lang: 'sw', memberId: 'OCC0412', plotId: '2' });
+    const consent = useConsent();
+    const online = useOnline();
+    useEffect(() => {
+      (window as unknown as { __probe: unknown }).__probe = { eng, check, consent, online };
+    });
+    return null;
+  }
+  const host = document.createElement('div');
+  document.body.appendChild(host);
+  createRoot(host).render(createElement(Probe));
+}
+
 (window as unknown as { __jani: unknown }).__jani = {
+  mountProbe,
+  cropBytes,
   engine,
   makeLeafFile,
   referenceProbs: () => inferProbsForTest(referenceTensor()),

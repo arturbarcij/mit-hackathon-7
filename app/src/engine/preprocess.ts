@@ -29,8 +29,12 @@ export function cropRegion(width: number, height: number, size: number, resizeTo
   return { sx: (width - side) / 2, sy: (height - side) / 2, side };
 }
 
-export function preprocessBitmap(img: ImageBitmap, cfg: ModelConfig['input'] & { resize_to?: number }): Float32Array {
+/** The size x size RGBA crop that feeds the network, before normalisation. */
+export function cropForModel(img: ImageBitmap, cfg: ModelConfig['input']): ImageData {
   const { sx, sy, side } = cropRegion(img.width, img.height, cfg.size, cfg.resize_to);
-  const data = drawRegion(img, sx, sy, side, side, cfg.size, cfg.size);
-  return rgbaToTensor(data.data, cfg.size, cfg);
+  return drawRegion(img, sx, sy, side, side, cfg.size, cfg.size);
+}
+
+export function preprocessBitmap(img: ImageBitmap, cfg: ModelConfig['input']): Float32Array {
+  return rgbaToTensor(cropForModel(img, cfg).data, cfg.size, cfg);
 }

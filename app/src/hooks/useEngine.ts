@@ -73,6 +73,7 @@ export function useCheck(opts: UseCheckOptions) {
   const [busy, setBusy] = useState(false);
   const [decision, setDecision] = useState<Decision | undefined>(undefined);
   const [saved, setSaved] = useState<Check | null>(null);
+  const [saveError, setSaveError] = useState<string | null>(null);
   const [startedAt, setStartedAt] = useState<Date | null>(null);
   const [checkId, setCheckId] = useState(newId);
 
@@ -126,7 +127,13 @@ export function useCheck(opts: UseCheckOptions) {
       if (!check) return null;
       const consent = await getConsent();
       const final: Check = { ...check, decision: d, consentMain: consent.main, consentPhotos: consent.photos };
-      await saveCheck(final, consent.main ? photos : undefined);
+      // The decision stands even if the phone cannot store it (private mode, full disk); the UI can tell her.
+      try {
+        await saveCheck(final, consent.main ? photos : undefined);
+        setSaveError(null);
+      } catch (e) {
+        setSaveError(e instanceof Error ? e.message : String(e));
+      }
       setDecision(d);
       setSaved(final);
       return final;
@@ -146,6 +153,7 @@ export function useCheck(opts: UseCheckOptions) {
     setPhotos([]);
     setDecision(undefined);
     setSaved(null);
+    setSaveError(null);
     setStartedAt(null);
     setCheckId(newId());
   }, []);
@@ -167,6 +175,7 @@ export function useCheck(opts: UseCheckOptions) {
     check,
     decision,
     saved,
+    saveError,
     referralText,
     smsHref,
     addPhoto,

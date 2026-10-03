@@ -2,13 +2,20 @@ import { drawRegion } from './canvas';
 import type { QualityResult } from './types';
 
 /*
- * Thresholds, set 2026-10-03 as first guesses. NOT yet tuned on real phone photos.
- * To tune: run checkQuality on 10 sharp and 10 blurry photos of leaves on a plain page, print
- * `blur` and `brightness`, and place the thresholds between the two groups. Record the numbers here.
- *   blur       = variance of the Laplacian on a greyscale copy with its longer side at 256 px.
- *   brightness = mean luma (0 to 255) of the same copy.
+ * Thresholds, set 2026-10-03. Tuned on synthetic leaves on a white sheet (4000 x 3000, Gaussian blur
+ * and dimming applied), NOT yet on real phone photos. To re-tune: run checkQuality on 10 sharp and
+ * 10 blurry photos of leaves on a plain page, print `blur` and `brightness`, and place the thresholds
+ * between the two groups. Record the numbers here.
+ *
+ *   brightness = mean luma (0 to 255) of a greyscale copy with its longer side at 256 px.
+ *   blur       = variance of the Laplacian of that copy divided by brightness squared.
+ *                Dividing makes it independent of exposure: a sharp but dim photo has a small raw
+ *                variance, which a fixed raw threshold would wrongly call blurry.
+ *                Synthetic results: sharp 0.0048 at every exposure from 0.12x to 1x; blur sigma 4 px
+ *                0.0035, 8 px 0.0018, 15 px 0.0005, 25 px 0.0001 (sigma in pixels of a 4000 px wide photo).
+ *                Higher means sharper. The field name stays `blur` to match CONTRACTS.md.
  */
-export const BLUR_MIN = 40;
+export const BLUR_MIN = 0.0012;
 export const BRIGHTNESS_MIN = 45;
 export const MIN_SIDE = 224;
 export const ANALYSIS_SIDE = 256;
@@ -56,8 +63,8 @@ export function assessQuality(
   originalWidth: number,
   originalHeight: number,
 ): QualityResult {
-  const blur = laplacianVariance(grey, width, height);
   const brightness = meanOf(grey);
+  const blur = laplacianVariance(grey, width, height) / Math.max(brightness, 1) ** 2;
   if (Math.min(originalWidth, originalHeight) < MIN_SIDE) {
     return { ok: false, reason: 'too_small', blur, brightness };
   }

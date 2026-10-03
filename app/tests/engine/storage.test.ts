@@ -1,7 +1,7 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   clearAll, getConsent, getPhotos, hasPin, isLocked, listChecks, lock, outboxIds, removePin,
-  resetStorageHandle, saveCheck, setConsent, setPin, unlock, isSyncEligible,
+  requestPersistentStorage, resetStorageHandle, saveCheck, setConsent, setPin, unlock, isSyncEligible,
 } from '../../src/engine/storage';
 import { makeCheck } from './helpers';
 
@@ -89,5 +89,23 @@ describe('storage', () => {
     expect(await getPhotos('z')).toEqual([]);
     expect(await getConsent()).toEqual({ main: false, photos: false });
     expect(await outboxIds()).toEqual([]);
+  });
+});
+
+describe('persistent storage', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('asks the browser to keep our data once, and never throws', async () => {
+    const persist = vi.fn(async () => true);
+    vi.stubGlobal('navigator', { storage: { persisted: async () => false, persist } });
+    expect(await requestPersistentStorage()).toBe(true);
+    expect(persist).toHaveBeenCalledTimes(1);
+    vi.stubGlobal('navigator', { storage: { persisted: async () => true, persist } });
+    expect(await requestPersistentStorage()).toBe(true);
+    expect(persist).toHaveBeenCalledTimes(1);
+    vi.stubGlobal('navigator', {});
+    expect(await requestPersistentStorage()).toBe(false);
+    vi.stubGlobal('navigator', { storage: { persisted: async () => { throw new Error('x'); }, persist } });
+    expect(await requestPersistentStorage()).toBe(false);
   });
 });

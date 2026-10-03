@@ -121,6 +121,19 @@ test('full ten-leaf check works in airplane mode', async ({ page, context }) => 
   console.log(`slowest leaf (decode + quality + inference) in this run: ${Math.round(out.maxMs)} ms`);
 });
 
+test('overlapping classify calls are queued and all succeed', async ({ page }) => {
+  test.skip(usingRealModel, 'colour-based expectations belong to the fixture model');
+  await page.goto('/');
+  await page.waitForFunction(() => (window as any).__jani?.ready);
+  const labels = await page.evaluate(async () => {
+    const j = (window as any).__jani;
+    const files = await Promise.all([0, 1, 2, 3, 4, 5].map((i) => j.makeLeafFile(i % 2 ? `rust_${i}.jpg` : `healthy_${i}.jpg`, i % 2 ? [190, 60, 50] : [50, 160, 60])));
+    const results = await Promise.all(files.map((f: File) => j.engine.classifyFile(f)));
+    return results.map((r: any) => r.label);
+  });
+  expect(labels).toEqual(['healthy', 'rust', 'healthy', 'rust', 'healthy', 'rust']);
+});
+
 test('inference timing with the CPU throttled 4x (logged for kb/STATUS.md)', async ({ page }) => {
   await page.goto('/');
   await page.waitForFunction(() => (window as any).__jani?.ready);
@@ -143,6 +156,55 @@ test('inference timing with the CPU throttled 4x (logged for kb/STATUS.md)', asy
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
   console.log(`4x throttle: model load ${Math.round(t.loadMs)} ms; per photo (3000x2250 decode + quality + preprocess + inference) ${t.runs.map((r) => Math.round(r)).join(', ')} ms; last inference only ${t.inferMs.toFixed(1)} ms; model is ${usingRealModel ? 'REAL' : 'the fixture, not a coffee model'}`);
   expect(Math.min(...t.runs)).toBeLessThan(1000);
+});
+
+test('React hooks drive a whole check and send nothing', async ({ page }) => {
+  test.skip(usingRealModel, 'colour-based expectations belong to the fixture model');
+  const requests: string[] = [];
+  page.on('request', (r) => requests.push(new URL(r.url()).pathname));
+  await page.goto('/');
+  await page.waitForFunction(() => (window as any).__jani?.ready);
+  await page.evaluate(() => (window as any).__jani.mountProbe());
+  await page.waitForFunction(() => (window as any).__probe?.eng.status === 'ready');
+
+  const state = () => page.evaluate(() => {
+    const p = (window as any).__probe;
+    return { count: p.check.count, summary: p.check.summary, cardId: p.check.card?.id ?? null, sms: p.check.referralText, decision: p.check.decision, saved: !!p.check.saved, consent: p.consent.consent, mock: p.eng.mock };
+  });
+  const add = (name: string, rgb: number[], opts: object = {}) =>
+    page.evaluate(async ([n, c, o]) => {
+      const j = (window as any).__jani;
+      const file = await j.makeLeafFile(n, c, o);
+      const out = await (window as any).__probe.check.addPhoto(file);
+      return { accepted: out.accepted, label: out.result.label, reason: out.result.quality.reason ?? null };
+    }, [name, rgb, opts] as const);
+
+  expect((await state()).mock).toBe(false);
+  expect(await add('b.jpg', [100, 140, 90], { texture: 0 })).toMatchObject({ accepted: false, reason: 'blurry' });
+  expect((await state()).count).toBe(0);
+  for (let i = 0; i < 5; i++) expect((await add(`r${i}.jpg`, [190, 60, 50])).label).toBe('rust');
+  expect((await add('h.jpg', [50, 160, 60])).label).toBe('healthy');
+  await page.waitForFunction(() => (window as any).__probe.check.count === 6);
+  let s = await state();
+  expect(s.summary.counts.rust).toBe(5);
+  expect(s.cardId).toBe('rust_high_pre_rains');
+  expect(s.decision).toBeUndefined();
+
+  // Consent is off by default and the check is not saved until the farmer chooses.
+  expect(s.saved).toBe(false);
+  expect(s.consent).toEqual({ main: false, photos: false });
+  await page.evaluate(() => (window as any).__probe.consent.setMain(true));
+  await page.waitForFunction(() => (window as any).__probe.consent.consent.main === true);
+  await page.evaluate(() => (window as any).__probe.check.choose('ask'));
+  await page.waitForFunction(() => (window as any).__probe.check.saved !== null);
+  s = await state();
+  expect(s.decision).toBe('ask');
+  expect(s.sms).toMatch(/^JANI1 M:OCC0412 P:2 D:\d{8} N:6 R:5 C:0 H:0 L:0 U:0 A:rust_high_pre_rains Q:\d+ X:ask$/);
+  const stored = await page.evaluate(async () => (await (window as any).__jani.engine.listChecks()).map((c: any) => c.decision));
+  expect(stored).toEqual(['ask']);
+  const smsHref = await page.evaluate(() => (window as any).__probe.check.smsHref('+254700000000'));
+  expect(smsHref.startsWith('sms:+254700000000?body=JANI1')).toBe(true);
+  expect(requests.every((p) => !p.includes('rest/v1'))).toBe(true);
 });
 
 test('real model: parity samples match when present', async ({ page }) => {

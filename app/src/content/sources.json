@@ -1,0 +1,62 @@
+[
+  {
+    "id": "S01",
+    "title": "Kenya Agricultural Sector Extension Policy (KASEP)",
+    "year": 2023,
+    "url": "https://kilimo.go.ke/wp-content/uploads/2024/10/KENYA-AGRICULTURAL-SECTOR-EXTENSION-POLICY-2023.pdf"
+  },
+  {
+    "id": "S02",
+    "title": "Agriculture Extension Manual, Food Systems Resilience Project",
+    "year": 2025,
+    "url": "https://fsrp.go.ke/sites/default/files/2025-08/Agriculture%20Extension%20Manual%20v1%20final.pdf"
+  },
+  {
+    "id": "S03",
+    "title": "Coffee Leaf Rust in Kenya: A Review",
+    "year": 2021,
+    "url": "https://www.mdpi.com/2073-4395/11/12/2590"
+  },
+  {
+    "id": "S20",
+    "title": "FAO and WHO guidelines for personal protection when handling and applying pesticides",
+    "year": 2020,
+    "url": "https://openknowledge.fao.org/handle/20.500.14283/ca7430en"
+  },
+  {
+    "id": "S22",
+    "title": "JMuBEN coffee leaf images (rust, cercospora, phoma)",
+    "year": 2021,
+    "url": "https://data.mendeley.com/datasets/t2r6rszp5c/1"
+  },
+  {
+    "id": "S23",
+    "title": "JMuBEN2 coffee leaf images (healthy, miner)",
+    "year": 2021,
+    "url": "https://data.mendeley.com/datasets/tgv3zb82nd/1"
+  },
+  {
+    "id": "S25",
+    "title": "Uganda coffee leaf images",
+    "year": 2025,
+    "url": "https://data.mendeley.com/datasets/k36wnd6knb/1"
+  },
+  {
+    "id": "S26",
+    "title": "BRACOL Brazilian Arabica coffee leaf images",
+    "year": 2019,
+    "url": "https://data.mendeley.com/datasets/yy2k5y8mxg/1"
+  },
+  {
+    "id": "S27",
+    "title": "RoCoLe Robusta coffee leaf images",
+    "year": 2019,
+    "url": "https://data.mendeley.com/datasets/c5yvn32dzg/2"
+  },
+  {
+    "id": "S33",
+    "title": "NASA POWER daily rainfall, 1991 to 2020",
+    "year": 2026,
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=PRECTOTCORR&community=AG&longitude=36.95&latitude=-0.42&start=19910101&end=20201231&format=JSON"
+  }
+]

@@ -77,7 +77,9 @@ def engine_crop(img: Image.Image, size: int = SIZE, resize_to: int | None = None
     shorter = min(w, h)
     side = shorter * size / resize_to if resize_to and resize_to > size else shorter
     sx, sy = (w - side) / 2, (h - side) / 2
-    return img.resize((size, size), Image.BILINEAR, box=(sx, sy, sx + side, sy + side))
+    # Chrome's canvas downscale behaves like a box filter; PIL BILINEAR moved an ambiguous parity sample by 0.05.
+    flt = Image.BOX if side > size else Image.BILINEAR
+    return img.resize((size, size), flt, box=(sx, sy, sx + side, sy + side))
 
 
 def to_tensor(crop: Image.Image, mean=MEAN, std=STD) -> np.ndarray:

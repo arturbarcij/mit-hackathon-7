@@ -105,20 +105,29 @@ def main():
         nd_prior = [nd[s]["median"] for s in PRIOR if nd[s]["median"] is not None]
         nd_base = float(np.median(nd_prior)) if nd_prior else None
         nd_change = (nd_cur["median"] - nd_base) if (nd_cur["median"] is not None and nd_base is not None) else None
-        rows.append(dict(f=f, p=p, nd=nd, cur_kg=cur_kg, prior_n=len(prior_kg), cur_kpt=cur_kpt,
+        rows.append(dict(f=f, p=p, nd=nd, centre=(poly.centroid.x, poly.centroid.y), cur_kg=cur_kg, prior_n=len(prior_kg), cur_kpt=cur_kpt,
                          base_kpt=base_kpt, log_change=log_change, nd_cur=nd_cur, nd_base=nd_base,
                          nd_change=nd_change))
 
     # Peer statistics use only plots with enough data, so thin records cannot drag them.
     d_med, d_mad = robust_z([x["log_change"] for x in rows if x["prior_n"] >= C.MIN_PRIOR_SEASONS])
-    n_med, n_mad = robust_z([x["nd_change"] for x in rows if x["nd_cur"]["clearPx"] >= C.MIN_CLEAR_PIXELS])
+    # Canopy baseline is local: the median change of the nearest plots, so a broad
+    # regional shift (a dry corner, a hillside) is not read as plot-level loss.
+    usable = [i for i, x in enumerate(rows) if x["nd_change"] is not None and x["nd_cur"]["clearPx"] >= C.MIN_CLEAR_PIXELS]
+    cen = np.array([x["centre"] for x in rows])
+    for i, x in enumerate(rows):
+        dist = np.hypot(*(cen[usable] - cen[i]).T)
+        near = [usable[j] for j in np.argsort(dist) if usable[j] != i][:C.LOCAL_K]
+        x["nd_local"] = float(np.median([rows[j]["nd_change"] for j in near]))
+    resid = [x["nd_change"] - x["nd_local"] for x in rows if x["nd_change"] is not None and x["nd_cur"]["clearPx"] >= C.MIN_CLEAR_PIXELS]
+    n_med, n_mad = 0.0, robust_z(resid)[1]
 
     out_plots, features = [], []
     for x in rows:
         p = x["p"]
         reasons, abstain = [], []
         zd = z(x["log_change"], d_med, d_mad)
-        zn = z(x["nd_change"], n_med, n_mad)
+        zn = z(None if x["nd_change"] is None else x["nd_change"] - x["nd_local"], n_med, n_mad)
         clear_frac = x["nd_cur"]["clearPx"] / max(1, x["nd_cur"]["totalPx"])
         ndvi_ok = True
         if p["areaHa"] < C.MIN_AREA_HA:
@@ -131,7 +140,11 @@ def main():
             abstain.append("short_history")
         delivery_ok = not any(a in abstain for a in ("missing_delivery_record", "short_history"))
 
-        if zd is not None and zd <= -C.Z_FLAG:
+        # Two independent signals may corroborate each other: a moderate delivery drop
+        # counts when the canopy has also clearly fallen.
+        strong_canopy_loss = ndvi_ok and zn is not None and zn <= -C.Z_FLAG
+        drop_limit = C.Z_CORROBORATED if strong_canopy_loss else C.Z_FLAG
+        if zd is not None and zd <= -drop_limit:
             if not ndvi_ok or zn is None:
                 reasons.append("delivery_drop")
             elif zn <= -2.0:
@@ -144,7 +157,7 @@ def main():
             reasons.append("delivery_spike")
         if x["cur_kpt"] is not None and x["cur_kpt"] > C.MAX_KG_PER_TREE:
             reasons.append("above_plausible_yield")
-        if ndvi_ok and zn is not None and zn <= -C.Z_FLAG and not (zd is not None and zd <= -C.Z_FLAG):
+        if strong_canopy_loss and "drop_with_canopy_loss" not in reasons:
             reasons.append("canopy_loss")
 
         if abstain and (reasons or not delivery_ok or not ndvi_ok):
@@ -170,7 +183,7 @@ def main():
                 "changePct": None if x["log_change"] is None else round(100 * (np.exp(x["log_change"]) - 1), 1),
                 "zDelivery": r(zd, 2), "priorSeasons": x["prior_n"],
                 "ndvi": r(x["nd_cur"]["median"]), "ndviBaseline": r(x["nd_base"]),
-                "ndviChange": r(x["nd_change"]), "zNdvi": r(zn, 2),
+                "ndviChange": r(x["nd_change"]), "ndviLocalChange": r(x["nd_local"]), "zNdvi": r(zn, 2),
                 "clearPx": x["nd_cur"]["clearPx"], "totalPx": x["nd_cur"]["totalPx"],
             },
             "synthetic": True,
@@ -203,13 +216,13 @@ def main():
         "method": {
             "model": "robust z-score (median and 1.4826 x MAD across members), no machine learning",
             "deliveryMetric": "log(kg cherry per registered tree this season / median of prior seasons)",
-            "ndviMetric": "plot median of dry-season NDVI composite this season minus median of prior seasons",
-            "thresholds": {"zFlag": C.Z_FLAG, "zCanopyLoss": -2.0, "zCanopyNormal": C.Z_CANOPY_NORMAL,
+            "ndviMetric": "plot median dry-season NDVI this season minus median of prior seasons, minus the median of that change over the 12 nearest plots",
+            "thresholds": {"zFlag": C.Z_FLAG, "zDropCorroborated": C.Z_CORROBORATED, "zCanopyLoss": -2.0, "zCanopyNormal": C.Z_CANOPY_NORMAL,
                            "minPriorSeasons": C.MIN_PRIOR_SEASONS, "minClearPixels": C.MIN_CLEAR_PIXELS,
                            "minClearFraction": C.MIN_CLEAR_FRACTION, "minAreaHa": C.MIN_AREA_HA,
                            "maxKgPerTree": C.MAX_KG_PER_TREE},
             "peerStats": {"deliveryMedianLog": r(d_med, 4), "deliveryMad": r(d_mad, 4),
-                          "ndviChangeMedian": r(n_med, 4), "ndviChangeMad": r(n_mad, 4)},
+                          "ndviLocalResidualMad": r(n_mad, 4), "localNeighbours": C.LOCAL_K},
         },
         "context": {
             "cooperativeMedianChangePct": round(float(coop_change), 1),

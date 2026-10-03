@@ -2,7 +2,7 @@
  "synthetic": true,
  "note": "Scores on planted synthetic scenarios. They show the logic works as designed, not that it works on real cooperatives.",
  "plots": 80,
- "matchedExpected": 78,
+ "matchedExpected": 79,
  "plantedCaught": 16,
  "planted": 17,
  "normalFlagged": 0,
@@ -20,24 +20,13 @@
  },
  "mismatches": [
   {
-   "plotId": "OCC0217-1",
-   "scenario": "decline_with_canopy_loss",
-   "status": "outlier",
-   "reasons": [
-    "canopy_loss"
-   ],
-   "abstain": [],
-   "zDelivery": -2.95,
-   "zNdvi": -11.68
-  },
-  {
    "plotId": "OCC0384-1",
    "scenario": "delivery_gap_canopy_ok",
    "status": "normal",
    "reasons": [],
    "abstain": [],
    "zDelivery": -2.67,
-   "zNdvi": 0.18
+   "zNdvi": -0.41
   }
  ]
 }

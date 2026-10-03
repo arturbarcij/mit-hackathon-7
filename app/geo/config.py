@@ -56,7 +56,9 @@ TREES_PER_HA = 1300
 # Outlier model thresholds (assumptions, tuned on nothing real: there is no
 # real delivery data in this build).
 Z_FLAG = 3.0            # |robust z| at or above this is an outlier
+Z_CORROBORATED = 2.0   # delivery drop threshold when canopy loss (z <= -3) backs it up
 Z_CANOPY_NORMAL = -1.5  # NDVI change z above this counts as "canopy looks normal"
+LOCAL_K = 12            # nearest plots used as the local canopy baseline
 MIN_PRIOR_SEASONS = 2   # fewer prior deliveries than this: abstain
 MIN_CLEAR_PIXELS = 15   # fewer clear 10 m pixels in the current composite: abstain
 MIN_CLEAR_FRACTION = 0.5

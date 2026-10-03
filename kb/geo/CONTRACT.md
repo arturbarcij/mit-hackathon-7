@@ -10,6 +10,8 @@ Proposed for `kb/CONTRACTS.md` under "Geo outputs" (engine owns that file; see R
 | `/geo/plots.geojson` | One polygon per member plot, WGS84 | about 60 KB |
 | `/geo/outliers.json` | Model result per plot, context, legend, sources | about 50 KB |
 | `/geo/ndvi_change.png` | Real NDVI change overlay, RGBA, WGS84 | about 210 KB |
+| `/geo/visit_plan.json` | Ranked plots, tiers, one-day route for the officer | about 30 KB |
+| `/geo/referrals_seed.json` | 18 synthetic leaf-check referrals for the dashboard seed | about 10 KB |
 
 ## `plots.geojson`
 FeatureCollection, top-level `synthetic: true`, `season`. Each feature `properties`:
@@ -25,6 +27,9 @@ FeatureCollection, top-level `synthetic: true`, `season`. Each feature `properti
   status: 'outlier' | 'unsure' | 'normal';   // for map colouring, same as outliers.json
   reason: string | null;   // first reason code, else first abstain code
   nextStep: NextStep;
+  priorityPoints: number;   // from visit_plan.json
+  tier: 'A' | 'B' | 'C';    // A visit now, B call or check records, C no action from this map
+  hasReferral: boolean;     // a seed leaf-check referral exists for this plot
   ndviSeries: { season: string; median: number | null; clearPx: number; totalPx: number }[]; // real
 }
 ```
@@ -41,6 +46,8 @@ FeatureCollection, top-level `synthetic: true`, `season`. Each feature `properti
     areaWideDrop: boolean;               // true when that median is -10% or worse
     rainfall: { shortRainsAnomalyPct: number; longRainsAnomalyPct: number; coffeeYearTotalMm: number; climatology: string; source: string };
     ndviSeasonMedians: Record<string, number>;
+    ndviWindowRain: { window: string; rainMm: number; climatologyMm: number; z: number; caveat: string } | null;
+    shortRains: { medianOnset: string; sdDays: number; shareOnsetBefore15Oct: number; onsetConfirmedThisYear: boolean; dataEnd: string; source: string } | null;
   };
   overlay: { image: '/geo/ndvi_change.png'; bounds: [[south, west], [north, east]]; meaning: string };
   counts: { outlier: number; unsure: number; normal: number };
@@ -96,3 +103,23 @@ A plot with good deliveries but no readable canopy is also `unsure`: we say the 
 - Show the source line for the NDVI overlay and rainfall (`sources` array).
 - `unsure` is its own colour, never merged into `normal`.
 - Never show `drop_canopy_normal` as wrongdoing. Use the legend text.
+
+## `visit_plan.json`
+```ts
+{
+  version: 'geo-1'; season: string; generatedAt: string;
+  synthetic: { deliveries: true; referrals: true; plots: true; satellite: false };
+  assumptions: { capacityPerVisitDay: number; circuity: number; office: { name; lon; lat }; weights: Record<string, number>; tiers: Record<'A'|'B'|'C', string>; note: string };
+  tiers: { A: number; B: number; C: number };
+  route: { stops: Stop[]; totalKm: number; randomOrderMeanKm: number; note: string };  // closed loop from the office, in visiting order
+  ranking: RankedPlot[];        // every plot with points > 0, highest first
+  referralsLinked: number; independentAgreement: number;   // plots with 2+ independent signals
+}
+interface Signal { source: 'satellite' | 'deliveries' | 'leaf_check' | 'records'; text: string }   // text is officer-facing English
+interface Stop { stop: number; plotId; memberId; plot; lon; lat; legKm: number; points: number; independentSignals: number; tier: 'A'; signals: Signal[] }
+interface RankedPlot { rank: number; plotId; memberId; plot; points: number; tier: 'A'|'B'|'C'; independentSignals: number; geoStatus: 'outlier'|'unsure'|'normal'; nextStep: NextStep; referralId: string | null; signals: Signal[] }
+```
+Points are a transparent sum, not a probability. Show `signals` as the reason for every ranked plot. Never show a plot as ranked without its reasons.
+
+## `referrals_seed.json`
+`{ synthetic: true, note, referrals: Referral[] }`. Each referral matches the `referrals` table in `kb/agents/ui.md` (`id, created_at, member_id, plot_id, check_date, counts, uncertain, answer_id, confidence, photos_shared, status, synthetic`) plus `sms` (a valid `JANI1` string, at most 160 GSM-7 characters, for the "paste SMS" box), `geoPlotId` (join key to `plots.geojson`), and `lon`, `lat` (plot centre for the map). Check dates fall on weekends, because the smartphone is home only at weekends. `answer_id` values mirror the example rule table in `kb/agents/content-voice.md`; they should be replaced with engine output when available.

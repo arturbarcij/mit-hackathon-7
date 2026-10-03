@@ -1,92 +1,117 @@
-# Geo report: cooperative outlier map
+# Geo report: cooperative outlier map and officer visit plan
 
-Built Sat 3 Oct 2026, about 23:00 CEST, by the geo agent. Sentinel-2 works, so NDVI is in (no cut at 02:00 needed).
+Owner: geo agent. Last rebuilt Sat 3 Oct 2026, evening. Sentinel-2 works, so NDVI is in (no 02:00 cut needed).
 
 ## What it is for
-The officer comes twice a year. The cooperative already holds a delivery record per member. This map shows which plots fell or rose much more than their neighbours this season, adds a satellite canopy check, and says plainly where the data is too thin to judge. It points the officer's visits; it does not decide anything.
+The officer reaches the sub-county twice a year at best. The cooperative already holds a delivery record per member. This map answers one question: **which plots should the officer's limited visits go to, and why?** It combines up to three independent signals, says plainly where the data is too thin to judge, and orders one visit day into a short route. It points the visits. It decides nothing.
 
-Where this sits next to the leaf check: Noor's plot (OCC0412-2) is flagged `drop_with_canopy_loss`, so the officer has a reason to visit before the short rains, and her own leaf check referral (`JANI1 M:OCC0412 P:2 ...`) lands on the same plot.
+Where it meets the leaf check: Noor's plot (OCC0412-2) is flagged by satellite and deliveries, and her own leaf-check referral (`JANI1 M:OCC0412 P:2 ... R:6 ...`) lands on the same plot. Three independent signals, one plot.
 
 ## Real and synthetic
 | Part | Real or synthetic | Source |
 |---|---|---|
-| Land under plots, NDVI per season | Real | Sentinel-2 L2A, Earth Search STAC, tile 37MBV |
-| Rainfall per season | Real | NASA POWER `PRECTOTCORR`, point 37.07 E, 0.46 S |
+| Land under plots, dry-season NDVI 2023 to 2026, wet-season NDVI 2025 | Real | Sentinel-2 L2A, Earth Search STAC, tile 37MBV |
+| Rainfall, rain onset, wetness of each NDVI window | Real (model grid) | NASA POWER `PRECTOTCORR`, point 37.07 E, 0.46 S |
 | Area | Real place | Mathira West, Nyeri County, 37.05 to 37.09 E, 0.44 to 0.48 S (about 4.4 x 4.4 km) |
 | Members, plot polygons, tree counts, deliveries | **Synthetic**, seed 20261004 | `app/geo/make_plots.py` |
+| 18 seed leaf-check referrals | **Synthetic** | `app/geo/visit_plan.py` |
 | Yield baseline 3.0 kg cherry per tree | Cited | MOALF 2014 via Mugendi et al. 2015, Nyeri, 2013/14 |
 | 1,300 trees per ha | Cited | Coffee Directorate, Coffee Year Book 2022/23 |
-| Year-to-year cooperative factor (0.85, 1.05, 1.00, 0.85), 15% delivery noise | **Assumption** | Loosely follows the real rainfall pattern |
+| Cooperative factor per year (0.85, 1.05, 1.00, 0.85), 15% delivery noise | **Assumption** | Loosely follows the real rainfall pattern |
+| Visit capacity (8 plots a day), road factor 1.4, priority weights, office location | **Assumption** | No real visit data exists |
 
-Plots were placed only where the prior dry-season NDVI was 0.55 to 0.88 (woody, green in the dry season, not dense forest). We do not know that coffee grows inside any polygon.
+Plots are placed only on land that looks perennial: dry-season NDVI 0.55 to 0.88 in the prior years, wet-season NDVI at least 0.60, and under 0.15 NDVI between the 2025 dry and wet composites (coffee is evergreen; annual crops swing). This removes 12% of pixels. It is a plausibility filter, not a coffee map. We do not know that coffee grows inside any polygon.
 
-## Real data found
-Dry-season NDVI medians over the area: 0.52 (2023), 0.71 (2024), 0.69 (2025), 0.65 (2026). Scenes used per season: 12, 13, 15, 15.
+Noor's drop (deliveries x0.40, no noise) is scripted so the demo story is stable. Every other plot follows its random draw.
 
-Rainfall (NASA POWER, anomaly against 1991 to 2020):
-| Coffee year | Short rains (Oct to Dec) | Long rains (Mar to May) |
-|---|---|---|
-| 2022/23 | -18% | +48% |
-| 2023/24 | +85% | +123% |
-| 2024/25 | +14% | +9% |
-| 2025/26 | -13% | +18% |
+## What the real data says
+**NDVI.** Dry-season medians over the area: 0.52 (2023), 0.71 (2024), 0.69 (2025), 0.65 (2026), from 12, 13, 15 and 15 scenes. Wet-season 2025: 0.69 from 22 scenes.
 
-The low 2023 NDVI follows the poor 2022 short rains. 2023/24 was very wet. This matches what we know of the 2022 drought and the 2024 floods, but we have not cross-checked against CHIRPS.
+**Rain onset (NASA POWER, simplified rule, assumption).** Onset is the first day from 15 Sep (short rains) or 1 Mar (long rains) with 3 days totalling 20 mm or more and no dry run over 7 days in the next 21.
+| | Median onset 1991 to 2020 | Spread (sd) | Earliest to latest |
+|---|---|---|---|
+| Short rains | 19 Oct | 17 days | 17 Sep to 8 Dec |
+| Long rains | 21 Mar | 15 days | 1 Mar to 22 Apr |
 
-## Planted scenarios (synthetic) and results
-| Scenario | Count | What was planted | Expected | Result |
-|---|---|---|---|---|
-| `decline_with_canopy_loss` | 4 | Deliveries x0.45, plot on a real NDVI-loss patch | `outlier`, `drop_with_canopy_loss` | 4 exact (one only through the corroboration rule: delivery z -2.95, canopy z -11) |
-| `delivery_gap_canopy_ok` | 4 | Deliveries x0.40, stable real NDVI | `outlier`, `drop_canopy_normal` | 3 caught. 1 missed (delivery z -2.67) |
-| `over_delivery` | 2 | Deliveries x2.3 | `outlier`, `delivery_spike` | 2 caught |
-| `canopy_loss_early` | 2 | Normal deliveries, real NDVI-loss patch | `outlier`, `canopy_loss` | 2 caught |
-| `new_member` | 2 | One prior season only | `unsure` | 2 abstained |
-| `tiny_plot` | 2 | 0.05 to 0.08 ha, deliveries x0.5 | `unsure` | 2 abstained |
-| `missing_record` | 1 | No delivery this season | `unsure` | 1 abstained |
-| `normal` | 63 | Nothing | `normal` | 63 normal, 0 false flags |
+Share of years with short-rains onset by date: 13% by 1 Oct, 47% by 15 Oct, 87% by 31 Oct, 97% by 15 Nov. Recent onsets: 25 Sep 2019, 22 Sep 2020, 18 Oct 2021, 29 Oct 2022, 4 Oct 2023, 4 Nov 2024, 2 Oct 2025.
 
-Overall: 79 of 80 plots got the expected status and reason. Cooperative median change this season: -12.5% (area-wide drop, flagged as context, not against any member).
+**This year.** NASA POWER ends 30 Sep 2026. September rain was 68 mm against a 57 mm mean (z +0.5), 6.7 mm in the last 7 days. Short-rains onset is not confirmed yet.
 
-### Seed sweep (30 synthetic registries, real NDVI and rainfall fixed)
-`app/geo/sweep.py`, output `app/geo/data/sweep.json`. One seed flatters the model, so the registry was rebuilt 30 times.
-| Measure | Mean | Worst seed |
-|---|---|---|
-| Plots with the expected status and reason | 97.4% | 92.5% |
-| Planted problems caught (status right) | 92.4% | 76.5% |
-| Normal plots flagged per seed (of 63) | 0.4 | 2 |
+**Why this matters for the decision.** The master prompt says copper sprays start in mid October, before the short rains. That fits the median onset (19 Oct), but in about half of years the rains are already under way by 15 Oct. A fixed calendar window is right about half the time. See requests in `kb/STATUS.md`.
 
-Weakest scenarios over 30 seeds: `delivery_gap_canopy_ok` was missed 22 of 120 times (18%), `over_delivery` 9 of 60 (15%). Both are deliveries that moved by a factor of 2 to 2.5 with 15% noise and a spread in the cooperative's own history; some land inside z of 3. Abstentions (`new_member`, `tiny_plot`, `missing_record`) fired every time. Eight normal plots over 30 seeds became `unsure` (thin pixels), and three were flagged `outlier` by chance.
+**Wetness of the NDVI windows.** The "dry season" window (1 Jan to 15 Mar) was not equally dry each year:
+| Window | Rain (mm) | Mean (mm) | z |
+|---|---|---|---|
+| 2023 | 89 | 137 | -0.5 |
+| 2024 | 324 | 137 | +2.0 |
+| 2025 | 138 | 137 | 0.0 |
+| 2026 (current) | 396 | 137 | +2.8 |
+
+The current window was far wetter than normal. Plots are scored against nearby plots, which cancels most area-wide effects, but small canopy changes should be read with care. This is exposed in `outliers.json` as `context.ndviWindowRain`.
+
+## Planted scenarios and results (synthetic, seed 20261004)
+| Scenario | Count | What was planted | Result |
+|---|---|---|---|
+| `decline_with_canopy_loss` | 4 | Deliveries x0.45 on a real NDVI-loss patch | 4 `drop_with_canopy_loss` or equivalent outlier |
+| `delivery_gap_canopy_ok` | 4 | Deliveries x0.40, stable real NDVI | 3 outlier; 1 `unsure` (real canopy z -1.7 is unclear, so the model declined to call it) |
+| `over_delivery` | 2 | Deliveries x2.3 | 2 outlier |
+| `canopy_loss_early` | 2 | Normal deliveries on a real NDVI-loss patch | 2 `canopy_loss` |
+| `new_member`, `tiny_plot`, `missing_record` | 5 | Thin history, under 0.10 ha, no record | 5 `unsure` |
+| `normal` | 63 | Nothing | 62 normal; 1 flagged `canopy_loss` |
+
+78 of 80 plots got the expected status and reason. The one false flag (OCC0459-1) is a real satellite signal: its canopy fell (local z -3.3) while deliveries were normal. We did not plant that, but it is in the real data. The model is right to show it.
+
+Cooperative median delivery change this season: -13.0% (context only, not held against any member). Noor: deliveries -58%, NDVI 0.83 to 0.36, delivery z -3.8, canopy z -13.8.
 
 ### Seed sweep (30 synthetic registries, real NDVI and rainfall fixed)
 `app/geo/sweep.py`, output `app/geo/data/sweep.json`. One seed flatters a model, so the registry and noise were rebuilt 30 times.
-| Measure | Result |
-|---|---|
-| Plots with expected status and reason | 97% on average, 93% in the worst seed |
-| Planted cases given the expected status | 92% on average, 77% in the worst seed |
-| Normal plots flagged as outlier | 3 in 1,890 plot-runs; 8 more marked unsure (thin pixels), 0 to 2 per seed |
-| `over_delivery` (x2.3) missed | 9 of 60 |
-| `delivery_gap_canopy_ok` (x0.40) missed | 22 of 120 (18%) |
+| Measure | Mean | Worst seed |
+|---|---|---|
+| Plots with expected status and reason | 97.7% | 93.8% |
+| Planted cases given the expected status | 92.2% | 70.6% |
+| Normal plots flagged as outlier per seed (of 63) | 0.27 | 1 |
 
-Misses are mostly deliveries-only signals, where there is no satellite corroboration and the member's own noise sits close to the threshold. We did not lower the threshold to win these back: it would raise false flags on real, noisier data.
+Of 1,890 normal plot-runs, 8 were flagged outlier: 7 `canopy_loss` on real NDVI falls and 1 from delivery noise. Weakest scenarios: `over_delivery` missed 17 of 60 times (28%) and `delivery_gap_canopy_ok` 23 of 120 (19%). A x2.3 jump is only about 3.4 robust z-scores against the cooperative's spread, so it sits near the threshold. We did not lower the threshold to win these back: it would add false flags on real, noisier records.
 
-**What these numbers prove:** the rules do what they say on data built to test them. **What they do not prove:** anything about a real cooperative. The scenarios and the noise were written by us, so the hit rate mostly reflects how far the planted effects sit from the noise we chose. The remaining miss is honest: a 55% fall with a normal canopy can sit inside the threshold when the cooperative's own spread is wide. We did not lower the threshold to catch it.
+## Officer visit plan
+`visit_plan.json` ranks every plot by priority points from three signals, groups them into tiers, and orders up to 8 tier A plots (one visit day, assumption) into a closed route from the cooperative office.
+| Signal | Source | Points |
+|---|---|---|
+| Canopy fell much more than neighbours (z at most -3) | Real Sentinel-2 | 40 (25 if z at most -2) |
+| Deliveries fell (z at most -3) | Synthetic record | 30 (15 if z at most -2) |
+| Deliveries rose (z at least 3) | Synthetic record | 20 |
+| Farmer sent a leaf check showing rust on 3 or more of 10 leaves | Synthetic referral | 40 |
+| Farmer's check could not decide | Synthetic referral | 25 |
+| Other problem referral | Synthetic referral | 25 |
+| Data too thin, nothing else | Registry | 5 |
+
+Tier A is 40 points or more (visit now), tier B is 20 to 39 (call the member or check records), tier C is below. Points are a transparent sum, not a probability. A plot with signals from several independent sources ranks above one with a single signal of the same size.
+
+Result on the seed run: tier A 16, B 9, C 55. 18 plots have a linked referral. 9 plots have two or more independent signals. The 8-stop loop is 18.0 km against 28.1 km for the same stops in random order (straight-line times 1.4, not road routing).
+
+**Does the ranking beat chance? (satellite and deliveries only, planted scenarios, synthetic).** Seed run: 7 of the top 8 are planted problems (88%), and all 6 planted canopy-loss plots are in the top 8. Chance is 15%. Over 30 seeds: 93% mean, 75% worst. Route saving against random order: 47% mean, 44% worst.
+
+## What these numbers prove and do not prove
+They show the rules do what they say on data built to test them, and that combining signals puts the planted problems first. They prove nothing about a real cooperative. The scenarios and noise are ours, so the hit rate mostly reflects how far the planted effects sit from the noise we chose. The priority weights are assumptions. They need real visit outcomes to tune, and until then the officer should treat the order as a starting point.
 
 ## Limits and what the data does not cover
-- **No real delivery data.** Thresholds are set by reasoning, not tuned on real records. A real cooperative would need to check the false-flag rate on its own history first.
+- **No real delivery or visit data.** Thresholds and weights are set by reasoning. A real cooperative must check the false-flag rate on its own history first.
 - **NDVI is not coffee health.** Loss can mean stumping or pruning (normal practice), felling, a new building, intercrop removal or disease. It cannot see leaf rust directly. That is the leaf check's job.
-- **Shade trees and intercrops** mix into each 10 m pixel. Smallholder coffee plots of 0.15 ha are only about 15 pixels.
-- **Regional gradient.** The north of the area shows a broad real NDVI decline in early 2026 (northern third, prior median 0.69 to 0.61; plot median change -0.003 in the south, -0.059 in the north). It is not cloud: clear-observation counts are the same north and south (12 to 13). To stop it reading as plot-level loss, the canopy score compares each plot with its 12 nearest plots, not the whole area. This cost no hits on the planted scenarios. The cause of the gradient is unknown to us (rain timing, land-use change, or a processing effect).
-- **One dry season per year.** January to mid March only. The July to September cool dry season is often overcast in the highlands and is not used.
-- **Rainfall is one value for all plots.** NASA POWER is about 0.5 x 0.625 degrees. It gives context, not per-plot cause. CHIRPS (about 5 km) would be the next step.
+- **Shade trees and intercrops** mix into each 10 m pixel. A 0.15 ha plot is about 15 pixels, and fewer after the edge is excluded. Under 10 clear pixels the model abstains.
+- **Regional gradient.** The north of the area shows a broad real NDVI decline in early 2026 (plot median change -0.003 in the south, -0.059 in the north). It is not cloud: clear-observation counts match north and south. Each plot is compared with its 12 nearest plots. We do not know the cause.
+- **Wet "dry season" in 2026** (above). Four seasons are too few to model a rainfall adjustment.
+- **One dry season per year.** January to mid March only. July to September is often overcast in the highlands.
+- **Rainfall is one value for the whole area.** NASA POWER is about 0.5 x 0.625 degrees. It gives context, not per-plot cause. The onset rule is simplified and is not the Kenya Met Department definition. CHIRPS (about 5 km) would be the next step.
 - **Registry quality.** Tree counts are the weakest number in any real registry. `above_plausible_yield` exists because a wrong tree count looks exactly like an outlier.
-- **Side-selling.** `drop_canopy_normal` is consistent with selling to a middleman, but also with late picking, theft, illness or a record error. The officer asks; the map does not accuse.
+- **Side-selling.** `drop_canopy_normal` fits selling to a middleman, but also late picking, theft, illness or a record error. The officer asks; the map does not accuse.
+- **Routing** is straight-line distance times a factor, not roads or terrain.
 
 ## Privacy
-Member numbers only, no names. Plot polygons in a real deployment are personal data: they should stay on the cooperative's systems with member consent, and the public demo uses synthetic polygons only.
+Member numbers only, no names. Plot polygons in a real deployment are personal data. They should stay on the cooperative's systems with member consent. The public demo uses synthetic polygons only. Seed referrals are fake members and fake checks.
 
 ## Files
-- Code: `app/geo/` (`config.py`, `fetch_ndvi.py`, `fetch_rain.py`, `make_plots.py`, `outliers.py`, `validate.py`, `sweep.py`, `preview.py`, `run.sh`)
-- Preview image: `kb/geo/preview.png`
-- Committed derived data: `app/geo/data/` (`rainfall.json`, `ndvi_scenes.json`, `registry.geojson`, `truth.json`, `eval.json`, `sweep.json`)
-- Outputs: `app/public/geo/` (`plots.geojson`, `outliers.json`, `ndvi_change.png`)
+- Code: `app/geo/` (`config.py`, `fetch_ndvi.py`, `fetch_rain.py`, `season.py`, `make_plots.py`, `outliers.py`, `visit_plan.py`, `validate.py`, `sweep.py`, `preview.py`, `run.sh`)
+- Committed derived data: `app/geo/data/` (`rainfall.json`, `season_support.json`, `ndvi_scenes.json`, `registry.geojson`, `truth.json`, `eval.json`, `visit_eval.json`, `sweep.json`)
+- Outputs: `app/public/geo/` (`plots.geojson`, `outliers.json`, `ndvi_change.png`, `visit_plan.json`, `referrals_seed.json`)
+- Preview: `kb/geo/preview.png`
 - Contract: `kb/geo/CONTRACT.md`

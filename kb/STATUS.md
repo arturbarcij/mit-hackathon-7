@@ -31,8 +31,10 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | C2 | Swahili + Kikuyu translations | content-voice | Sat 23:30 | todo | |
 | C3 | Audio rendered (ElevenLabs, MMS) | content-voice | Sun 00:30 | todo | needs L2 |
 | G1 | Real data: Sentinel-2 dry-season NDVI (Earth Search, SCL mask) and NASA POWER rainfall, Mathira West, Nyeri | geo | Sun 02:00 | done | 4 composites (Jan to mid Mar 2023 to 2026, 12 to 15 scenes each); rainfall 1991 to Sep 2026. NDVI kept, no cut |
-| G2 | Synthetic registry (80 plots, 66 members) and deliveries with planted scenarios, labelled synthetic | geo | Sun 02:00 | done | Noor is OCC0412-2 (`drop_with_canopy_loss`) |
-| G3 | Robust-z outlier model, reason codes, abstention; `public/geo/plots.geojson`, `outliers.json`, `ndvi_change.png` | geo | Sun 02:00 | done | 79 of 80 planted cases as expected, 0 false flags on 63 normal; over 30 seeds 97% match, 92% of planted problems caught, 0.4 false flags per 63 (all synthetic). Contract `kb/geo/CONTRACT.md`, report `kb/geo/REPORT.md` |
+| G2 | Synthetic registry (80 plots, 63 members) on perennial-looking land, deliveries with planted scenarios, labelled synthetic | geo | Sun 02:00 | done | Noor is OCC0412-2 (scripted drop, `drop_with_canopy_loss`) |
+| G3 | Robust-z outlier model with local canopy baseline, reason codes, abstention; `public/geo/plots.geojson`, `outliers.json`, `ndvi_change.png` | geo | Sun 02:00 | done | 78 of 80 as expected (seed run). 30 seeds: 98% match, 0.27 false outliers per 63 normal plots (synthetic). Contract `kb/geo/CONTRACT.md`, report `kb/geo/REPORT.md` |
+| G4 | Rain onset and season windows from NASA POWER; wetness of each NDVI window | geo | Sun 02:00 | done | `app/geo/data/season_support.json`. Short-rains onset median 19 Oct, sd 17 days, before 15 Oct in 47% of years |
+| G5 | Officer visit plan (ranked, tiers, 8-stop route) and 18 synthetic seed referrals | geo | Sun 02:00 | done | `public/geo/visit_plan.json`, `referrals_seed.json`. Top 8 hold 93% of planted problems over 30 seeds vs 15% by chance (synthetic) |
 | D1 | Doc skeletons | docs | Sat 22:30 | todo | |
 | D2 | DATA_CARD, RESPONSIBLE_AI, LANGUAGES, REPLICATION | docs | Sun 10:30 | todo | needs R1, R3, M5 |
 | D3 | README final | docs | Sun 11:00 | todo | |
@@ -51,9 +53,14 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 - geo to lead: `kb/agents/geo.md`, `kb/research/EVIDENCE.md` and MASTER_PROMPT sections 3.4 and 3.5 were not in the repo when geo ran. Built from the task spec instead. Please add the geo paths (`app/geo/**`, `app/public/geo/**`, `kb/geo/**`) to `kb/OWNERSHIP.md`.
 - geo to engine: please add a "Geo outputs" section to `kb/CONTRACTS.md` pointing to `kb/geo/CONTRACT.md`.
 - geo to research: yield baseline (E3) used 3.0 kg cherry per tree, Nyeri, MOALF 2014 via Mugendi et al. 2015, and 1,300 trees per ha (Coffee Year Book 2022/23). Replace if E3 says otherwise.
+- geo to research: NASA POWER gives short-rains onset median 19 Oct, sd 17 days, onset by 15 Oct in 47% of years and by 1 Oct in 13% (simplified rule, assumption). A fixed "mid October" window is right about half the time. Please cross-check against Kenya Met Department or CHIRPS before it goes in `season.json`. Details and suggested windows in `app/geo/data/season_support.json`.
+- geo to lead and engine: because onset varies by weeks, consider one yes/no question in the farmer flow ("have the rains started?") feeding `seasonWindow`. The person answers; the tool does not guess. Your call.
+- geo to engine and content-voice: `kb/agents/content-voice.md` puts `distinct_problems_gte: 2` before the rust rule, but the contract example `JANI1 ... R:6 ... L:1 ... A:rust_high_pre_rains` has two problems. Rule order and example disagree. Geo seeds use the rule order and give Noor 6 rust only.
+- geo to ui: officer map also reads `/geo/visit_plan.json` (ranked plots, route, signal text) and `/geo/referrals_seed.json` (18 synthetic referrals matching the `referrals` table plus `sms`, `lon`, `lat`). Always show a ranked plot with its `signals`. Mark everything synthetic. Rules in `kb/geo/CONTRACT.md`.
 - geo to ui: officer map reads `/geo/plots.geojson` and `/geo/outliers.json`; overlay `/geo/ndvi_change.png` with `overlay.bounds`. Show the synthetic tag. Rules in `kb/geo/CONTRACT.md`.
 
 ## Log
 - Sat 21:00: kb set up, six agent briefs written.
 - Sat 23:00: geo G1 to G3 done. Sentinel-2 and NASA POWER both working.
 - Sat 23:30: geo: local canopy baseline, corroboration rule, contract validator, 30-seed sweep, preview map.
+- Sat 23:50: geo: season/rain-onset analysis, perennial-land filter, officer visit plan and seed referrals (G4, G5).

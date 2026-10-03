@@ -23,7 +23,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | E1 | Engine with mock model + hooks | engine | Sat 23:30 | done | Branch `cursor/engine-offline-core-d90f`, PR to main. Usage notes in CONTRACTS.md. Content is read from `src/content/*.json` when present, else engine placeholders. |
 | E2 | PWA offline caching | engine | Sun 00:30 | done | vite-plugin-pwa precaches onnx, wasm, mjs, mp3. Offline reload and full check proven in Chromium (see E4). Raw precache is over budget once model and audio land, see Requests. |
 | E3 | Real model integrated, parity in browser | engine | Sun 08:30 | doing | ORT-web (1.22.0, WASM, 1 thread) loads and runs a fixture ONNX in prod build and Vite dev; matches Python onnxruntime within 1e-4. Waiting on M4 (`public/model/*`, `ml/parity_samples/`). Until then `mock: true` is reported. |
-| E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | doing | 97 vitest + 4 Playwright pass (output below). Parity-on-real-images test is written and skipped until `ml/parity_samples/expected.json` exists. Not yet run on a real Android phone. |
+| E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | doing | 100 vitest + 6 Playwright pass, also from a clean clone with `npm ci` (output below). GitHub Actions workflow `engine.yml` runs them. Parity-on-real-images test is written and skipped until `ml/parity_samples/expected.json` exists. Not yet run on a real Android phone. |
 | U1 | Lovable project, routes, farmer flow with mocks | ui | Sat 23:30 | todo | |
 | U2 | Officer dashboard, tables, seed data | ui | Sun 08:00 | todo | |
 | U3 | Wire real engine hooks, publish live URL | ui | Sun 09:30 | todo | needs E1 |
@@ -59,13 +59,22 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 ```
 npx vitest run
  Test Files  10 passed (10)
-      Tests  97 passed (97)
+      Tests  100 passed (100)
 
 npx playwright test   (production build, service worker, Chromium)
   ok  service worker precaches the model, WASM runtime and app
   ok  real ONNX runtime matches onnxruntime (Python) on the reference tensor   (|dp| < 1e-4)
   ok  full ten-leaf check works in airplane mode  (rust x6 / healthy x3 / unsure x1 -> rust_high_pre_rains, SMS <= 160 chars, saved to IndexedDB, blur/dark/tiny rejected)
+  ok  overlapping classify calls are queued and all succeed
+  ok  React hooks drive a whole check (blur rejected, rust x5 + healthy, consent, decision saved, SMS text, nothing posted)
   ok  inference timing with the CPU throttled 4x
   --  real model: parity samples match when present   (skipped: no public/model or ml/parity_samples yet)
 ```
 What these do and do not show: the pipeline (decode, quality gate, preprocess, WASM inference, rules, referral, storage, service worker) works offline. The fixture model is a colour rule, not a coffee model, so no claim about leaf accuracy follows from these tests.
+
+### Engine iteration, Sat 3 Oct evening
+- **Quality gate fix.** A raw Laplacian threshold called dim but sharp photos blurry (synthetic leaf on a sheet at 0.3x exposure scored 22 against a threshold of 40). `QualityResult.blur` is now the Laplacian variance divided by brightness squared, so a sharp leaf scores about 0.0048 at any exposure and the threshold is 0.0012 (rejects Gaussian blur from about 10 px on a 4000 px wide photo). Tuned on synthetic images only; still needs 10 sharp and 10 blurry real phone photos.
+- **Preprocessing check against Python.** Browser crop (canvas, high quality smoothing) against PIL resize then centre crop, mean absolute pixel difference on a 0 to 255 scale: 0.8 for a natural photo (bilinear reference), 1.0 (bicubic). A 4000 px synthetic noise image gave 7.9, so fine textures are the weak spot. ml: tell engine which interpolation training used; the real parity samples decide whether a PIL-exact resize is worth writing.
+- **Robustness.** Inference calls are queued (ORT rejects overlapping runs) and the model is warmed up on load. The browser is asked to keep our data (`storage.persist`) once main consent is given. If saving fails, `useCheck().saveError` is set and the decision still stands.
+- **Dev server.** ORT now loads under `vite` dev as well as in the production build.
+- **Seen on the way:** openresearch.sh (open-source workspace for running AI research agents and parallel experiments). Not an engine concern, no runtime AI in the client; it could help the ml agent run training sweeps.

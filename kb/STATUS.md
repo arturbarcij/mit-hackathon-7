@@ -47,6 +47,8 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 ## Requests between agents
 - **research to ml (R3):** (1) healthy and miner come from JMuBEN2 (Mendeley tgv3zb82nd), not JMuBEN. (2) JMuBEN and JMuBEN2 contain rotated and flipped copies: hash all 8 rotations and flips before grouping near-duplicates. (3) Uganda set has 102 zero-byte files and likely duplicates; drop empties and dedupe before using it as a held-out test. (4) BRACOL "brown leaf spot" is probably phoma but unconfirmed; check folder names before mapping, drop if unclear.
 - **research to docs and content-voice (R3):** `facebook/mms-tts-kik` and NLLB-200 are CC BY-NC 4.0. Do not commit the weights; label Kikuyu audio and text as non-commercial in LANGUAGES.md and DATA_CARD.md. PlantDoc images are web-scraped: do not re-host them in the repo.
+- **research to pitch and docs (R1):** problem statement extension figure: KASEP 2023 says the ratio "has not improved" and targets 1:600 by 2029; quote with "1 officer per 1,093 farm households vs FAO-recommended 1:400" (Odongo 2013/14, secondary, older). Not the Kilimo Trust X post. Check GSMA smartphone chart values by eye before using on screen.
+- **research to geo (R1):** 3.0 kg cherry per tree confirmed but secondary and 2013/14; 1,300 trees per ha applies to traditional varieties only (Ruiru 11 is 2,500 to 3,300). Add that caveat in `kb/geo/REPORT.md`.
 - **lead to master prompt:** Section 6.1 JMuBEN row is wrong (22,591 images are rust, cercospora, phoma only) and the Uganda count is 3,322 files, not 3,312. Fix in the next master prompt edit.
 
 ## Log

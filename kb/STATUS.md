@@ -54,6 +54,8 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | PT2 | ffprobe checks + submission form text | pitch | Sun 13:00 | todo | needs V1 |
 | V1 | Three videos recorded and checked | Arthur (pitch later) | Sun 12:45 | todo | |
 | S1 | Submit, save confirmation, make repo public | Arthur | Sun 13:30 | todo | |
+| AF1 | Concurrent Claude review framework (`app/backend/agent_framework`) | lead | Sun 10:45 | done | Static check `kb/agent-runs/20261004T084219Z`: pass 0, fail 20, missing 6, 22 blockers. The tree is still the Vite starter. Claude wave did not run: `ANTHROPIC_API_KEY` is not in this environment. |
+| AF2 | Orchestrate audit seats in a DAG (`app/backend/agent_framework`) | lead | Sun 11:00 | done | Run `kb/agent-runs/20261004T090015Z`: pass 0, fail 20, missing 6, 22 blockers. Claude wave did not run: no `ANTHROPIC_API_KEY`. |
 
 ## Lane rhythm (one person running four lanes)
 | Lane | Machine | Runs alone for | Check it |
@@ -108,3 +110,6 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 - Sun 00:45: engine shipped the offline farmer flow with a mock model, fixed answer bank, rule table, referral SMS, and a simulated officer queue. No trained model and no voice clips yet.
 - Sun 01:10: browser pass on the production preview at 360px. Fill-10 summary was 6 rust and 1 unsure, card rust_high_pre_rains, referral JANI1 under 160 characters, blur sample could not be kept, offline reload served the app. Officer seed now inserts the syn-01 to syn-16 rows even when a farmer check is already marked synthetic. Chrome DevTools offline does not change navigator.onLine, so the header pill stayed "On the network".
 - Sun (early): research verified and shipped kb/research. JSON valid, all cited S-ids defined, wild set 254 files present with no ND licence, 176 price rows with KES derivation checked, pass-2 quotes match saved pages. kb/research/raw/ (third-party page copies) is git-ignored and stays local. raw/crosscheck_cowork_20261003.md lists upgrades (CA 4G 97.3%, KMSA OND onset, ElevenLabs v3 Swahili) not yet merged into EVIDENCE.
+- Sun 10:40: lead. Agent framework added at `app/backend/agent_framework`. Roster: qa, redteam, judge, engine, ui, content, docs, ml. They share one evidence pack and return JSON. Static probes do not treat `kb/STATUS.md` or `kb/research` as proof that `app/` contains the product.
+- Sun 10:45: lead. Static check of this checkout: pass 0, fail 20, missing 6. Blockers include no PWA, no model, no answer bank, no officer route, Vite starter still in `app/src/App.tsx`. Claude reviewers were not called. Put `ANTHROPIC_API_KEY` in `app/backend/.env` and rerun `PYTHONPATH=app/backend python3 -m agent_framework --root .`
+- Sun 11:00: lead. Orchestrator schedules the audit DAG and writes `plan.json`. Static check `kb/agent-runs/20261004T090015Z`: pass 0, fail 20, missing 6, 22 blockers. Claude wave did not run: `ANTHROPIC_API_KEY` is not in this environment.

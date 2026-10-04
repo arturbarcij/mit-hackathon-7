@@ -5,6 +5,8 @@ desktop.ini
 *.pem
 node_modules/
 dist/
+__pycache__/
+*.pyc
 .mcp.json
 .cursor/mcp.json
 app/geo/cache/

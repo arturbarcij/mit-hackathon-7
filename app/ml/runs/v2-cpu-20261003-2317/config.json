@@ -1,0 +1,116 @@
+{
+  "command": "python app/ml/train.py --manifest app/ml/manifest_v2.csv --init app/ml/runs/v1-cpu-e3/best.pt --train-splits train uganda_train --val-splits val uganda_calib --max-train-per-class 2500 --uncapped-sources bracol plantdoc --max-val-per-class 0 --composite-p 0.6 --field-bg-p 0.3 --plantdoc-crop-p 0.6 --synthetic-not-leaf 400 --not-leaf-share 0.125 --source-weight uganda=2 --select mean_f1 --epochs 5 --patience 2 --samples-per-epoch 24000 --lr 3e-4 --device auto --out app/ml/runs/v2-cpu-20261003-2317",
+  "args": {
+    "manifest": "app/ml/manifest_v2.csv",
+    "data_root": "/workspace/data_raw",
+    "model": "mobilenetv3_small_100",
+    "init": "app/ml/runs/v1-cpu-e3/best.pt",
+    "device": "auto",
+    "epochs": 5,
+    "batch_size": 64,
+    "lr": 0.0003,
+    "weight_decay": 0.02,
+    "freeze_backbone": false,
+    "train_splits": [
+      "train",
+      "uganda_train"
+    ],
+    "val_splits": [
+      "val",
+      "uganda_calib"
+    ],
+    "max_train_per_class": 2500,
+    "uncapped_sources": [
+      "bracol",
+      "plantdoc"
+    ],
+    "max_val_per_class": 0,
+    "samples_per_epoch": 24000,
+    "composite_p": 0.6,
+    "field_bg_p": 0.3,
+    "plantdoc_crop_p": 0.6,
+    "synthetic_not_leaf": 400,
+    "not_leaf_share": 0.125,
+    "source_weight": [
+      "uganda=2"
+    ],
+    "select": "mean_f1",
+    "patience": 2,
+    "num_workers": null,
+    "threads": null,
+    "max_steps": 0,
+    "seed": 42,
+    "out": "app/ml/runs/v2-cpu-20261003-2317"
+  },
+  "device": "cpu",
+  "lr": 0.0003,
+  "num_workers": 3,
+  "torch_threads": 4,
+  "classes": [
+    "healthy",
+    "rust",
+    "cercospora",
+    "phoma",
+    "miner",
+    "not_leaf"
+  ],
+  "train_counts": {
+    "healthy": 3162,
+    "not_leaf": 685,
+    "cercospora": 2590,
+    "phoma": 3162,
+    "miner": 2664,
+    "rust": 3325
+  },
+  "train_counts_by_source": {
+    "cercospora/bracol": 90,
+    "cercospora/jmuben": 2500,
+    "healthy/bracol": 124,
+    "healthy/jmuben2": 2500,
+    "healthy/uganda": 538,
+    "miner/bracol": 164,
+    "miner/jmuben2": 2500,
+    "not_leaf/plantdoc": 285,
+    "not_leaf/synthetic_page": 400,
+    "phoma/bracol": 218,
+    "phoma/jmuben": 2500,
+    "phoma/uganda": 444,
+    "rust/bracol": 306,
+    "rust/jmuben": 2500,
+    "rust/uganda": 519
+  },
+  "val_counts": {
+    "val": {
+      "cercospora": 1179,
+      "miner": 2597,
+      "rust": 1255,
+      "healthy": 3217,
+      "phoma": 1070,
+      "not_leaf": 61
+    },
+    "uganda_calib": {
+      "healthy": 163,
+      "rust": 156,
+      "phoma": 133
+    }
+  },
+  "samples_per_epoch": 24000,
+  "input": {
+    "size": 224,
+    "resize": "shorter_side_then_center_crop",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "layout": "NCHW",
+    "range": "0-1"
+  },
+  "torch": "2.14.1+cpu",
+  "timm": "1.0.30"
+}

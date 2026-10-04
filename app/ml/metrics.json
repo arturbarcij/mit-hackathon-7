@@ -1,0 +1,855 @@
+{
+  "model": {
+    "version": "v2-2026-10-04",
+    "file": "leaf.onnx",
+    "bytes": 1642557,
+    "sha256": "ba7e11cb9611166b51b0e7efbdd07f720b0863bccb2d3c8c88e1bbd9ad703b9c",
+    "temperature": 0.9710367855854688,
+    "threshold": 0.9853873628681449,
+    "arch": "mobilenetv3_small_100"
+  },
+  "command": "python app/ml/evaluate.py --manifest app/ml/manifest_v2.csv --sets in_domain_test heldout_uganda_test heldout_rocole rocole_red_spider_mite synthetic_blank_pages",
+  "inference": "int8 ONNX via onnxruntime CPU, 1 thread, engine preprocessing; no quality gate applied",
+  "sample_cap_per_class": null,
+  "test_sets": {
+    "in_domain_test": {
+      "test_set": "in-domain test split: JMuBEN, JMuBEN2, BRACOL, PlantDoc not_leaf (Kenya, Brazil; pHash-grouped)",
+      "n": 9359,
+      "label_counts": {
+        "healthy": 3181,
+        "phoma": 1029,
+        "miner": 2580,
+        "rust": 1336,
+        "cercospora": 1172,
+        "not_leaf": 61
+      },
+      "source_counts": {
+        "jmuben2": 5724,
+        "jmuben": 3420,
+        "plantdoc": 61,
+        "bracol": 154
+      },
+      "abstention_rate": 0.14745165081739497,
+      "predicted_counts": {
+        "healthy": 3290,
+        "phoma": 1027,
+        "miner": 2580,
+        "rust": 1278,
+        "cercospora": 1135,
+        "not_leaf": 49
+      },
+      "accepted_predicted_counts": {
+        "healthy": 3220,
+        "phoma": 708,
+        "miner": 2129,
+        "cercospora": 960,
+        "rust": 959,
+        "not_leaf": 3
+      },
+      "rate_abstain_or_not_leaf": 0.14777219788438936,
+      "rate_predicted_not_leaf": 0.005235602094240838,
+      "rate_accepted_as_not_leaf": 0.000320547066994337,
+      "classes_scored": [
+        "healthy",
+        "rust",
+        "cercospora",
+        "phoma",
+        "miner",
+        "not_leaf"
+      ],
+      "accuracy": 0.9685863874345549,
+      "macro_f1": 0.9184352164465249,
+      "per_class": {
+        "healthy": {
+          "precision": 0.9668693009118541,
+          "recall": 1.0,
+          "f1": 0.9831556173698037,
+          "n": 3181
+        },
+        "rust": {
+          "precision": 0.9906103286384976,
+          "recall": 0.9476047904191617,
+          "f1": 0.9686304514154552,
+          "n": 1336
+        },
+        "cercospora": {
+          "precision": 0.9744493392070485,
+          "recall": 0.9436860068259386,
+          "f1": 0.9588209796272215,
+          "n": 1172
+        },
+        "phoma": {
+          "precision": 0.9065238558909445,
+          "recall": 0.9047619047619048,
+          "f1": 0.9056420233463035,
+          "n": 1029
+        },
+        "miner": {
+          "precision": 0.9852713178294573,
+          "recall": 0.9852713178294573,
+          "f1": 0.9852713178294573,
+          "n": 2580
+        },
+        "not_leaf": {
+          "precision": 0.7959183673469388,
+          "recall": 0.639344262295082,
+          "f1": 0.7090909090909091,
+          "n": 61
+        }
+      },
+      "confusion": {
+        "labels": [
+          "healthy",
+          "rust",
+          "cercospora",
+          "phoma",
+          "miner",
+          "not_leaf"
+        ],
+        "rows": "true",
+        "cols": "predicted (argmax, before abstention)",
+        "matrix": [
+          [
+            3181,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            1266,
+            6,
+            51,
+            3,
+            0
+          ],
+          [
+            49,
+            5,
+            1106,
+            4,
+            8,
+            0
+          ],
+          [
+            47,
+            0,
+            20,
+            931,
+            21,
+            10
+          ],
+          [
+            2,
+            0,
+            0,
+            36,
+            2542,
+            0
+          ],
+          [
+            1,
+            7,
+            3,
+            5,
+            6,
+            39
+          ]
+        ]
+      },
+      "selective": {
+        "threshold": 0.9853873628681449,
+        "coverage": 0.852548349182605,
+        "accepted_accuracy": 0.9947361824790074,
+        "n_accepted": 7979
+      },
+      "ece_15_bins": 0.011902849752812437,
+      "per_source_accuracy": {
+        "bracol": 0.7337662337662337,
+        "jmuben": 0.941812865497076,
+        "jmuben2": 0.9944095038434662,
+        "plantdoc": 0.639344262295082
+      }
+    },
+    "not_leaf_test": {
+      "test_set": "not_leaf rows of the in-domain test split (PlantDoc non-coffee leaves)",
+      "n": 61,
+      "label_counts": {
+        "not_leaf": 61
+      },
+      "source_counts": {
+        "plantdoc": 61
+      },
+      "abstention_rate": 0.9344262295081968,
+      "predicted_counts": {
+        "not_leaf": 39,
+        "rust": 7,
+        "phoma": 5,
+        "healthy": 1,
+        "miner": 6,
+        "cercospora": 3
+      },
+      "accepted_predicted_counts": {
+        "not_leaf": 3,
+        "phoma": 1
+      },
+      "rate_abstain_or_not_leaf": 0.9836065573770492,
+      "rate_predicted_not_leaf": 0.639344262295082,
+      "rate_accepted_as_not_leaf": 0.04918032786885246
+    },
+    "heldout_uganda_test": {
+      "test_set": "Uganda test portion (35% of the Uganda set by duplicate group; healthy, rust, phoma); other Uganda groups were used for v2 training and calibration",
+      "n": 1051,
+      "label_counts": {
+        "healthy": 378,
+        "phoma": 317,
+        "rust": 356
+      },
+      "source_counts": {
+        "uganda": 1051
+      },
+      "abstention_rate": 0.5470980019029495,
+      "predicted_counts": {
+        "healthy": 394,
+        "phoma": 318,
+        "miner": 42,
+        "rust": 256,
+        "not_leaf": 41
+      },
+      "accepted_predicted_counts": {
+        "healthy": 311,
+        "phoma": 121,
+        "rust": 44
+      },
+      "rate_abstain_or_not_leaf": 0.5470980019029495,
+      "rate_predicted_not_leaf": 0.0390104662226451,
+      "rate_accepted_as_not_leaf": 0.0,
+      "classes_scored": [
+        "healthy",
+        "rust",
+        "phoma"
+      ],
+      "accuracy": 0.8382492863939106,
+      "macro_f1": 0.8658917978136,
+      "per_class": {
+        "healthy": {
+          "precision": 0.9365482233502538,
+          "recall": 0.9761904761904762,
+          "f1": 0.9559585492227979,
+          "n": 378
+        },
+        "rust": {
+          "precision": 0.9609375,
+          "recall": 0.6910112359550562,
+          "f1": 0.803921568627451,
+          "n": 356
+        },
+        "phoma": {
+          "precision": 0.8364779874213837,
+          "recall": 0.8391167192429022,
+          "f1": 0.8377952755905512,
+          "n": 317
+        }
+      },
+      "confusion": {
+        "labels": [
+          "healthy",
+          "rust",
+          "cercospora",
+          "phoma",
+          "miner",
+          "not_leaf"
+        ],
+        "rows": "true",
+        "cols": "predicted (argmax, before abstention)",
+        "matrix": [
+          [
+            369,
+            1,
+            0,
+            5,
+            3,
+            0
+          ],
+          [
+            25,
+            246,
+            0,
+            47,
+            24,
+            14
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            9,
+            0,
+            266,
+            15,
+            27
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selective": {
+        "threshold": 0.9853873628681449,
+        "coverage": 0.45290199809705045,
+        "accepted_accuracy": 0.9873949579831933,
+        "n_accepted": 476
+      },
+      "ece_15_bins": 0.042476174194536975,
+      "per_source_accuracy": {
+        "uganda": 0.8382492863939106
+      }
+    },
+    "heldout_rocole": {
+      "test_set": "RoCoLe held-out set (Ecuador Robusta; healthy, rust levels 1-4 mapped to rust), never trained on",
+      "n": 1393,
+      "label_counts": {
+        "healthy": 791,
+        "rust": 602
+      },
+      "source_counts": {
+        "rocole": 1393
+      },
+      "abstention_rate": 0.9777458722182341,
+      "predicted_counts": {
+        "cercospora": 142,
+        "not_leaf": 395,
+        "phoma": 354,
+        "miner": 189,
+        "healthy": 288,
+        "rust": 25
+      },
+      "accepted_predicted_counts": {
+        "healthy": 31
+      },
+      "rate_abstain_or_not_leaf": 0.9777458722182341,
+      "rate_predicted_not_leaf": 0.28356066044508255,
+      "rate_accepted_as_not_leaf": 0.0,
+      "classes_scored": [
+        "healthy",
+        "rust"
+      ],
+      "accuracy": 0.1730078966259871,
+      "macro_f1": 0.23538097919835396,
+      "per_class": {
+        "healthy": {
+          "precision": 0.7743055555555556,
+          "recall": 0.28192161820480405,
+          "f1": 0.41334569045412417,
+          "n": 791
+        },
+        "rust": {
+          "precision": 0.72,
+          "recall": 0.029900332225913623,
+          "f1": 0.05741626794258373,
+          "n": 602
+        }
+      },
+      "confusion": {
+        "labels": [
+          "healthy",
+          "rust",
+          "cercospora",
+          "phoma",
+          "miner",
+          "not_leaf"
+        ],
+        "rows": "true",
+        "cols": "predicted (argmax, before abstention)",
+        "matrix": [
+          [
+            223,
+            7,
+            82,
+            251,
+            52,
+            176
+          ],
+          [
+            65,
+            18,
+            60,
+            103,
+            137,
+            219
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selective": {
+        "threshold": 0.9853873628681449,
+        "coverage": 0.022254127781765973,
+        "accepted_accuracy": 0.8709677419354839,
+        "n_accepted": 31
+      },
+      "ece_15_bins": 0.40898858565275265,
+      "per_source_accuracy": {
+        "rocole": 0.1730078966259871
+      }
+    },
+    "rocole_red_spider_mite": {
+      "test_set": "RoCoLe red spider mite (no matching class; out of scope)",
+      "n": 167,
+      "label_counts": {
+        "unmapped": 167
+      },
+      "source_counts": {
+        "rocole": 167
+      },
+      "abstention_rate": 0.9880239520958084,
+      "predicted_counts": {
+        "not_leaf": 58,
+        "miner": 38,
+        "healthy": 13,
+        "cercospora": 23,
+        "phoma": 33,
+        "rust": 2
+      },
+      "accepted_predicted_counts": {
+        "not_leaf": 1,
+        "healthy": 1
+      },
+      "rate_abstain_or_not_leaf": 0.9940119760479041,
+      "rate_predicted_not_leaf": 0.3473053892215569,
+      "rate_accepted_as_not_leaf": 0.005988023952095809,
+      "note": "No class fits red spider mite. Desired behaviour is abstention or not_leaf; any accepted disease label is a wrong answer."
+    },
+    "synthetic_blank_pages": {
+      "test_set": "SYNTHETIC exercise-book pages with no leaf (two thirds through the clutter generator: random pen strokes, rectangles, skin-tone blob); desired: not_leaf or abstain",
+      "n": 300,
+      "label_counts": {
+        "not_leaf": 300
+      },
+      "source_counts": {
+        "synthetic_page": 300
+      },
+      "abstention_rate": 0.48,
+      "predicted_counts": {
+        "not_leaf": 229,
+        "rust": 65,
+        "phoma": 4,
+        "healthy": 2
+      },
+      "accepted_predicted_counts": {
+        "not_leaf": 154,
+        "rust": 2
+      },
+      "rate_abstain_or_not_leaf": 0.9933333333333333,
+      "rate_predicted_not_leaf": 0.7633333333333333,
+      "rate_accepted_as_not_leaf": 0.5133333333333333
+    }
+  },
+  "worked_examples": [
+    {
+      "test_set": "in_domain_test",
+      "path": "jmuben/extracted/Leaf rust-20210326T083416Z-001/Leaf rust/3 (437).jpg",
+      "true": "rust",
+      "top3": [
+        [
+          "rust",
+          0.9999734243258482
+        ],
+        [
+          "not_leaf",
+          1.3091993458599405e-05
+        ],
+        [
+          "phoma",
+          1.1504722380471639e-05
+        ]
+      ],
+      "accepted": true
+    },
+    {
+      "test_set": "in_domain_test",
+      "path": "jmuben2/extracted/Healthy-20210326T083815Z-001/Healthy/2 (3168).jpg",
+      "true": "healthy",
+      "top3": [
+        [
+          "healthy",
+          0.9999999994045876
+        ],
+        [
+          "not_leaf",
+          5.128841751177015e-10
+        ],
+        [
+          "phoma",
+          4.203032741059501e-11
+        ]
+      ],
+      "accepted": true
+    },
+    {
+      "test_set": "in_domain_test",
+      "path": "jmuben2/extracted/Healthy-20210326T083815Z-001/Healthy/10 (4094).jpg",
+      "true": "healthy",
+      "top3": [
+        [
+          "healthy",
+          0.9999832158121055
+        ],
+        [
+          "not_leaf",
+          1.4573757990955875e-05
+        ],
+        [
+          "phoma",
+          1.5141891543695159e-06
+        ]
+      ],
+      "accepted": true
+    },
+    {
+      "test_set": "in_domain_test",
+      "path": "jmuben/extracted/Leaf rust-20210326T083416Z-001/Leaf rust/5 (3300).jpg",
+      "true": "rust",
+      "top3": [
+        [
+          "phoma",
+          0.7908409824502459
+        ],
+        [
+          "rust",
+          0.20464956304339213
+        ],
+        [
+          "not_leaf",
+          0.0030452741314981446
+        ]
+      ],
+      "accepted": false
+    },
+    {
+      "test_set": "in_domain_test",
+      "path": "jmuben/extracted/Phoma-20210326T082051Z-001/Phoma/6 (3017).jpg",
+      "true": "phoma",
+      "top3": [
+        [
+          "phoma",
+          0.985189453411747
+        ],
+        [
+          "miner",
+          0.014231433697215247
+        ],
+        [
+          "cercospora",
+          0.00038806143554570165
+        ]
+      ],
+      "accepted": false
+    }
+  ],
+  "figures": [
+    "accuracy_vs_coverage.png",
+    "confusion_heldout_rocole.png",
+    "confusion_heldout_uganda_test.png",
+    "confusion_in_domain_test.png"
+  ],
+  "calibration": {
+    "test_set": "pooled splits ['val', 'uganda_calib'] of manifest_v2.csv, all images",
+    "n": 9831,
+    "temperature": 0.9710367855854688,
+    "threshold": 0.9853873628681449,
+    "chosen": {
+      "target": 0.95,
+      "reached": true,
+      "threshold": 0.9853873628681449,
+      "coverage": 1.0,
+      "accepted_accuracy": 0.9706031939782321,
+      "n_accepted": 9831,
+      "per_split": {
+        "pooled": {
+          "target": 0.95,
+          "reached": true,
+          "threshold": 0.28371056024561864,
+          "coverage": 1.0,
+          "accepted_accuracy": 0.9706031939782321,
+          "n_accepted": 9831
+        },
+        "val": {
+          "target": 0.95,
+          "reached": true,
+          "threshold": 0.28371056024561864,
+          "coverage": 1.0,
+          "accepted_accuracy": 0.9759036144578314,
+          "n_accepted": 9379
+        },
+        "uganda_calib": {
+          "target": 0.95,
+          "reached": true,
+          "threshold": 0.9853873628681449,
+          "coverage": 0.46238938053097345,
+          "accepted_accuracy": 0.9617224880382775,
+          "n_accepted": 209
+        }
+      },
+      "fallback_used": false,
+      "threshold_used": 0.9853873628681449
+    },
+    "targets": {
+      "0.90": {
+        "target": 0.9,
+        "reached": true,
+        "threshold": 0.6914909853779889,
+        "coverage": 1.0,
+        "accepted_accuracy": 0.9706031939782321,
+        "n_accepted": 9831,
+        "per_split": {
+          "pooled": {
+            "target": 0.9,
+            "reached": true,
+            "threshold": 0.28371056024561864,
+            "coverage": 1.0,
+            "accepted_accuracy": 0.9706031939782321,
+            "n_accepted": 9831
+          },
+          "val": {
+            "target": 0.9,
+            "reached": true,
+            "threshold": 0.28371056024561864,
+            "coverage": 1.0,
+            "accepted_accuracy": 0.9759036144578314,
+            "n_accepted": 9379
+          },
+          "uganda_calib": {
+            "target": 0.9,
+            "reached": true,
+            "threshold": 0.6914909853779889,
+            "coverage": 0.7920353982300885,
+            "accepted_accuracy": 0.9050279329608939,
+            "n_accepted": 358
+          }
+        }
+      },
+      "0.95": {
+        "target": 0.95,
+        "reached": true,
+        "threshold": 0.9853873628681449,
+        "coverage": 1.0,
+        "accepted_accuracy": 0.9706031939782321,
+        "n_accepted": 9831,
+        "per_split": {
+          "pooled": {
+            "target": 0.95,
+            "reached": true,
+            "threshold": 0.28371056024561864,
+            "coverage": 1.0,
+            "accepted_accuracy": 0.9706031939782321,
+            "n_accepted": 9831
+          },
+          "val": {
+            "target": 0.95,
+            "reached": true,
+            "threshold": 0.28371056024561864,
+            "coverage": 1.0,
+            "accepted_accuracy": 0.9759036144578314,
+            "n_accepted": 9379
+          },
+          "uganda_calib": {
+            "target": 0.95,
+            "reached": true,
+            "threshold": 0.9853873628681449,
+            "coverage": 0.46238938053097345,
+            "accepted_accuracy": 0.9617224880382775,
+            "n_accepted": 209
+          }
+        }
+      },
+      "0.98": {
+        "target": 0.98,
+        "reached": true,
+        "threshold": 0.9966691512822901,
+        "coverage": 0.9778252466687011,
+        "accepted_accuracy": 0.9800270467075834,
+        "n_accepted": 9613,
+        "per_split": {
+          "pooled": {
+            "target": 0.98,
+            "reached": true,
+            "threshold": 0.5834941967286168,
+            "coverage": 0.9778252466687011,
+            "accepted_accuracy": 0.9800270467075834,
+            "n_accepted": 9613
+          },
+          "val": {
+            "target": 0.98,
+            "reached": true,
+            "threshold": 0.492305094168906,
+            "coverage": 0.9934961083271138,
+            "accepted_accuracy": 0.980360592401803,
+            "n_accepted": 9318
+          },
+          "uganda_calib": {
+            "target": 0.98,
+            "reached": true,
+            "threshold": 0.9966691512822901,
+            "coverage": 0.37168141592920356,
+            "accepted_accuracy": 1.0,
+            "n_accepted": 168
+          }
+        }
+      },
+      "0.99": {
+        "target": 0.99,
+        "reached": true,
+        "threshold": 0.9966691512822901,
+        "coverage": 0.857288170074255,
+        "accepted_accuracy": 0.9909824394874229,
+        "n_accepted": 8428,
+        "per_split": {
+          "pooled": {
+            "target": 0.99,
+            "reached": true,
+            "threshold": 0.9492901367452193,
+            "coverage": 0.857288170074255,
+            "accepted_accuracy": 0.9909824394874229,
+            "n_accepted": 8428
+          },
+          "val": {
+            "target": 0.99,
+            "reached": true,
+            "threshold": 0.8333896475093401,
+            "coverage": 0.9310160997974197,
+            "accepted_accuracy": 0.9902656894182318,
+            "n_accepted": 8732
+          },
+          "uganda_calib": {
+            "target": 0.99,
+            "reached": true,
+            "threshold": 0.9966691512822901,
+            "coverage": 0.37168141592920356,
+            "accepted_accuracy": 1.0,
+            "n_accepted": 168
+          }
+        }
+      }
+    },
+    "nll": {
+      "before": 0.1097950230468363,
+      "after": 0.10972313046568503
+    },
+    "ece_15_bins": {
+      "before": 0.020006659516890013,
+      "after": 0.018141963818744472
+    },
+    "checkpoint_sha256": "d91c6fa7ba42cd3ea0498b83fff4c9eee7bea65e00fe22956c6bc1a99e644ed3",
+    "note": "fitted on PyTorch fp32 val logits; the shipped model is int8"
+  },
+  "export": {
+    "bytes": {
+      "onnx_fp32": 6103320,
+      "onnx_int8": 1642557
+    },
+    "parity": {
+      "test_set": "in-domain test split, class-balanced sample",
+      "n": 50,
+      "label_counts": {
+        "healthy": 9,
+        "rust": 9,
+        "cercospora": 8,
+        "phoma": 8,
+        "miner": 8,
+        "not_leaf": 8
+      },
+      "top1_agreement": {
+        "pytorch_vs_onnx_fp32": 1.0,
+        "pytorch_vs_onnx_int8": 1.0,
+        "onnx_fp32_vs_onnx_int8": 1.0,
+        "pytorch_engine_preproc_vs_pytorch_train_eval_tf": 1.0
+      },
+      "max_abs_prob_diff_after_temperature": {
+        "pytorch_vs_onnx_fp32": 2.29252940359137e-06,
+        "pytorch_vs_onnx_int8": 0.07801420277088011
+      },
+      "relative_logit_error_int8": 0.056679800152778625,
+      "accuracy_on_sample": {
+        "pytorch": 0.88,
+        "onnx_int8": 0.88
+      }
+    },
+    "failures": [],
+    "quantisation": "int8 weight-only QDQ: per-channel symmetric int8 Conv/Gemm weights with DequantizeLinear, float activations",
+    "opset": 17
+  },
+  "latency": {
+    "runs": 200,
+    "threads": 1,
+    "inference_ms": {
+      "mean": 4.356638419967567,
+      "median": 4.342084500422061,
+      "p90": 4.435219300466997
+    },
+    "decode_and_preprocess_ms_median": 26.373623000836233,
+    "sample_image_size": [
+      1600,
+      800
+    ],
+    "machine": {
+      "platform": "Linux-6.12.94+-x86_64-with-glibc2.39",
+      "processor": "x86_64",
+      "cpu_count": 4,
+      "loadavg_1m_at_start": 0.96630859375
+    },
+    "note": "onnxruntime CPU in Python, not onnxruntime-web on a phone; inference only unless stated",
+    "sample_source": "BRACOL test photo"
+  }
+}

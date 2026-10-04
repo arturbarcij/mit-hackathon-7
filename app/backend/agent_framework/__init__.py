@@ -1,7 +1,8 @@
-"""Concurrent Claude review framework for Jani.
+"""Audit orchestrator for Jani.
 
-Read-only. It checks the app against the briefs and the requirements matrix.
-It does not edit product code and it never prints API keys.
+Read-only. Seats run in dependency order, check the app, and write kb/agent-runs.
+Builder seats report gaps. They do not edit owned product paths.
+The runner never prints API keys.
 """
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"

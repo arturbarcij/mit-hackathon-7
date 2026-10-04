@@ -18,3 +18,4 @@ Append only. Newest at the bottom. Agents do not reopen a decision here without 
 | 12 | Sat 20:55 | Gemini Pro as independent reviewer (translations, advice, videos); not in the product | Second model family catches different errors | Lead |
 | 13 | Sat 21:00 | Repo lives in `MIT_Hackathon_7/app`; API keys in `app/backend/.env` (git-ignored) | Arthur's choice of layout | Arthur |
 | 14 | Sat 21:00 | UI built in Lovable; engine (ML, offline, storage) built in Cursor; strict path ownership | Avoid sync overwrites | Lead |
+| 15 | Sun 4 Oct, 10:40 | Review agents run through `app/backend/agent_framework`. They call the Claude API concurrently and only write `kb/agent-runs/`. Decision 9 still stands for a build pipeline: this runner checks, it does not generate the product. | Arthur asked for a concurrent check of the whole app before the freeze. | Lead |

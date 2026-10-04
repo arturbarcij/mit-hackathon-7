@@ -1,65 +1,184 @@
-# Problem evidence (research Task 1)
+# EVIDENCE: problem data for Jani
 
-Owner: research. Accessed date for every row: 2026-10-03. Every URL is in `_sources_evidence.json`.
-Confidence: primary = government, statistical agency or original survey data; secondary = repeats someone else's figure; modelled = estimate, model output or our own derivation.
-Numbers are quoted as found. Where we derived a number ourselves, the row says "derived" and shows the arithmetic.
+Owner: research agent. Accessed date for every item: 3 Oct 2026. Source IDs (S01 and so on) point to `sources.json`.
+Confidence: **primary** (government, World Bank, FAO, peer-reviewed, dataset owner), **secondary**, **modelled**.
+Rule for readers: if a number is not in this file with a source, do not use it. Figures are quoted as published. Where I calculated something, it says "my calculation".
 
-| # | Item | Value | Unit | Country | Year | Source title | Publisher | URL | Accessed | Exact quote | Confidence |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1a | Extension coverage: current ratio (official statement) | not given as a number; "has not improved" | qualitative | Kenya | 2023 | Kenya Agricultural Sector Extension Policy (KASEP), printed p. 8 | Ministry of Agriculture and Livestock Development | https://kilimo.go.ke/wp-content/uploads/2024/10/KENYA-AGRICULTURAL-SECTOR-EXTENSION-POLICY-2023.pdf | 2026-10-03 | "Currently, some counties have employed extension personnel, however, the ratio of extension staff to famer has not improved." | primary |
-| 1b | Extension coverage: government target | 1:600 by 2029 | extension personnel : farmers | Kenya | 2023 (target year 2029) | KASEP, printed p. 8 | Ministry of Agriculture and Livestock Development | https://kilimo.go.ke/wp-content/uploads/2024/10/KENYA-AGRICULTURAL-SECTOR-EXTENSION-POLICY-2023.pdf | 2026-10-03 | "the Government of Kenya launched the Agriculture Sector Transformation and Growth Strategy whose objective is to ensure that the country attains a ratio of one (1) extension personnel to six hundred (600) famers by the year, 2029." | primary |
-| 1c | Extension coverage: current ratio (number) | 1:1093 (against FAO-recommended 1:400) | extension officer : farm households | Kenya | paper 2013/2014; underlying data year not stated | Odongo, study of farmers' access to knowledge sources and ICT in Kenya, Agricultural Information Worldwide vol. 6, pp. 133-137 | IAALD (file hosted by FAO FSN Forum) | https://assets.fsnforum.fao.org/public/discussions/contributions/aiw6-(16)-pp133-137-Odongo.pdf | 2026-10-03 | "Currently the extension officer to farm household ratio in Kenya is at 1: 1093, against the recommend 1:400 (FAO)." | secondary (no primary source given for the figure) |
-| 1d | Extension coverage: same figure, recent reuse | 1:1093 | extension officer : farm households | Kenya | 2024 | High tech, high yields? The Kenyan farmers deploying AI to increase productivity | The Guardian | https://www.theguardian.com/world/2024/sep/30/high-tech-high-yields-the-kenyan-farmers-deploying-ai-to-increase-productivity | 2026-10-03 | "There are seven and a half million small-scale farmers in Kenya. But the country has an extension officer-to-farm household ratio of 1:1093, far lower than the 1:400 ratio that the Food and Agriculture Organization recommends." | secondary |
-| 1e | Extension coverage: alternative figure | "at best 1: 1000 nationally"; "as high as 1:2000" in counties | extension workers : farmers | Kenya | about 2019 (undated; calls ASTGS "recently launched") | Where are the extension workers? | Kilimo News | https://kilimonews.co.ke/general-news/where-are-extension-workers/ | 2026-10-03 | "Kenya last employed agriculture extension workers in 2006. Before that, they had been last recruited in 1986." and "The ratio of extension workers to the farmer is at best 1: 1000 nationally. At county levels, it is as high as 1:2000." | secondary |
-| 1f | Farming households (context for ratio) | approximately 6.4 million | farming households | Kenya | 2019 census, quoted 2023 | KASEP, printed p. 2 | Ministry of Agriculture and Livestock Development | https://kilimo.go.ke/wp-content/uploads/2024/10/KENYA-AGRICULTURAL-SECTOR-EXTENSION-POLICY-2023.pdf | 2026-10-03 | "The total farming households as per the 2019 census is approximately 6.4 million (1.7 million crop farmers, 3.9 million mixed farming, 760,000 Livestock farmers, and about 30,000 fisher folks)" | primary (quoting census) |
-| 2a | Coffee leaf rust yield loss | "in excess of 75%" where outbreaks are severe | % yield loss | Kenya (review; figure cited from its ref. [13]) | 2021 | Gichuru, Alwora, Gimase, Kathurima. Coffee Leaf Rust (Hemileia vastatrix) in Kenya: A Review. Agronomy 11(12):2590 | MDPI (authors at KALRO Coffee Research Institute) | https://www.mdpi.com/2073-4395/11/12/2590 | 2026-10-03 | "The disease can cause yield losses in excess of 75% where outbreaks are severe [13] due to loss of foliage by up to 100% and loss of berries by up to 70% [14]." | secondary (peer-reviewed review citing earlier work) |
-| 2b | Rust timing | peaks soon after rainy seasons. East of Rift (Nyeri side): May to June and January to March. West of Rift: June to July and October to December | months | Kenya | 2021 | as 2a | MDPI | https://www.mdpi.com/2073-4395/11/12/2590 | 2026-10-03 | "In areas East of Rift, the long rains start in March through May and short rains start in October through December resulting in two CLR peaks in May to June and January to March [20, 21, 36]." Also: "the peak of the disease coming soon after the rainy seasons when it fully sporulates from latent infections that occur during the rainy season" | secondary (review) |
-| 2c | Spray timing | mid October, second spray three weeks later | calendar | Kenya | 2021 | as 2a | MDPI | https://www.mdpi.com/2073-4395/11/12/2590 | 2026-10-03 | "Following the rainfall patterns in the main coffee growing regions, fungicide sprays for CLR control in Kenya starts in mid-October, just before the start of short rains followed by a second spray, three weeks after the first spray [35, 44]." | secondary (review by the national coffee research institute) |
-| 3a | Kenya coffee (green) production | 2014: 49500; 2015: 42000; 2016: 46100; 2017: 38620; 2018: 41375; 2019: 44500; 2020: 36900; 2021: 34500; 2022: 51900; 2023: 48700; 2024: 49500 | tonnes | Kenya | 2014 to 2024 | FAOSTAT Crops and livestock products (QCL), bulk file Production_Crops_Livestock_E_Africa.csv, item "Coffee, green" | FAO | https://bulks-faostat.fao.org/production/Production_Crops_Livestock_E_Africa.zip | 2026-10-03 | Values copied from the file; every year has flag "A" (official figure). The FAOSTAT web API returned "Missing Authorization Header", so the open bulk file was used. | primary |
-| 3b | Kenya coffee (green) yield | 2014: 450.0; 2015: 370.0; 2016: 404.4; 2017: 336.7; 2018: 358.0; 2019: 372.1; 2020: 308.3; 2021: 318.9; 2022: 474.4; 2023: 435.2; 2024: 435.7 | kg/ha | Kenya | 2014 to 2024 | as 3a | FAO | https://bulks-faostat.fao.org/production/Production_Crops_Livestock_E_Africa.zip | 2026-10-03 | Values copied from the file, flag "A". Area harvested: 110000 ha (2014), 119700 ha (2020), 113600 ha (2024). No clear 10-year trend: low point 2020 to 2021, recovery 2022 to 2024. | primary |
-| 3c | Kenya clean coffee production, national body | 48,649 MT clean coffee on 111,902 Ha; output down 6% | MT; ha; % | Kenya | coffee year 2022/23 | Kenya Coffee Year Book 2022/23 | Agriculture and Food Authority (AFA), Coffee Directorate | https://www.kenyacoffee.co.ke/resources/2023/Coffee%20Book%20Year%202023-24-compressed.pdf | 2026-10-03 | "its output decreased by 6% to 0.81 million bags of 60 kgs in coffee year 2022/23 from 0.86 million of 60 kgs. This occurred because of drought and Coffee Berry Disease in the Central Highlands which is a main coffee growing area. The total area under coffee during the year 2022/2023 was 111,902 Ha with a production of 48,649 MT of clean coffee" | primary |
-| 4a | Mobile phone ownership by gender | women 93%, men 95% | % of adults 18+ | Kenya | 2024 survey (report 2025) | The Mobile Gender Gap Report 2025, Figures 2 and 5 | GSMA | https://www.gsma.com/wp-content/uploads/2025/12/The-Mobile-Gender-Gap-Report-2025.pdf | 2026-10-03 | Figure 5, Kenya: "Men 95% 88% 60% 55% 47% 34% Women 93% 84% 54% 43% 34% 22%" (stage 1 mobile ownership, 2 mobile internet awareness, 3 internet-enabled phone ownership, 4 mobile internet adoption, 5 daily use, 6 diverse daily use). Text: "in six of the 15 survey countries (Egypt, Kenya, Nigeria, Tanzania, the Philippines and Mexico), women are equally as likely as men to own one." | primary (survey; n=493 women, n=510 men) |
-| 4b | Smartphone ownership by gender | women 42%, men 50%; gender gap 16% | % of adults 18+ | Kenya | 2024 survey (report 2025) | as 4a, Figure 2 | GSMA | https://www.gsma.com/wp-content/uploads/2025/12/The-Mobile-Gender-Gap-Report-2025.pdf | 2026-10-03 | Figure 2 chart labels for Kenya, read from the PDF text: mobile ownership "95% 93%", smartphone ownership "50% 42%", gap "16%". Text: "Gender gaps have narrowed in five of the 12 countries surveyed in both 2023 and 2024 (Bangladesh, Indonesia, Kenya, Nigeria and Mexico)". | primary (chart labels extracted from PDF; check the chart visually before putting on screen) |
-| 4c | Earlier year, for comparison | women 91%, men 92% mobile ownership | % of adults 18+ | Kenya | 2023 survey (report 2024) | The Mobile Gender Gap Report 2024 | GSMA | https://www.gsma.com/wp-content/uploads/2025/12/The-Mobile-Gender-Gap-Report-2024.pdf | 2026-10-03 | "in Kenya where, for the first time, men and women are now on par at 92% and 91%, respectively, essentially closing this gender gap." | primary |
-| 5a | Mobile money account, women | 83.5097020779134 (2024); 66.0427561215072 (2021) | % age 15+ | Kenya | 2024 | Global Findex Database, indicator mobileaccount.t.d.1 "Mobile money account, female (% age 15+)" | World Bank | https://api.worldbank.org/v2/country/KEN/indicator/mobileaccount.t.d.1?source=28&format=json | 2026-10-03 | API value for 2024: 83.5097020779134 (database last updated 2025-10-06). | primary |
-| 5b | Mobile money account, men and all adults | men 91.6719907971862; all adults 87.4994112747318 (2024) | % age 15+ | Kenya | 2024 | Global Findex Database, indicators mobileaccount.t.d.2 and mobileaccount.t.d | World Bank | https://api.worldbank.org/v2/country/KEN/indicator/mobileaccount.t.d.2?source=28&format=json | 2026-10-03 | API values for 2024: male 91.6719907971862; all (https://api.worldbank.org/v2/country/KEN/indicator/mobileaccount.t.d?source=28&format=json) 87.4994112747318. | primary |
-| 6a | Mobile network coverage (national) | 2G 98.7%, 3G 97.7%, 4G 97.9%, 5G 30.0% | % of population | Kenya (national; no county split) | FY 2024/25 (to 30 June 2025) | Communications Authority of Kenya Annual Report FY 2024-2025 | Communications Authority of Kenya | http://www.ca.go.ke/sites/default/files/2026-07/Annual%20Report%20FY%202024-2025.pdf | 2026-10-03 | "These initiatives saw 5G and 4G population coverage rise to 30.0 per cent and 97.9 per cent, respectively, while 2G and 3G coverage stood at 98.7 per cent and 97.7 per cent, respectively." | primary |
-| 6b | Feature phones still common | feature phones 29.5 million vs smartphones 43.8 million active handsets | handsets | Kenya | 30 June 2025 | as 6a | Communications Authority of Kenya | http://www.ca.go.ke/sites/default/files/2026-07/Annual%20Report%20FY%202024-2025.pdf | 2026-10-03 | "Total active handsets increased by 10.7 per cent to 73.3 million, with smartphones growing by 29.5 per cent to 43.8 million while feature phones declined by 4.5 per cent to 29.5 million as at 30th June 2025." | primary |
-| 6c | Coffee counties coverage | NOT FOUND at county level; statement only | qualitative | Kenya | n/a | see NOT FOUND | n/a | n/a | 2026-10-03 | Short statement we can make: national 2G population coverage is 98.7% and 3G 97.7% (row 6a); the Nyeri, Kiambu, Murang'a, Kirinyaga and Embu figures are not published in the sources checked. Do not claim coverage on Noor's slope. | n/a |
-| 7a | Swahili as national language | Kiswahili is the national language; Kiswahili and English are official | legal status | Kenya | 2010 | Constitution of Kenya, 2010, Article 7 | Kenya Law (National Council for Law Reporting) | https://new.kenyalaw.org/akn/ke/act/2010/constitution/eng@2010-09-03 | 2026-10-03 | "(1) The national language of the Republic is Kiswahili. (2) The official languages of the Republic are Kiswahili and English." | primary |
-| 7b | Kikuyu population (ethnic group, used as a proxy for Gikuyu speakers) | 8,148,668 | persons (ethnicity, not language) | Kenya | 2019 census | Tribe and Ethnicity in Kenya, citing 2019 KPHC Volume IV | Stats Kenya (secondary site) | https://statskenya.co.ke/at-stats-kenya/about/tribe-and-ethnicity-in-kenya-number-of-people-by-tribe/93/ | 2026-10-03 | "Which is the largest tribe in Kenya - The Kikuyu, with a population of 8,148,668." | secondary (census table not readable in the KNBS PDF text) |
-| 7c | Kikuyu largest ethnic group (primary text) | Kikuyu first of five most populous | rank | Kenya | 2019 census | 2019 Kenya Population and Housing Census, Volume IV | Kenya National Bureau of Statistics (KNBS) | https://www.knbs.or.ke/wp-content/uploads/2023/09/2019-Kenya-population-and-Housing-Census-Volume-4-Distribution-of-Population-by-Socio-Economic-Characteristics.pdf | 2026-10-03 | "The five most populous ethnic affiliations were Kikuyu, Luhya, Kalenjin, Luo and Kamba" | primary |
-| 7d | Total population (denominator) | 47,564,296 | persons | Kenya | 2019 census | 2019 Kenya Population and Housing Census Results | KNBS | https://www.knbs.or.ke/2019-kenya-population-and-housing-census-results/ | 2026-10-03 | "The total enumerated population was 47,564,296" | primary |
-| 8a | Small daily data bundle (Safaricom terms page) | Daily 250MB for Kshs 20, 24 hours; Daily 60MB for 10; Daily 10MB for 5; out-of-bundle Kshs 4.57 per MB | KES | Kenya | page undated, live on 2026-10-03 | Terms and Conditions for Safaricom PrePay and PostPay Data Bundles | Safaricom | https://www.safaricom.co.ke/media-center-landing/terms-and-conditions/terms-and-conditions-for-safaricom-prepay-and-postpay-data-bundles | 2026-10-03 | Table row: "Daily 250MB / 250MB / 50 / 20 / 24 Hours". "If you exhaust your bundle within 24 hours and continue to browse, you will be charged the published out of bundle rate, currently at Kshs. 4.57 per MB.." | primary (operator page; prices change often) |
-| 8b | Small daily data bundle (Safaricom FAQ page) | 50MB + 50SMS + WhatsApp for 20/=, 24 hours; 15MB for 10/=; 7MB for 5/= | KES | Kenya | page undated, live on 2026-10-03 | FAQs on Safaricom Data Bundles | Safaricom | https://www.safaricom.co.ke/media-center-landing/frequently-asked-questions/safaricom-data-bundles | 2026-10-03 | Daily Plan table: "50MB + 50SMS + WhatsApp / 20/= / 50 / 24 hours" | primary (operator page; conflicts with 8a) |
-| 9a | Smallholder share of production | estate : smallholder production 29:71 (2022/23); 30:70 (2021/22) | ratio | Kenya | coffee year 2022/23 | Kenya Coffee Year Book 2022/23 | AFA Coffee Directorate | https://www.kenyacoffee.co.ke/resources/2023/Coffee%20Book%20Year%202023-24-compressed.pdf | 2026-10-03 | Summary table: "Ratio of Estate: Smallholder production ... 30:70 29:71". Table 10: "A total of 48,648,541.03 Kgs of clean coffee was produced during the year 2022/2023 with cooperatives producing 34,488,092.45 Kgs while estates produced 14,160,448.58 Kgs." | primary |
-| 9b | Cooperatives and estates | 605 cooperative societies, 1,122 factories, 2,749 active estates (also "637 cooperatives" and "2,584 active estates" elsewhere in the same book) | count | Kenya | coffee year 2022/23 | as 9a | AFA Coffee Directorate | https://www.kenyacoffee.co.ke/resources/2023/Coffee%20Book%20Year%202023-24-compressed.pdf | 2026-10-03 | "During the coffee year under review, there were 605 societies, 1,122 factories affiliated cooperatives and 2,749 active estates (Table 4)." Executive summary: "During the 2022/2023 coffee year there were 2,584 active estates. The smallholder farmers are distributed across the 637 cooperatives." | primary (internally inconsistent; see Disagreements) |
-| 9c | Smallholder area | 83,779 Ha smallholder of 111,902 Ha total; Nyeri 8,856 Ha cooperative, 1,131 Ha estate | ha | Kenya; Nyeri | coffee year 2022/23 | as 9a, Table 5 | AFA Coffee Directorate | https://www.kenyacoffee.co.ke/resources/2023/Coffee%20Book%20Year%202023-24-compressed.pdf | 2026-10-03 | "The area under smallholder farmers reduced from 84,025.90 Ha in 2021/2022 to 83,779 Ha in 2022/2023." Table 5 row: "3 Nyeri 1,131 8,856 9,987 8.9" | primary |
-| 9d | Number of coffee farmers and membership rule | 1.2 million coffee farmers (estimate); smallholders must in practice be cooperative members and receive membership numbers | persons; qualitative | Kenya | 2026 (document uploaded January 2026) | Preparedness check of Kenya for the EU Deforestation Regulation: coffee | European Forest Institute (EFI) | https://efi.int/sites/default/files/2026-01/kenya-preparedness-check-coffee-efi.pdf | 2026-10-03 | "The Coffee Directorate estimates that there are 1.2 million coffee farmers in Kenya, but no national data exists on how many are active." and "There is no legal obligation for smallholder farmers to join a cooperative. However, in practice, they must be members of cooperatives to market their coffee. Once registered as members, smallholders receive unique membership numbers." | secondary (cites Coffee Directorate) |
-| 10a | Nyeri yield per tree (county average) | approximately 3.0 | kg cherry per tree | Kenya, Nyeri County | 2013/14 coffee year (MOALF 2014) | Mugendi, Orero, Mwiti. The Relationship between Adoption of Coffee Certification Standards and Productivity in Nyeri County in Kenya. Asian Journal of Business and Management 3(6), December 2015 | Asian Online Journals | https://www.ajouronline.com/index.php/AJBM/article/view/3270/1784 | 2026-10-03 | "Adoption of any of the three standards resulted in increased mean productivity compared to the Nyeri County average productivity at approximately 3.0 kg cherry per tree (MOALF, 2014)." Same paper, own survey of 270 certified farmers: "productivity was 5.40 kg cherry per tree". County target: "increase productivity to 10kg cherry per tree" | secondary (paper cites MOALF Economic Review of Agriculture 2014; the MOALF document itself not found) |
-| 10b | Yield per tree by management level (national) | 10 (high), 5 (average), 2 (low, SL28/SL34/K7 only) | kg cherry per tree | Kenya | coffee year 2022/23 | Kenya Coffee Year Book 2022/23, Table 16 | AFA Coffee Directorate | https://www.kenyacoffee.co.ke/resources/2023/Coffee%20Book%20Year%202023-24-compressed.pdf | 2026-10-03 | "The farmer producing at 10 Kgs per tree is at high management level, while the farmer producing at 5 kg is at an average management level and at 2 Kgs per tree is at low management level." | primary (illustrative cost model, not a survey average) |
-| 10c | Trees per hectare | 1300 trees/ha for SL28, SL34, K7 (traditional); 2500 to 3300 trees/ha for Ruiru 11 | trees per ha | Kenya | coffee year 2022/23 | Kenya Coffee Year Book 2022/23, variety section | AFA Coffee Directorate | https://www.kenyacoffee.co.ke/resources/2023/Coffee%20Book%20Year%202023-24-compressed.pdf | 2026-10-03 | "The planting density is 2500-3300 trees/ha as opposed to 1300 trees/ha for traditional types." and "SL28 produces a high yield and its planting density is 1300 trees/Ha." | primary |
-| 10d | Trees per acre in the same book's cost table | 540 trees/acre (SL28, SL34, K7); 770 (Batian); 1,000 (Ruiru 11) | trees per acre | Kenya | coffee year 2022/23 | Kenya Coffee Year Book 2022/23, Table 16 | AFA Coffee Directorate | https://www.kenyacoffee.co.ke/resources/2023/Coffee%20Book%20Year%202023-24-compressed.pdf | 2026-10-03 | "Trees/acre 1,000 1,000 770 770 540 540 540" | primary (derived: 540 per acre is about 1,334 per ha at 2.471 acres per ha) |
-| 10e | Nyeri cooperative clean coffee per hectare (cross-check) | 5,498,644.00 kg on 8,856 Ha; about 621 kg clean coffee per ha (derived) | kg clean coffee per ha | Kenya, Nyeri | coffee year 2022/23 | Kenya Coffee Year Book 2022/23, Tables 5 and 10 | AFA Coffee Directorate | https://www.kenyacoffee.co.ke/resources/2023/Coffee%20Book%20Year%202023-24-compressed.pdf | 2026-10-03 | Table 10 row: "3 Nyeri 5,498,644.00 817,036.27 6,315,680.27 12.98" (cooperative, estate, total kg, %). Division 5,498,644 / 8,856 is ours. | modelled (derived; we did not convert to cherry per tree because the cherry to clean ratio was not verified) |
+## Summary table (what to use)
 
-## Disagreements
+| # | Item | Use this value | Country | Year | Source | Confidence |
+|---|---|---|---|---|---|---|
+| E1 | Extension agent to farmer ratio | **1:1,380** (target 1:600) | Kenya | 2025 | S02 (and S01 for the target) | primary |
+| E2 | Rust loss and timing | **yield losses in excess of 75% where outbreaks are severe**; sprays start **mid-October**, repeat **three weeks** later | Kenya (review) | 2021 | S03 | primary (the 75% is cited by the review from an earlier work) |
+| E3 | Coffee yield and production | 2024: **49,500 t**, **435.7 kg/ha**; lowest production in the last ten years was 2021 (**34,500 t**), lowest yield was 2020 (**308.3 kg/ha**) | Kenya | 2015 to 2024 | S04, S05 | primary |
+| E4 | Women's phones | **91.8080408756395%** of women own a mobile phone (Findex 2024); **42%** of women own a smartphone vs **50%** of men (GSMA 2024 survey) | Kenya | 2024 | S07, S06 | primary |
+| E5 | Mobile money | **83.5097020779134%** of women and **91.6719907971862%** of men have a mobile money account (2024) | Kenya | 2024 | S07 | primary |
+| E6 | Coverage | "over 96 percent of its population" has 3G or better. County level: NOT FOUND | Kenya | 2023 | S08 | primary |
+| E7 | Languages | Kikuyu ethnic group **8,148,668** (census). Kiswahili is the national language (Art. 7). Kikuyu speaker count: NOT FOUND | Kenya | 2019 / 2010 | S09, S10 | primary |
+| E8 | Data bundle cost | **KSh 20** for 250MB for 24 hours; **KSh 99** for 1.5GB for 24 hours | Kenya | 2026 | S11 | primary (prices change) |
+| E9 | Smallholders | AFA: "About 70 percent of coffee in Kenya is produced by smallholder farmers under cooperative societies"; about **800,000** smallholders (2022) | Kenya | 2022 to 2024 | S13, S14, S05 | primary |
 
-- **Extension ratio.** KASEP (primary, 2023) gives no current number, only "has not improved" and a 1:600 target for 2029. The number in circulation, 1:1093 per farm household against an FAO 1:400, traces back at least to Odongo (Agricultural Information Worldwide, 2013/2014), which gives no source; The Guardian (2024) repeats it. Kilimo News gives "at best 1: 1000" nationally and up to 1:2000 in counties. The Kilimo Trust 2025 post in the master prompt (fewer than 5,000 officers for over 8 million farmers) is on X, which needs a login, so it was not verified and should not be used.
-  **Use:** "Kenya's own extension policy says the officer to farmer ratio 'has not improved' and targets 1 officer per 600 farmers by 2029 (KASEP, Ministry of Agriculture, 2023). The most cited estimate is 1 officer per 1,093 farm households against an FAO-recommended 1:400 (Odongo, 2013/2014; repeated by The Guardian, 2024)." Label 1:1093 as an older secondary estimate.
-- **Rust loss.** "In excess of 75%" is from the KALRO review, but the review cites it from its reference [13]; it is not a new Kenyan measurement. Keep the wording "where outbreaks are severe".
-- **Production.** FAOSTAT gives 48700 t green coffee for 2023; the AFA Year Book gives 48,649 MT clean coffee for coffee year 2022/23. Close but different bases (calendar year vs coffee year). Use FAOSTAT for the trend and AFA for the county split.
-- **Smartphone figures.** GSMA 2025 values (women 42%, men 50%) come from chart labels in the PDF text. The 16% gap matches 1 - 42/50, which supports the reading, but check the chart by eye before putting it on screen.
-- **Data bundle.** Two Safaricom pages, both live, disagree for the same KES 20 daily price: 250MB (terms page) vs 50MB plus WhatsApp (FAQ page). Use the smaller, safer figure for costing our download: KES 5 for 7MB to 10MB, KES 10 for 15MB to 60MB, KES 20 for 50MB to 250MB, and say "Safaricom published prices, checked 3 Oct 2026; prices vary by plan". Out-of-bundle rate is Kshs 4.57 per MB (terms page).
-- **Cooperatives.** The AFA Year Book 2022/23 says both 605 and 637 cooperatives, and both 2,749 and 2,584 active estates. Use 605 cooperatives and 1,122 factories (the body text and Table 4), and mention the other figure if asked.
-- **Kikuyu speakers.** The census counts ethnicity (Kikuyu 8,148,668), not home language. Say "about 8.1 million people identify as Kikuyu (2019 census)", not "8.1 million speakers".
-- **Item 10, yield per tree.** 3.0 kg cherry per tree for Nyeri is confirmed as quoted, but it is secondary (Mugendi et al. 2015 citing MOALF 2014) and refers to 2013/14. The same paper's own sample of certified farmers averaged 5.40 kg. The AFA Year Book 2022/23 uses 2 kg (low), 5 kg (average) and 10 kg (high management) per tree as model values. **Use 3.0 kg (Nyeri county average, MOALF 2014 via Mugendi et al. 2015) and say it is a 2013/14 figure;** quote 5 kg as the AFA "average management" model if a national reference is needed.
-- **Item 10, trees per hectare.** 1,300 trees/ha for traditional varieties (SL28, SL34, K7) is confirmed in the AFA Year Book 2022/23. The same book's cost table uses 540 trees per acre (about 1,334 per ha). Ruiru 11 is planted at 2,500 to 3,300 trees/ha and Batian at 770 per acre. **Keep 1,300 trees/ha but say "for traditional varieties"**; if Noor's trees are Ruiru 11 the number is about double.
+---
 
-## NOT FOUND
+## E1. Extension coverage in Kenya
 
-- **Item 1, primary current national ratio.** Tried: full text of KASEP 2023 (searched for "ratio", "1:", officer counts); ASTGS 2019-2029 long version (https://kilimo.go.ke/wp-content/uploads/2024/10/ASTGS-Long-version.pdf, no current ratio in the extracted text); web search for the origin of 1:1093. Kilimo Trust X post not reachable without login.
-- **Item 6, county-level coverage for Nyeri, Kiambu, Murang'a, Kirinyaga, Embu.** Tried: CA Annual Report FY 2024-2025 and the Q4 2024/25 Sector Statistics Report (https://www.ca.go.ke/sites/default/files/2025-09/Sector%20Statistics%20Report%20Q4%202024-2025_1.pdf), which give national figures only. OpenCelliD needs an API key; GSMA coverage maps are interactive and were not queried. National figures in row 6a are the best available.
-- **Item 7, Gikuyu speaker count.** Ethnologue (https://www.ethnologue.com/language/kik/) is behind a bot check and the full data is paywalled. The 2019 census does not ask about language. Ethnicity proxy used instead (row 7b).
-- **Item 7, census ethnicity table in the KNBS PDF.** Table 2.30 did not extract as text; the 8,148,668 figure is from a secondary site quoting Volume IV.
-- **Item 10, the MOALF 2014 Economic Review of Agriculture itself.** Not searched further given time; the 3.0 kg figure rests on Mugendi et al. 2015.
-- **FAOSTAT API.** Returns "Missing Authorization Header"; the open bulk download worked.
+| Field | Value |
+|---|---|
+| Value (current) | **1:1,380** extension agent to farmer |
+| Unit | agents per farmers (ratio) |
+| Country, year | Kenya, February 2025 |
+| Source | Agriculture Extension Manual (Version 1), Food Systems Resilience Project (S02) |
+| Publisher | Ministry of Agriculture and Livestock Development |
+| URL | https://fsrp.go.ke/sites/default/files/2025-08/Agriculture%20Extension%20Manual%20v1%20final.pdf (PDF page 12) |
+| Confidence | primary |
+
+Exact quote (S02, PDF page 12): "Currently, the extension agent-to-farmer ratio is 1:1,380. This is against the proposed 1:600 extension service agent to farmer ratio as recommended in the Agriculture Sector Transformation and Growth Strategy (ASTGS) 2019-2029 and the global Food and Agriculture Organization (FAO) recommendation of 1:400."
+(Text extraction put spaces around the hyphens, "agent -to-farmer". The figures are unchanged.)
+
+**KASEP (S01), the document named in the brief.** KASEP does **not** state a current ratio. It states a target and says the ratio has not improved. PDF page 24 (printed page 8):
+"Currently, some counties have employed extension personnel, however, the ratio of extension staff to famer has not improved. To address this gap, the Government of Kenya launched the Agriculture Sector Transformation and Growth Strategy whose objective is to ensure that the country attains a ratio of one (1) extension personnel to six hundred (600) famers by the year, 2029."
+("famers" is the source's spelling.) KASEP also names the problem in its challenges list, PDF page 46: "Aging agricultural extension workforce and low staffing levels in both public and private extension service providers resulting in a low extension staff to farmer ratio".
+
+**Farming households (denominator).** KASEP PDF page 18: "The total farming households as per the 2019 census is approximately 6.4 million (1.7 million crop farmers, 3.9 million mixed farming, 760,000 Livestock farmers, and about 30,000 fisher folks)".
+
+**Disagreement.** MASTER_PROMPT cites a secondary figure: "fewer than 5,000 public extension officers for over 8 million farmers" (Kilimo Trust, 2025, S36). I did not open that X post and did not verify it. A Facebook post by a newspaper (found in search, not opened) says "at best 1: 1000 nationally. At county levels it is as high as 1:2000". Neither is used.
+**We use:** 1:1,380 (S02, primary, 2025) with the 1:600 target (S01, S02). For farmer count we use 6.4 million farming households (S01), not "over 8 million".
+
+**Constraint worth quoting for the product (KASEP PDF page 39):** "However, the cost of some technology is relatively high in regard to access to internet, availability of electricity and complexity of utilization of ICT tools. It is also hampered by lack of a compatible gadget and low literacy levels of farmers."
+
+NOT FOUND: "extension officer visits the sub-county twice a year at best" is from the challenge brief, not a published statistic. No Kenyan source for visit frequency was found.
+
+---
+
+## E2. Coffee leaf rust: impact and timing in Kenya
+
+| Field | Value |
+|---|---|
+| Source | "Coffee Leaf Rust (Hemileia vastatrix) in Kenya: A Review", Agronomy 2021, 11(12), 2590 (S03) |
+| Publisher | MDPI. Authors include E. Gichuru (Coffee Research Institute, Kenya). Published 20 December 2021 |
+| URL | https://www.mdpi.com/2073-4395/11/12/2590 , DOI https://doi.org/10.3390/agronomy11122590 |
+| Country | Kenya |
+| Confidence | primary (peer-reviewed). The 75% figure is a statement in the review's introduction citing an earlier work, not a Kenyan field measurement |
+
+Quotes (S03):
+1. Impact: "The disease can cause yield losses in excess of 75% where outbreaks are severe [13] due to loss of foliage by up to 100% and loss of berries by up to 70% [14]."
+2. Timing, link to rain: "These weather patterns affect the epidemics of CLR with the peak of the disease coming soon after the rainy seasons when it fully sporulates from latent infections that occur during the rainy season, but they sporulate when temperatures rise after the rains".
+3. Regions, East of Rift (this includes Nyeri, the Mount Kenya and Aberdare area): "In areas East of Rift, the long rains start in March through May and short rains start in October through December resulting in two CLR peaks in May to June and January to March".
+4. Spray timing, short rains: "Following the rainfall patterns in the main coffee growing regions, fungicide sprays for CLR control in Kenya starts in mid-October, just before the start of short rains followed by a second spray, three weeks after the first spray".
+5. Spray timing, long rains: "For the long rain period, the first spray is applied in late February or early March followed by one or two sprays at three weeks intervals for copper formulations and four-week intervals for other formulations."
+6. Caveat in the same passage: "However, the spray program needs to be monitored and varied in response to weather patterns [67] because climate change is affecting the rainfall amounts and distribution."
+7. Regions defined: "Coffee in Kenya is mainly grown in two regions, the East of Rift Valley (areas around Mount Kenya, the Aberdare ranges, and Machakos) and West of Rift Valley".
+
+Check against MASTER_PROMPT section 3.3: the claims "peaks soon after the rainy seasons", "mid October", "repeat about three weeks later" and "losses above 75% in severe outbreaks" all match the review. One nuance for the lead: the review's mid-October start is described for "the main coffee growing regions" in general. For East of Rift the rust peaks it lists are May to June and January to March, which come after the long rains and after the short rains. Our video line "protect new leaves before the short rains" is consistent with item 4.
+
+---
+
+## E3. Kenya coffee yield and production, last ten years
+
+Source: FAOSTAT, domain Crops and livestock products (QCL), item "Coffee, green", area Kenya (S04). Bulk file downloaded 3 Oct 2026. Every value has FAOSTAT flag **A** ("Official figure", from the file's own flags table). Country: Kenya. Units as in the file.
+
+| Year | Production (t) | Area harvested (ha) | Yield (kg/ha) |
+|---|---|---|---|
+| 2015 | 42000 | 113500 | 370.0 |
+| 2016 | 46100 | 114000 | 404.4 |
+| 2017 | 38620 | 114700 | 336.7 |
+| 2018 | 41375 | 115570 | 358.0 |
+| 2019 | 44500 | 119600 | 372.1 |
+| 2020 | 36900 | 119700 | 308.3 |
+| 2021 | 34500 | 108200 | 318.9 |
+| 2022 | 51900 | 109400 | 474.4 |
+| 2023 | 48700 | 111900 | 435.2 |
+| 2024 | 49500 | 113600 | 435.7 |
+
+(Earlier values for reference: 2012 yield 446.3, 2013 362.5, 2014 450.0 kg/ha.)
+
+Cross-check, Kenya National Bureau of Statistics (S05, Table 5.1, coffee year Oct to Sep, source Agriculture and Food Authority): area (ha) 119,675 / 108,199 / 109,384 / 111,902 / 113,501* and production (tons) 36,873 / 34,512 / 51,853 / 48,649 / 49,501* for 2019/20 to 2023/24 (*provisional). These agree with FAOSTAT to within rounding.
+Smallholder versus estate yield, 2023/24* (S05, Table 5.1.2, kg/ha): Co-operatives 414.7, Estates 578.1. Note from the same table: "Yield Is Obtained By Dividing Current Production By Acreage Two Years Ago".
+
+How to say it honestly: the series is **not a steady decline**. Yield was lowest in 2020 (308.3 kg/ha) and 2021 (318.9), then 474.4 in 2022. The Annex B line "yields dropped this season" is a farm-level story, not what the national series shows for 2022 to 2024. Do not claim a national decline.
+Confidence: primary. Country-level data; says nothing about one farm.
+
+---
+
+## E4. Women's mobile phone and smartphone ownership in Kenya
+
+**(a) Any mobile phone, women.** World Bank Global Findex Database (Findex 2025 round, survey year 2024), indicator `con1.1` "Own a mobile phone, women (% age 15+)", Kenya, 2024: **91.8080408756395**. Men (`con1.2`): **93.6989094857674**. Rural (`con1.9`): **91.493057124906**. Source S07. Primary.
+
+**(b) Smartphone.** GSMA, The Mobile Gender Gap Report 2025 (S06), data from the "GSMA Consumer Survey, 2024", base "Total population aged 18+", Kenya.
+- Smartphone ownership (Figure 2, PDF page 17): men **50%**, women **42%**, gender gap **16%**.
+  Method note: the chart text extracts as one run of numbers, so I read the order from the arithmetic: (50 minus 42) divided by 50 is 16%, and the same check works for the other countries on the chart. Confidence primary, extraction check passed. **Eyeball Figure 2 on the PDF before it goes on screen.**
+- Journey stages (Figure 5, PDF page 21, printed page 25), Kenya, women: mobile ownership **93%**, internet-enabled phone ownership **54%**, mobile internet adoption **43%**. Men: **95%**, **60%**, **55%**.
+- Definition from the report (same figure note): "A mobile owner is defined as a person who has sole or main use of a SIM card (or a mobile phone that does not require a SIM) and uses it at least once a month."
+- Sample note from the report: n=493 to 982 for women and n=483 to 1,234 for men (across countries; Kenya's own n not shown in the extract).
+
+Superseded: GSMA blog 2019, "37% of men own a smartphone, compared to only 27% of women" in Kenya (S34, snippet only). Do not use.
+
+Why it matters for Jani: most women in Kenya own a basic or smart phone, but fewer than half own a smartphone (42%). That supports the two-phone design in the brief. The 42% is a national adult figure, not Nyeri farmers.
+
+---
+
+## E5. Mobile money use in Kenya by gender
+
+Source: World Bank Global Findex Database, Kenya (S07). Indicator names as published: "Mobile money account (% age 15+)" and its women and men splits.
+
+| Year | All adults | Women | Men | Rural |
+|---|---|---|---|---|
+| 2024 | 87.4994112747318 | 83.5097020779134 | 91.6719907971862 | 85.7077645122401 |
+| 2021 | 68.6586915682757 | 66.0427561215072 | 71.4192115036634 | not reported |
+| 2017 | 72.9316807234182 | 69.3801385620088 | 76.8989865647738 | not reported |
+
+Account of any kind (`account.t.d`, % age 15+), 2024: all 90.1199173733613, women 86.5155344015748, men 93.8895090496553.
+Values are as returned by the API; the publisher rounds to whole numbers on its pages. Country Kenya, years as shown. Primary. Findex surveys adults aged 15 and over, nationally.
+Note the gap: women 83.5 vs men 91.7 in 2024, a difference of 8.1623 percentage points (my calculation).
+
+---
+
+## E6. Mobile coverage in coffee counties (Nyeri, Kiambu, Murang'a, Kirinyaga, Embu)
+
+National statement (S08, World Bank Kenya CCDR, Digital sector background note, November 2023, PDF page 5): "Kenya boasts mobile broadband networks of 3G and higher for over 96 percent of its population. Unique mobile internet penetration rate stood at 34.2 percent of the total population at the start of 2023, compared to the East African average of 23 percent, with a fixed broadband penetration of only 1.5 percent."
+Country Kenya, 2023, primary.
+
+**NOT FOUND: county-level coverage for the five coffee counties.** Tried: Communications Authority Q3 FY2025/26 sector statistics report (S15, opened; reports subscriptions and penetration, no coverage by county, no coverage percentage); Google searches for CA and GSMA coverage by county; OpenCelliD (needs a registered API token or a database download, not attempted because it needs an account and the output is tower locations, not population coverage). Suggested wording for docs: "National 3G+ coverage is above 96 percent (World Bank, 2023). We have no county-level coverage figure for the coffee counties; coverage on a slope can be much worse than the population figure."
+Caveat: population coverage is not the same as signal on the farm.
+
+---
+
+## E7. Kikuyu and Swahili
+
+- **Kikuyu ethnic group, Kenya 2019 census:** **8,148,668** of a total population of **47,564,296** (S09, Volume IV, Table 2.31 "Distribution of Population by Ethnicity/Nationality", PDF page 436). As a share: 17.13% (my calculation: 8,148,668 divided by 47,564,296). KNBS Table 2.31 lists "16 KIKUYU 8,148,668".
+- **This counts people of the ethnic group, not speakers of the language.** NOT FOUND: a primary count of Gikuyu speakers. Ethnologue is paywalled and the census volume I read tabulates ethnicity, not language spoken. Say "the Kikuyu community numbers 8,148,668 (2019 census)", not "8 million speakers".
+- **Swahili:** Constitution of Kenya 2010, Article 7 (S10): "(1) The national language of the Republic is Kiswahili. (2) The official languages of the Republic are Kiswahili and English."
+
+---
+
+## E8. Cost of a small data bundle in Kenya (to price the app download)
+
+Source: Safaricom PLC, Terms and Conditions for Safaricom PrePay and PostPay Data Bundles (S11), table "Daily Data Bundles" (columns: bundle, data, SMS, price in Kshs, validity). Search listing dated 31 August 2026; page accessed 3 Oct 2026.
+
+| Bundle | Data | Price (KSh) | Validity |
+|---|---|---|---|
+| Daily 10MB | 10MB | 5 | 24 Hours |
+| Daily 60MB | 60MB | 10 | 24 Hours |
+| Daily 250MB | 250MB | **20** | 24 Hours |
+| Daily 750MB | 750MB | 50 | 24 Hours |
+| Daily 1.5GB | 1.5GB | **99** | 24 Hours |
+
+Monthly example from Safaricom's tariff page (S12): "1GB, Ksh. 250.00, Valid for 30 days". The same page also lists a second block of 30-day plans all at Ksh. 200.00; I could not tell what that block is, so I did not use it.
+Safaricom changed its bundles in August 2026 (news reports, not opened). **Re-check the price on the day of the video.**
+
+Calculations for docs (my calculation, labelled as such):
+- The 15 MB offline bundle target is 6.0% of a 250MB daily bundle (15 divided by 250), which costs KSh 20. So the whole app fits in the cheapest bundle that is large enough, with room to spare.
+- Download time at 1 Mbit/s: 15 MB x 8 = 120 Mbit = 120 seconds. The 5 MB model alone: 40 seconds. Ignores protocol overhead.
+Primary (company tariff). Prices and bundle names change; date-stamp every use.
+
+---
+
+## E9. Coffee smallholders and cooperatives in Kenya
+
+1. AFA (S13), exact quote: "About 70 percent of coffee in Kenya is produced by smallholder farmers under cooperative societies while the remaining 30 percent is produced by small, medium and large-scale estates. Coffee farming supports about 1.5 million Kenyan households either directly or indirectly through forward and backward linkages. The leading coffee-producing counties are Kiambu, Kirinyaga, Nyeri, Murang'a, Kericho and Bungoma."
+2. Coffee Development and Marketing Strategy 2024-2029, Ministry of Agriculture and Livestock Development, January 2024 (S14), PDF page 16: "Kenya coffee is produced under two farming systems namely smallholder farmers estimated at 800,000 in 2022 an increase from 11,000 in 1963 and registered estates 3,000 with 2694 estates being active (AFA, 2021/2022). The smallholders are clustered into co-operative societies for primary processing and marketing coffee." And: "The total area under coffee is estimated at 109,384.45 Ha in 2021/2022 with two-thirds of the acreage under smallholders' farmers (AFA,2021/2022)." PDF page 30: "In 2021/22, there were 1,190 primary coffee pulping stations (wet mills) operated by 590 cooperatives societies".
+3. KNBS National Agriculture Production Report 2025 (S05), Table 5.1.2, 2023/24 provisional: area, Co-Operatives 85.0 thousand ha of Total 113.6 thousand ha; production, Co-Operatives 37.2 thousand tonnes of Total 49.5 thousand tonnes. My calculation: cooperatives hold 74.8% of area and 75.2% of production.
+4. **Nyeri (our reference county), S05 Table 5.1.1, 2023/24 provisional, hectares:** Co-op Society 8,856.0, Estate 1,160.0, Total 10,016.0. Co-op share 88.4% of area (my calculation). For comparison, totals for other coffee counties: Kiambu 19,746.0, Kirinyaga 10,412.0, Murang'a 9,321.0, Embu 7,078.0.
+
+**Disagreement between sources.** AFA says about 70 percent of coffee is cooperative-produced; the strategy says two-thirds of acreage (2021/22); KNBS gives about 75 percent of area and of production (2023/24, provisional). They differ by definition and year. **We use:** the AFA sentence for a headline ("about 70 percent", quoted), and the KNBS table for any precise or Nyeri figure. Do not average them.
+Cooperative member counts (members per society) were not found in a primary source. NOT FOUND, tried: AFA page, strategy document, KNBS report. A COSA 2019 figure of "570,000 small-scale farmers organized in 421 farmer cooperative societies" appeared in search (secondary, old, not opened); not used.

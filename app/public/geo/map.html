@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jani officer map (geo demo, synthetic)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<style>
+  :root { --ink:#1b1b1b; --paper:#faf8f3; --line:#d9d4c7; --green:#2f6f3e; --amber:#b57a00; --red:#b3261e; --blue:#1a3d8f; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.4 system-ui, sans-serif; color:var(--ink); background:var(--paper); display:flex; flex-direction:column; height:100vh; }
+  header { padding:10px 14px; border-bottom:1px solid var(--line); }
+  h1 { font-size:18px; margin:0 0 4px; }
+  .banner { font-size:14px; background:#fff3d6; border:1px solid #e3c675; padding:6px 10px; }
+  main { flex:1; display:flex; min-height:0; }
+  #map { flex:1; min-width:0; }
+  aside { width:380px; max-width:45vw; overflow:auto; border-left:1px solid var(--line); padding:12px 14px; background:#fff; }
+  aside h2 { font-size:16px; margin:14px 0 6px; }
+  aside h2:first-child { margin-top:0; }
+  .row { display:flex; gap:12px; flex-wrap:wrap; margin:6px 0; font-size:14px; }
+  label { cursor:pointer; }
+  .pill { display:inline-block; padding:1px 8px; border-radius:10px; font-size:12px; color:#fff; }
+  .A { background:var(--red); } .B { background:var(--amber); } .C { background:#777; }
+  ol.stops { padding-left:22px; margin:6px 0; }
+  ol.stops li { margin-bottom:8px; cursor:pointer; }
+  ol.stops li:hover { background:#f1eee4; }
+  .sig { font-size:13px; margin:2px 0 0 0; padding-left:0; list-style:none; }
+  .sig li::before { content:"- "; }
+  .src { font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:#555; }
+  .small { font-size:12px; color:#555; }
+  table { border-collapse:collapse; font-size:13px; width:100%; }
+  td { padding:2px 4px; border-bottom:1px solid #eee; }
+  td:first-child { color:#555; width:48%; }
+  .stopnum { background:#fff; border:2px solid var(--blue); color:var(--blue); border-radius:50%; width:24px; height:24px; text-align:center; font:bold 13px/20px system-ui; }
+  @media (max-width:760px) { main { flex-direction:column; } aside { width:100%; max-width:none; border-left:0; border-top:1px solid var(--line); height:45vh; } #map { height:55vh; flex:none; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Where should the officer go? Mathira West, Nyeri</h1>
+  <div class="banner" id="banner">Loading...</div>
+</header>
+<main>
+  <div id="map"></div>
+  <aside id="panel">
+    <h2>Show</h2>
+    <div class="row">
+      <label><input type="checkbox" id="tOverlay" checked> Satellite canopy change (real)</label>
+      <label><input type="checkbox" id="tRoute" checked> Visit route</label>
+      <label><input type="checkbox" id="tRefs" checked> Leaf-check referrals (synthetic)</label>
+    </div>
+    <div class="small">Plot colours: red = outlier, amber = not sure, green outline = normal. Click a plot for the reasons.</div>
+    <div id="detail"></div>
+    <h2>Rain context</h2>
+    <div id="rain" class="small"></div>
+    <h2>One visit day</h2>
+    <div id="route" class="small"></div>
+    <ol class="stops" id="stops"></ol>
+    <h2>Sources</h2>
+    <div id="sources" class="small"></div>
+  </aside>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+const COLOUR = { outlier: "#b3261e", unsure: "#b57a00", normal: "#2f6f3e" };
+const $ = (id) => document.getElementById(id);
+const el = (tag, text, cls) => { const e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; };
+
+Promise.all(["plots.geojson", "outliers.json", "visit_plan.json", "referrals_seed.json"].map((f) => fetch(f).then((r) => r.json())))
+  .then(([plots, out, plan, refs]) => start(plots, out, plan, refs))
+  .catch((e) => { $("banner").textContent = "Could not load the geo files: " + e; });
+
+function start(plots, out, plan, refs) {
+  $("banner").textContent = "SYNTHETIC plots, members, deliveries and referrals. Real: Sentinel-2 canopy change and NASA POWER rain. Not real farmers. The map points to visits; the officer decides.";
+  const map = L.map("map").setView(out.area.centre.slice().reverse(), 14);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
+  const overlay = L.imageOverlay(out.overlay.image.replace(/^\//, ""), out.overlay.bounds, { opacity: 0.8 }).addTo(map);
+
+  const byId = Object.fromEntries(out.plots.map((p) => [p.plotId, p]));
+  const polyLayer = L.geoJSON(plots, {
+    style: (f) => {
+      const p = f.properties, c = COLOUR[p.status];
+      return { color: c, weight: p.tier === "A" ? 3 : 1.5, fillColor: c, fillOpacity: p.status === "normal" ? 0.05 : 0.35 };
+    },
+    onEachFeature: (f, layer) => {
+      layer.on("click", () => show(f.properties.plotId));
+      layer.bindTooltip(f.properties.plotId + (f.properties.status === "normal" ? "" : " (" + f.properties.status + ")"), { sticky: true });
+    },
+  }).addTo(map);
+
+  const refLayer = L.layerGroup(refs.referrals.map((r) =>
+    L.circleMarker([r.lat, r.lon], { radius: 5, color: "#1a3d8f", fillColor: "#fff", fillOpacity: 1, weight: 2 })
+      .bindTooltip("Leaf check " + r.check_date + ": " + r.answer_id.replace(/_/g, " ") + " (synthetic)"))).addTo(map);
+
+  const o = plan.assumptions.office;
+  const routeLayer = L.layerGroup().addTo(map);
+  const pts = [[o.lat, o.lon], ...plan.route.stops.map((s) => [s.lat, s.lon]), [o.lat, o.lon]];
+  L.polyline(pts, { color: "#1a3d8f", weight: 2, dashArray: "6 6" }).addTo(routeLayer);
+  L.circleMarker([o.lat, o.lon], { radius: 6, color: "#1a3d8f", fillColor: "#1a3d8f", fillOpacity: 1 }).bindTooltip(o.name).addTo(routeLayer);
+  plan.route.stops.forEach((s) =>
+    L.marker([s.lat, s.lon], { icon: L.divIcon({ className: "", html: '<div class="stopnum">' + s.stop + "</div>", iconSize: [24, 24] }) }).addTo(routeLayer));
+
+  $("tOverlay").onchange = (e) => e.target.checked ? overlay.addTo(map) : map.removeLayer(overlay);
+  $("tRoute").onchange = (e) => e.target.checked ? routeLayer.addTo(map) : map.removeLayer(routeLayer);
+  $("tRefs").onchange = (e) => e.target.checked ? refLayer.addTo(map) : map.removeLayer(refLayer);
+
+  const rc = out.context;
+  const rain = $("rain");
+  if (rc.shortRains) rain.append(el("p", "Short rains start around " + rc.shortRains.medianOnset + " (give or take " + Math.round(rc.shortRains.sdDays) + " days). In " +
+    Math.round(rc.shortRains.shareOnsetBefore15Oct * 100) + "% of years they had started by 15 Oct. This year: " + (rc.shortRains.onsetConfirmedThisYear ? "started." : "not confirmed in data to " + rc.shortRains.dataEnd + ".")));
+  if (rc.ndviWindowRain) rain.append(el("p", "Satellite window rain: " + Math.round(rc.ndviWindowRain.rainMm) + " mm against " + Math.round(rc.ndviWindowRain.climatologyMm) + " mm usual. " + rc.ndviWindowRain.caveat));
+  rain.append(el("p", "Cooperative median delivery change this season: " + rc.cooperativeMedianChangePct + "% (not held against any member)."));
+
+  $("route").textContent = plan.route.stops.length + " stops, about " + plan.route.totalKm + " km (random order: " + plan.route.randomOrderMeanKm + " km). Tier A plots: " +
+    plan.tiers.A + ", B: " + plan.tiers.B + ". " + plan.route.note;
+  plan.route.stops.forEach((s) => {
+    const li = el("li");
+    li.append(el("strong", s.plotId + " "), el("span", s.points + " points", "small"));
+    const ul = el("ul", undefined, "sig");
+    s.signals.forEach((g) => { const x = el("li"); x.append(el("span", g.source.replace("_", " "), "src"), document.createTextNode(" " + g.text)); ul.append(x); });
+    li.append(ul);
+    li.onclick = () => { show(s.plotId); map.setView([s.lat, s.lon], 16); };
+    $("stops").append(li);
+  });
+  out.sources.forEach((s) => { const d = el("div"); const a = el("a", s.name); a.href = s.url; a.target = "_blank"; a.rel = "noopener"; d.append(a, document.createTextNode(": " + s.use)); $("sources").append(d); });
+
+  function show(id) {
+    const p = byId[id], rank = plan.ranking.find((r) => r.plotId === id), d = $("detail");
+    d.replaceChildren(el("h2", id));
+    const head = el("div");
+    head.append(el("span", p.status + (p.confidence === "low" ? " (low confidence)" : ""), "pill " + (p.status === "outlier" ? "A" : p.status === "unsure" ? "B" : "C")));
+    if (rank) head.append(document.createTextNode(" tier "), el("span", rank.tier, "pill " + rank.tier), document.createTextNode(" " + rank.points + " points"));
+    d.append(head);
+    const why = p.reasons.concat(p.abstainReasons);
+    if (why.length) { const ul = el("ul", undefined, "sig"); why.forEach((c) => ul.append(el("li", out.legend[c] || c))); d.append(ul); }
+    if (p.nextStep !== "none") d.append(el("p", "Next step: " + out.nextSteps[p.nextStep]));
+    if (rank && rank.signals.length) { const ul = el("ul", undefined, "sig"); rank.signals.forEach((g) => { const x = el("li"); x.append(el("span", g.source.replace("_", " "), "src"), document.createTextNode(" " + g.text)); ul.append(x); }); d.append(ul); }
+    const m = p.metrics, t = el("table");
+    [["Cherry delivered (kg)", m.kgCherry], ["Per registered tree (kg)", m.kgPerTree + " (before: " + m.kgPerTreeBaseline + ")"], ["Change vs own history", m.changePct === null ? "n/a" : m.changePct + "%"],
+     ["Delivery score (z)", m.zDelivery], ["Canopy NDVI (before, now)", m.ndviBaseline + ", " + m.ndvi], ["Canopy score vs neighbours (z)", m.zNdvi], ["Clear satellite pixels", m.clearPx + " of " + m.totalPx]]
+      .forEach(([k, v]) => { const r = el("tr"); r.append(el("td", k), el("td", String(v))); t.append(r); });
+    d.append(t, el("p", "Synthetic record. Satellite values are real.", "small"));
+  }
+  show("OCC0412-2");
+}
+</script>
+</body>
+</html>

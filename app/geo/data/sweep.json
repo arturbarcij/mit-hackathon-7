@@ -1,0 +1,43 @@
+{
+ "synthetic": true,
+ "note": "Each seed rebuilds the synthetic registry and noise. Real NDVI and rainfall are fixed.",
+ "seeds": 30,
+ "matchedExpected": {
+  "mean": 0.977,
+  "min": 0.938
+ },
+ "plantedCaught": {
+  "mean": 0.922,
+  "min": 0.706
+ },
+ "normalFlagged": {
+  "mean": 0.27,
+  "max": 1,
+  "outOf": 63
+ },
+ "visitPlan": {
+  "precisionTop8": {
+   "mean": 0.93,
+   "min": 0.75
+  },
+  "randomPrecision": 0.15,
+  "routeSavingVsRandomOrderPct": {
+   "mean": 47,
+   "min": 44
+  }
+ },
+ "confusionTotals": {
+  "canopy_loss_early -> outlier": 60,
+  "decline_with_canopy_loss -> outlier": 120,
+  "delivery_gap_canopy_ok -> normal": 19,
+  "delivery_gap_canopy_ok -> outlier": 97,
+  "delivery_gap_canopy_ok -> unsure": 4,
+  "missing_record -> unsure": 30,
+  "new_member -> unsure": 60,
+  "normal -> normal": 1882,
+  "normal -> outlier": 8,
+  "over_delivery -> normal": 17,
+  "over_delivery -> outlier": 43,
+  "tiny_plot -> unsure": 60
+ }
+}

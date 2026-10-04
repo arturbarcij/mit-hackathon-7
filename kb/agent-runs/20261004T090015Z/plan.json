@@ -1,0 +1,166 @@
+{
+  "audit_only": true,
+  "claude": "not_called",
+  "block_reason": "ANTHROPIC_API_KEY is not set. Add it to app/backend/.env (git-ignored) or the environment. The file is not in this checkout.",
+  "note": "Every seat is an audit. Builder seats report gaps and do not edit owned product paths. This orchestrator does not generate the product.",
+  "edges_doc": "research before content and docs; ml before engine; content and engine before ui; research, ml, engine, ui, content, and docs before qa; qa before redteam and judge. An edge is kept only when both seats are selected.",
+  "nodes": [
+    {
+      "id": "research",
+      "title": "Research audit",
+      "kind": "builder",
+      "brief": "kb/agents/research.md",
+      "state": "blocked",
+      "depends_on": []
+    },
+    {
+      "id": "ml",
+      "title": "ML audit",
+      "kind": "builder",
+      "brief": "kb/agents/ml.md",
+      "state": "blocked",
+      "depends_on": []
+    },
+    {
+      "id": "engine",
+      "title": "Engine audit",
+      "kind": "builder",
+      "brief": "kb/agents/engine.md",
+      "state": "blocked",
+      "depends_on": [
+        "ml"
+      ]
+    },
+    {
+      "id": "ui",
+      "title": "UI audit",
+      "kind": "builder",
+      "brief": "kb/agents/ui.md",
+      "state": "blocked",
+      "depends_on": [
+        "content",
+        "engine"
+      ]
+    },
+    {
+      "id": "content",
+      "title": "Content audit",
+      "kind": "builder",
+      "brief": "kb/agents/content-voice.md",
+      "state": "blocked",
+      "depends_on": [
+        "research"
+      ]
+    },
+    {
+      "id": "docs",
+      "title": "Docs audit",
+      "kind": "builder",
+      "brief": "kb/agents/docs.md",
+      "state": "blocked",
+      "depends_on": [
+        "research"
+      ]
+    },
+    {
+      "id": "qa",
+      "title": "QA",
+      "kind": "reviewer",
+      "brief": "kb/agents/qa.md",
+      "state": "blocked",
+      "depends_on": [
+        "research",
+        "ml",
+        "engine",
+        "ui",
+        "content",
+        "docs"
+      ]
+    },
+    {
+      "id": "redteam",
+      "title": "Red team",
+      "kind": "reviewer",
+      "brief": "kb/agents/redteam.md",
+      "state": "blocked",
+      "depends_on": [
+        "qa"
+      ]
+    },
+    {
+      "id": "judge",
+      "title": "Judge",
+      "kind": "reviewer",
+      "brief": "kb/agents/judge.md",
+      "state": "blocked",
+      "depends_on": [
+        "qa"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "research",
+      "to": "content"
+    },
+    {
+      "from": "research",
+      "to": "docs"
+    },
+    {
+      "from": "ml",
+      "to": "engine"
+    },
+    {
+      "from": "content",
+      "to": "ui"
+    },
+    {
+      "from": "engine",
+      "to": "ui"
+    },
+    {
+      "from": "research",
+      "to": "qa"
+    },
+    {
+      "from": "ml",
+      "to": "qa"
+    },
+    {
+      "from": "engine",
+      "to": "qa"
+    },
+    {
+      "from": "ui",
+      "to": "qa"
+    },
+    {
+      "from": "content",
+      "to": "qa"
+    },
+    {
+      "from": "docs",
+      "to": "qa"
+    },
+    {
+      "from": "qa",
+      "to": "redteam"
+    },
+    {
+      "from": "qa",
+      "to": "judge"
+    }
+  ],
+  "state": {
+    "research": "blocked",
+    "ml": "blocked",
+    "engine": "blocked",
+    "ui": "blocked",
+    "content": "blocked",
+    "docs": "blocked",
+    "qa": "blocked",
+    "redteam": "blocked",
+    "judge": "blocked"
+  }
+}

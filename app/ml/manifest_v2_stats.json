@@ -1,0 +1,128 @@
+{
+  "unreadable": 103,
+  "max_hamming": 6,
+  "near_duplicate_pairs": 32887427,
+  "dup_groups_train": 992,
+  "dup_images_train": 57381,
+  "dup_groups_heldout_only": 487,
+  "dup_groups_spanning_train_and_heldout": 39,
+  "heldout_images_duplicating_train": 216,
+  "largest_groups": [
+    1800,
+    1800,
+    1780,
+    1780,
+    1760,
+    1760,
+    1401,
+    1400,
+    1400,
+    1379
+  ],
+  "dup_groups_with_conflicting_labels": 67,
+  "v2": {
+    "uganda_split": "by duplicate group, 50/15/35 per class (seed 43)",
+    "synthetic_pages": 300
+  },
+  "counts": {
+    "excluded": {
+      "healthy": 0,
+      "rust": 0,
+      "cercospora": 0,
+      "phoma": 0,
+      "miner": 0,
+      "not_leaf": 0,
+      "unmapped": 59
+    },
+    "excluded_heldout_dup_of_train": {
+      "healthy": 0,
+      "rust": 0,
+      "cercospora": 0,
+      "phoma": 216,
+      "miner": 0,
+      "not_leaf": 0,
+      "unmapped": 0
+    },
+    "heldout_rocole": {
+      "healthy": 791,
+      "rust": 602,
+      "cercospora": 0,
+      "phoma": 0,
+      "miner": 0,
+      "not_leaf": 0,
+      "unmapped": 167
+    },
+    "heldout_uganda_test": {
+      "healthy": 378,
+      "rust": 356,
+      "cercospora": 0,
+      "phoma": 317,
+      "miner": 0,
+      "not_leaf": 0,
+      "unmapped": 0
+    },
+    "test": {
+      "healthy": 3181,
+      "rust": 1336,
+      "cercospora": 1172,
+      "phoma": 1029,
+      "miner": 2580,
+      "not_leaf": 61,
+      "unmapped": 0
+    },
+    "test_synthetic_pages": {
+      "healthy": 0,
+      "rust": 0,
+      "cercospora": 0,
+      "phoma": 0,
+      "miner": 0,
+      "not_leaf": 300,
+      "unmapped": 0
+    },
+    "train": {
+      "healthy": 12724,
+      "rust": 6210,
+      "cercospora": 5466,
+      "phoma": 4818,
+      "miner": 12054,
+      "not_leaf": 285,
+      "unmapped": 0
+    },
+    "uganda_calib": {
+      "healthy": 163,
+      "rust": 156,
+      "cercospora": 0,
+      "phoma": 133,
+      "miner": 0,
+      "not_leaf": 0,
+      "unmapped": 0
+    },
+    "uganda_train": {
+      "healthy": 538,
+      "rust": 519,
+      "cercospora": 0,
+      "phoma": 444,
+      "miner": 0,
+      "not_leaf": 0,
+      "unmapped": 0
+    },
+    "val": {
+      "healthy": 3217,
+      "rust": 1255,
+      "cercospora": 1179,
+      "phoma": 1070,
+      "miner": 2597,
+      "not_leaf": 61,
+      "unmapped": 0
+    }
+  },
+  "by_source": {
+    "jmuben": 22588,
+    "jmuben2": 35958,
+    "bracol": 1401,
+    "plantdoc": 407,
+    "uganda": 3220,
+    "rocole": 1560,
+    "synthetic_page": 300
+  }
+}

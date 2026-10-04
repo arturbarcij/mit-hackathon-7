@@ -19,7 +19,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | M2 | Train v1 | ml | Sun 00:30 | done | v2 shipped in `app/public/model/` (v2-2026-10-04, 1.64 MB). Uganda test (same farms as uganda_train, not cross-country): acc 0.838, F1 0.866, abstains 54.7%, accepted accuracy 98.7%. RoCoLe: abstains 97.8%, rust recall 0.03 (safe, not useful). v1 was Uganda 0.17, RoCoLe 0.0 |
 | M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | done | v2: temperature 0.971, threshold 0.985 (target 95%; 96.2% accepted accuracy on Uganda calib at 46.2% coverage; fitted on fp32 logits, shipped model is int8). Blank pages accepted as a disease: 2 of 300 (v1: 125) |
 | M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | done | `export.py` works: 1.64 MB weight-only int8, 10 parity samples, engine preprocessing matched within 3e-7 in Node. v2 browser parity passes (Chromium, engine branch + v2 files) after matching the box-filter downscale |
-| M5 | EVALUATION.md | ml | Sun 02:00 | doing | `evaluate.py` works, v1 metrics in `app/ml/metrics.json`. EVALUATION.md waits for v2 |
+| M5 | EVALUATION.md | ml | Sun 02:00 | done | `app/docs/EVALUATION.md`: v1 vs v2, independence of each test set, abstention options pending. Missing: v2 browser timing and airplane-mode run with v2 |
 | E1 | Engine with mock model + hooks | engine | Sat 23:30 | todo | needs L1 |
 | E2 | PWA offline caching | engine | Sun 00:30 | todo | |
 | E3 | Real model integrated, parity in browser | engine | Sun 08:30 | todo | needs M4 |

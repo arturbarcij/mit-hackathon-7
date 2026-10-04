@@ -42,6 +42,7 @@ export interface Check {
   answerId: string; decision?: Decision;
   memberId?: string; plotId?: string;
   consentMain: boolean; consentPhotos: boolean; synced: boolean;
+  synthetic: boolean;
 }
 
 /** Result of `parseReferral`. Fields mirror the JANI1 SMS format in kb/CONTRACTS.md. */
@@ -57,6 +58,7 @@ export interface ParsedReferral {
   phoma: number;
   miner: number;
   unsure: number;
+  uncertain: number;
   /** Leaves not accounted for by the problem counts or unsure: healthy plus any non-leaf photos. */
   other: number;
   answerId: string;

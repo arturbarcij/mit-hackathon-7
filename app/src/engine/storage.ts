@@ -1,8 +1,33 @@
 import { openDB, type DBSchema, type IDBPDatabase } from 'idb';
 import { canvasToJpeg, drawScaled } from './canvas';
-import type { Check } from './types';
+import type { Check, Decision } from './types';
 
 export interface Consent { main: boolean; photos: boolean }
+export interface StoredReferral {
+  id: string;
+  createdAt: string;
+  memberId: string;
+  plotId: string;
+  checkDate: string;
+  counts: { rust: number; cercospora: number; phoma: number; miner: number; healthy: number; not_leaf: number };
+  uncertain: number;
+  answerId: string;
+  confidence: number;
+  photosShared: boolean;
+  status: 'new' | 'confirmed' | 'visit';
+  synthetic: boolean;
+  sms: string;
+  decision: Decision;
+}
+export interface Correction {
+  id: string;
+  referralId: string;
+  leafIndex: number;
+  modelLabel: string;
+  officerLabel: string;
+  officerId: string;
+  createdAt: string;
+}
 
 interface StoredConsent extends Consent { updatedAt: string }
 interface PinRecord { salt: string; hash: string; iterations: number }
@@ -10,7 +35,7 @@ interface PinRecord { salt: string; hash: string; iterations: number }
 interface JaniDB extends DBSchema {
   checks: { key: string; value: Check; indexes: { createdAt: string } };
   photos: { key: string; value: Blob };
-  meta: { key: string; value: StoredConsent | PinRecord };
+  meta: { key: string; value: unknown };
   outbox: { key: string; value: { checkId: string; queuedAt: string } };
 }
 
@@ -43,6 +68,8 @@ export async function resetStorageHandle(): Promise<void> {
 }
 
 const photoKey = (checkId: string, index: number) => `${checkId}:${index}`;
+const referralKey = (id: string) => `referral:${id}`;
+const correctionKey = (id: string) => `correction:${id}`;
 
 /** Scales a photo so its longer side is at most 800 px and re-encodes it as JPEG. */
 export async function compressPhoto(photo: Blob): Promise<Blob> {
@@ -103,6 +130,16 @@ export async function getPhotos(checkId: string): Promise<Blob[]> {
   return out;
 }
 
+// Backward-compatible shape expected by legacy pages.
+export async function savePhoto(checkId: string, index: number, blob: Blob): Promise<void> {
+  await (await db()).put('photos', blob, photoKey(checkId, index));
+}
+
+export async function listPhotos(checkId: string): Promise<Array<{ index: number; blob: Blob }>> {
+  const all = await getPhotos(checkId);
+  return all.map((blob, index) => ({ index, blob }));
+}
+
 export async function getConsent(): Promise<Consent> {
   const rec = (await (await db()).get('meta', 'consent')) as StoredConsent | undefined;
   return { main: rec?.main ?? false, photos: rec?.photos ?? false };
@@ -113,6 +150,19 @@ export async function setConsent(c: Consent): Promise<void> {
   const rec: StoredConsent = { main: c.main, photos: c.main && c.photos, updatedAt: new Date().toISOString() };
   await (await db()).put('meta', rec, 'consent');
   if (rec.main) void requestPersistentStorage();
+}
+
+export async function getProfile(): Promise<{ memberId: string; plotId: string; coopNumber: string }> {
+  const rec = (await (await db()).get('meta', 'profile')) as Record<string, unknown> | undefined;
+  return {
+    memberId: typeof rec?.memberId === 'string' ? rec.memberId : '',
+    plotId: typeof rec?.plotId === 'string' ? rec.plotId : '',
+    coopNumber: typeof rec?.coopNumber === 'string' ? rec.coopNumber : '',
+  };
+}
+
+export async function setProfile(profile: { memberId: string; plotId: string; coopNumber: string }): Promise<void> {
+  await (await db()).put('meta', profile, 'profile');
 }
 
 /** Asks the browser not to evict our data when the phone is short of space. Best effort; the answer is not needed. */
@@ -194,6 +244,8 @@ export async function unlock(pin: string): Promise<boolean> {
   return unlocked;
 }
 
+export const checkPin = unlock;
+
 export function lock(): void {
   unlocked = false;
 }
@@ -203,6 +255,11 @@ export async function removePin(pin: string): Promise<boolean> {
   if (!(await unlock(pin))) return false;
   await (await db()).delete('meta', 'pin');
   return true;
+}
+
+export async function clearPin(): Promise<void> {
+  await (await db()).delete('meta', 'pin');
+  unlocked = false;
 }
 
 /* Used by sync.ts */
@@ -222,4 +279,36 @@ export async function markSynced(checkId: string): Promise<void> {
   if (c) await tx.objectStore('checks').put({ ...c, synced: true });
   await tx.objectStore('outbox').delete(checkId);
   await tx.done;
+}
+
+export async function saveReferral(referral: StoredReferral): Promise<void> {
+  await (await db()).put('meta', referral, referralKey(referral.id));
+}
+
+export async function listReferrals(): Promise<StoredReferral[]> {
+  const d = await db();
+  const keys = (await d.getAllKeys('meta')) as Array<string | number>;
+  const out: StoredReferral[] = [];
+  for (const key of keys) {
+    if (typeof key !== 'string' || !key.startsWith('referral:')) continue;
+    const value = await d.get('meta', key);
+    if (value && typeof value === 'object') out.push(value as StoredReferral);
+  }
+  return out;
+}
+
+export async function saveCorrection(correction: Correction): Promise<void> {
+  await (await db()).put('meta', correction, correctionKey(correction.id));
+}
+
+export async function listCorrections(): Promise<Correction[]> {
+  const d = await db();
+  const keys = (await d.getAllKeys('meta')) as Array<string | number>;
+  const out: Correction[] = [];
+  for (const key of keys) {
+    if (typeof key !== 'string' || !key.startsWith('correction:')) continue;
+    const value = await d.get('meta', key);
+    if (value && typeof value === 'object') out.push(value as Correction);
+  }
+  return out;
 }

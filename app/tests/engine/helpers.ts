@@ -41,6 +41,13 @@ export function makeCheck(over: Partial<Check> = {}): Check {
     consentMain: true,
     consentPhotos: false,
     synced: false,
+    synthetic: true,
     ...over,
   };
+}
+
+// Backward-compatible aliases for older tests.
+export const emptyLeaf = leaf;
+export function summaryOf(labels: (Label | 'unsure')[]) {
+  return summarisePlot(labels.map((l) => leaf(l)));
 }

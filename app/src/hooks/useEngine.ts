@@ -43,7 +43,9 @@ export function useEngine() {
     };
   }, []);
 
-  return { status, ready: status === 'ready', mock, version, error };
+  const online = typeof navigator === 'undefined' ? true : navigator.onLine;
+  const model = { ready: status === 'ready', mock, version, error };
+  return { status, ready: status === 'ready', mock, version, error, online, model };
 }
 
 export interface PhotoOutcome {

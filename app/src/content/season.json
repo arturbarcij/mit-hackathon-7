@@ -34,12 +34,12 @@
       "start_month": 9,
       "start_day": 17,
       "end_month": 10,
-      "end_day": 14
+      "end_day": 31
     },
     {
       "name": "short_rains",
-      "start_month": 10,
-      "start_day": 15,
+      "start_month": 11,
+      "start_day": 1,
       "end_month": 12,
       "end_day": 15
     },

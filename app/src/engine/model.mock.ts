@@ -1,8 +1,10 @@
-import { LABELS, leafResultFromProbs, zeroProbs } from './scoring';
+import { LABELS, leafResultFromBadQuality, leafResultFromProbs, zeroProbs } from './scoring';
+import { assessRgba } from './quality';
 import type { Label, LeafResult, QualityResult } from './types';
 
 export const MOCK_VERSION = 'mock';
 export const MOCK_THRESHOLD = 0.6;
+let forcedHint: string | null = null;
 
 const KEYWORDS: [RegExp, Label][] = [
   [/not[_-]?leaf|table|hand|soil|paper/i, 'not_leaf'],
@@ -37,5 +39,21 @@ export function mockProbs(name: string): Record<Label, number> {
 }
 
 export function classifyMock(name: string, quality: QualityResult): LeafResult {
-  return leafResultFromProbs(mockProbs(name), MOCK_THRESHOLD, quality, MOCK_VERSION);
+  return leafResultFromProbs(mockProbs(forcedHint ?? name), MOCK_THRESHOLD, quality, MOCK_VERSION);
+}
+
+export function setMockHint(hint: string | null): void {
+  forcedHint = hint;
+}
+
+/** Backward-compatible helper for tests that classify synthetic RGBA inputs directly. */
+export function classifyRgba(
+  width: number,
+  height: number,
+  rgba: Uint8ClampedArray,
+  hint = 'healthy',
+): LeafResult {
+  const quality = assessRgba(width, height, rgba);
+  if (!quality.ok) return leafResultFromBadQuality(quality, MOCK_VERSION);
+  return classifyMock(hint, quality);
 }

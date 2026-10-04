@@ -122,3 +122,27 @@ export function checkQuality(img: ImageBitmap): QualityResult {
   const data = drawRegion(img, 0, 0, img.width, img.height, w, h);
   return assessQuality(lumaFromRgba(data.data), w, h, img.width, img.height);
 }
+
+/** Backward-compatible helper for tests that feed raw RGBA bytes directly. */
+export function assessRgba(width: number, height: number, rgba: Uint8ClampedArray): QualityResult {
+  const LEGACY_MIN_SIDE = 64;
+  const scale = Math.min(1, ANALYSIS_SIDE / Math.max(width, height));
+  const w = Math.max(1, Math.round(width * scale));
+  const h = Math.max(1, Math.round(height * scale));
+  const grey = new Float32Array(w * h);
+  for (let y = 0; y < h; y++) {
+    const sy = Math.min(height - 1, Math.floor((y * height) / h));
+    for (let x = 0; x < w; x++) {
+      const sx = Math.min(width - 1, Math.floor((x * width) / w));
+      const i = (sy * width + sx) * 4;
+      grey[y * w + x] = 0.299 * (rgba[i] ?? 0) + 0.587 * (rgba[i + 1] ?? 0) + 0.114 * (rgba[i + 2] ?? 0);
+    }
+  }
+  const res = assessQuality(grey, w, h, width, height);
+  if (res.reason === 'too_small' && Math.min(width, height) >= LEGACY_MIN_SIDE) {
+    if (res.brightness < BRIGHTNESS_MIN) return { ...res, reason: 'dark', ok: false };
+    if (res.blur > BLUR_MAX) return { ...res, reason: 'blurry', ok: false };
+    return { ...res, ok: true, reason: undefined };
+  }
+  return res;
+}

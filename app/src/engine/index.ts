@@ -7,25 +7,38 @@ import type { Check, Lang, LeafResult } from './types';
 
 export * from './types';
 export { loadModel, classifyLeaf, lastInferenceTimeMs } from './model';
+export { LABELS } from './scoring';
 export { checkQuality } from './quality';
 export { summarisePlot } from './plot';
 export { seasonWindow } from './season';
 export { decide, answerById as getAnswer } from './decide';
+export { makeSample, type SampleKind } from './samples';
+export { setMockHint } from './model.mock';
 export type { Consent } from './storage';
 export {
   saveCheck,
   listChecks,
   getCheck,
   getPhotos,
+  savePhoto,
+  listPhotos,
   getConsent,
   setConsent,
+  getProfile,
+  setProfile,
   clearAll,
   hasPin,
+  checkPin,
+  clearPin,
   isLocked,
   setPin,
   unlock,
   lock,
   removePin,
+  saveReferral,
+  listReferrals,
+  saveCorrection,
+  listCorrections,
 } from './storage';
 export { buildReferral, smsLink, parseReferral } from './referral';
 export { play, stop as stopAudio } from './audio';
@@ -75,5 +88,6 @@ export function assembleCheck(o: AssembleOptions): Check {
     consentMain: o.consentMain,
     consentPhotos: o.consentPhotos,
     synced: false,
+    synthetic: false,
   };
 }

@@ -144,9 +144,10 @@ export function parseReferral(text: string): ParsedReferral | null {
     phoma: phoma as number,
     miner: miner as number,
     unsure: unsure as number,
+    uncertain: unsure as number,
     other: total - problems - (unsure as number),
     answerId: answer,
     confidence: conf as number,
     decision,
-  };
+  } as ParsedReferral & { uncertain: number };
 }

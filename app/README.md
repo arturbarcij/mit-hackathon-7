@@ -65,7 +65,7 @@ Why the weekend: the smartphone is the daughter's and is home at weekends (brief
 
 ## 4. Guardrails
 
-- Fixed answers. 25 answer IDs on 4 Oct 2026 (`src/content/answers.json`). Nothing is generated at runtime. No chatbot.
+- Fixed answers. 30 answer IDs on 4 Oct 2026 (`src/content/answers.json`). Nothing is generated at runtime. No chatbot.
 - Abstention. Low confidence, leaves that disagree, an unreadable photo or a non-leaf image all give "not sure, ask the officer". Threshold: 0.985 on the calibrated top-class probability (temperature 0.971), set in `public/model/model.json`.
 - Quality gate. Blur, darkness and "is this a coffee leaf" are checked before the model runs.
 - Human decides. Noor picks act, wait or ask. The tool never acts for her.

@@ -52,6 +52,19 @@
     "translation_status": { "sw": "draft" },
     "reviewed_by": null
   },
+  "retake_too_small": {
+    "id": "retake_too_small",
+    "kind": "guidance",
+    "severity": "watch",
+    "text": {
+      "en": "The photo is too small to read. Take it again, closer to the leaf.",
+      "sw": "Picha ni ndogo mno kusomeka. Piga picha tena, karibu zaidi na jani."
+    },
+    "sources": [],
+    "assumption": false,
+    "translation_status": { "sw": "draft" },
+    "reviewed_by": null
+  },
   "not_a_leaf": {
     "id": "not_a_leaf",
     "kind": "result",
@@ -100,6 +113,23 @@
       "sw": "Hakuna chanzo cha Kenya chenye idadi ya majani inayotakiwa. Afisa ndiye anathibitisha."
     },
     "sources": ["S03", "S17", "GUIDANCE#6"],
+    "assumption": true,
+    "translation_status": { "sw": "draft" },
+    "reviewed_by": null
+  },
+  "rust_low_pre_rains": {
+    "id": "rust_low_pre_rains",
+    "kind": "result",
+    "severity": "watch",
+    "text": {
+      "en": "A few leaves show rust, and the rains are close. Kenyan guidance is to spray copper just before the rains, even when rust is low. Ask the cooperative which product and dose. Wear protection when you spray. You decide: act, wait, or ask the officer.",
+      "sw": "Majani machache yana kutu, na mvua inakaribia. Ushauri wa Kenya ni kunyunyiza dawa ya shaba kabla tu ya mvua, hata kutu ikiwa kidogo. Uliza chama cha ushirika dawa gani na kipimo gani. Vaa nguo za kujikinga unaponyunyiza. Uamuzi ni wako: chukua hatua, subiri, au muulize afisa."
+    },
+    "not_sure": {
+      "en": "The tool uses the usual rain dates, not this year's weather. It does not know the product or dose.",
+      "sw": "Programu inatumia tarehe za kawaida za mvua, si hali ya hewa ya mwaka huu. Haijui dawa wala kipimo."
+    },
+    "sources": ["S03", "GUIDANCE#1.3", "GUIDANCE#7"],
     "assumption": true,
     "translation_status": { "sw": "draft" },
     "reviewed_by": null
@@ -277,6 +307,40 @@
     "translation_status": { "sw": "draft" },
     "reviewed_by": null
   },
+  "roots_out_of_scope": {
+    "id": "roots_out_of_scope",
+    "kind": "limit",
+    "severity": "ask",
+    "text": {
+      "en": "This tool checks leaves only. It cannot see root or stem problems. If a whole bush is wilting or dying, ask the officer.",
+      "sw": "Programu hii hukagua majani tu. Haiwezi kuona matatizo ya mizizi au shina. Kama mti mzima unanyauka au kufa, muulize afisa wa kilimo."
+    },
+    "not_sure": {
+      "en": "The tool cannot check roots or stems.",
+      "sw": "Programu haiwezi kukagua mizizi wala shina."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": { "sw": "draft" },
+    "reviewed_by": null
+  },
+  "nutrient_out_of_scope": {
+    "id": "nutrient_out_of_scope",
+    "kind": "limit",
+    "severity": "ask",
+    "text": {
+      "en": "This tool cannot tell if the bushes lack food from the soil. Yellow or pale leaves can have many causes. Ask the officer about feeding the bushes.",
+      "sw": "Programu hii haiwezi kujua kama miti inakosa virutubisho kutoka udongoni. Majani ya njano au yaliyofifia yanaweza kuwa na sababu nyingi. Muulize afisa kuhusu lishe ya miti."
+    },
+    "not_sure": {
+      "en": "The tool was not trained on nutrient problems.",
+      "sw": "Programu haikufunzwa kutambua upungufu wa virutubisho."
+    },
+    "sources": [],
+    "assumption": true,
+    "translation_status": { "sw": "draft" },
+    "reviewed_by": null
+  },
   "other_crop": {
     "id": "other_crop",
     "kind": "limit",
@@ -286,6 +350,19 @@
       "sw": "Zana hii inaangalia majani ya kahawa tu. Kwa mahindi au maharagwe, uliza afisa."
     },
     "sources": ["GUIDANCE#0"],
+    "assumption": false,
+    "translation_status": { "sw": "draft" },
+    "reviewed_by": null
+  },
+  "spray_safety": {
+    "id": "spray_safety",
+    "kind": "guidance",
+    "severity": "watch",
+    "text": {
+      "en": "When you spray, wear long sleeves, long trousers, boots and gloves. Do not eat, drink or smoke while spraying. Do not spray in wind, in rain, or in the hottest part of the day. Do not spray if you are pregnant or breastfeeding. Keep sprays locked away from children and food. Never reuse the empty container.",
+      "sw": "Unaponyunyiza, vaa shati la mikono mirefu, suruali ndefu, buti na glavu. Usile, usinywe wala usivute sigara unaponyunyiza. Usinyunyize wakati wa upepo, mvua, au jua kali la mchana. Usinyunyize ukiwa mjamzito au unanyonyesha. Funga dawa mahali salama, mbali na watoto na chakula. Usitumie tena chombo kitupu cha dawa."
+    },
+    "sources": ["S20", "GUIDANCE#7"],
     "assumption": false,
     "translation_status": { "sw": "draft" },
     "reviewed_by": null

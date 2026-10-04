@@ -1,0 +1,95 @@
+{
+ "summary": {
+  "label": "leaf_shipped_parity_samples",
+  "model": "/mnt/user-data/uploads/MIT_Hackathon_7/app/public/model/leaf.onnx",
+  "ortWeb": "1.30.0",
+  "node": "v22.22.0",
+  "numThreads": 1,
+  "pyOnnxruntime": "1.29.0",
+  "items": 10,
+  "top1Agree": "10/10",
+  "maxLogitDiff": 0.17413330078125,
+  "maxProbDiffT15": 0.003828942237146138,
+  "sessionCreateMs": 337.2,
+  "firstRunMs": 73.6,
+  "medianRunMs": 22.8,
+  "inputs": [
+   "input"
+  ],
+  "outputs": [
+   "logits"
+  ]
+ },
+ "rows": [
+  {
+   "name": "00",
+   "maxLogitDiff": 0.07936,
+   "maxProbDiffT15": 1.302e-9,
+   "top1Match": true,
+   "pyTop2Margin": 27.21
+  },
+  {
+   "name": "01",
+   "maxLogitDiff": 0.09554,
+   "maxProbDiffT15": 0.001939,
+   "top1Match": true,
+   "pyTop2Margin": 5.98
+  },
+  {
+   "name": "02",
+   "maxLogitDiff": 0.03183,
+   "maxProbDiffT15": 7.67e-11,
+   "top1Match": true,
+   "pyTop2Margin": 30.17
+  },
+  {
+   "name": "03",
+   "maxLogitDiff": 0.1741,
+   "maxProbDiffT15": 4.263e-8,
+   "top1Match": true,
+   "pyTop2Margin": 22.56
+  },
+  {
+   "name": "04",
+   "maxLogitDiff": 0.01587,
+   "maxProbDiffT15": 3.068e-8,
+   "top1Match": true,
+   "pyTop2Margin": 15.49
+  },
+  {
+   "name": "05",
+   "maxLogitDiff": 0.0429,
+   "maxProbDiffT15": 0.003829,
+   "top1Match": true,
+   "pyTop2Margin": 3.148
+  },
+  {
+   "name": "06",
+   "maxLogitDiff": 0.1061,
+   "maxProbDiffT15": 6.378e-9,
+   "top1Match": true,
+   "pyTop2Margin": 22.94
+  },
+  {
+   "name": "07",
+   "maxLogitDiff": 0.1373,
+   "maxProbDiffT15": 0.0004099,
+   "top1Match": true,
+   "pyTop2Margin": 6.945
+  },
+  {
+   "name": "08",
+   "maxLogitDiff": 0.06064,
+   "maxProbDiffT15": 0.000003417,
+   "top1Match": true,
+   "pyTop2Margin": 14.16
+  },
+  {
+   "name": "09",
+   "maxLogitDiff": 0.1489,
+   "maxProbDiffT15": 2.955e-13,
+   "top1Match": true,
+   "pyTop2Margin": 39.56
+  }
+ ]
+}

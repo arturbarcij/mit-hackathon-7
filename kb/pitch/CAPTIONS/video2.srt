@@ -1,0 +1,79 @@
+1
+00:00:00,200 --> 00:00:01,923
+Saturday, at the house.
+
+2
+00:00:01,923 --> 00:00:04,938
+Phone in airplane mode, so nothing here
+
+3
+00:00:04,938 --> 00:00:05,800
+uses data.
+
+4
+00:00:06,200 --> 00:00:08,067
+I choose Swahili.
+
+5
+00:00:08,067 --> 00:00:11,800
+It reads the consent screen aloud.
+
+6
+00:00:12,200 --> 00:00:15,368
+Ten leaves from my worst rows, on
+
+7
+00:00:15,368 --> 00:00:16,726
+a plain page.
+
+8
+00:00:16,726 --> 00:00:18,084
+One photo each.
+
+9
+00:00:18,084 --> 00:00:20,800
+A blurry one gets a retake.
+
+10
+00:00:21,200 --> 00:00:25,169
+The model runs on the phone.
+
+11
+00:00:25,169 --> 00:00:27,815
+[PENDING: result from the take] of ten
+
+12
+00:00:27,815 --> 00:00:29,800
+leaves show rust.
+
+13
+00:00:30,200 --> 00:00:35,036
+Now Kikuyu. This voice is machine-made and
+
+14
+00:00:35,036 --> 00:00:37,800
+awaiting native speaker review.
+
+15
+00:00:38,200 --> 00:00:41,754
+A blurry or non-coffee photo gets no
+
+16
+00:00:41,754 --> 00:00:44,800
+guess: not sure, ask the officer.
+
+17
+00:00:45,200 --> 00:00:47,756
+I tap ask the officer.
+
+18
+00:00:47,756 --> 00:00:49,800
+I press send myself.
+
+19
+00:00:50,200 --> 00:00:53,778
+The officer sees the referral and confirms.
+
+20
+00:00:53,778 --> 00:00:54,800
+Simulated records.

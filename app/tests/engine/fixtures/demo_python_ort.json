@@ -1,0 +1,104 @@
+{
+ "generated_by": "app/scripts/make_demo_python_ort.py",
+ "onnxruntime": "1.29.0",
+ "model_version": "v1-2026-10-04",
+ "temperature": 3.5,
+ "probs": {
+  "sample01_rust.jpg": {
+   "healthy": 0.00039,
+   "rust": 0.02,
+   "cercospora": 0.00886,
+   "phoma": 0.01474,
+   "miner": 0.00092,
+   "not_leaf": 0.9551
+  },
+  "sample02_rust.jpg": {
+   "healthy": 0.0,
+   "rust": 0.00375,
+   "cercospora": 0.00052,
+   "phoma": 0.00013,
+   "miner": 0.00459,
+   "not_leaf": 0.99102
+  },
+  "sample03_rust.jpg": {
+   "healthy": 0.00136,
+   "rust": 0.01341,
+   "cercospora": 0.02992,
+   "phoma": 0.02441,
+   "miner": 0.00675,
+   "not_leaf": 0.92416
+  },
+  "sample04_rust.jpg": {
+   "healthy": 8e-05,
+   "rust": 0.00369,
+   "cercospora": 0.00266,
+   "phoma": 0.00329,
+   "miner": 0.00011,
+   "not_leaf": 0.99018
+  },
+  "sample05_rust.jpg": {
+   "healthy": 0.01582,
+   "rust": 0.06109,
+   "cercospora": 0.11984,
+   "phoma": 0.12071,
+   "miner": 0.08236,
+   "not_leaf": 0.60018
+  },
+  "sample06_rust.jpg": {
+   "healthy": 0.00025,
+   "rust": 0.02167,
+   "cercospora": 0.02687,
+   "phoma": 0.08176,
+   "miner": 0.0021,
+   "not_leaf": 0.86735
+  },
+  "sample07_healthy.jpg": {
+   "healthy": 0.00952,
+   "rust": 0.00154,
+   "cercospora": 0.00406,
+   "phoma": 0.14773,
+   "miner": 0.0002,
+   "not_leaf": 0.83696
+  },
+  "sample08_healthy.jpg": {
+   "healthy": 0.01948,
+   "rust": 0.00141,
+   "cercospora": 0.00642,
+   "phoma": 0.29761,
+   "miner": 0.0148,
+   "not_leaf": 0.66028
+  },
+  "sample09_healthy.jpg": {
+   "healthy": 6e-05,
+   "rust": 0.00067,
+   "cercospora": 0.00056,
+   "phoma": 0.00066,
+   "miner": 1e-05,
+   "not_leaf": 0.99804
+  },
+  "sample10_other.jpg": {
+   "healthy": 6e-05,
+   "rust": 0.00015,
+   "cercospora": 0.00016,
+   "phoma": 0.00427,
+   "miner": 1e-05,
+   "not_leaf": 0.99535
+  },
+  "sample11_berry.jpg": {
+   "healthy": 0.00023,
+   "rust": 0.00123,
+   "cercospora": 0.00107,
+   "phoma": 0.01024,
+   "miner": 0.00319,
+   "not_leaf": 0.98403
+  },
+  "sample12_poor.jpg": {
+   "healthy": 0.00123,
+   "rust": 0.00274,
+   "cercospora": 0.00247,
+   "phoma": 0.03539,
+   "miner": 0.00057,
+   "not_leaf": 0.95761
+  }
+ }
+}

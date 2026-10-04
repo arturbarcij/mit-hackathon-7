@@ -1,0 +1,298 @@
+{
+ "summary": {
+  "label": "fixture_fp32",
+  "model": "fixtures/model/fixture_fp32.onnx",
+  "ortWeb": "1.30.0",
+  "node": "v22.22.0",
+  "numThreads": 1,
+  "pyOnnxruntime": "see fixture_model.json",
+  "items": 39,
+  "top1Agree": "39/39",
+  "maxLogitDiff": 1.6763806343078613e-8,
+  "maxProbDiffT15": 1.5504921235809377e-9,
+  "sessionCreateMs": 631.2,
+  "firstRunMs": 62.1,
+  "medianRunMs": 13.9,
+  "inputs": [
+   "input"
+  ],
+  "outputs": [
+   "logits"
+  ]
+ },
+ "rows": [
+  {
+   "name": "00_jmuben",
+   "maxLogitDiff": 4.657e-9,
+   "maxProbDiffT15": 5.322e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.0008211
+  },
+  {
+   "name": "01_jmuben",
+   "maxLogitDiff": 4.191e-9,
+   "maxProbDiffT15": 4.865e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.0009859
+  },
+  {
+   "name": "02_jmuben",
+   "maxLogitDiff": 4.657e-9,
+   "maxProbDiffT15": 5.778e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.002011
+  },
+  {
+   "name": "03_jmuben",
+   "maxLogitDiff": 1.455e-9,
+   "maxProbDiffT15": 8.624e-11,
+   "top1Match": true,
+   "pyTop2Margin": 0.001548
+  },
+  {
+   "name": "04_jmuben",
+   "maxLogitDiff": 8.149e-10,
+   "maxProbDiffT15": 9.601e-11,
+   "top1Match": true,
+   "pyTop2Margin": 0.0005605
+  },
+  {
+   "name": "05_jmuben",
+   "maxLogitDiff": 9.779e-9,
+   "maxProbDiffT15": 7.399e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001927
+  },
+  {
+   "name": "06_jmuben2",
+   "maxLogitDiff": 1.863e-9,
+   "maxProbDiffT15": 2.281e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.0007187
+  },
+  {
+   "name": "07_jmuben2",
+   "maxLogitDiff": 2.328e-9,
+   "maxProbDiffT15": 2.421e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.0008998
+  },
+  {
+   "name": "08_jmuben2",
+   "maxLogitDiff": 4.54e-9,
+   "maxProbDiffT15": 5.435e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001141
+  },
+  {
+   "name": "09_jmuben2",
+   "maxLogitDiff": 5.122e-9,
+   "maxProbDiffT15": 3.43e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.0008602
+  },
+  {
+   "name": "10_uganda",
+   "maxLogitDiff": 4.016e-9,
+   "maxProbDiffT15": 4.54e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001033
+  },
+  {
+   "name": "11_uganda",
+   "maxLogitDiff": 2.561e-9,
+   "maxProbDiffT15": 2.849e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001993
+  },
+  {
+   "name": "12_wild",
+   "maxLogitDiff": 1.63e-9,
+   "maxProbDiffT15": 1.836e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001767
+  },
+  {
+   "name": "13_wild",
+   "maxLogitDiff": 5.821e-9,
+   "maxProbDiffT15": 5.475e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.0004291
+  },
+  {
+   "name": "14_wild",
+   "maxLogitDiff": 4.889e-9,
+   "maxProbDiffT15": 5.093e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001126
+  },
+  {
+   "name": "15_wild",
+   "maxLogitDiff": 3.725e-9,
+   "maxProbDiffT15": 3.873e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001594
+  },
+  {
+   "name": "16_wild",
+   "maxLogitDiff": 4.657e-9,
+   "maxProbDiffT15": 3.936e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001764
+  },
+  {
+   "name": "17_wild",
+   "maxLogitDiff": 5.588e-9,
+   "maxProbDiffT15": 5.806e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.0002301
+  },
+  {
+   "name": "18_bracol",
+   "maxLogitDiff": 4.424e-9,
+   "maxProbDiffT15": 4.766e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001008
+  },
+  {
+   "name": "19_bracol",
+   "maxLogitDiff": 1.863e-9,
+   "maxProbDiffT15": 2.077e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.002131
+  },
+  {
+   "name": "s_224x224_noise",
+   "maxLogitDiff": 1.537e-8,
+   "maxProbDiffT15": 1.484e-9,
+   "top1Match": true,
+   "pyTop2Margin": 0.002227
+  },
+  {
+   "name": "s_225x224_noise",
+   "maxLogitDiff": 1.676e-8,
+   "maxProbDiffT15": 1.25e-9,
+   "top1Match": true,
+   "pyTop2Margin": 0.002132
+  },
+  {
+   "name": "s_227x224_noise",
+   "maxLogitDiff": 1.304e-8,
+   "maxProbDiffT15": 1.55e-9,
+   "top1Match": true,
+   "pyTop2Margin": 0.002885
+  },
+  {
+   "name": "s_229x224_noise",
+   "maxLogitDiff": 6.519e-9,
+   "maxProbDiffT15": 8.112e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.003092
+  },
+  {
+   "name": "s_224x231_noise",
+   "maxLogitDiff": 1.444e-8,
+   "maxProbDiffT15": 1.222e-9,
+   "top1Match": true,
+   "pyTop2Margin": 0.0008969
+  },
+  {
+   "name": "s_225x225_noise",
+   "maxLogitDiff": 6.985e-9,
+   "maxProbDiffT15": 7.623e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.00001416
+  },
+  {
+   "name": "s_3x5_noise",
+   "maxLogitDiff": 2.794e-9,
+   "maxProbDiffT15": 3.151e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001908
+  },
+  {
+   "name": "s_1x1_noise",
+   "maxLogitDiff": 7.451e-9,
+   "maxProbDiffT15": 8.451e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.003402
+  },
+  {
+   "name": "s_100x150_grad",
+   "maxLogitDiff": 2.095e-9,
+   "maxProbDiffT15": 2.336e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.002203
+  },
+  {
+   "name": "s_223x500_noise",
+   "maxLogitDiff": 5.588e-9,
+   "maxProbDiffT15": 4.205e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.000887
+  },
+  {
+   "name": "s_300x200_edges",
+   "maxLogitDiff": 6.985e-9,
+   "maxProbDiffT15": 8.091e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.000392
+  },
+  {
+   "name": "s_449x449_noise",
+   "maxLogitDiff": 5.122e-9,
+   "maxProbDiffT15": 3.82e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.0002797
+  },
+  {
+   "name": "s_1001x777_noise",
+   "maxLogitDiff": 3.143e-9,
+   "maxProbDiffT15": 4.141e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001369
+  },
+  {
+   "name": "s_13x997_noise",
+   "maxLogitDiff": 3.26e-9,
+   "maxProbDiffT15": 2.997e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.0019
+  },
+  {
+   "name": "s_4000x50_noise",
+   "maxLogitDiff": 5.588e-9,
+   "maxProbDiffT15": 4.147e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.000928
+  },
+  {
+   "name": "s_50x4000_grad",
+   "maxLogitDiff": 1.921e-9,
+   "maxProbDiffT15": 2.124e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.002804
+  },
+  {
+   "name": "s_641x479_edges",
+   "maxLogitDiff": 4.424e-9,
+   "maxProbDiffT15": 5.413e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001628
+  },
+  {
+   "name": "s_4000x3000_noise",
+   "maxLogitDiff": 2.794e-9,
+   "maxProbDiffT15": 3.06e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.001366
+  },
+  {
+   "name": "s_3024x4032_grad",
+   "maxLogitDiff": 2.561e-9,
+   "maxProbDiffT15": 3.164e-10,
+   "top1Match": true,
+   "pyTop2Margin": 0.002243
+  }
+ ]
+}

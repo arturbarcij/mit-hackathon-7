@@ -1,0 +1,19 @@
+{
+  "name": "jani-engine-conformance",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Conformance suite for the Jani engine against kb/CONTRACTS.md. Point ENGINE_PATH at any implementation.",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:reference": "vitest run",
+    "test:lovable": "ENGINE_PATH=../_inputs/lovable/src/engine vitest run",
+    "golden": "python3 scripts/golden_matrix.py",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.11"
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "base": "http://127.0.0.1:4637/",
+  "viewport": "360x740",
+  "steps": [],
+  "ok": true,
+  "onlineFirstScreenMs": 116,
+  "precache": {
+    "ok": true,
+    "version": "eb0d5dd514be",
+    "files": 25,
+    "bytes": 18433009,
+    "missing": [],
+    "byCategory": {
+      "app_js": {
+        "files": 2,
+        "bytes": 367469
+      },
+      "app_css": {
+        "files": 1,
+        "bytes": 8432
+      },
+      "demo": {
+        "files": 13,
+        "bytes": 677146
+      },
+      "icons": {
+        "files": 4,
+        "bytes": 37439
+      },
+      "shell": {
+        "files": 1,
+        "bytes": 604
+      },
+      "model": {
+        "files": 2,
+        "bytes": 3077641
+      },
+      "ort": {
+        "files": 2,
+        "bytes": 14264278
+      }
+    }
+  },
+  "offlineReload": true,
+  "samplePlotMs": 492,
+  "sample": {
+    "accepted": 0,
+    "retakes": [
+      "not_a_leaf",
+      "not_a_leaf",
+      "not_a_leaf",
+      "not_a_leaf",
+      "not_a_leaf",
+      "not_a_leaf",
+      "not_a_leaf",
+      "not_a_leaf",
+      "not_a_leaf",
+      "not_a_leaf"
+    ]
+  },
+  "mockBadge": false,
+  "leafResults": [
+    {
+      "name": "sample01_rust.jpg",
+      "label": "not_leaf",
+      "confidence": 0.9550105593391098,
+      "quality": {
+        "ok": true,
+        "blur": 424.22443364701417,
+        "brightness": 0.4766719996769383
+      },
+      "modelVersion": "v1-2026-10-04"
+    },
+    {
+      "name": "sample02_rust.jpg",
+      "label": "not_leaf",
+      "confidence": 0.9912556018094434,
+      "quality": {
+        "ok": true,
+        "blur": 488.12900507803715,
+        "brightness": 0.5520265296525002
+      },
+      "modelVersion": "v1-2026-10-04"
+    },
+    {
+      "name": "sample03_rust.jpg",
+      "label": "not_leaf",
+      "confidence": 0.9233108765983156,
+      "quality": {
+        "ok": true,
+        "blur": 450.55503464051066,
+        "brightness": 0.40309897784556087
+      },
+      "modelVersion": "v1-2026-10-04"
+    },
+    {
+      "name": "sample04_rust.jpg",
+      "label": "not_leaf",
+      "confidence": 0.9907546557217919,
+      "quality": {
+        "ok": true,
+        "blur": 4425.110388737038,
+        "brightness": 0.3871207043455512
+      },
+      "modelVersion": "v1-2026-10-04"
+    },
+    {
+      "name": "sample05_rust.jpg",
+      "label": "not_leaf",
+      "confidence": 0.6029254019465096,
+      "quality": {
+        "ok": true,
+        "blur": 444.8260348158285,
+        "brightness": 0.4087944066901321
+      },
+      "modelVersion": "v1-2026-10-04"
+    },
+    {
+      "name": "sample06_rust.jpg",
+      "label": "not_leaf",
+      "confidence": 0.8686786557222712,
+      "quality": {
+        "ok": true,
+        "blur": 1209.7515382846411,
+        "brightness": 0.4441931613626604
+      },
+      "modelVersion": "v1-2026-10-04"
+    },
+    {
+      "name": "sample07_healthy.jpg",
+      "label": "not_leaf",
+      "confidence": 0.8335444312526576,
+      "quality": {
+        "ok": true,
+        "blur": 658.6507484505315,
+        "brightness": 0.29474448374020024
+      },
+      "modelVersion": "v1-2026-10-04"
+    },
+    {
+      "name": "sample08_healthy.jpg",
+      "label": "not_leaf",
+      "confidence": 0.6665708672425691,
+      "quality": {
+        "ok": true,
+        "blur": 520.8529477423496,
+        "brightness": 0.3330809013327976
+      },
+      "modelVersion": "v1-2026-10-04"
+    },
+    {
+      "name": "sample09_healthy.jpg",
+      "label": "not_leaf",
+      "confidence": 0.9981308839920947,
+      "quality": {
+        "ok": true,
+        "blur": 1908.8174516733693,
+        "brightness": 0.4333231243809495
+      },
+      "modelVersion": "v1-2026-10-04"
+    },
+    {
+      "name": "sample10_other.jpg",
+      "label": "not_leaf",
+      "confidence": 0.9952929193279367,
+      "quality": {
+        "ok": true,
+        "blur": 875.1797694965521,
+        "brightness": 0.31948421908404795
+      },
+      "modelVersion": "v1-2026-10-04"
+    }
+  ],
+  "tiles": {
+    "rust": 0,
+    "no_problem": 0,
+    "other_spots": 0,
+    "not_sure": 10
+  },
+  "answerId": "too_many_unsure",
+  "berriesShown": true,
+  "reachedDecision": true,
+  "sms": "JANI1 M:OCC0412 P:P07 D:20261004 N:10 R:0 C:0 H:0 L:0 U:10 A:too_many_unsure Q:0 X:ask",
+  "historyItems": 1,
+  "cameraRetakeScreen": true,
+  "cameraRetakeCard": "retake_on_page",
+  "upload": {
+    "accepted": 0,
+    "retakes": [
+      "retake_on_page",
+      "retake_on_page"
+    ]
+  },
+  "forbiddenOnLastScreen": false,
+  "modelConsole": [],
+  "log": [
+    "[23:41:34] base http://127.0.0.1:4637/",
+    "[23:41:34] screenshot 01-online-language.png",
+    "[23:41:34] precache ok=true files=25 bytes=18433009 missing=0",
+    "[23:41:34] offline reload rendered the language screen",
+    "[23:41:35] screenshot 02-offline-language.png",
+    "[23:41:35] screenshot 03-offline-consent.png",
+    "[23:41:35] screenshot 04-offline-guide-pick.png",
+    "[23:41:35] screenshot 05-offline-guide-photo.png",
+    "[23:41:35] screenshot 06-offline-capture-empty.png",
+    "[23:41:36] sample plot: 0 accepted, retakes [\"not_a_leaf\",\"not_a_leaf\",\"not_a_leaf\",\"not_a_leaf\",\"not_a_leaf\",\"not_a_leaf\",\"not_a_leaf\",\"not_a_leaf\",\"not_a_leaf\",\"not_a_leaf\"] in 492 ms",
+    "[23:41:36] mock badge visible: false",
+    "[23:41:36] screenshot 07-offline-capture-sample.png",
+    "[23:41:36] summary tiles {\"rust\":0,\"no_problem\":0,\"other_spots\":0,\"not_sure\":10}",
+    "[23:41:36] screenshot 08-offline-summary.png",
+    "[23:41:36] answer too_many_unsure, berries line shown: true",
+    "[23:41:36] screenshot 09-offline-answer.png",
+    "[23:41:36] screenshot 10-offline-decision.png",
+    "[23:41:36] referral SMS (86 chars): JANI1 M:OCC0412 P:P07 D:20261004 N:10 R:0 C:0 H:0 L:0 U:10 A:too_many_unsure Q:0 X:ask",
+    "[23:41:36] screenshot 11-offline-referral.png",
+    "[23:41:36] history items: 1",
+    "[23:41:36] screenshot 12-offline-history.png",
+    "[23:41:36] camera photo (sample12_poor): retake screen true, card retake_on_page",
+    "[23:41:36] screenshot 13-offline-camera-retake.png",
+    "[23:41:36] upload of 2 photos: {\"accepted\":0,\"retakes\":[\"retake_on_page\",\"retake_on_page\"]}",
+    "[23:41:36] screenshot 14-offline-upload.png"
+  ]
+}

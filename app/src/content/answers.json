@@ -1,0 +1,658 @@
+[
+ {
+  "id": "how_to_pick_leaves",
+  "kind": "guidance",
+  "severity": "ok",
+  "text": {
+   "en": "Pick 10 leaves from the rows that look worst, from the top and bottom of the trees. Lay them on a plain page, underside up.",
+   "sw": "Chuma majani 10 kutoka mistari inayoonekana mibaya zaidi, juu na chini ya miti. Yaweke kwenye karatasi safi, upande wa chini ukiangalia juu.",
+   "kik": "Oya mathangũ 10 kuuma mĩhari ĩrĩa mĩũru makĩria. Mahaandĩke karatasi-inĩ, mũthia wa thĩ ũrorete igũrũ."
+  },
+  "sources": [
+   "PRIOR_ART#nuru",
+   "S03"
+  ],
+  "assumption": false,
+  "note": "Several leaves from upper and lower canopy (Nuru field study). Rust shows on the underside (S03).",
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending",
+   "kik": "draft_claude_not_native: pending native speaker review (NLLB pass not run); low confidence"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft",
+   "kik": "machine_draft_pending_native_review"
+  }
+ },
+ {
+  "id": "how_to_photograph",
+  "kind": "guidance",
+  "severity": "ok",
+  "text": {
+   "en": "Take each photo in bright shade, not direct sun, close enough that the leaf fills the screen. Keep the phone still.",
+   "sw": "Piga picha kila jani kwenye kivuli chenye mwanga, si kwenye jua moja kwa moja, karibu hadi jani lijaze skrini. Shika simu bila kutikisa."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "retake_blurry",
+  "kind": "guidance",
+  "severity": "watch",
+  "text": {
+   "en": "This photo is blurry. Hold the phone still and take it again.",
+   "sw": "Picha hii haiko wazi. Shika simu bila kutikisa upige tena."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "retake_dark",
+  "kind": "guidance",
+  "severity": "watch",
+  "text": {
+   "en": "This photo is too dark. Move to bright shade, not direct sun, and take it again.",
+   "sw": "Picha hii ina giza sana. Nenda kwenye kivuli chenye mwanga, si kwenye jua moja kwa moja, upige tena."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "retake_on_page",
+  "kind": "guidance",
+  "severity": "watch",
+  "text": {
+   "en": "Lay the leaf flat on a plain page and take the photo again.",
+   "sw": "Weka jani bapa kwenye karatasi safi upige picha tena."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  },
+  "note": "Shown by the engine's image-validity gate (EDGE_PLAN move 2) when the leaf is not on a plain page. No Kikuyu: left absent rather than guessed."
+ },
+ {
+  "id": "not_a_leaf",
+  "kind": "guidance",
+  "severity": "watch",
+  "text": {
+   "en": "These photos do not look like coffee leaves. Check the leaves and take the photos again.",
+   "sw": "Picha hizi hazionekani kama majani ya kahawa. Angalia majani upige picha tena."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "healthy_all",
+  "kind": "result",
+  "severity": "ok",
+  "text": {
+   "en": "No leaf problem seen on these leaves. Keep checking, especially soon after the rains.",
+   "sw": "Hakuna tatizo lililoonekana kwenye majani haya. Endelea kuangalia, hasa baada ya mvua.",
+   "kik": "Gũtirĩ thĩna wonekete mathangũ-inĩ marĩa. Thiĩ na mbere kũrora, makĩria thutha wa mbura."
+  },
+  "not_sure": {
+   "en": "We only checked these leaves, and only leaves, not berries.",
+   "sw": "Tumeangalia majani haya tu, na majani pekee, si matunda.",
+   "kik": "Tweroretie mathangũ maya tu, ti matunda."
+  },
+  "sources": [
+   "S03"
+  ],
+  "assumption": true,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending",
+   "kik": "draft_claude_not_native: pending native speaker review (NLLB pass not run); low confidence"
+  },
+  "reviewed_by": null,
+  "note": "Rule fires when no classified leaf is affected and fewer than 3 are unsure: assumption, officer to confirm.",
+  "review_status": {
+   "sw": "draft",
+   "kik": "machine_draft_pending_native_review"
+  }
+ },
+ {
+  "id": "rust_low",
+  "kind": "result",
+  "severity": "watch",
+  "text": {
+   "en": "A few leaves show rust. Prune to open the trees, remove weeds, and check again next weekend.",
+   "sw": "Kutu ya majani imeonekana kwenye majani machache. Pogoa miti ipate hewa, palilia, na uangalie tena wikendi ijayo."
+  },
+  "not_sure": {
+   "en": "Early rust is hard to see. One or two leaves is not enough to be sure.",
+   "sw": "Kutu ya majani ya mwanzo ni vigumu kuonekana. Jani moja au mawili hayatoshi kuwa na uhakika."
+  },
+  "sources": [
+   "S03",
+   "S16",
+   "S17"
+  ],
+  "assumption": true,
+  "note": "'A few' = 1 or 2 of 10 leaves: assumption, officer to confirm.",
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "rust_high_pre_rains",
+  "kind": "result",
+  "severity": "act",
+  "text": {
+   "en": "Many leaves show rust and the rains are close. Copper goes on just before the rains and again three weeks later, on a dry day. Ask the cooperative which product, how much, and what to do if heavy rain falls.",
+   "sw": "Kutu ya majani imeonekana kwenye majani mengi na mvua za vuli au za masika zinakaribia. Dawa ya shaba hunyunyizwa siku kavu kabla ya mvua na tena baada ya wiki tatu. Uliza chama cha ushirika dawa gani, kiasi gani, na ufanye nini mvua kubwa ikinyesha."
+  },
+  "not_sure": {
+   "en": "We cannot see your trees' variety or the berries. If your trees are Ruiru 11 or Batian, tell the officer before you spray for rust.",
+   "sw": "Hatuwezi kuona aina ya miti yako wala matunda. Kama miti yako ni Ruiru 11 au Batian, mwambie afisa wa kilimo kabla ya kunyunyiza dawa ya kutu ya majani."
+  },
+  "sources": [
+   "S03",
+   "S17"
+  ],
+  "assumption": true,
+  "note": "'Many' = 3 or more of 10 leaves: assumption, officer to confirm. Timing from S03. Fires in pre_short_rains and pre_long_rains, so Swahili names both seasons (vuli, masika). Kikuyu removed Sun 4 Oct (F20): the old draft did not match the en/sw card in full.",
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "rust_high_in_rains",
+  "kind": "result",
+  "severity": "act",
+  "text": {
+   "en": "Many leaves show rust during the rains. Ask the officer or cooperative now whether to spray, which product and how much. Spray on a dry day; if heavy rain falls the same day, ask.",
+   "sw": "Kutu ya majani imeonekana kwenye majani mengi wakati wa mvua. Uliza afisa wa kilimo au chama cha ushirika sasa kama unyunyize, dawa gani na kiasi gani. Nyunyiza siku kavu; mvua kubwa ikinyesha siku hiyo hiyo, uliza."
+  },
+  "not_sure": {
+   "en": "We cannot see your trees' variety or the berries. If your trees are Ruiru 11 or Batian, tell the officer before you spray for rust.",
+   "sw": "Hatuwezi kuona aina ya miti yako wala matunda. Kama miti yako ni Ruiru 11 au Batian, mwambie afisa wa kilimo kabla ya kunyunyiza dawa ya kutu ya majani."
+  },
+  "sources": [
+   "S03"
+  ],
+  "assumption": true,
+  "note": "'Many' = 3 or more of 10: assumption, officer to confirm. Sun 4 Oct: 'prune so the trees dry faster' cut to fit the dry-day line (F11) under the 220-character limit; pruning stays on rust_low and rust_high_dry.",
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "rust_high_dry",
+  "kind": "result",
+  "severity": "watch",
+  "text": {
+   "en": "Many leaves show rust, and rust peaks soon after the rains. Prune and weed now, and plan with the officer to spray on a dry day before the next rains.",
+   "sw": "Kutu ya majani imeonekana kwenye majani mengi, na huongezeka baada ya mvua. Pogoa na palilia sasa, na upange na afisa wa kilimo kunyunyiza siku kavu kabla ya mvua zijazo za vuli au za masika."
+  },
+  "not_sure": {
+   "en": "We cannot see your trees' variety or the berries. If your trees are Ruiru 11 or Batian, tell the officer before you spray for rust.",
+   "sw": "Hatuwezi kuona aina ya miti yako wala matunda. Kama miti yako ni Ruiru 11 au Batian, mwambie afisa wa kilimo kabla ya kunyunyiza dawa ya kutu ya majani."
+  },
+  "sources": [
+   "S03",
+   "S17"
+  ],
+  "assumption": true,
+  "note": "'Many' = 3 or more of 10: assumption, officer to confirm. The dry window covers Dec to Feb (next rains: masika) and Jun to Sep (next rains: vuli), so Swahili names both.",
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "cercospora",
+  "kind": "result",
+  "severity": "ask",
+  "text": {
+   "en": "Some leaves show other spots that need the officer's eye. Ask the officer before you spray anything, and ask about fertiliser too: spots like these are often worse on underfed trees.",
+   "sw": "Majani mengine yana madoa mengine yanayohitaji kuangaliwa na afisa wa kilimo. Muulize afisa kabla ya kunyunyiza chochote, na uulize kuhusu mbolea pia: madoa kama haya mara nyingi huzidi kwenye miti isiyolishwa vizuri."
+  },
+  "not_sure": {
+   "en": "Photos cannot tell these spots apart well. The officer can check the trees.",
+   "sw": "Picha haziwezi kutofautisha madoa haya vizuri. Afisa wa kilimo anaweza kukagua miti."
+  },
+  "sources": [
+   "S18"
+  ],
+  "assumption": false,
+  "note": "Internal, not shown to the farmer: model label cercospora (brown eye spot). Farmer text does not name the disease (EDGE_PLAN move 5); the officer sees the fine label through the referral count C:. Non-Kenyan source (S18); symptoms only, no treatment. Fertiliser line restored Sun 4 Oct (F14, S18 'adequate nutrition'); no product or amount.",
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "phoma",
+  "kind": "result",
+  "severity": "ask",
+  "text": {
+   "en": "Some leaves show dark spots that need the officer's eye. If shoot tips are drying back, show the officer that too, as it has more than one cause. Ask before you spray anything.",
+   "sw": "Majani mengine yana madoa meusi yanayohitaji kuangaliwa na afisa wa kilimo. Kama ncha za matawi zinakauka, mwonyeshe afisa pia, kwani chanzo chake ni zaidi ya kimoja. Uliza kabla ya kunyunyiza chochote."
+  },
+  "not_sure": {
+   "en": "Photos cannot tell these spots apart well, and there is little Kenyan guidance on them.",
+   "sw": "Picha haziwezi kutofautisha madoa haya vizuri, na kuna mwongozo mdogo wa Kenya kuhusu madoa haya."
+  },
+  "sources": [
+   "S42",
+   "S43"
+  ],
+  "assumption": false,
+  "note": "Internal, not shown to the farmer: model label phoma. Farmer text does not name the disease (EDGE_PLAN move 5); the officer sees the fine label through the referral count H:. Secondary non-Kenyan sources (S42, S43); symptoms only, no treatment. Sun 4 Oct (F13): dying shoot tips no longer tied to one disease; the cool, windy, damp weather hint was dropped because it implied a diagnosis.",
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "miner",
+  "kind": "result",
+  "severity": "ask",
+  "text": {
+   "en": "Some leaves show brown marks that need the officer's eye. Do not use insect sprays on your own: they can kill helpful wasps and make it worse. Ask the officer.",
+   "sw": "Majani mengine yana mabaka ya kahawia yanayohitaji kuangaliwa na afisa wa kilimo. Usitumie dawa za wadudu peke yako: zinaweza kuua nyigu wasaidizi na kuzidisha tatizo. Muulize afisa wa kilimo."
+  },
+  "not_sure": {
+   "en": "We cannot see insects on the tree, which is how officers judge these marks.",
+   "sw": "Hatuwezi kuona wadudu kwenye mti, ambayo ndiyo njia afisa wa kilimo hupima alama hizi."
+  },
+  "sources": [
+   "S17"
+  ],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "note": "Internal, not shown to the farmer: model label miner (leaf miner). Farmer text does not name the pest (EDGE_PLAN move 5); the officer sees the fine label through the referral count L:. Keeps the S17 safety line against spraying on your own. 'dawa za wadudu' (insect sprays): 'wadudu' attested in Kenyan Swahili (glossary, Radio Jambo); reviewer to confirm.",
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "mixed_problems",
+  "kind": "result",
+  "severity": "ask",
+  "text": {
+   "en": "These leaves show more than one problem. Ask the cooperative or the officer before you spray anything. Do not use insect sprays on your own.",
+   "sw": "Majani haya yana tatizo zaidi ya moja. Uliza chama cha ushirika au afisa wa kilimo kabla ya kunyunyiza chochote. Usitumie dawa za wadudu peke yako."
+  },
+  "sources": [
+   "S17"
+  ],
+  "assumption": true,
+  "note": "Routing rule: two or more problem types always go to the officer.",
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "not_sure": {
+   "en": "Photos cannot tell us which problem is worst.",
+   "sw": "Picha haziwezi kutuambia tatizo lipi ni baya zaidi."
+  },
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "too_many_unsure",
+  "kind": "result",
+  "severity": "ask",
+  "text": {
+   "en": "We are not sure about too many leaves. Ask the officer, or take clearer photos in daylight.",
+   "sw": "Hatuna uhakika na majani mengi. Muulize afisa wa kilimo, au upige picha zilizo wazi zaidi mchana.",
+   "kik": "Tũtiramenya mathangũ maingĩ. Ũria mũrũgamĩrĩri wa ũrĩmi, kana ũhũre picha ingĩ mũthenya."
+  },
+  "sources": [],
+  "assumption": true,
+  "note": "3 or more unsure of 10: assumption, officer to confirm.",
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending",
+   "kik": "draft_claude_not_native: pending native speaker review (NLLB pass not run); low confidence"
+  },
+  "reviewed_by": null,
+  "not_sure": {
+   "en": "Poor light, blur or a shaky phone can make us unsure.",
+   "sw": "Mwanga hafifu, picha zisizo wazi au simu iliyotikisika vinaweza kutufanya tusiwe na uhakika."
+  },
+  "review_status": {
+   "sw": "draft",
+   "kik": "machine_draft_pending_native_review"
+  }
+ },
+ {
+  "id": "ask_officer",
+  "kind": "result",
+  "severity": "ask",
+  "text": {
+   "en": "We cannot give a clear answer for these leaves. Ask the officer.",
+   "sw": "Hatuwezi kutoa jibu wazi kwa majani haya. Muulize afisa wa kilimo.",
+   "kik": "Tũtingĩhota gũkuuga wega ũhoro wa mathangũ maya. Ũria mũrũgamĩrĩri wa ũrĩmi."
+  },
+  "sources": [],
+  "assumption": true,
+  "note": "Catch-all.",
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending",
+   "kik": "draft_claude_not_native: pending native speaker review (NLLB pass not run); low confidence"
+  },
+  "reviewed_by": null,
+  "not_sure": {
+   "en": "The photos did not match any clear answer.",
+   "sw": "Picha hazikulingana na jibu lolote lililo wazi."
+  },
+  "review_status": {
+   "sw": "draft",
+   "kik": "machine_draft_pending_native_review"
+  }
+ },
+ {
+  "id": "too_few_leaves",
+  "kind": "result",
+  "severity": "ask",
+  "text": {
+   "en": "We need photos of 10 leaves to give an answer. Take more photos, or ask the officer.",
+   "sw": "Tunahitaji picha za majani 10 ili kutoa jibu. Piga picha zaidi, au muulize afisa wa kilimo."
+  },
+  "not_sure": {
+   "en": "A few leaves cannot show how much of the plot is affected.",
+   "sw": "Majani machache hayawezi kuonyesha sehemu ya shamba iliyoathirika."
+  },
+  "sources": [],
+  "assumption": true,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  },
+  "note": "Shown when fewer than 10 leaves are in the check (decide.ts MIN_LEAVES). The rule thresholds assume 10 leaves. No Kikuyu: left absent rather than guessed."
+ },
+ {
+  "id": "berries_out_of_scope",
+  "kind": "guidance",
+  "severity": "ask",
+  "text": {
+   "en": "This tool only checks leaves. Dark, sunken spots on green berries need the officer.",
+   "sw": "Programu hii inaangalia majani tu. Madoa meusi yaliyobonyea kwenye matunda mabichi yanahitaji afisa wa kilimo."
+  },
+  "sources": [
+   "S17"
+  ],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "other_crop",
+  "kind": "guidance",
+  "severity": "watch",
+  "text": {
+   "en": "This tool is for coffee leaves only.",
+   "sw": "Programu hii ni ya majani ya kahawa pekee."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "consent_main",
+  "kind": "flow",
+  "severity": "ok",
+  "text": {
+   "en": "Your photos and results stay on this phone. Nothing is sent unless you press send.",
+   "sw": "Picha na majibu yako yanabaki kwenye simu hii. Hakuna kinachotumwa usipobonyeza tuma."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "consent_photos",
+  "kind": "flow",
+  "severity": "ok",
+  "text": {
+   "en": "Share the leaf photos with the officer when the phone is online? You can say no.",
+   "sw": "Ungependa kumtumia afisa wa kilimo picha za majani simu ikiwa mtandaoni? Unaweza kukataa."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "decision_act",
+  "kind": "flow",
+  "severity": "ok",
+  "text": {
+   "en": "You chose to act. Ask the cooperative or officer what to do and which product. If you spray, wear gloves, boots and long sleeves, and wash after.",
+   "sw": "Umechagua kuchukua hatua. Uliza chama cha ushirika au afisa wa kilimo ufanye nini na dawa gani. Ukinyunyiza, vaa glavu, buti na nguo za mikono mirefu, na unawe baadaye.",
+   "kik": "Wacagua gũthondeka. Ũria kooperatĩvu kana mũrũgamĩrĩri ũrĩa ũgwĩka. Ũngĩkunyũrũria, ĩhumbe gloves, buti na nguo ya moko marũku, na ũthambe thutha."
+  },
+  "sources": [
+   "S20",
+   "S03"
+  ],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending",
+   "kik": "draft_claude_not_native: pending native speaker review (NLLB pass not run); low confidence"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft",
+   "kik": "machine_draft_pending_native_review"
+  }
+ },
+ {
+  "id": "decision_wait",
+  "kind": "flow",
+  "severity": "ok",
+  "text": {
+   "en": "You chose to wait. Check again next weekend.",
+   "sw": "Umechagua kusubiri. Angalia tena wikendi ijayo.",
+   "kik": "Wacagua gũtegereza. Rora rĩngĩ wikendi ĩrĩa ĩkoka."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending",
+   "kik": "draft_claude_not_native: pending native speaker review (NLLB pass not run); low confidence"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft",
+   "kik": "machine_draft_pending_native_review"
+  }
+ },
+ {
+  "id": "decision_ask",
+  "kind": "flow",
+  "severity": "ok",
+  "text": {
+   "en": "You chose to ask the officer. Your message is ready to send.",
+   "sw": "Umechagua kumuuliza afisa wa kilimo. Ujumbe wako uko tayari kutumwa.",
+   "kik": "Wacagua kũria mũrũgamĩrĩri wa ũrĩmi. Ũhoro waku ũrĩ mũhaano wa gũtũmwo."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending",
+   "kik": "draft_claude_not_native: pending native speaker review (NLLB pass not run); low confidence"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft",
+   "kik": "machine_draft_pending_native_review"
+  }
+ },
+ {
+  "id": "referral_ready",
+  "kind": "flow",
+  "severity": "ok",
+  "text": {
+   "en": "Press send to text the cooperative. It uses SMS, not internet data.",
+   "sw": "Bonyeza tuma ili kutuma ujumbe kwa chama cha ushirika. Inatumia SMS, si data ya intaneti."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "language_name",
+  "kind": "flow",
+  "severity": "ok",
+  "text": {
+   "en": "English",
+   "sw": "Kiswahili",
+   "kik": "Gĩkũyũ"
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "nudge_leaf_check",
+  "kind": "nudge",
+  "severity": "ok",
+  "text": {
+   "en": "Jani: Farms near you delivered about the same as last year; yours less. A 10-leaf check this weekend can help find why.",
+   "sw": "Jani: Mashamba jirani yaliwasilisha kahawa kama mwaka jana; lako kidogo. Ukaguzi wa majani 10 wikendi hii unaweza kusaidia kujua sababu."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "nudge_weather_everyone",
+  "kind": "nudge",
+  "severity": "ok",
+  "text": {
+   "en": "Jani: Most farms near you delivered less this season and rain was low. Weather may be one reason.",
+   "sw": "Jani: Mashamba mengi jirani yaliwasilisha kidogo msimu huu na mvua ilikuwa chache. Hali ya hewa inaweza kuwa sababu moja."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ },
+ {
+  "id": "nudge_officer_visit",
+  "kind": "nudge",
+  "severity": "ok",
+  "text": {
+   "en": "Jani: Your deliveries dropped but your trees look normal from the satellite. The officer would like to visit. Reply 1 to agree.",
+   "sw": "Jani: Kahawa uliyowasilisha imepungua lakini miti yako inaonekana kawaida kwa setilaiti. Afisa wa kilimo angependa kukutembelea. Jibu 1 kukubali."
+  },
+  "sources": [],
+  "assumption": false,
+  "translation_status": {
+   "sw": "draft_claude: Gemini cross-check not run; native Kenyan Swahili review pending"
+  },
+  "reviewed_by": null,
+  "review_status": {
+   "sw": "draft"
+  }
+ }
+]

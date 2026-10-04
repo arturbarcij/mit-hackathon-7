@@ -1,0 +1,120 @@
+{
+ "torch": "2.14.1+cu130",
+ "timm": "1.0.30",
+ "params": 1524006,
+ "onnxruntime": "1.29.0",
+ "onnx": "1.23.1",
+ "calibration_tensors": 50,
+ "fp32_bytes": 6076658,
+ "int8_bytes": 1865273,
+ "fp16_bytes": 3065781,
+ "fp32_ops": {
+  "opset": [
+   [
+    "ai.onnx",
+    17
+   ]
+  ],
+  "ops": {
+   "Add": 6,
+   "Conv": 53,
+   "Flatten": 1,
+   "Gemm": 1,
+   "GlobalAveragePool": 1,
+   "HardSigmoid": 9,
+   "HardSwish": 19,
+   "Identity": 37,
+   "Mul": 9,
+   "ReduceMean": 9,
+   "Relu": 14
+  }
+ },
+ "int8_ops": {
+  "opset": [
+   [
+    "ai.onnx",
+    17
+   ],
+   [
+    "ai.onnx.ml",
+    5
+   ],
+   [
+    "ai.onnx.training",
+    1
+   ],
+   [
+    "ai.onnx.preview",
+    1
+   ],
+   [
+    "com.microsoft",
+    1
+   ],
+   [
+    "ai.onnx.preview.training",
+    1
+   ],
+   [
+    "com.microsoft.experimental",
+    1
+   ],
+   [
+    "com.microsoft.nchwc",
+    1
+   ],
+   [
+    "org.pytorch.aten",
+    1
+   ]
+  ],
+  "ops": {
+   "Add": 6,
+   "Conv": 53,
+   "DequantizeLinear": 236,
+   "Flatten": 1,
+   "Gemm": 1,
+   "GlobalAveragePool": 1,
+   "HardSigmoid": 28,
+   "Mul": 28,
+   "QuantizeLinear": 128,
+   "ReduceMean": 9
+  }
+ },
+ "fp16_ops": {
+  "opset": [
+   [
+    "ai.onnx",
+    17
+   ]
+  ],
+  "ops": {
+   "Add": 6,
+   "Cast": 2,
+   "Conv": 53,
+   "Flatten": 1,
+   "Gemm": 1,
+   "GlobalAveragePool": 1,
+   "HardSigmoid": 9,
+   "HardSwish": 19,
+   "Identity": 37,
+   "Mul": 9,
+   "ReduceMean": 9,
+   "Relu": 14
+  }
+ },
+ "py_ort_fp16_median_ms": 6.571054000005461,
+ "py_ort_fp32_median_ms": 2.173664499991901,
+ "py_ort_int8_median_ms": 2.6546090000039158,
+ "pt_vs_ort_fp32_max_logit_diff": 1.1175870895385742e-08,
+ "py_top1_agree_pt_vs_int8": [
+  35,
+  39
+ ],
+ "py_top1_agree_pt_vs_fp16": [
+  39,
+  39
+ ],
+ "py_max_logit_diff_pt_vs_int8": 0.004629029892385006,
+ "py_max_logit_diff_pt_vs_fp16": 0.00017562974244356155
+}

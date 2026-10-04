@@ -1,0 +1,161 @@
+{
+  "preprocess": {
+    "size": 224,
+    "resize": "shorter_side_then_center_crop",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "layout": "NCHW",
+    "range": "0-1"
+  },
+  "temperature": 3.5,
+  "samples": [
+    {
+      "file": "00.jpg",
+      "source_path": "data_raw/jmuben/cercospora/Cerscospora/6 (502).jpg",
+      "probs": {
+        "healthy": 1.9411445464356802e-05,
+        "rust": 0.000532061792910099,
+        "cercospora": 0.9986407160758972,
+        "phoma": 0.0002674412971828133,
+        "miner": 0.0004669991903938353,
+        "not_leaf": 7.32989064999856e-05
+      },
+      "label": "cercospora",
+      "confidence": 0.9986407160758972
+    },
+    {
+      "file": "01.jpg",
+      "source_path": "data_raw/jmuben/phoma/Phoma/1 (783).jpg",
+      "probs": {
+        "healthy": 0.005072508007287979,
+        "rust": 0.0012015836546197534,
+        "cercospora": 0.12361984699964523,
+        "phoma": 0.14097604155540466,
+        "miner": 0.7224754095077515,
+        "not_leaf": 0.006654615513980389
+      },
+      "label": "miner",
+      "confidence": 0.7224754095077515
+    },
+    {
+      "file": "02.jpg",
+      "source_path": "data_raw/jmuben/cercospora/Cerscospora/9 (2573).jpg",
+      "probs": {
+        "healthy": 7.836059376131743e-05,
+        "rust": 0.00014943427231628448,
+        "cercospora": 0.99952232837677,
+        "phoma": 9.088116348721087e-05,
+        "miner": 0.00015242461813613772,
+        "not_leaf": 6.560263955179835e-06
+      },
+      "label": "cercospora",
+      "confidence": 0.99952232837677
+    },
+    {
+      "file": "03.jpg",
+      "source_path": "data_raw/jmuben2/healthy/Healthy/2 (4321).jpg",
+      "probs": {
+        "healthy": 0.9977396726608276,
+        "rust": 2.2675962441098818e-07,
+        "cercospora": 0.0022569093853235245,
+        "phoma": 6.195412538545497e-07,
+        "miner": 3.260717278408265e-07,
+        "not_leaf": 2.226834340035566e-06
+      },
+      "label": "healthy",
+      "confidence": 0.9977396726608276
+    },
+    {
+      "file": "04.jpg",
+      "source_path": "data_raw/jmuben/phoma/Phoma/6 (3076).jpg",
+      "probs": {
+        "healthy": 0.002209071535617113,
+        "rust": 0.0016601423267275095,
+        "cercospora": 0.003836312796920538,
+        "phoma": 0.9764311909675598,
+        "miner": 0.01233946718275547,
+        "not_leaf": 0.003523917170241475
+      },
+      "label": "phoma",
+      "confidence": 0.9764311909675598
+    },
+    {
+      "file": "05.jpg",
+      "source_path": "data_raw/jmuben/phoma/Phoma/6 (2603).jpg",
+      "probs": {
+        "healthy": 0.0005436688661575317,
+        "rust": 0.003152589313685894,
+        "cercospora": 0.2943229377269745,
+        "phoma": 0.669026255607605,
+        "miner": 0.004440537188202143,
+        "not_leaf": 0.028513943776488304
+      },
+      "label": "phoma",
+      "confidence": 0.669026255607605
+    },
+    {
+      "file": "06.jpg",
+      "source_path": "data_raw/jmuben2/healthy/Healthy/10 (4583).jpg",
+      "probs": {
+        "healthy": 0.9983269572257996,
+        "rust": 2.570905621723796e-07,
+        "cercospora": 0.0016637623775750399,
+        "phoma": 9.183283395941544e-07,
+        "miner": 2.935329916908813e-07,
+        "not_leaf": 7.797970283718314e-06
+      },
+      "label": "healthy",
+      "confidence": 0.9983269572257996
+    },
+    {
+      "file": "07.jpg",
+      "source_path": "data_raw/jmuben/phoma/Phoma/6 (2712).jpg",
+      "probs": {
+        "healthy": 0.0010102450614795089,
+        "rust": 0.00038738769944757223,
+        "cercospora": 0.009396268986165524,
+        "phoma": 0.8434662222862244,
+        "miner": 0.0008448125445283949,
+        "not_leaf": 0.1448950171470642
+      },
+      "label": "phoma",
+      "confidence": 0.8434662222862244
+    },
+    {
+      "file": "08.jpg",
+      "source_path": "data_raw/jmuben/phoma/Phoma/1 (483).jpg",
+      "probs": {
+        "healthy": 8.929532486945391e-05,
+        "rust": 0.0008196192793548107,
+        "cercospora": 0.017879310995340347,
+        "phoma": 0.9697105288505554,
+        "miner": 0.009021497331559658,
+        "not_leaf": 0.0024796619545668364
+      },
+      "label": "phoma",
+      "confidence": 0.9697105288505554
+    },
+    {
+      "file": "09.jpg",
+      "source_path": "data_raw/jmuben2/healthy/Healthy/10 (3133).jpg",
+      "probs": {
+        "healthy": 0.9999648332595825,
+        "rust": 4.007452858445504e-08,
+        "cercospora": 5.5141117627499625e-06,
+        "phoma": 1.6179865269805305e-05,
+        "miner": 1.3457774002745282e-05,
+        "not_leaf": 3.210621812854697e-08
+      },
+      "label": "healthy",
+      "confidence": 0.9999648332595825
+    }
+  ]
+}

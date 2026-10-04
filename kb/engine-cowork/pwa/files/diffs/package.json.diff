@@ -1,0 +1,10 @@
+--- a/package.json	2026-10-04 00:07:24.649813169 +0200
++++ b/package.json	2026-10-04 00:07:56.993233884 +0200
+@@ -58,6 +58,7 @@
+     "input-otp": "^1.4.2",
+     "leaflet": "1.9.4",
+     "lucide-react": "^0.575.0",
++    "onnxruntime-web": "^1.30.0",
+     "react": "^19.2.0",
+     "react-day-picker": "^9.14.0",
+     "react-dom": "^19.2.0",

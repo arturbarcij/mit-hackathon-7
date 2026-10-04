@@ -1,0 +1,18 @@
+{
+  "frozen_at": "2026-10-03T21:55:03",
+  "source_file": "app/ml/manifest.csv",
+  "source_sha256": "9163b3c651f355046498fdd83b8bd561e08e6caac525438973592e0a63a9192d",
+  "pool": {
+    "train": "86b8a51eb01e5035dc8ecb1bb945afd7fff6af1688e1dbac8ce5ef184acf2d5b",
+    "val": "0b6da7e0c55d51d3b87b46d9ab544494f040df333af1f639dcbc634027252602",
+    "test": "0d313f0ac2192c623e08460b829732a7cfac08d81887ecc572a1ea27990c022a"
+  },
+  "counts": {
+    "train": 31477,
+    "val": 6764,
+    "test": 6714,
+    "unused_capped": 18308,
+    "heldout_uganda": 424
+  },
+  "note": "v1's split. Never regenerate; held-out rows may be refreshed by `data.py merge`."
+}

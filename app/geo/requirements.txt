@@ -1,0 +1,7 @@
+# Geo layer for the Jani outlier map (app/geo/build_geo.py).
+# Offline mode needs only numpy. Live mode needs all three.
+numpy>=1.23
+requests>=2.28
+rasterio>=1.3
+# tests only (no network): python -m pytest app/geo/tests -q
+pytest>=7

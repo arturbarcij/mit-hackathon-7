@@ -1,0 +1,20 @@
+00_jmuben.jpg <- jmuben/rust/Leaf rust/1 (1).jpg
+01_jmuben.jpg <- jmuben/rust/Leaf rust/059eaf863cca.jpeg
+02_jmuben.jpg <- jmuben/cercospora/Cerscospora/4 (1).jpg
+03_jmuben.jpg <- jmuben/cercospora/Cerscospora/4 (1000).jpg
+04_jmuben.jpg <- jmuben/cercospora/Cerscospora/4 (1002).jpg
+05_jmuben.jpg <- jmuben/phoma/Phoma/1 (101).jpg
+06_jmuben2.jpg <- jmuben2/healthy/Healthy/1 (1).jpg
+07_jmuben2.jpg <- jmuben2/healthy/Healthy/1 (1000).jpg
+08_jmuben2.jpg <- jmuben2/miner/Miner/1 (10001).jpg
+09_jmuben2.jpg <- jmuben2/miner/Miner/1 (10003).jpg
+10_uganda.jpg <- uganda/1_0.jpg
+11_uganda.jpg <- uganda/1_100.jpg
+12_wild.jpg <- wild/commons/wc_File_Arabian_Coffee_Coffea_arabica_40099194035_jpg.jpg
+13_wild.jpg <- wild/commons/wc_File_Cafeeiro_jpg.jpg
+14_wild.jpg <- wild/commons/wc_File_Caf_ier_charg_de_fruits_malgr_l_Hemileia_ou_rouille_btv.jpg
+15_wild.jpg <- wild/inat/inat_103385439.jpg
+16_wild.jpg <- wild/inat/inat_108265623.jpg
+17_wild.jpg <- wild/inat/inat_104975182.jpg
+18_bracol.jpg <- bracol/bracol/coffee-datasets/coffee-datasets/leaf/images/1.jpg
+19_bracol.jpg <- bracol/bracol/coffee-datasets/coffee-datasets/leaf/images/10.jpg

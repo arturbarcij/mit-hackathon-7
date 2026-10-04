@@ -1,0 +1,3 @@
+bun install v1.4.2 (744846f84)
+warn: Slow filesystem detected. If /root/.bun/install/cache is a network drive, consider setting $BUN_INSTALL_CACHE_DIR to a local folder.
+Resolving dependencies

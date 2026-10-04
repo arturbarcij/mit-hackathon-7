@@ -50,6 +50,15 @@ export interface Check {
 }
 ```
 
+## summarisePlot semantics (exact; the rules and the QA decision matrix depend on them)
+- Disease labels are `rust`, `cercospora`, `phoma`, `miner`.
+- `n` = leaves photographed. `counts` = per label, including `healthy` and `not_leaf`.
+- `affected` = leaves with a disease label (accepted, not unsure).
+- `distinctProblems` = number of distinct disease labels with at least one leaf.
+- `uncertain` = unsure leaves (below threshold or failed quality) PLUS `not_leaf` leaves.
+- `dominant` = `not_leaf` if not_leaf leaves are more than half of `n`; else the most common disease label if `affected` >= 1 (ties: rust, cercospora, phoma, miner); else `healthy` if any healthy leaf; else `none`.
+- At capture time a `not_leaf` prediction triggers an immediate retake prompt (answer `not_a_leaf`), like a blurry photo.
+
 ## Engine functions (`app/src/engine/index.ts`)
 ```ts
 loadModel(): Promise<{ version: string; mock: boolean }>
@@ -84,5 +93,21 @@ Condition keys allowed: `dominant`, `affected_gte`, `affected_lte`, `uncertain_g
 ## Backend tables
 As specified in `kb/agents/ui.md` (`referrals`, `corrections`).
 
+## Geo outputs
+`app/public/geo/plots.geojson` and `app/public/geo/outliers.json`, schema in `kb/agents/geo.md`. Reason codes: `in_line_with_peers`, `area_wide_weather`, `canopy_loss_check_leaves`, `drop_other_cause_ask_officer`, `not_enough_data`. The officer map colours them green, blue, red, amber, grey, and always shows the "synthetic deliveries" label.
+
 ## Change requests
 (none yet)
+
+## Usage note (engine, Sun 4 Oct 00:15)
+- The UI imports only from `src/engine/index.ts` and `src/hooks/useEngine.ts`. Retire Lovable `src/lib/referralSms.ts` and `src/lib/parseReferral.ts`; call `buildReferral` / `parseReferral`.
+- `uncertain` and SMS `U:` = unsure leaves PLUS `not_leaf` leaves. So R+C+H+L+U <= N and parse sets healthy = N - (R+C+H+L+U).
+- `loadModel()` never rejects. `mock: true` means show the mock badge. A transient load failure retries on the next call; an invalid model.json (for example threshold 0.0) stays mock for the session.
+- `classifyLeaf` returns `unsure` below threshold or when quality fails. Retake on failed quality or `not_leaf` (`retake_blurry`, `retake_dark`, `not_a_leaf`); use `useCheck().classify`.
+- Rules use absolute counts tuned for n = 10. Checks with fewer leaves are not yet routed to an ask card.
+- `saveCheck`, `savePhoto`, `queueForSync` are no-ops without main consent. `setConsent({ main: false })` wipes local data, PIN included. Photos leave only when `check.consentPhotos` and current `consent.photos` are both true.
+- `D:`/`check_date` use the phone's local date. `M:`/`P:` and `member_id`/`plot_id` normalised: uppercase, A-Z 0-9 '-', max 12. Missing values are '-'.
+- `Q:` = mean confidence of accepted leaves, whole percent, '-' when none.
+- `parseReferral` never throws; reads JANI1 and the old `JANI` short form (`format` says which).
+- `syncPending()` returns 0 offline or before `setSyncSender`; the UI injects the Supabase insert. The row includes `decision`.
+- The engine sends nothing by itself. Full notes: kb/engine/HANDOFF.md.

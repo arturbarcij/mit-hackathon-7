@@ -1,0 +1,27 @@
+{
+ "generated_by": "app/scripts/make_preprocess_fixtures.py (Pillow 12.3.0)",
+ "sha256_rgb224": {
+  "public/demo/sample01_rust.jpg": "e29728cecf4bff5b69b35697ea1299ff0306fb0e02f1eb1e93662c62c1ec32bf",
+  "public/demo/sample02_rust.jpg": "73d746e61fe0b758ae80405c77eaad53b70f4d80fa209b832b57f7d12383856d",
+  "public/demo/sample03_rust.jpg": "b03dcefb0f407c99120017ccc2a5421bd16909e47286f7156890490471143078",
+  "public/demo/sample04_rust.jpg": "94aa7abc09bd99f361ad9e0a5ed92a4d55f0f53b59cd8ea7941918c121631327",
+  "public/demo/sample05_rust.jpg": "7e7d4044d6200f2920d7104a3bd3e6f9b7373b9f422c625a3e95a66985781a54",
+  "public/demo/sample06_rust.jpg": "3492cd6aaa8a061d81d96ff1bcb8a5790a5b1c4d0581ae7dfb3892f43c91fd83",
+  "public/demo/sample07_healthy.jpg": "ca71f41965fca63ec36647bb8f7e2a528e6bdf442c7acee77d24c9a98402d6bd",
+  "public/demo/sample08_healthy.jpg": "7ee46bd48921ce96ed35a64083b06ddf6ea2c57b884242690c251491f4fe6090",
+  "public/demo/sample09_healthy.jpg": "d0e5d72d4d109716fb2695a3a8ba903d1703018f43c2e74f4303357de7a1fa2c",
+  "public/demo/sample10_other.jpg": "9e79ca4d2197cfbe1a76c8e546c4a23d246db805c28f2522c26d6c2bb297b1bd",
+  "public/demo/sample11_berry.jpg": "f8fd896f51137f6cc87525c3beb5c3bc38459ee0ed4fce6722f00ea6ef6b8c17",
+  "public/demo/sample12_poor.jpg": "9a03363f8742d8aa5a56052807334212858e958b080c3b2119fbe261072cf140",
+  "ml/parity_samples/00.jpg": "45ce9dfcefb8701b8f3fba12a25a46cd918960eeda299e5d3c1749c2d601940d",
+  "ml/parity_samples/01.jpg": "9f43ae31381abb794502634b66d290acbbb4725f4394c1dae2452907fed46efc",
+  "ml/parity_samples/02.jpg": "abad2a729ebe63e487a3f7fab768cc0a8f82e486ee1a7ec4e3c177e03b80ebae",
+  "ml/parity_samples/03.jpg": "9d4eb655d0c6b742c57577772e32d9fc1e10c93c6a8bfeb3f34f3d706a9bf564",
+  "ml/parity_samples/04.jpg": "7c9e77cee37431e1c2e65e52974c679ef0568d08a7772a573c9efbe528dd1a80",
+  "ml/parity_samples/05.jpg": "6d9cb90ecf235fa9e8417442b1a14f2fe3d85db89892697e5db0bc43cced3634",
+  "ml/parity_samples/06.jpg": "0e60820971a8d036fd1c952ad020698917ba23d8468924ef31d84071ab928e87",
+  "ml/parity_samples/07.jpg": "927fb1ac3e18d8faa2a3cd3bd5876b8e1ea49709f9665059f7d45c0420c30be4",
+  "ml/parity_samples/08.jpg": "b30db630eac66ceb682c11f6bb79ea7d2c03d1da2cfdfd338b1e11892369635b",
+  "ml/parity_samples/09.jpg": "b0af0e699f92e65a5b1ee599afd206171b3af40ffc4edb367554466a3fe72d18"
+ }
+}

@@ -1,0 +1,126 @@
+{
+ "summary": {
+  "oracle": "torchvision 0.29.1+cu130 torch 2.14.1+cu130",
+  "pillow": "12.3.0",
+  "node": "v22.22.0",
+  "items": 10,
+  "failures": 0,
+  "worstResizeU8Diff": 0,
+  "worstCropU8Diff": 0,
+  "worstTensorAbsDiff": 0,
+  "speed": {
+   "exact_4000x3000": {
+    "medianMs": 124.3,
+    "minMs": 119.5,
+    "runs": 7
+   },
+   "fast_4000x3000": {
+    "medianMs": 55.8,
+    "minMs": 53.4,
+    "runs": 7
+   }
+  }
+ },
+ "rows": [
+  {
+   "name": "00",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "01",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "02",
+   "size": "113x256",
+   "resized": "224x507",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "03",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "04",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "05",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "06",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "07",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "08",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "09",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  }
+ ]
+}

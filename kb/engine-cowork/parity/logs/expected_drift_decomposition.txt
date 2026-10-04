@@ -1,0 +1,12 @@
+T=3.5. max |prob - expected.json| per sample. expected.json = PyTorch fp32 on the ORIGINAL source image; the .jpg files are q90 re-encodes.
+file   pyORT_fp32(reencoded jpg)  pyORT_fp16(reencoded jpg)  ortweb_fp16+TS(reencoded jpg)  |fp16-fp32| python  max|logit| 
+00.jpg  0.00029  0.00031  0.00029  0.00002  27.98
+01.jpg  0.01221  0.02368  0.01811  0.01147  12.24
+02.jpg  0.00005  0.00006  0.00007  0.00001  27.03
+03.jpg  0.00064  0.00067  0.00058  0.00003  38.07
+04.jpg  0.00190  0.00177  0.00176  0.00020  18.46
+05.jpg  0.01825  0.01901  0.01560  0.00076  14.63
+06.jpg  0.00035  0.00024  0.00026  0.00011  36.36
+07.jpg  0.02387  0.02636  0.02811  0.00249  19.45
+08.jpg  0.00109  0.00098  0.00142  0.00017  19.62
+09.jpg  0.00001  0.00001  0.00001  0.00000  39.34

@@ -1,0 +1,2 @@
+rows flagged in tampered case: 3
+good case exit=0 (want 0), tampered case exit=1 (want 1)

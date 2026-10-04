@@ -1,0 +1,14 @@
+{
+  "temperature": 3.5,
+  "threshold": 0.583230197429657,
+  "val_selective_acc": 0.9500784929356358,
+  "val_coverage": 0.9417504435245417,
+  "val_acc": 0.9296274393849793,
+  "val_macro_f1": 0.9253033298462433,
+  "val_loss": 0.4275027411302078,
+  "head_only": false,
+  "run": "app/ml/runs/20261003_211853",
+  "best_checkpoint": "app/ml/runs/20261003_211853/best.pt",
+  "command": "C:\\Users\\artur\\Documents\\MIT_Hackathon_7\\app\\ml\\train.py",
+  "seed": 42
+}

@@ -1,0 +1,31 @@
+# Netlify config for the static farmer PWA (EDGE_PLAN move 3 fallback).
+# Git deploy: base = app, build = npm run build, publish = dist. Drag-and-drop: drop app/dist
+# (this file is not read then; the defaults still work, see README_DEPLOY.md).
+[build]
+  command = "npm ci --legacy-peer-deps && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# The service worker and its precache list must never be served stale.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/precache-manifest.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+  for = "/ort/*.wasm"
+  [headers.values]
+    Content-Type = "application/wasm"
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"

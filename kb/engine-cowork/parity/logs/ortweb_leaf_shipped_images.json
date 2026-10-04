@@ -1,0 +1,298 @@
+{
+ "summary": {
+  "label": "leaf_shipped_images",
+  "model": "/mnt/user-data/uploads/MIT_Hackathon_7/app/public/model/leaf.onnx",
+  "ortWeb": "1.30.0",
+  "node": "v22.22.0",
+  "numThreads": 1,
+  "pyOnnxruntime": "1.29.0",
+  "items": 39,
+  "top1Agree": "39/39",
+  "maxLogitDiff": 0.28180694580078125,
+  "maxProbDiffT15": 0.005719915466520398,
+  "sessionCreateMs": 411.9,
+  "firstRunMs": 72.8,
+  "medianRunMs": 15.4,
+  "inputs": [
+   "input"
+  ],
+  "outputs": [
+   "logits"
+  ]
+ },
+ "rows": [
+  {
+   "name": "00_jmuben",
+   "maxLogitDiff": 0.223,
+   "maxProbDiffT15": 7.39e-9,
+   "top1Match": true,
+   "pyTop2Margin": 25.26
+  },
+  {
+   "name": "01_jmuben",
+   "maxLogitDiff": 0.07531,
+   "maxProbDiffT15": 0.000002394,
+   "top1Match": true,
+   "pyTop2Margin": 15.56
+  },
+  {
+   "name": "02_jmuben",
+   "maxLogitDiff": 0.0288,
+   "maxProbDiffT15": 6.687e-9,
+   "top1Match": true,
+   "pyTop2Margin": 23.63
+  },
+  {
+   "name": "03_jmuben",
+   "maxLogitDiff": 0.02876,
+   "maxProbDiffT15": 0.002867,
+   "top1Match": true,
+   "pyTop2Margin": 0.1719
+  },
+  {
+   "name": "04_jmuben",
+   "maxLogitDiff": 0.0155,
+   "maxProbDiffT15": 0.0004724,
+   "top1Match": true,
+   "pyTop2Margin": 4.016
+  },
+  {
+   "name": "05_jmuben",
+   "maxLogitDiff": 0.1021,
+   "maxProbDiffT15": 2.084e-8,
+   "top1Match": true,
+   "pyTop2Margin": 23.31
+  },
+  {
+   "name": "06_jmuben2",
+   "maxLogitDiff": 0.1525,
+   "maxProbDiffT15": 6.661e-15,
+   "top1Match": true,
+   "pyTop2Margin": 45.79
+  },
+  {
+   "name": "07_jmuben2",
+   "maxLogitDiff": 0.07811,
+   "maxProbDiffT15": 7.875e-12,
+   "top1Match": true,
+   "pyTop2Margin": 33.88
+  },
+  {
+   "name": "08_jmuben2",
+   "maxLogitDiff": 0.04451,
+   "maxProbDiffT15": 3.06e-8,
+   "top1Match": true,
+   "pyTop2Margin": 21.3
+  },
+  {
+   "name": "09_jmuben2",
+   "maxLogitDiff": 0.06836,
+   "maxProbDiffT15": 3.537e-7,
+   "top1Match": true,
+   "pyTop2Margin": 18.17
+  },
+  {
+   "name": "10_uganda",
+   "maxLogitDiff": 0.0378,
+   "maxProbDiffT15": 0.00131,
+   "top1Match": true,
+   "pyTop2Margin": 0.7051
+  },
+  {
+   "name": "11_uganda",
+   "maxLogitDiff": 0.05008,
+   "maxProbDiffT15": 0.004952,
+   "top1Match": true,
+   "pyTop2Margin": 2.098
+  },
+  {
+   "name": "12_wild",
+   "maxLogitDiff": 0.03923,
+   "maxProbDiffT15": 0.000002316,
+   "top1Match": true,
+   "pyTop2Margin": 12.16
+  },
+  {
+   "name": "13_wild",
+   "maxLogitDiff": 0.137,
+   "maxProbDiffT15": 0.00000915,
+   "top1Match": true,
+   "pyTop2Margin": 14.26
+  },
+  {
+   "name": "14_wild",
+   "maxLogitDiff": 0.04985,
+   "maxProbDiffT15": 5.914e-9,
+   "top1Match": true,
+   "pyTop2Margin": 22.43
+  },
+  {
+   "name": "15_wild",
+   "maxLogitDiff": 0.07165,
+   "maxProbDiffT15": 0.001169,
+   "top1Match": true,
+   "pyTop2Margin": 6.59
+  },
+  {
+   "name": "16_wild",
+   "maxLogitDiff": 0.2818,
+   "maxProbDiffT15": 4.732e-12,
+   "top1Match": true,
+   "pyTop2Margin": 37.83
+  },
+  {
+   "name": "17_wild",
+   "maxLogitDiff": 0.05754,
+   "maxProbDiffT15": 4.489e-9,
+   "top1Match": true,
+   "pyTop2Margin": 24.09
+  },
+  {
+   "name": "18_bracol",
+   "maxLogitDiff": 0.01497,
+   "maxProbDiffT15": 0.0002744,
+   "top1Match": true,
+   "pyTop2Margin": 3.151
+  },
+  {
+   "name": "19_bracol",
+   "maxLogitDiff": 0.009705,
+   "maxProbDiffT15": 0.001364,
+   "top1Match": true,
+   "pyTop2Margin": 2.145
+  },
+  {
+   "name": "s_224x224_noise",
+   "maxLogitDiff": 0.1556,
+   "maxProbDiffT15": 1.691e-7,
+   "top1Match": true,
+   "pyTop2Margin": 19.93
+  },
+  {
+   "name": "s_225x224_noise",
+   "maxLogitDiff": 0.09035,
+   "maxProbDiffT15": 0.0000178,
+   "top1Match": true,
+   "pyTop2Margin": 12.66
+  },
+  {
+   "name": "s_227x224_noise",
+   "maxLogitDiff": 0.09316,
+   "maxProbDiffT15": 1.075e-7,
+   "top1Match": true,
+   "pyTop2Margin": 20.5
+  },
+  {
+   "name": "s_229x224_noise",
+   "maxLogitDiff": 0.09035,
+   "maxProbDiffT15": 7.406e-8,
+   "top1Match": true,
+   "pyTop2Margin": 20.66
+  },
+  {
+   "name": "s_224x231_noise",
+   "maxLogitDiff": 0.119,
+   "maxProbDiffT15": 0.000001844,
+   "top1Match": true,
+   "pyTop2Margin": 15.91
+  },
+  {
+   "name": "s_225x225_noise",
+   "maxLogitDiff": 0.2422,
+   "maxProbDiffT15": 3.574e-11,
+   "top1Match": true,
+   "pyTop2Margin": 33.45
+  },
+  {
+   "name": "s_3x5_noise",
+   "maxLogitDiff": 0.07584,
+   "maxProbDiffT15": 0.00001026,
+   "top1Match": true,
+   "pyTop2Margin": 13.75
+  },
+  {
+   "name": "s_1x1_noise",
+   "maxLogitDiff": 0.04117,
+   "maxProbDiffT15": 0.00572,
+   "top1Match": true,
+   "pyTop2Margin": 1.309
+  },
+  {
+   "name": "s_100x150_grad",
+   "maxLogitDiff": 0.074,
+   "maxProbDiffT15": 0.000003953,
+   "top1Match": true,
+   "pyTop2Margin": 14.45
+  },
+  {
+   "name": "s_223x500_noise",
+   "maxLogitDiff": 0.09824,
+   "maxProbDiffT15": 1.94e-10,
+   "top1Match": true,
+   "pyTop2Margin": 28.64
+  },
+  {
+   "name": "s_300x200_edges",
+   "maxLogitDiff": 0.08699,
+   "maxProbDiffT15": 5.943e-7,
+   "top1Match": true,
+   "pyTop2Margin": 17.91
+  },
+  {
+   "name": "s_449x449_noise",
+   "maxLogitDiff": 0.1805,
+   "maxProbDiffT15": 1.769e-9,
+   "top1Match": true,
+   "pyTop2Margin": 25.56
+  },
+  {
+   "name": "s_1001x777_noise",
+   "maxLogitDiff": 0.06901,
+   "maxProbDiffT15": 5.042e-7,
+   "top1Match": true,
+   "pyTop2Margin": 16.63
+  },
+  {
+   "name": "s_13x997_noise",
+   "maxLogitDiff": 0.05267,
+   "maxProbDiffT15": 0.002513,
+   "top1Match": true,
+   "pyTop2Margin": 2.955
+  },
+  {
+   "name": "s_4000x50_noise",
+   "maxLogitDiff": 0.2239,
+   "maxProbDiffT15": 1.358e-10,
+   "top1Match": true,
+   "pyTop2Margin": 31.19
+  },
+  {
+   "name": "s_50x4000_grad",
+   "maxLogitDiff": 0.09402,
+   "maxProbDiffT15": 0.001805,
+   "top1Match": true,
+   "pyTop2Margin": 5.203
+  },
+  {
+   "name": "s_641x479_edges",
+   "maxLogitDiff": 0.02523,
+   "maxProbDiffT15": 0.0001829,
+   "top1Match": true,
+   "pyTop2Margin": 5.215
+  },
+  {
+   "name": "s_4000x3000_noise",
+   "maxLogitDiff": 0.0643,
+   "maxProbDiffT15": 0.005622,
+   "top1Match": true,
+   "pyTop2Margin": 3.316
+  },
+  {
+   "name": "s_3024x4032_grad",
+   "maxLogitDiff": 0.05802,
+   "maxProbDiffT15": 0.000001734,
+   "top1Match": true,
+   "pyTop2Margin": 15.75
+  }
+ ]
+}

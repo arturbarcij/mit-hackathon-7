@@ -1,0 +1,49 @@
+{
+ "version": "f1e00ac22ceb",
+ "total": 15124303,
+ "shell": [
+  "/"
+ ],
+ "files": [
+  {
+   "url": "/assets/answerText-BXZUvmYL.js",
+   "bytes": 74804
+  },
+  {
+   "url": "/assets/index-3jwG5oHu.js",
+   "bytes": 587224
+  },
+  {
+   "url": "/assets/rolldown-runtime-Dd_uD5pT.js",
+   "bytes": 1106
+  },
+  {
+   "url": "/assets/routes-mLxv5kU_.js",
+   "bytes": 44353
+  },
+  {
+   "url": "/assets/selftest-LsV5WCrv.js",
+   "bytes": 71550
+  },
+  {
+   "url": "/assets/styles-DSeGUKfS.css",
+   "bytes": 78892
+  },
+  {
+   "url": "/model/fixture.onnx",
+   "bytes": 1465
+  },
+  {
+   "url": "/model/model.json",
+   "bytes": 631
+  },
+  {
+   "url": "/ort/ort-wasm-simd-threaded.mjs",
+   "bytes": 24381
+  },
+  {
+   "url": "/ort/ort-wasm-simd-threaded.wasm",
+   "bytes": 14239897
+  }
+ ]
+}

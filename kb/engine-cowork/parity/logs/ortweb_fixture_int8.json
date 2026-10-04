@@ -1,0 +1,298 @@
+{
+ "summary": {
+  "label": "fixture_int8",
+  "model": "fixtures/model/fixture_int8.onnx",
+  "ortWeb": "1.30.0",
+  "node": "v22.22.0",
+  "numThreads": 1,
+  "pyOnnxruntime": "see fixture_model.json",
+  "items": 39,
+  "top1Agree": "39/39",
+  "maxLogitDiff": 0.0002612316166050732,
+  "maxProbDiffT15": 0.000022991401635530373,
+  "sessionCreateMs": 440.1,
+  "firstRunMs": 68.1,
+  "medianRunMs": 19.1,
+  "inputs": [
+   "input"
+  ],
+  "outputs": [
+   "logits"
+  ]
+ },
+ "rows": [
+  {
+   "name": "00_jmuben",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.0004572
+  },
+  {
+   "name": "01_jmuben",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.0007837
+  },
+  {
+   "name": "02_jmuben",
+   "maxLogitDiff": 0.00006531,
+   "maxProbDiffT15": 0.000008478,
+   "top1Match": true,
+   "pyTop2Margin": 0.001633
+  },
+  {
+   "name": "03_jmuben",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.001763
+  },
+  {
+   "name": "04_jmuben",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.0005878
+  },
+  {
+   "name": "05_jmuben",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.001437
+  },
+  {
+   "name": "06_jmuben2",
+   "maxLogitDiff": 0.0001959,
+   "maxProbDiffT15": 0.00002053,
+   "top1Match": true,
+   "pyTop2Margin": 0.0003918
+  },
+  {
+   "name": "07_jmuben2",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.0003918
+  },
+  {
+   "name": "08_jmuben2",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.001045
+  },
+  {
+   "name": "09_jmuben2",
+   "maxLogitDiff": 0.0001306,
+   "maxProbDiffT15": 0.00001453,
+   "top1Match": true,
+   "pyTop2Margin": 0.0005878
+  },
+  {
+   "name": "10_uganda",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.0009143
+  },
+  {
+   "name": "11_uganda",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.001698
+  },
+  {
+   "name": "12_wild",
+   "maxLogitDiff": 0.00006531,
+   "maxProbDiffT15": 0.000009689,
+   "top1Match": true,
+   "pyTop2Margin": 0.001959
+  },
+  {
+   "name": "13_wild",
+   "maxLogitDiff": 0.0001959,
+   "maxProbDiffT15": 0.00001453,
+   "top1Match": true,
+   "pyTop2Margin": 0.0001959
+  },
+  {
+   "name": "14_wild",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.0009143
+  },
+  {
+   "name": "15_wild",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.001567
+  },
+  {
+   "name": "16_wild",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.001829
+  },
+  {
+   "name": "17_wild",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.0004572
+  },
+  {
+   "name": "18_bracol",
+   "maxLogitDiff": 0.0001306,
+   "maxProbDiffT15": 0.0000121,
+   "top1Match": true,
+   "pyTop2Margin": 0.0005878
+  },
+  {
+   "name": "19_bracol",
+   "maxLogitDiff": 0.0001959,
+   "maxProbDiffT15": 0.00001811,
+   "top1Match": true,
+   "pyTop2Margin": 0.001763
+  },
+  {
+   "name": "s_224x224_noise",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.0003918
+  },
+  {
+   "name": "s_225x224_noise",
+   "maxLogitDiff": 0.00006531,
+   "maxProbDiffT15": 0.000007278,
+   "top1Match": true,
+   "pyTop2Margin": 0.0003918
+  },
+  {
+   "name": "s_227x224_noise",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.000849
+  },
+  {
+   "name": "s_229x224_noise",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.0007837
+  },
+  {
+   "name": "s_224x231_noise",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.001437
+  },
+  {
+   "name": "s_225x225_noise",
+   "maxLogitDiff": 0.0001306,
+   "maxProbDiffT15": 0.00001453,
+   "top1Match": true,
+   "pyTop2Margin": 0.0001959
+  },
+  {
+   "name": "s_3x5_noise",
+   "maxLogitDiff": 0.0001959,
+   "maxProbDiffT15": 0.0000218,
+   "top1Match": true,
+   "pyTop2Margin": 0.001894
+  },
+  {
+   "name": "s_1x1_noise",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.003396
+  },
+  {
+   "name": "s_100x150_grad",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.001567
+  },
+  {
+   "name": "s_223x500_noise",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.001437
+  },
+  {
+   "name": "s_300x200_edges",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.0009143
+  },
+  {
+   "name": "s_449x449_noise",
+   "maxLogitDiff": 0.0001306,
+   "maxProbDiffT15": 0.00001575,
+   "top1Match": true,
+   "pyTop2Margin": 0.0003265
+  },
+  {
+   "name": "s_1001x777_noise",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.001045
+  },
+  {
+   "name": "s_13x997_noise",
+   "maxLogitDiff": 0.0001306,
+   "maxProbDiffT15": 0.00000727,
+   "top1Match": true,
+   "pyTop2Margin": 0.001763
+  },
+  {
+   "name": "s_4000x50_noise",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.000849
+  },
+  {
+   "name": "s_50x4000_grad",
+   "maxLogitDiff": 0.0001959,
+   "maxProbDiffT15": 0.00002299,
+   "top1Match": true,
+   "pyTop2Margin": 0.002808
+  },
+  {
+   "name": "s_641x479_edges",
+   "maxLogitDiff": 0.0002612,
+   "maxProbDiffT15": 0.00002299,
+   "top1Match": true,
+   "pyTop2Margin": 0.001763
+  },
+  {
+   "name": "s_4000x3000_noise",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.0009796
+  },
+  {
+   "name": "s_3024x4032_grad",
+   "maxLogitDiff": 0,
+   "maxProbDiffT15": 0,
+   "top1Match": true,
+   "pyTop2Margin": 0.002025
+  }
+ ]
+}

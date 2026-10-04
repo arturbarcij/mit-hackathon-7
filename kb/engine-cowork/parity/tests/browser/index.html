@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Jani parity harness</title></head>
+<body>
+<pre id="log"></pre>
+<script type="module">
+import * as ort from '/ort/ort.wasm.min.mjs';
+import { preprocess, DEFAULT_SPEC } from '/src/preprocess.js';
+
+ort.env.wasm.wasmPaths = '/ort/';
+ort.env.wasm.numThreads = 1;
+
+const log = (s) => { document.getElementById('log').textContent += s + '\n'; };
+
+async function fetchF32(url) {
+  const b = await (await fetch(url)).arrayBuffer();
+  return new Float32Array(b);
+}
+async function fetchU8(url) {
+  return new Uint8Array(await (await fetch(url)).arrayBuffer());
+}
+
+/** Decode with the browser decoder at native size and read back RGBA. */
+async function decodeNative(url, opts) {
+  const blob = await (await fetch(url)).blob();
+  const bmp = await createImageBitmap(blob, { premultiplyAlpha: 'none', colorSpaceConversion: 'none', ...(opts || {}) });
+  const c = new OffscreenCanvas(bmp.width, bmp.height);
+  const ctx = c.getContext('2d', { willReadFrequently: true, alpha: false });
+  ctx.drawImage(bmp, 0, 0);
+  const w = bmp.width, h = bmp.height;
+  const id = ctx.getImageData(0, 0, w, h);
+  bmp.close();
+  return { data: id.data, width: w, height: h };
+}
+
+function cmp(got, exp) {
+  let maxAbs = 0, sum = 0, exact = 0;
+  for (let i = 0; i < got.length; i++) { const d = Math.abs(got[i] - exp[i]); if (d > maxAbs) maxAbs = d; sum += d; if (d === 0) exact++; }
+  return { max_abs: maxAbs, mean_abs: sum / got.length, exact_frac: exact / got.length };
+}
+function argmax(a) { let m = 0; for (let i = 1; i < a.length; i++) if (a[i] > a[m]) m = i; return m; }
+function median(xs) { const s = [...xs].sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; }
+
+window.runParity = async function runParity(fixtures, runModels) {
+  const out = { ort_web: ort.env.versions ? ort.env.versions.web : null, ua: navigator.userAgent, images: [] };
+  let s32 = null, s8 = null;
+  if (runModels) {
+    const t0 = performance.now();
+    s32 = await ort.InferenceSession.create('/model/test_fp32.onnx', { executionProviders: ['wasm'] });
+    out.fp32_load_ms = performance.now() - t0;
+    const t1 = performance.now();
+    s8 = await ort.InferenceSession.create('/model/test_int8.onnx', { executionProviders: ['wasm'] });
+    out.int8_load_ms = performance.now() - t1;
+  }
+  const lat32 = [], lat8 = [], latPre = [];
+  for (const f of fixtures) {
+    const row = { name: f.name };
+    // PNG: browser decode -> preprocess -> compare with torchvision
+    const png = await decodeNative('/fixtures/' + f.png);
+    const tp = performance.now();
+    const pp = preprocess(png, DEFAULT_SPEC);
+    latPre.push(performance.now() - tp);
+    row.png = { ...cmp(pp.rgb, await fetchU8('/fixtures/' + f.png + '.rgb')), tensor: cmp(pp.tensor, await fetchF32('/fixtures/' + f.png + '.bin')) };
+    // JPEG: browser (libjpeg-turbo) decode -> preprocess -> compare with PIL decode -> torchvision
+    const jpg = await decodeNative('/fixtures/' + f.jpg);
+    const pj = preprocess(jpg, DEFAULT_SPEC);
+    row.jpg = { ...cmp(pj.rgb, await fetchU8('/fixtures/' + f.jpg + '.rgb')), tensor: cmp(pj.tensor, await fetchF32('/fixtures/' + f.jpg + '.bin')) };
+    if (runModels) {
+      const x = new ort.Tensor('float32', pp.tensor, [1, 3, 224, 224]);
+      let t = performance.now();
+      const o32 = await s32.run({ input: x });
+      lat32.push(performance.now() - t);
+      t = performance.now();
+      const o8 = await s8.run({ input: x });
+      lat8.push(performance.now() - t);
+      row.logits_fp32 = Array.from(o32.logits.data);
+      row.logits_int8 = Array.from(o8.logits.data);
+      row.top1_fp32 = argmax(row.logits_fp32);
+      row.top1_int8 = argmax(row.logits_int8);
+    }
+    out.images.push(row);
+    log(`${f.name} png max=${row.png.max_abs} jpg max=${row.jpg.max_abs} mean=${row.jpg.mean_abs.toFixed(3)}`);
+  }
+  out.preprocess_ms_median = median(latPre);
+  if (runModels) {
+    out.fp32_ms_median = median(lat32.slice(1)); out.fp32_ms_first = lat32[0]; out.fp32_ms_all = lat32;
+    out.int8_ms_median = median(lat8.slice(1)); out.int8_ms_first = lat8[0]; out.int8_ms_all = lat8;
+  }
+  return out;
+};
+
+/** Latency only, reusing one tensor, for the throttled run. */
+window.runLatency = async function runLatency(n) {
+  const s32 = await ort.InferenceSession.create('/model/test_fp32.onnx', { executionProviders: ['wasm'] });
+  const s8 = await ort.InferenceSession.create('/model/test_int8.onnx', { executionProviders: ['wasm'] });
+  const xdata = await fetchF32('/fixtures/03_leaf_480x640.png.bin');
+  const x = new ort.Tensor('float32', xdata, [1, 3, 224, 224]);
+  const l32 = [], l8 = [];
+  for (let i = 0; i < n; i++) { const t = performance.now(); await s32.run({ input: x }); l32.push(performance.now() - t); }
+  for (let i = 0; i < n; i++) { const t = performance.now(); await s8.run({ input: x }); l8.push(performance.now() - t); }
+  // preprocessing cost on a phone sized photo, decode included
+  const blob = await (await fetch('/fixtures/07_leaf_3000x4000.jpg')).blob();
+  const tp0 = performance.now();
+  const bmp = await createImageBitmap(blob, { premultiplyAlpha: 'none', colorSpaceConversion: 'none' });
+  const c = new OffscreenCanvas(bmp.width, bmp.height);
+  const ctx = c.getContext('2d', { willReadFrequently: true, alpha: false });
+  ctx.drawImage(bmp, 0, 0);
+  const id = ctx.getImageData(0, 0, bmp.width, bmp.height);
+  const tp1 = performance.now();
+  preprocess({ data: id.data, width: bmp.width, height: bmp.height }, DEFAULT_SPEC);
+  const tp2 = performance.now();
+  return { fp32_ms_median: median(l32.slice(1)), int8_ms_median: median(l8.slice(1)), fp32_ms_first: l32[0], int8_ms_first: l8[0],
+           decode_12mp_jpeg_to_rgba_ms: tp1 - tp0, preprocess_12mp_ms: tp2 - tp1 };
+};
+window.harnessReady = true;
+</script>
+</body>
+</html>

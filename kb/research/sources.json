@@ -6,56 +6,764 @@
     "tools": "Bright Data MCP (search_engine, search_engine_batch, scrape_as_markdown, scrape_batch) for search and blocked pages; direct HTTP for open files and APIs (World Bank API, Mendeley public API, Hugging Face API, GitHub API, NASA POWER, FAOSTAT bulk file)."
   },
   "sources": [
-    {"id": "S01", "title": "Kenya Agricultural Sector Extension Policy (KASEP)", "publisher": "Ministry of Agriculture and Livestock Development, Kenya", "year": 2023, "url": "https://kilimo.go.ke/wp-content/uploads/2024/10/KENYA-AGRICULTURAL-SECTOR-EXTENSION-POLICY-2023.pdf", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E1"]},
-    {"id": "S02", "title": "Agriculture Extension Manual (Version 1), Food Systems Resilience Project", "publisher": "Ministry of Agriculture and Livestock Development, Kenya", "year": 2025, "url": "https://fsrp.go.ke/sites/default/files/2025-08/Agriculture%20Extension%20Manual%20v1%20final.pdf", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E1"]},
-    {"id": "S03", "title": "Coffee Leaf Rust (Hemileia vastatrix) in Kenya: A Review", "publisher": "Agronomy 2021, 11(12), 2590 (MDPI); authors include E. Gichuru, Coffee Research Institute", "year": 2021, "url": "https://www.mdpi.com/2073-4395/11/12/2590", "doi": "https://doi.org/10.3390/agronomy11122590", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E2", "GUIDANCE.md", "season.json"]},
-    {"id": "S04", "title": "FAOSTAT Crops and livestock products (QCL), bulk file, item Coffee, green, area Kenya", "publisher": "FAO", "year": 2026, "url": "https://bulks-faostat.fao.org/production/Production_Crops_Livestock_E_All_Data_(Normalized).zip", "landing": "https://www.fao.org/faostat/en/data/QCL", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E3"]},
-    {"id": "S05", "title": "National Agriculture Production Report 2025 (Chapter 5.1 Coffee, Tables 5.1, 5.1.1, 5.1.2)", "publisher": "Kenya National Bureau of Statistics (data source in report: Agriculture and Food Authority)", "year": 2025, "url": "https://www.knbs.or.ke/wp-content/uploads/2025/10/National-Agriculture-Production-Report-2025.pdf", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E3", "EVIDENCE.md E9"]},
-    {"id": "S06", "title": "The Mobile Gender Gap Report 2025", "publisher": "GSMA", "year": 2025, "url": "https://www.gsma.com/wp-content/uploads/2025/12/The-Mobile-Gender-Gap-Report-2025.pdf", "landing": "https://www.gsma.com/gender-gap-2025/", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E4"]},
-    {"id": "S07", "title": "Global Findex Database (World Bank Data360 / WDI API, source 28), indicators mobileaccount.t.d, mobileaccount.t.d.1, mobileaccount.t.d.2, mobileaccount.t.d.9, account.t.d, con1.1, con1.2, con1.9, country KEN", "publisher": "World Bank", "year": 2025, "url": "https://api.worldbank.org/v2/country/KEN/indicator/mobileaccount.t.d.1?format=json&source=28", "landing": "https://www.worldbank.org/en/publication/globalfindex", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E4", "EVIDENCE.md E5"]},
-    {"id": "S08", "title": "Kenya Country Climate and Development Report (CCDR), Digital sector background note", "publisher": "World Bank", "year": 2023, "url": "https://openknowledge.worldbank.org/bitstreams/d3107c46-82ec-41e7-9aef-2ff04abc6c3c/download", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E6"]},
-    {"id": "S09", "title": "2019 Kenya Population and Housing Census, Volume IV: Distribution of Population by Socio-Economic Characteristics (Table 2.31)", "publisher": "Kenya National Bureau of Statistics", "year": 2019, "url": "https://www.knbs.or.ke/wp-content/uploads/2023/09/2019-Kenya-population-and-Housing-Census-Volume-4-Distribution-of-Population-by-Socio-Economic-Characteristics.pdf", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E7"]},
-    {"id": "S10", "title": "Constitution of Kenya 2010, Article 7: National, official and other languages", "publisher": "Kenya Law Reform Commission", "year": 2010, "url": "https://klrc.go.ke/index.php/constitution-of-kenya/108-chapter-two-the-republic/173-7-national-official-and-other-languages", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E7"]},
-    {"id": "S11", "title": "Terms and Conditions for Safaricom PrePay and PostPay Data Bundles", "publisher": "Safaricom PLC", "year": 2026, "url": "https://www.safaricom.co.ke/media-center-landing/terms-and-conditions/terms-and-conditions-for-safaricom-prepay-and-postpay-data-bundles", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "note": "Search snippet dated 31 Aug 2026. Prices change; re-check before the video.", "used_in": ["EVIDENCE.md E8"]},
-    {"id": "S12", "title": "Safaricom data tariffs", "publisher": "Safaricom PLC", "year": 2026, "url": "https://www.safaricom.co.ke/personal/data/data-tariffs", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E8"]},
-    {"id": "S13", "title": "Charting the Path Towards a Sustainable Coffee Sub-Sector in Kenya", "publisher": "Agriculture and Food Authority (AFA), Kenya", "year": 2024, "url": "https://afa.go.ke/updates/charting-the-path-towards-a-sustainable-coffee-sub-sector-in-kenya/", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "note": "Publication year not shown on the scraped page; grades statistic refers to 2022/23, so 2023 or later.", "used_in": ["EVIDENCE.md E9"]},
-    {"id": "S14", "title": "Coffee Development and Marketing Strategy 2024-2029", "publisher": "Ministry of Agriculture and Livestock Development, Kenya", "year": 2024, "url": "https://kilimo.go.ke/wp-content/uploads/2024/10/Final-Draft-Coffee-Developemnt-and-Marketing-Strategy-27-Jan-2024-1.pdf", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["EVIDENCE.md E9", "GUIDANCE.md", "DATASETS.md"]},
-    {"id": "S15", "title": "Sector Statistics Report Q3 2025-2026", "publisher": "Communications Authority of Kenya", "year": 2026, "url": "https://www.ca.go.ke/sites/default/files/2026-06/Sector%20Statistics%20Report%20Q3%202025-2026.pdf", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "note": "Opened to look for population coverage by technology and by county. Neither is reported. Not cited for any figure.", "used_in": ["EVIDENCE.md E6 (NOT FOUND trail)"]},
-    {"id": "S16", "title": "Coffee leaf rust: Spotting and managing Hemileia vastatrix (PlantwisePlus blog)", "publisher": "CABI", "year": 2022, "url": "https://blog.plantwise.org/2022/03/17/coffee-leaf-rust-spotting-and-managing-hemileia-vastatrix/", "accessed": "2026-10-03", "confidence": "secondary", "verified": true, "used_in": ["GUIDANCE.md"]},
-    {"id": "S17", "title": "Coffee (Revised), Infonet Biovision", "publisher": "icipe / Biovision Africa Trust, Nairobi", "year": null, "url": "https://infonet-biovision.org/crops-fruits-vegetables/coffee-revised", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "note": "Kenya-based extension knowledge site. Publication year not shown on page.", "used_in": ["GUIDANCE.md", "GUIDANCE.md section 4 (leaf miner, pass 2)"]},
-    {"id": "S18", "title": "Coffee brown-eye spot (142), Pacific Pests, Pathogens and Weeds", "publisher": "Secretariat of the Pacific Community / University of Queensland / ACIAR", "year": null, "url": "https://apps.lucidcentral.org/pppw_v10/text/web_full/entities/coffee_browneye_spot_142.htm", "accessed": "2026-10-03", "confidence": "secondary", "verified": true, "note": "Not a Kenyan source. Used because no Kenyan leaflet on Cercospora was found.", "used_in": ["GUIDANCE.md"]},
-    {"id": "S19", "title": "Coffee berry disease: a threat to Arabica coffee production in Ethiopia", "publisher": "Discover Life (Springer Nature), K. Alemu et al., vol. 55, article 12", "year": 2025, "url": "https://link.springer.com/article/10.1007/s11084-025-09690-9", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "note": "Ethiopian context; symptom description is general.", "used_in": ["GUIDANCE.md"]},
-    {"id": "S20", "title": "Guidelines for personal protection when handling and applying pesticides", "publisher": "FAO and WHO", "year": 2020, "url": "https://iris.who.int/bitstreams/2224d83c-bcec-4870-81ca-92d2302434e6/download", "landing": "https://openknowledge.fao.org/handle/20.500.14283/ca7430en", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["GUIDANCE.md"]},
-    {"id": "S21", "title": "A Comprehensive Review of the Coffee Leaf Miner Leucoptera coffeella (Lepidoptera: Lyonetiidae)", "publisher": "Insects (MDPI) via PubMed Central, J. Dantas et al.", "year": 2021, "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8707027/", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "note": "Neotropical focus. Not Kenyan.", "used_in": ["GUIDANCE.md"]},
-    {"id": "S22", "title": "JMuBEN (Mendeley Data, DOI 10.17632/t2r6rszp5c.1)", "publisher": "Jepkoech, Kenduiywo, Mugo, Chebet (University of Embu, JKUAT, Chuka University)", "year": 2021, "url": "https://data.mendeley.com/datasets/t2r6rszp5c/1", "api": "https://data.mendeley.com/public-api/datasets/t2r6rszp5c", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["DATASETS.md"]},
-    {"id": "S23", "title": "JMuBEN2 (Mendeley Data, DOI 10.17632/tgv3zb82nd.1)", "publisher": "Jepkoech, Mugo, Kenduiywo, Chebet", "year": 2021, "url": "https://data.mendeley.com/datasets/tgv3zb82nd/1", "api": "https://data.mendeley.com/public-api/datasets/tgv3zb82nd", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["DATASETS.md"]},
-    {"id": "S24", "title": "Arabica coffee leaf images dataset for coffee leaf disease detection and classification (Data in Brief 36:107142)", "publisher": "Elsevier, Data in Brief", "year": 2021, "url": "https://doi.org/10.1016/j.dib.2021.107142", "landing": "https://www.sciencedirect.com/science/article/pii/S2352340921004261", "accessed": "2026-10-03", "confidence": "primary", "verified": "citation only (Crossref); full text not opened", "used_in": ["DATASETS.md"]},
-    {"id": "S25", "title": "A Machine Learning Dataset for Classification of Common Coffee Leaf Diseases in Uganda (Mendeley Data, DOI 10.17632/k36wnd6knb.1)", "publisher": "Chelangat, Anirwoth, Mayanja, Sserwadda (Soroti University)", "year": 2025, "url": "https://data.mendeley.com/datasets/k36wnd6knb/1", "api": "https://data.mendeley.com/public-api/datasets/k36wnd6knb", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["DATASETS.md"]},
-    {"id": "S26", "title": "BRACOL: A Brazilian Arabica Coffee Leaf images dataset to identification and quantification of coffee diseases and pests (Mendeley Data, DOI 10.17632/yy2k5y8mxg.1)", "publisher": "Krohling, Esgario, Ventura", "year": 2019, "url": "https://data.mendeley.com/datasets/yy2k5y8mxg/1", "api": "https://data.mendeley.com/public-api/datasets/yy2k5y8mxg", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["DATASETS.md"]},
-    {"id": "S27", "title": "RoCoLe: A robusta coffee leaf images dataset (Mendeley Data, DOI 10.17632/c5yvn32dzg.2)", "publisher": "Parraga-Alava, Cusme, Loor, Santander", "year": 2019, "url": "https://data.mendeley.com/datasets/c5yvn32dzg/2", "api": "https://data.mendeley.com/public-api/datasets/c5yvn32dzg", "paper": "https://www.sciencedirect.com/science/article/pii/S2352340919307693", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["DATASETS.md"]},
-    {"id": "S28", "title": "CoLeaf DATASET (CoLeaf-DB, Mendeley Data, DOI 10.17632/brfgw46wzb.2)", "publisher": "Tuesta-Monteza, Mejia-Cabrera, Arcila-Diaz (Universidad Senor de Sipan, Peru)", "year": 2023, "url": "https://data.mendeley.com/datasets/brfgw46wzb/2", "api": "https://data.mendeley.com/public-api/datasets/brfgw46wzb", "paper": "https://doi.org/10.1016/j.dib.2023.109226", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["DATASETS.md"]},
-    {"id": "S29", "title": "PlantDoc-Dataset (GitHub)", "publisher": "pratikkayal, PlantDoc: A Dataset for Visual Plant Disease Detection, CODS-COMAD 2020", "year": 2020, "url": "https://github.com/pratikkayal/PlantDoc-Dataset", "api": "https://api.github.com/repos/pratikkayal/PlantDoc-Dataset", "accessed": "2026-10-03", "confidence": "primary", "verified": "licence and description via GitHub API; image counts NOT checked", "used_in": ["DATASETS.md"]},
-    {"id": "S30", "title": "facebook/mms-tts-kik (Hugging Face model card metadata)", "publisher": "Meta AI via Hugging Face", "year": 2023, "url": "https://huggingface.co/facebook/mms-tts-kik", "api": "https://huggingface.co/api/models/facebook/mms-tts-kik", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["DATASETS.md"]},
-    {"id": "S31", "title": "facebook/nllb-200-distilled-600M (Hugging Face model card metadata)", "publisher": "Meta AI via Hugging Face", "year": 2024, "url": "https://huggingface.co/facebook/nllb-200-distilled-600M", "api": "https://huggingface.co/api/models/facebook/nllb-200-distilled-600M", "accessed": "2026-10-03", "confidence": "primary", "verified": "licence verified; language codes kik_Latn and swh_Latn NOT confirmed in the card metadata", "used_in": ["DATASETS.md"]},
-    {"id": "S32", "title": "mozilla-foundation/common_voice_17_0 (Hugging Face dataset page)", "publisher": "Mozilla Foundation", "year": 2025, "url": "https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "note": "Page states the HF copy is empty; Common Voice now distributed via Mozilla Data Collective. Swahili hours NOT FOUND.", "used_in": ["DATASETS.md"]},
-    {"id": "S33", "title": "NASA POWER Daily API v2.10.0, parameter PRECTOTCORR, community AG, point -0.42, 36.95, 1991-01-01 to 2020-12-31", "publisher": "NASA Langley Research Center POWER Project", "year": 2026, "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=PRECTOTCORR&community=AG&longitude=36.95&latitude=-0.42&start=19910101&end=20201231&format=JSON", "accessed": "2026-10-03", "confidence": "modelled", "verified": true, "note": "Header reports source MERRA2 and grid elevation 2115.76 m.", "used_in": ["season.json"]},
-    {"id": "S34", "title": "Realising the full benefit of mobile for women in Africa (GSMA blog; Kenya smartphone 37% men vs 27% women)", "publisher": "GSMA", "year": 2019, "url": "https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-for-development/blog/realising-the-full-benefit-of-mobile-for-women-in-africa/", "accessed": "2026-10-03", "confidence": "secondary", "verified": "snippet_only", "note": "Superseded by S06. Not used for any figure.", "used_in": ["EVIDENCE.md E4 (superseded)"]},
-    {"id": "S35", "title": "Coffee Research Institute and PRISE workshop post (KALRO)", "publisher": "KALRO via Facebook", "year": null, "url": "https://www.facebook.com/Kalromkulima/posts/coffee-research-institute-cri-in-collaboration-with-pest-risk-information-servic/1006469765025903/", "accessed": "2026-10-03", "confidence": "secondary", "verified": "snippet_only", "note": "Search snippet reads: 'Farmers are advised to apply copper-based fungicides before the onset of the rains when the disease is most likely to spread,' the scientist ... Post body was not retrievable.", "used_in": ["GUIDANCE.md (corroboration only)"]},
-    {"id": "S36", "title": "Kilimo Trust post on extension coverage (X)", "publisher": "Kilimo Trust", "year": 2025, "url": "https://x.com/kilimoEAC/status/1922614393646284879", "accessed": null, "confidence": "secondary", "verified": false, "note": "Listed in MASTER_PROMPT. Not opened (social media post). Not used for any figure.", "used_in": ["EVIDENCE.md E1 (not used)"]},
-    {"id": "S37", "title": "Plantwise Knowledge Bank: Coffee leaf rust in coffee, Rwanda (search snippet: threshold level of disease is 3-6% of infected coffee trees)", "publisher": "CABI PlantwisePlus", "year": 2022, "url": "https://plantwiseplusknowledgebank.org/doi/10.1079/pwkb.20257800019", "accessed": "2026-10-03", "confidence": "secondary", "verified": "snippet_only", "note": "Rwanda, not Kenya. Page could not be fetched.", "used_in": ["GUIDANCE.md (threshold search trail)"]},
-    {"id": "S38", "title": "Monitoring Coffee Leaf Rust (Hemileia vastatrix) on ... (title truncated in search result; snippet: 'Incidence increased above threshold levels (5%)')", "publisher": "Agronomy 2022, 12(5), 1134 (MDPI), L. F. Aristizabal", "year": 2022, "url": "https://www.mdpi.com/2073-4395/12/5/1134", "accessed": "2026-10-03", "confidence": "secondary", "verified": "snippet_only", "note": "Location not confirmed, almost certainly not Kenya. Page not opened.", "used_in": ["GUIDANCE.md (threshold search trail)"]},
-    {"id": "S39", "title": "RoCoLe: A robusta coffee leaf images dataset for evaluation of machine learning based methods in plant diseases recognition (Data in Brief)", "publisher": "Parraga-Alava, Cusme, Loor, Santander (ESPAM Manabi; Universidad de Santiago de Chile)", "year": 2019, "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6727496/", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "used_in": ["DATASETS.md"]},
-    {"id": "S40", "title": "facebook/mms-tts-swh (Hugging Face model card metadata)", "publisher": "Meta AI via Hugging Face", "year": 2023, "url": "https://huggingface.co/facebook/mms-tts-swh", "api": "https://huggingface.co/api/models/facebook/mms-tts-swh", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "note": "Licence cc-by-nc-4.0, last modified 2023-09-01.", "used_in": ["DATASETS.md"]},
-    {"id": "S41", "title": "CABI Compendium and PlantwisePlus Knowledge Bank datasheets: Phoma costarricensis (40417), Mycosphaerella coffeicola (12204), Leucoptera meyricki (30488), L. caffeina (30484), L. coma (30485); factsheets 20207800275 and 20207800276", "publisher": "CABI", "year": 2019, "url": "https://plantwiseplusknowledgebank.org/doi/full/10.1079/pwkb.species.30484", "accessed": "2026-10-03", "confidence": "primary", "verified": false, "note": "NOT RETRIEVABLE. Bright Data returned empty content or the 'No access' page (CABI Compendium subscription). Saved attempts are in raw/gaps/. Nothing quoted.", "used_in": ["GUIDANCE.md sections 2 to 4 (trail)"]},
-    {"id": "S42", "title": "Management of Phoma spot in coffee plants", "publisher": "Revista Cultivar (Brazil)", "year": 2019, "url": "https://revistacultivar.com/articles/management-of-phoma-spot-in-coffee-plants", "accessed": "2026-10-03", "confidence": "secondary", "verified": true, "note": "Brazilian trade magazine; not Kenya. Raw copy in raw/gaps/.", "used_in": ["GUIDANCE.md section 3"]},
-    {"id": "S43", "title": "Phoma Leaf Spot (Phoma costarricensis)", "publisher": "Roastopedia", "year": null, "url": "https://roastopedia.com/phoma-leaf-spot/", "accessed": "2026-10-03", "confidence": "secondary", "verified": true, "note": "General encyclopaedic page; not Kenya; no primary citation checked. Raw copy in raw/gaps/.", "used_in": ["GUIDANCE.md section 3"]},
-    {"id": "S44", "title": "Cercospora coffeicola; Brown eye spot, Berry blotch (PlantwisePlus Knowledge Bank factsheet 20207800275)", "publisher": "CABI PlantwisePlus", "year": 2019, "url": "https://plantwiseplusknowledgebank.org/doi/full/10.1079/pwkb.20207800275", "accessed": "2026-10-03", "confidence": "secondary", "verified": "snippet_only", "note": "Quoted from a Google result snippet dated 1 May 2019; page content not retrievable. Cut off mid-sentence.", "used_in": ["GUIDANCE.md section 2"]},
-    {"id": "S45", "title": "Integrated pest management of coffee for small-scale farmers in East Africa: needs and limitations", "publisher": "Nyambo, B.T., Integrated Pest Management Reviews", "year": 1996, "url": "https://link.springer.com/article/10.1007/BF00130671", "accessed": "2026-10-03", "confidence": "primary", "verified": "abstract and reference list read", "note": "Peer-reviewed; abstract only. Raw copy in raw/gaps/.", "used_in": ["GUIDANCE.md section 4"]},
-    {"id": "S46", "title": "Leucoptera meyricki (coffee leaf miner) PlantwisePlus Knowledge Bank species page (No access)", "publisher": "CABI PlantwisePlus", "year": null, "url": "https://plantwiseplusknowledgebank.org/doi/10.1079/PWKB.Species.30488", "accessed": "2026-10-03", "confidence": "primary", "verified": false, "note": "Title visible; body is 'No access'. Raw copy in raw/gaps/.", "used_in": ["GUIDANCE.md section 4"]},
-    {"id": "S47", "title": "Miti Mibichi ya Kahawa Ruiru 11 Iliyochongwa (marketplace listing)", "publisher": "Umoja", "year": 2026, "url": "https://umoja.co.ke/sw/a/grafted-ruiru-11-coffee-seedlings-24000018", "accessed": "2026-10-03", "confidence": "secondary", "verified": true, "note": "Kenyan Swahili classified ad. Vocabulary only. Yield and 30% claims not used.", "used_in": ["swahili_glossary.md"]},
-    {"id": "S48", "title": "Walimuua kaka yangu - Naibu Rias Gachagua afichua", "publisher": "Radio Jambo", "year": 2023, "url": "https://www.radiojambo.co.ke/habari/2023-06-12-walimuua-kaka-yangu-naibu-rias-gachagua-afichua", "accessed": "2026-10-03", "confidence": "secondary", "verified": true, "note": "Kenyan radio. Phrase 'magonjwa ya kahawa' only.", "used_in": ["swahili_glossary.md"]},
-    {"id": "S49", "title": "Farmers earn Sh841 million from coffee auction (Sale 42 / last 2025-26 sale)", "publisher": "The Standard (Boniface Gikandi)", "year": 2026, "url": "https://www.standardmedia.co.ke/business/business/article/2001559062/farmers-earn-sh841-million-from-coffee-sales", "accessed": "2026-10-03", "confidence": "secondary", "verified": true, "used_in": ["prices.json"]},
-    {"id": "S50", "title": "Coffee Directorate Updates", "publisher": "Agriculture and Food Authority, Kenya", "year": 2026, "url": "https://afa.go.ke/coffee-directorate-updates/", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "note": "No county price table. News items only.", "used_in": ["prices.json (NOT FOUND trail)"]},
-    {"id": "S51", "title": "Wild coffee-leaf photos: iNaturalist research grade and Wikimedia Commons (manifest)", "publisher": "iNaturalist; Wikimedia Commons (per-row authors)", "year": 2026, "url": "kb/research/wild_set.csv", "accessed": "2026-10-03", "confidence": "primary", "verified": true, "note": "254 CC-licensed photos. Flickr NOT FOUND (Bright Data KYC block).", "used_in": ["DATASETS.md", "wild_set.csv"]}
+    {
+      "id": "S01",
+      "title": "Kenya Agricultural Sector Extension Policy (KASEP)",
+      "publisher": "Ministry of Agriculture and Livestock Development, Kenya",
+      "year": 2023,
+      "url": "https://kilimo.go.ke/wp-content/uploads/2024/10/KENYA-AGRICULTURAL-SECTOR-EXTENSION-POLICY-2023.pdf",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E1"
+      ]
+    },
+    {
+      "id": "S02",
+      "title": "Agriculture Extension Manual (Version 1), Food Systems Resilience Project",
+      "publisher": "Ministry of Agriculture and Livestock Development, Kenya",
+      "year": 2025,
+      "url": "https://fsrp.go.ke/sites/default/files/2025-08/Agriculture%20Extension%20Manual%20v1%20final.pdf",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E1"
+      ]
+    },
+    {
+      "id": "S03",
+      "title": "Coffee Leaf Rust (Hemileia vastatrix) in Kenya: A Review",
+      "publisher": "Agronomy 2021, 11(12), 2590 (MDPI); authors include E. Gichuru, Coffee Research Institute",
+      "year": 2021,
+      "url": "https://www.mdpi.com/2073-4395/11/12/2590",
+      "doi": "https://doi.org/10.3390/agronomy11122590",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E2",
+        "GUIDANCE.md",
+        "season.json"
+      ]
+    },
+    {
+      "id": "S04",
+      "title": "FAOSTAT Crops and livestock products (QCL), bulk file, item Coffee, green, area Kenya",
+      "publisher": "FAO",
+      "year": 2026,
+      "url": "https://bulks-faostat.fao.org/production/Production_Crops_Livestock_E_All_Data_(Normalized).zip",
+      "landing": "https://www.fao.org/faostat/en/data/QCL",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E3"
+      ]
+    },
+    {
+      "id": "S05",
+      "title": "National Agriculture Production Report 2025 (Chapter 5.1 Coffee, Tables 5.1, 5.1.1, 5.1.2)",
+      "publisher": "Kenya National Bureau of Statistics (data source in report: Agriculture and Food Authority)",
+      "year": 2025,
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2025/10/National-Agriculture-Production-Report-2025.pdf",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E3",
+        "EVIDENCE.md E9"
+      ]
+    },
+    {
+      "id": "S06",
+      "title": "The Mobile Gender Gap Report 2025",
+      "publisher": "GSMA",
+      "year": 2025,
+      "url": "https://www.gsma.com/wp-content/uploads/2025/12/The-Mobile-Gender-Gap-Report-2025.pdf",
+      "landing": "https://www.gsma.com/gender-gap-2025/",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E4"
+      ]
+    },
+    {
+      "id": "S07",
+      "title": "Global Findex Database (World Bank Data360 / WDI API, source 28), indicators mobileaccount.t.d, mobileaccount.t.d.1, mobileaccount.t.d.2, mobileaccount.t.d.9, account.t.d, con1.1, con1.2, con1.9, country KEN",
+      "publisher": "World Bank",
+      "year": 2025,
+      "url": "https://api.worldbank.org/v2/country/KEN/indicator/mobileaccount.t.d.1?format=json&source=28",
+      "landing": "https://www.worldbank.org/en/publication/globalfindex",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E4",
+        "EVIDENCE.md E5"
+      ]
+    },
+    {
+      "id": "S08",
+      "title": "Kenya Country Climate and Development Report (CCDR), Digital sector background note",
+      "publisher": "World Bank",
+      "year": 2023,
+      "url": "https://openknowledge.worldbank.org/bitstreams/d3107c46-82ec-41e7-9aef-2ff04abc6c3c/download",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E6"
+      ]
+    },
+    {
+      "id": "S09",
+      "title": "2019 Kenya Population and Housing Census, Volume IV: Distribution of Population by Socio-Economic Characteristics (Table 2.31)",
+      "publisher": "Kenya National Bureau of Statistics",
+      "year": 2019,
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/09/2019-Kenya-population-and-Housing-Census-Volume-4-Distribution-of-Population-by-Socio-Economic-Characteristics.pdf",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E7"
+      ]
+    },
+    {
+      "id": "S10",
+      "title": "Constitution of Kenya 2010, Article 7: National, official and other languages",
+      "publisher": "Kenya Law Reform Commission",
+      "year": 2010,
+      "url": "https://klrc.go.ke/index.php/constitution-of-kenya/108-chapter-two-the-republic/173-7-national-official-and-other-languages",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E7"
+      ]
+    },
+    {
+      "id": "S11",
+      "title": "Terms and Conditions for Safaricom PrePay and PostPay Data Bundles",
+      "publisher": "Safaricom PLC",
+      "year": 2026,
+      "url": "https://www.safaricom.co.ke/media-center-landing/terms-and-conditions/terms-and-conditions-for-safaricom-prepay-and-postpay-data-bundles",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "note": "Search snippet dated 31 Aug 2026. Prices change; re-check before the video.",
+      "used_in": [
+        "EVIDENCE.md E8"
+      ]
+    },
+    {
+      "id": "S12",
+      "title": "Safaricom data tariffs",
+      "publisher": "Safaricom PLC",
+      "year": 2026,
+      "url": "https://www.safaricom.co.ke/personal/data/data-tariffs",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E8"
+      ]
+    },
+    {
+      "id": "S13",
+      "title": "Charting the Path Towards a Sustainable Coffee Sub-Sector in Kenya",
+      "publisher": "Agriculture and Food Authority (AFA), Kenya",
+      "year": 2024,
+      "url": "https://afa.go.ke/updates/charting-the-path-towards-a-sustainable-coffee-sub-sector-in-kenya/",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "note": "Publication year not shown on the scraped page; grades statistic refers to 2022/23, so 2023 or later.",
+      "used_in": [
+        "EVIDENCE.md E9"
+      ]
+    },
+    {
+      "id": "S14",
+      "title": "Coffee Development and Marketing Strategy 2024-2029",
+      "publisher": "Ministry of Agriculture and Livestock Development, Kenya",
+      "year": 2024,
+      "url": "https://kilimo.go.ke/wp-content/uploads/2024/10/Final-Draft-Coffee-Developemnt-and-Marketing-Strategy-27-Jan-2024-1.pdf",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "EVIDENCE.md E9",
+        "GUIDANCE.md",
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S15",
+      "title": "Sector Statistics Report Q3 2025-2026",
+      "publisher": "Communications Authority of Kenya",
+      "year": 2026,
+      "url": "https://www.ca.go.ke/sites/default/files/2026-06/Sector%20Statistics%20Report%20Q3%202025-2026.pdf",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "note": "Opened to look for population coverage by technology and by county. Neither is reported. Not cited for any figure.",
+      "used_in": [
+        "EVIDENCE.md E6 (NOT FOUND trail)"
+      ]
+    },
+    {
+      "id": "S16",
+      "title": "Coffee leaf rust: Spotting and managing Hemileia vastatrix (PlantwisePlus blog)",
+      "publisher": "CABI",
+      "year": 2022,
+      "url": "https://blog.plantwise.org/2022/03/17/coffee-leaf-rust-spotting-and-managing-hemileia-vastatrix/",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": true,
+      "used_in": [
+        "GUIDANCE.md"
+      ]
+    },
+    {
+      "id": "S17",
+      "title": "Coffee (Revised), Infonet Biovision",
+      "publisher": "icipe / Biovision Africa Trust, Nairobi",
+      "year": null,
+      "url": "https://infonet-biovision.org/crops-fruits-vegetables/coffee-revised",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "note": "Kenya-based extension knowledge site. Publication year not shown on page.",
+      "used_in": [
+        "GUIDANCE.md",
+        "GUIDANCE.md section 4 (leaf miner, pass 2)"
+      ]
+    },
+    {
+      "id": "S18",
+      "title": "Coffee brown-eye spot (142), Pacific Pests, Pathogens and Weeds",
+      "publisher": "Secretariat of the Pacific Community / University of Queensland / ACIAR",
+      "year": null,
+      "url": "https://apps.lucidcentral.org/pppw_v10/text/web_full/entities/coffee_browneye_spot_142.htm",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": true,
+      "note": "Not a Kenyan source. Used because no Kenyan leaflet on Cercospora was found.",
+      "used_in": [
+        "GUIDANCE.md"
+      ]
+    },
+    {
+      "id": "S19",
+      "title": "Coffee berry disease: a threat to Arabica coffee production in Ethiopia",
+      "publisher": "Discover Life (Springer Nature), K. Alemu et al., vol. 55, article 12",
+      "year": 2025,
+      "url": "https://link.springer.com/article/10.1007/s11084-025-09690-9",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "note": "Ethiopian context; symptom description is general.",
+      "used_in": [
+        "GUIDANCE.md"
+      ]
+    },
+    {
+      "id": "S20",
+      "title": "Guidelines for personal protection when handling and applying pesticides",
+      "publisher": "FAO and WHO",
+      "year": 2020,
+      "url": "https://iris.who.int/bitstreams/2224d83c-bcec-4870-81ca-92d2302434e6/download",
+      "landing": "https://openknowledge.fao.org/handle/20.500.14283/ca7430en",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "GUIDANCE.md"
+      ]
+    },
+    {
+      "id": "S21",
+      "title": "A Comprehensive Review of the Coffee Leaf Miner Leucoptera coffeella (Lepidoptera: Lyonetiidae)",
+      "publisher": "Insects (MDPI) via PubMed Central, J. Dantas et al.",
+      "year": 2021,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8707027/",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "note": "Neotropical focus. Not Kenyan.",
+      "used_in": [
+        "GUIDANCE.md"
+      ]
+    },
+    {
+      "id": "S22",
+      "title": "JMuBEN (Mendeley Data, DOI 10.17632/t2r6rszp5c.1)",
+      "publisher": "Jepkoech, Kenduiywo, Mugo, Chebet (University of Embu, JKUAT, Chuka University)",
+      "year": 2021,
+      "url": "https://data.mendeley.com/datasets/t2r6rszp5c/1",
+      "api": "https://data.mendeley.com/public-api/datasets/t2r6rszp5c",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S23",
+      "title": "JMuBEN2 (Mendeley Data, DOI 10.17632/tgv3zb82nd.1)",
+      "publisher": "Jepkoech, Mugo, Kenduiywo, Chebet",
+      "year": 2021,
+      "url": "https://data.mendeley.com/datasets/tgv3zb82nd/1",
+      "api": "https://data.mendeley.com/public-api/datasets/tgv3zb82nd",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S24",
+      "title": "Arabica coffee leaf images dataset for coffee leaf disease detection and classification (Data in Brief 36:107142)",
+      "publisher": "Elsevier, Data in Brief",
+      "year": 2021,
+      "url": "https://doi.org/10.1016/j.dib.2021.107142",
+      "landing": "https://www.sciencedirect.com/science/article/pii/S2352340921004261",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": "citation only (Crossref); full text not opened",
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S25",
+      "title": "A Machine Learning Dataset for Classification of Common Coffee Leaf Diseases in Uganda (Mendeley Data, DOI 10.17632/k36wnd6knb.1)",
+      "publisher": "Chelangat, Anirwoth, Mayanja, Sserwadda (Soroti University)",
+      "year": 2025,
+      "url": "https://data.mendeley.com/datasets/k36wnd6knb/1",
+      "api": "https://data.mendeley.com/public-api/datasets/k36wnd6knb",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S26",
+      "title": "BRACOL: A Brazilian Arabica Coffee Leaf images dataset to identification and quantification of coffee diseases and pests (Mendeley Data, DOI 10.17632/yy2k5y8mxg.1)",
+      "publisher": "Krohling, Esgario, Ventura",
+      "year": 2019,
+      "url": "https://data.mendeley.com/datasets/yy2k5y8mxg/1",
+      "api": "https://data.mendeley.com/public-api/datasets/yy2k5y8mxg",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S27",
+      "title": "RoCoLe: A robusta coffee leaf images dataset (Mendeley Data, DOI 10.17632/c5yvn32dzg.2)",
+      "publisher": "Parraga-Alava, Cusme, Loor, Santander",
+      "year": 2019,
+      "url": "https://data.mendeley.com/datasets/c5yvn32dzg/2",
+      "api": "https://data.mendeley.com/public-api/datasets/c5yvn32dzg",
+      "paper": "https://www.sciencedirect.com/science/article/pii/S2352340919307693",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S28",
+      "title": "CoLeaf DATASET (CoLeaf-DB, Mendeley Data, DOI 10.17632/brfgw46wzb.2)",
+      "publisher": "Tuesta-Monteza, Mejia-Cabrera, Arcila-Diaz (Universidad Senor de Sipan, Peru)",
+      "year": 2023,
+      "url": "https://data.mendeley.com/datasets/brfgw46wzb/2",
+      "api": "https://data.mendeley.com/public-api/datasets/brfgw46wzb",
+      "paper": "https://doi.org/10.1016/j.dib.2023.109226",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S29",
+      "title": "PlantDoc-Dataset (GitHub)",
+      "publisher": "pratikkayal, PlantDoc: A Dataset for Visual Plant Disease Detection, CODS-COMAD 2020",
+      "year": 2020,
+      "url": "https://github.com/pratikkayal/PlantDoc-Dataset",
+      "api": "https://api.github.com/repos/pratikkayal/PlantDoc-Dataset",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": "licence and description via GitHub API; image counts NOT checked",
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S30",
+      "title": "facebook/mms-tts-kik (Hugging Face model card metadata)",
+      "publisher": "Meta AI via Hugging Face",
+      "year": 2023,
+      "url": "https://huggingface.co/facebook/mms-tts-kik",
+      "api": "https://huggingface.co/api/models/facebook/mms-tts-kik",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S31",
+      "title": "facebook/nllb-200-distilled-600M (Hugging Face model card metadata)",
+      "publisher": "Meta AI via Hugging Face",
+      "year": 2024,
+      "url": "https://huggingface.co/facebook/nllb-200-distilled-600M",
+      "api": "https://huggingface.co/api/models/facebook/nllb-200-distilled-600M",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": "licence verified; language codes kik_Latn and swh_Latn NOT confirmed in the card metadata",
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S32",
+      "title": "mozilla-foundation/common_voice_17_0 (Hugging Face dataset page)",
+      "publisher": "Mozilla Foundation",
+      "year": 2025,
+      "url": "https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "note": "Page states the HF copy is empty; Common Voice now distributed via Mozilla Data Collective. Swahili hours NOT FOUND.",
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S33",
+      "title": "NASA POWER Daily API v2.10.0, parameter PRECTOTCORR, community AG, point -0.42, 36.95, 1991-01-01 to 2020-12-31",
+      "publisher": "NASA Langley Research Center POWER Project",
+      "year": 2026,
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=PRECTOTCORR&community=AG&longitude=36.95&latitude=-0.42&start=19910101&end=20201231&format=JSON",
+      "accessed": "2026-10-03",
+      "confidence": "modelled",
+      "verified": true,
+      "note": "Header reports source MERRA2 and grid elevation 2115.76 m.",
+      "used_in": [
+        "season.json"
+      ]
+    },
+    {
+      "id": "S34",
+      "title": "Realising the full benefit of mobile for women in Africa (GSMA blog; Kenya smartphone 37% men vs 27% women)",
+      "publisher": "GSMA",
+      "year": 2019,
+      "url": "https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-for-development/blog/realising-the-full-benefit-of-mobile-for-women-in-africa/",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": "snippet_only",
+      "note": "Superseded by S06. Not used for any figure.",
+      "used_in": [
+        "EVIDENCE.md E4 (superseded)"
+      ]
+    },
+    {
+      "id": "S35",
+      "title": "Coffee Research Institute and PRISE workshop post (KALRO)",
+      "publisher": "KALRO via Facebook",
+      "year": null,
+      "url": "https://www.facebook.com/Kalromkulima/posts/coffee-research-institute-cri-in-collaboration-with-pest-risk-information-servic/1006469765025903/",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": "snippet_only",
+      "note": "Search snippet reads: 'Farmers are advised to apply copper-based fungicides before the onset of the rains when the disease is most likely to spread,' the scientist ... Post body was not retrievable.",
+      "used_in": [
+        "GUIDANCE.md (corroboration only)"
+      ]
+    },
+    {
+      "id": "S36",
+      "title": "Kilimo Trust post on extension coverage (X)",
+      "publisher": "Kilimo Trust",
+      "year": 2025,
+      "url": "https://x.com/kilimoEAC/status/1922614393646284879",
+      "accessed": null,
+      "confidence": "secondary",
+      "verified": false,
+      "note": "Listed in MASTER_PROMPT. Not opened (social media post). Not used for any figure.",
+      "used_in": [
+        "EVIDENCE.md E1 (not used)"
+      ]
+    },
+    {
+      "id": "S37",
+      "title": "Plantwise Knowledge Bank: Coffee leaf rust in coffee, Rwanda (search snippet: threshold level of disease is 3-6% of infected coffee trees)",
+      "publisher": "CABI PlantwisePlus",
+      "year": 2022,
+      "url": "https://plantwiseplusknowledgebank.org/doi/10.1079/pwkb.20257800019",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": "snippet_only",
+      "note": "Rwanda, not Kenya. Page could not be fetched.",
+      "used_in": [
+        "GUIDANCE.md (threshold search trail)"
+      ]
+    },
+    {
+      "id": "S38",
+      "title": "Monitoring Coffee Leaf Rust (Hemileia vastatrix) on ... (title truncated in search result; snippet: 'Incidence increased above threshold levels (5%)')",
+      "publisher": "Agronomy 2022, 12(5), 1134 (MDPI), L. F. Aristizabal",
+      "year": 2022,
+      "url": "https://www.mdpi.com/2073-4395/12/5/1134",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": "snippet_only",
+      "note": "Location not confirmed, almost certainly not Kenya. Page not opened.",
+      "used_in": [
+        "GUIDANCE.md (threshold search trail)"
+      ]
+    },
+    {
+      "id": "S39",
+      "title": "RoCoLe: A robusta coffee leaf images dataset for evaluation of machine learning based methods in plant diseases recognition (Data in Brief)",
+      "publisher": "Parraga-Alava, Cusme, Loor, Santander (ESPAM Manabi; Universidad de Santiago de Chile)",
+      "year": 2019,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6727496/",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S40",
+      "title": "facebook/mms-tts-swh (Hugging Face model card metadata)",
+      "publisher": "Meta AI via Hugging Face",
+      "year": 2023,
+      "url": "https://huggingface.co/facebook/mms-tts-swh",
+      "api": "https://huggingface.co/api/models/facebook/mms-tts-swh",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "note": "Licence cc-by-nc-4.0, last modified 2023-09-01.",
+      "used_in": [
+        "DATASETS.md"
+      ]
+    },
+    {
+      "id": "S41",
+      "title": "CABI Compendium and PlantwisePlus Knowledge Bank datasheets: Phoma costarricensis (40417), Mycosphaerella coffeicola (12204), Leucoptera meyricki (30488), L. caffeina (30484), L. coma (30485); factsheets 20207800275 and 20207800276",
+      "publisher": "CABI",
+      "year": 2019,
+      "url": "https://plantwiseplusknowledgebank.org/doi/full/10.1079/pwkb.species.30484",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": false,
+      "note": "NOT RETRIEVABLE. Bright Data returned empty content or the 'No access' page (CABI Compendium subscription). Saved attempts are in raw/gaps/. Nothing quoted.",
+      "used_in": [
+        "GUIDANCE.md sections 2 to 4 (trail)"
+      ]
+    },
+    {
+      "id": "S42",
+      "title": "Management of Phoma spot in coffee plants",
+      "publisher": "Revista Cultivar (Brazil)",
+      "year": 2019,
+      "url": "https://revistacultivar.com/articles/management-of-phoma-spot-in-coffee-plants",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": true,
+      "note": "Brazilian trade magazine; not Kenya. Raw copy in raw/gaps/.",
+      "used_in": [
+        "GUIDANCE.md section 3"
+      ]
+    },
+    {
+      "id": "S43",
+      "title": "Phoma Leaf Spot (Phoma costarricensis)",
+      "publisher": "Roastopedia",
+      "year": null,
+      "url": "https://roastopedia.com/phoma-leaf-spot/",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": true,
+      "note": "General encyclopaedic page; not Kenya; no primary citation checked. Raw copy in raw/gaps/.",
+      "used_in": [
+        "GUIDANCE.md section 3"
+      ]
+    },
+    {
+      "id": "S44",
+      "title": "Cercospora coffeicola; Brown eye spot, Berry blotch (PlantwisePlus Knowledge Bank factsheet 20207800275)",
+      "publisher": "CABI PlantwisePlus",
+      "year": 2019,
+      "url": "https://plantwiseplusknowledgebank.org/doi/full/10.1079/pwkb.20207800275",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": "snippet_only",
+      "note": "Quoted from a Google result snippet dated 1 May 2019; page content not retrievable. Cut off mid-sentence.",
+      "used_in": [
+        "GUIDANCE.md section 2"
+      ]
+    },
+    {
+      "id": "S45",
+      "title": "Integrated pest management of coffee for small-scale farmers in East Africa: needs and limitations",
+      "publisher": "Nyambo, B.T., Integrated Pest Management Reviews",
+      "year": 1996,
+      "url": "https://link.springer.com/article/10.1007/BF00130671",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": "abstract and reference list read",
+      "note": "Peer-reviewed; abstract only. Raw copy in raw/gaps/.",
+      "used_in": [
+        "GUIDANCE.md section 4"
+      ]
+    },
+    {
+      "id": "S46",
+      "title": "Leucoptera meyricki (coffee leaf miner) PlantwisePlus Knowledge Bank species page (No access)",
+      "publisher": "CABI PlantwisePlus",
+      "year": null,
+      "url": "https://plantwiseplusknowledgebank.org/doi/10.1079/PWKB.Species.30488",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": false,
+      "note": "Title visible; body is 'No access'. Raw copy in raw/gaps/.",
+      "used_in": [
+        "GUIDANCE.md section 4"
+      ]
+    },
+    {
+      "id": "S47",
+      "title": "Miti Mibichi ya Kahawa Ruiru 11 Iliyochongwa (marketplace listing)",
+      "publisher": "Umoja",
+      "year": 2026,
+      "url": "https://umoja.co.ke/sw/a/grafted-ruiru-11-coffee-seedlings-24000018",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": true,
+      "note": "Kenyan Swahili classified ad. Vocabulary only. Yield and 30% claims not used.",
+      "used_in": [
+        "swahili_glossary.md"
+      ]
+    },
+    {
+      "id": "S48",
+      "title": "Walimuua kaka yangu - Naibu Rias Gachagua afichua",
+      "publisher": "Radio Jambo",
+      "year": 2023,
+      "url": "https://www.radiojambo.co.ke/habari/2023-06-12-walimuua-kaka-yangu-naibu-rias-gachagua-afichua",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": true,
+      "note": "Kenyan radio. Phrase 'magonjwa ya kahawa' only.",
+      "used_in": [
+        "swahili_glossary.md"
+      ]
+    },
+    {
+      "id": "S49",
+      "title": "Farmers earn Sh841 million from coffee auction (Sale 42 / last 2025-26 sale)",
+      "publisher": "The Standard (Boniface Gikandi)",
+      "year": 2026,
+      "url": "https://www.standardmedia.co.ke/business/business/article/2001559062/farmers-earn-sh841-million-from-coffee-sales",
+      "accessed": "2026-10-03",
+      "confidence": "secondary",
+      "verified": true,
+      "used_in": [
+        "prices.json"
+      ]
+    },
+    {
+      "id": "S50",
+      "title": "Coffee Directorate Updates",
+      "publisher": "Agriculture and Food Authority, Kenya",
+      "year": 2026,
+      "url": "https://afa.go.ke/coffee-directorate-updates/",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "note": "No county price table. News items only.",
+      "used_in": [
+        "prices.json (NOT FOUND trail)"
+      ]
+    },
+    {
+      "id": "S51",
+      "title": "Wild coffee-leaf photos: iNaturalist research grade and Wikimedia Commons (manifest)",
+      "publisher": "iNaturalist; Wikimedia Commons (per-row authors)",
+      "year": 2026,
+      "url": "kb/research/wild_set.csv",
+      "accessed": "2026-10-03",
+      "confidence": "primary",
+      "verified": true,
+      "note": "254 CC-licensed photos. Flickr NOT FOUND (Bright Data KYC block).",
+      "used_in": [
+        "DATASETS.md",
+        "wild_set.csv"
+      ]
+    },
+    {
+      "id": "S52",
+      "title": "Fourth Quarter Sector Statistics Report for the Financial Year 2024/2025",
+      "publisher": "Communications Authority of Kenya",
+      "year": 2025,
+      "url": "https://www.ca.go.ke/sites/default/files/2025-09/Sector%20Statistics%20Report%20Q4%202024-2025_1.pdf",
+      "accessed": "2026-10-03",
+      "confidence": "primary"
+    },
+    {
+      "id": "S53",
+      "title": "NCOF13 Technical Statement: October to December 2026 seasonal outlook",
+      "publisher": "Kenya Meteorological Service Authority",
+      "year": 2026,
+      "url": "https://meteo.go.ke/documents/4755/NCOF_13_Statement_26th_Aug_2026_Final.pdf",
+      "accessed": "2026-10-03",
+      "confidence": "primary"
+    },
+    {
+      "id": "S54",
+      "title": "Models overview (language support per model)",
+      "publisher": "ElevenLabs",
+      "year": 2026,
+      "url": "https://elevenlabs.io/docs/overview/models",
+      "accessed": "2026-10-03",
+      "confidence": "primary"
+    },
+    {
+      "id": "S55",
+      "title": "Can I publish the content I generate on the platform?",
+      "publisher": "ElevenLabs Help Center",
+      "year": 2026,
+      "url": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform",
+      "accessed": "2026-10-03",
+      "confidence": "primary"
+    },
+    {
+      "id": "S56",
+      "title": "WAXAL speech datasets for African languages (Kikuyu and Swahili TTS subsets)",
+      "publisher": "Google Research, Hugging Face google/WaxalNLP",
+      "year": 2026,
+      "url": "https://huggingface.co/datasets/google/WaxalNLP",
+      "accessed": "2026-10-03",
+      "confidence": "primary"
+    }
   ]
 }

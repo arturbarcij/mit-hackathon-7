@@ -1,0 +1,27 @@
+/home/claude/jani/ws-parity/py/make_fixture.py:35: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(model, dummy, str(dest), input_names=["input"], output_names=["logits"],
+{
+ "torch": "2.14.1+cu130",
+ "timm": "1.0.30",
+ "params": 1524006,
+ "onnxruntime": "1.29.0",
+ "onnx": "1.23.1",
+ "calibration_tensors": 50,
+ "fp32_bytes": 6076658,
+ "int8_bytes": 1865273,
+ "fp16_bytes": 3065781,
+ "py_ort_fp16_median_ms": 6.571054000005461,
+ "py_ort_fp32_median_ms": 2.173664499991901,
+ "py_ort_int8_median_ms": 2.6546090000039158,
+ "pt_vs_ort_fp32_max_logit_diff": 1.1175870895385742e-08,
+ "py_top1_agree_pt_vs_int8": [
+  35,
+  39
+ ],
+ "py_top1_agree_pt_vs_fp16": [
+  39,
+  39
+ ],
+ "py_max_logit_diff_pt_vs_int8": 0.004629029892385006,
+ "py_max_logit_diff_pt_vs_fp16": 0.00017562974244356155
+}

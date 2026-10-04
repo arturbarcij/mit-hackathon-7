@@ -1,0 +1,15 @@
+
+ RUN  v4.1.11 /home/claude/jani/ws-conformance
+
+ ✓ specs/plot.spec.ts (25 tests) 267ms
+ ✓ specs/decide.spec.ts (51 tests) 113ms
+ ✓ specs/season.spec.ts (23 tests) 9ms
+ ✓ specs/referral.spec.ts (18 tests) 27ms
+ ✓ specs/sms.spec.ts (7 tests) 6ms
+ ✓ specs/guardrails.spec.ts (9 tests) 13ms
+
+ Test Files  6 passed (6)
+      Tests  133 passed (133)
+   Start at  23:53:33
+   Duration  2.15s (transform 179ms, setup 0ms, import 361ms, tests 435ms, environment 1ms)
+

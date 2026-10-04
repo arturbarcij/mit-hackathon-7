@@ -1,0 +1,87 @@
+1
+00:00:00,200 --> 00:00:01,720
+We are [PENDING:
+
+2
+00:00:01,720 --> 00:00:03,240
+names], team [PENDING:
+
+3
+00:00:03,240 --> 00:00:06,787
+team name]. This is Jani, for Annex
+
+4
+00:00:06,787 --> 00:00:07,800
+B, agriculture.
+
+5
+00:00:08,200 --> 00:00:11,169
+Because of Jani, Noor will check ten
+
+6
+00:00:11,169 --> 00:00:14,138
+leaves at the weekend and decide whether
+
+7
+00:00:14,138 --> 00:00:17,107
+to act, wait or ask the officer,
+
+8
+00:00:17,107 --> 00:00:18,803
+before the short rains.
+
+9
+00:00:18,803 --> 00:00:21,772
+Otherwise she finds out about leaf rust
+
+10
+00:00:21,772 --> 00:00:24,741
+late. Kenya has one extension agent for
+
+11
+00:00:24,741 --> 00:00:26,014
+every 1,380 farmers.
+
+12
+00:00:26,014 --> 00:00:28,983
+A 2021 review reports yield losses in
+
+13
+00:00:28,983 --> 00:00:31,952
+excess of 75 percent when rust outbreaks
+
+14
+00:00:31,952 --> 00:00:32,800
+are severe.
+
+15
+00:00:33,200 --> 00:00:36,093
+For us, localising AI means the model
+
+16
+00:00:36,093 --> 00:00:38,987
+learns from Kenyan leaves, the voice speaks
+
+17
+00:00:38,987 --> 00:00:41,880
+Swahili and Kikuyu, and a person makes
+
+18
+00:00:41,880 --> 00:00:44,773
+the decision. A new language is about
+
+19
+00:00:44,773 --> 00:00:47,667
+thirty recorded clips, not a new model.
+
+20
+00:00:47,667 --> 00:00:50,560
+Where AI adds nothing, we use a
+
+21
+00:00:50,560 --> 00:00:51,800
+plain rule table.
+
+22
+00:00:52,200 --> 00:00:54,800
+Jani. Thank you.

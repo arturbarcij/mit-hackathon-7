@@ -1,0 +1,65 @@
+{
+ "season": {
+  "location": {
+   "name": "Nyeri area, central Kenya (East of the Rift Valley)",
+   "latitude": -0.42,
+   "longitude": 36.95
+  },
+  "source": [
+   "S03 Gichuru et al. 2021, Agronomy 11(12):2590 (spray timing, rust peaks)",
+   "S33 NASA POWER daily PRECTOTCORR 1991 to 2020 (modelled rainfall, onset median 16 Oct and 20 Mar)"
+  ],
+  "note": "Decision windows for rules.json, derived from kb/research/season.json. One window per date, first match wins, windows cover the whole year. Edges are plus or minus two weeks; S03 says the spray programme must be adjusted to the weather. 'dry' covers both drier spells, which include the rust peaks after each rainy season (S03).",
+  "windows": [
+   {
+    "name": "pre_short_rains",
+    "start_month": 10,
+    "start_day": 1,
+    "end_month": 11,
+    "end_day": 5,
+    "basis": "S03: sprays start mid-October just before the short rains, second spray three weeks later; NASA POWER median onset 16 Oct"
+   },
+   {
+    "name": "short_rains",
+    "start_month": 11,
+    "start_day": 6,
+    "end_month": 12,
+    "end_day": 15,
+    "basis": "S03 and NASA POWER (November wettest)"
+   },
+   {
+    "name": "dry",
+    "start_month": 12,
+    "start_day": 16,
+    "end_month": 2,
+    "end_day": 19,
+    "wraps_year": true,
+    "basis": "NASA POWER driest spell; S03 rust peak January to March"
+   },
+   {
+    "name": "pre_long_rains",
+    "start_month": 2,
+    "start_day": 20,
+    "end_month": 3,
+    "end_day": 31,
+    "basis": "S03: first spray late February or early March, repeat at three weeks; NASA POWER median onset 20 Mar"
+   },
+   {
+    "name": "long_rains",
+    "start_month": 4,
+    "start_day": 1,
+    "end_month": 5,
+    "end_day": 31,
+    "basis": "S03 and NASA POWER (April wettest)"
+   },
+   {
+    "name": "dry",
+    "start_month": 6,
+    "start_day": 1,
+    "end_month": 9,
+    "end_day": 30,
+    "basis": "NASA POWER drier mid-year; S03 rust peak May to June"
+   }
+  ]
+ }
+}

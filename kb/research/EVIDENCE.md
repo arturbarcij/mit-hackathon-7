@@ -139,6 +139,7 @@ National statement (S08, World Bank Kenya CCDR, Digital sector background note, 
 Country Kenya, 2023, primary.
 
 **NOT FOUND: county-level coverage for the five coffee counties.** Tried: Communications Authority Q3 FY2025/26 sector statistics report (S15, opened; reports subscriptions and penetration, no coverage by county, no coverage percentage); Google searches for CA and GSMA coverage by county; OpenCelliD (needs a registered API token or a database download, not attempted because it needs an account and the output is tower locations, not population coverage). Suggested wording for docs: "National 3G+ coverage is above 96 percent (World Bank, 2023). We have no county-level coverage figure for the coffee counties; coverage on a slope can be much worse than the population figure."
+**Update (cowork cross-check, 3 Oct 2026):** Communications Authority of Kenya, Q4 FY2024/25 Sector Statistics Report (S52), section 8: "4G and 5G population coverage of 97.3 and 30.0 per cent respectively" (at 30 June 2025). Kenya, 2025, primary. Newer than S08; use S52 for the national figure. Also S15 (CA Q3 FY2025/26, s.1.6 p.6): "Smartphones accounted for the largest share of 63.7 per cent of the total mobile phones" (31 March 2026). Still no county-level coverage.
 Caveat: population coverage is not the same as signal on the farm.
 
 ---
@@ -182,3 +183,9 @@ Primary (company tariff). Prices and bundle names change; date-stamp every use.
 
 **Disagreement between sources.** AFA says about 70 percent of coffee is cooperative-produced; the strategy says two-thirds of acreage (2021/22); KNBS gives about 75 percent of area and of production (2023/24, provisional). They differ by definition and year. **We use:** the AFA sentence for a headline ("about 70 percent", quoted), and the KNBS table for any precise or Nyeri figure. Do not average them.
 Cooperative member counts (members per society) were not found in a primary source. NOT FOUND, tried: AFA page, strategy document, KNBS report. A COSA 2019 figure of "570,000 small-scale farmers organized in 421 farmer cooperative societies" appeared in search (secondary, old, not opened); not used.
+
+---
+
+## E10. Short rains onset, 2026 (why now)
+
+Kenya Meteorological Service Authority, NCOF13 Technical Statement, 26 August 2026 (S53), Table 1, page 3. For the central highlands (Nyeri, Kirinyaga, Murang'a, Kiambu, Meru, Embu, Tharaka-Nithi, Nyandarua, Laikipia, Nairobi): onset "2nd to 3rd week of October", rains continue into January, distribution "fair to good". Kenya, 2026, primary. This is a seasonal forecast, not a climatology. It matches the spray timing in S03 (first copper spray mid-October, just before the short rains). Use it for the "this week's decision" line; keep the modelled NASA POWER windows in season.json as the offline default.

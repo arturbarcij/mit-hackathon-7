@@ -1,0 +1,9 @@
+2026-10-03T22:11:34.421Z 1. online load http://127.0.0.1:4173
+2026-10-03T22:11:34.569Z 2. wait for service worker active and precache complete
+2026-10-03T22:11:34.704Z sw status {"active":true,"scope":"http://127.0.0.1:4173/","version":"f1e00ac22ceb","expected":11,"cached":11,"keys":["jani-precache-f1e00ac22ceb"],"total":15124303}
+2026-10-03T22:11:34.704Z 3. go offline and reload
+2026-10-03T22:11:34.800Z farmer screen rendered offline; offline badge visible: true
+2026-10-03T22:11:34.873Z 4. offline navigation to /?selftest=1 and one fixture inference
+2026-10-03T22:11:35.237Z selftest {"ok":true,"modelVersion":"fixture-not-a-real-model","outputName":"logits","dims":[1,6],"ms":298}
+2026-10-03T22:11:35.237Z 5. confirm the wasm came from /ort/ via the cache
+2026-10-03T22:11:35.241Z PASS: offline reload renders farmer screen; fixture inference gives logits [1,6]

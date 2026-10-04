@@ -36,6 +36,7 @@ Required IDs (add more only if a rule needs them):
 - Guidance: `how_to_pick_leaves`, `how_to_photograph`, `retake_blurry`, `retake_dark`, `not_a_leaf`
 - Results: `healthy_all`, `rust_low`, `rust_high_pre_rains`, `rust_high_in_rains`, `rust_high_dry`, `cercospora`, `phoma`, `miner`, `mixed_problems`, `too_many_unsure`, `ask_officer`
 - Out of scope: `berries_out_of_scope` (coffee berry disease), `other_crop`
+- Cooperative nudges (SMS text only, no audio, max 160 characters): `nudge_leaf_check`, `nudge_weather_everyone`, `nudge_officer_visit`
 - Flow: `consent_main`, `consent_photos`, `decision_act`, `decision_wait`, `decision_ask`, `referral_ready`, `language_name`
 Text rules:
 - Max 2 short sentences per entry (it must be easy to listen to). Simple words.

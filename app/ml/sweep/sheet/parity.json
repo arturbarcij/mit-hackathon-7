@@ -1,0 +1,7 @@
+{
+  "n": 50,
+  "pt_vs_onnx_fp32": 1.0,
+  "pt_vs_onnx_int8": 1.0,
+  "all_three": 1.0,
+  "format": "fp16"
+}

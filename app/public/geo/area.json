@@ -1,0 +1,19 @@
+{
+ "name": "Nyeri reference area (Othaya, approximate)",
+ "bbox": [
+  36.94805,
+  -0.58213,
+  37.00195,
+  -0.52787
+ ],
+ "centre": [
+  36.975,
+  -0.555
+ ],
+ "size_km": [
+  6.0,
+  6.0
+ ],
+ "crs": "EPSG:4326, bbox order [west, south, east, north]",
+ "notes": "Real place, approximate choice: a 6 x 6 km box south-east of Othaya town in Nyeri County, Kenya, in the coffee-growing belt on the eastern slopes of the Aberdares. Chosen by hand, not checked against a land-cover map. Othaya town centre (about -0.547, 36.943) lies just west of the box. Plot shapes inside it are synthetic."
+}

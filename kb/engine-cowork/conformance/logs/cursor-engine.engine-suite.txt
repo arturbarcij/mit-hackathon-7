@@ -1,0 +1,206 @@
+
+ RUN  v4.1.11 /home/claude/jani/ws-conformance
+
+stderr | specs/decide.spec.ts > decide: garbage input gives ask_officer > invalid date
+seasonWindow: no window covers NaN/NaN, using 'dry'
+
+ ❯ specs/decide.spec.ts (51 tests | 5 failed) 146ms
+     ✓ fixtures were generated from the rules.json and answers.json under test 3ms
+     ✓ the QA evaluator produced the fixtures (not the fallback port) 0ms
+     ✓ every expected answer id exists in answers.json 1ms
+     ✓ decide is exported 0ms
+     ✓ healthy / pre_short_rains (11 cases) 2ms
+     ✓ healthy / short_rains (11 cases) 1ms
+     ✓ healthy / pre_long_rains (11 cases) 1ms
+     ✓ healthy / long_rains (11 cases) 1ms
+     ✓ healthy / dry (11 cases) 1ms
+     ✓ rust / pre_short_rains (136 cases) 4ms
+     ✓ rust / short_rains (136 cases) 4ms
+     ✓ rust / pre_long_rains (136 cases) 4ms
+     ✓ rust / long_rains (136 cases) 3ms
+     ✓ rust / dry (136 cases) 3ms
+     ✓ cercospora / pre_short_rains (136 cases) 3ms
+     ✓ cercospora / short_rains (136 cases) 3ms
+     ✓ cercospora / pre_long_rains (136 cases) 12ms
+     ✓ cercospora / long_rains (136 cases) 5ms
+     ✓ cercospora / dry (136 cases) 2ms
+     ✓ phoma / pre_short_rains (136 cases) 6ms
+     ✓ phoma / short_rains (136 cases) 2ms
+     ✓ phoma / pre_long_rains (136 cases) 6ms
+     ✓ phoma / long_rains (136 cases) 2ms
+     ✓ phoma / dry (136 cases) 2ms
+     ✓ miner / pre_short_rains (136 cases) 4ms
+     ✓ miner / short_rains (136 cases) 2ms
+     ✓ miner / pre_long_rains (136 cases) 3ms
+     ✓ miner / long_rains (136 cases) 2ms
+     ✓ miner / dry (136 cases) 2ms
+     ✓ not_leaf / pre_short_rains (136 cases) 2ms
+     ✓ not_leaf / short_rains (136 cases) 5ms
+     ✓ not_leaf / pre_long_rains (136 cases) 3ms
+     ✓ not_leaf / long_rains (136 cases) 2ms
+     ✓ not_leaf / dry (136 cases) 2ms
+     ✓ none / pre_short_rains (11 cases) 0ms
+     ✓ none / short_rains (11 cases) 0ms
+     ✓ none / pre_long_rains (11 cases) 0ms
+     ✓ none / long_rains (11 cases) 0ms
+     ✓ none / dry (11 cases) 0ms
+     ✓ summarisePlot then decide gives the QA answer on real leaf lists 21ms
+     × null summary 13ms
+     × undefined summary 1ms
+     ✓ empty object 0ms
+     ✓ string summary 0ms
+     ✓ unknown dominant 0ms
+     ✓ NaN affected 0ms
+     × negative uncertain 4ms
+     ✓ string counts 0ms
+     × Infinity n 1ms
+     × invalid date 2ms
+     ✓ same input twice gives the same card and the summary is not mutated 1ms
+ ❯ specs/referral.spec.ts (18 tests | 3 failed) 44ms
+     ✓ is exported 1ms
+     ✓ the CONTRACTS example check gives exactly the CONTRACTS example fields 2ms
+     ✓ at most 160 characters, GSM-7 basic charset only, one line 1ms
+     ✓ Q is a whole percent from 0 to 100 1ms
+     ✓ carries no names, even when the check object has name-like extra fields 1ms
+     ✓ a member id typed with spaces and lower case still gives a parseable SMS 0ms
+     ✓ a very long member id still fits in 160 characters 0ms
+     ✓ non-GSM characters in member or plot never reach the SMS 0ms
+     × n = 0 (no photos) still gives a valid JANI1 string 8ms
+     × all unsure gives U = N and zero disease counts 1ms
+     ✓ U is summary.uncertain, so it includes not_leaf leaves and N = healthy + R + C + H + L + U 0ms
+     ✓ missing member or plot still gives a valid JANI1 string 0ms
+     ✓ missing decision still gives a valid JANI1 string 0ms
+     ✓ is exported by the engine 0ms
+     ✓ round-trips every field of the CONTRACTS example 1ms
+     × round-trips buildReferral output for 300 random checks 23ms
+     ✓ D is the local calendar day of createdAt 0ms
+     ✓ rejects text that is not a JANI1 referral 0ms
+ ✓ specs/plot.spec.ts (25 tests) 263ms
+ ✓ specs/season.spec.ts (23 tests) 10ms
+ ✓ specs/sms.spec.ts (7 tests) 6ms
+ ✓ specs/guardrails.spec.ts (9 tests) 8ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > null summary
+AssertionError: expected [Function] to not throw an error but 'TypeError: Cannot read properties of …' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"TypeError: Cannot read properties of null (reading 'uncertain')"
+
+ ❯ specs/decide.spec.ts:104:48
+    102|   it.each(garbage)('%s', (_name, s, d) => {
+    103|     let card: any;
+    104|     expect(() => { card = decide(s, d); }).not.toThrow();
+       |                                                ^
+    105|     expect(cardProblems(card, 'ask_officer')).toEqual([]);
+    106|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > undefined summary
+AssertionError: expected [Function] to not throw an error but 'TypeError: Cannot read properties of …' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"TypeError: Cannot read properties of undefined (reading 'uncertain')"
+
+ ❯ specs/decide.spec.ts:104:48
+    102|   it.each(garbage)('%s', (_name, s, d) => {
+    103|     let card: any;
+    104|     expect(() => { card = decide(s, d); }).not.toThrow();
+       |                                                ^
+    105|     expect(cardProblems(card, 'ask_officer')).toEqual([]);
+    106|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > negative uncertain
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > Infinity n
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > invalid date
+AssertionError: expected [ 'id healthy_all != ask_officer' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "id healthy_all != ask_officer",
++ ]
+
+ ❯ specs/decide.spec.ts:105:47
+    103|     let card: any;
+    104|     expect(() => { card = decide(s, d); }).not.toThrow();
+    105|     expect(cardProblems(card, 'ask_officer')).toEqual([]);
+       |                                               ^
+    106|   });
+    107| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: edge cases > n = 0 (no photos) still gives a valid JANI1 string
+AssertionError: JANI1 M:OCC0412 P:P07 D:20261004 N:0 R:0 C:0 H:0 L:0 U:0 A:ask_officer Q:- X:ask: expected 'JANI1 M:OCC0412 P:P07 D:20261004 N:0 …' to match /^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(…/
+
+- Expected:
+/^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(?<p>[A-Za-z0-9-]{0,8}) D:(?<d>\d{8}) N:(?<n>\d{1,3}) R:(?<r>\d{1,3}) C:(?<c>\d{1,3}) H:(?<h>\d{1,3}) L:(?<l>\d{1,3}) U:(?<u>\d{1,3}) A:(?<a>[a-z0-9_]{1,40}) Q:(?<q>\d{1,3}) X:(?<x>act|wait|ask|-)?$/
+
++ Received:
+"JANI1 M:OCC0412 P:P07 D:20261004 N:0 R:0 C:0 H:0 L:0 U:0 A:ask_officer Q:- X:ask"
+
+ ❯ specs/referral.spec.ts:66:22
+     64|   it('n = 0 (no photos) still gives a valid JANI1 string', () => {
+     65|     const sms = build(check({ leaves: [], answerId: 'ask_officer' }));
+     66|     expect(sms, sms).toMatch(JANI1_RE);
+       |                      ^
+     67|     expect(sms).toContain(' N:0 ');
+     68|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: edge cases > all unsure gives U = N and zero disease counts
+TypeError: Cannot read properties of null (reading 'groups')
+ ❯ specs/referral.spec.ts:72:34
+     70|   it('all unsure gives U = N and zero disease counts', () => {
+     71|     const sms = build(check({ leaves: leaves({ unsure: 10 }), answerId…
+     72|     const g = sms.match(JANI1_RE)!.groups!;
+       |                                  ^
+     73|     expect([g.n, g.r, g.c, g.h, g.l, g.u]).toEqual(['10', '0', '0', '0…
+     74|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  specs/referral.spec.ts > parseReferral: round trip > round-trips buildReferral output for 300 random checks
+AssertionError: 40 of 300 failed: expected [ …(4) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "JANI1 M:OCC2621 P:P12 D:20260306 N:0 R:0 C:0 H:0 L:0 U:0 A:rust_high_pre_rains Q:- X:wait -> null",
++   "JANI1 M:OCC5864 P:P29 D:20260101 N:0 R:0 C:0 H:0 L:0 U:0 A:ask_officer Q:- X:act -> null",
++   "JANI1 M:OCC7517 P:P14 D:20261220 N:2 R:0 C:0 H:0 L:0 U:2 A:mixed_problems Q:- X:wait -> {\"memberId\":\"OCC7517\",\"plotId\":\"P14\",\"date\":\"20261220\",\"n\":2,\"rust\":0,\"cercospora\":0,\"phoma\":0,\"miner\":0,\"uncertain\":2,\"answerId\":\"mixed_problems\",\"decision\":\"wait\"}",
++   "JANI1 M:OCC2312 P:P2 D:20261120 N:0 R:0 C:0 H:0 L:0 U:0 A:rust_low Q:- X:wait -> null",
++ ]
+
+ ❯ specs/referral.spec.ts:120:60
+    118|       if (!g || sms.length > 160 || JSON.stringify(p) !== JSON.stringi…
+    119|     }
+    120|     expect(bad.slice(0, 4), `${bad.length} of 300 failed`).toEqual([]);
+       |                                                            ^
+    121|   });
+    122|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+
+ Test Files  2 failed | 4 passed (6)
+      Tests  8 failed | 125 passed (133)
+   Start at  00:23:34
+   Duration  1.90s (transform 255ms, setup 0ms, import 499ms, tests 476ms, environment 1ms)
+

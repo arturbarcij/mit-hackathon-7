@@ -1,0 +1,26 @@
+{
+  "_comment": "One entry per agent lane. Briefs live in kb/agents. Tests run from the workspace root and gate every change. 'manual' lanes are listed so the planner can explain why it does not dispatch them.",
+  "lanes": [
+    {"name": "engine", "brief": "kb/agents/engine.md", "dispatch": "auto", "owner_aliases": ["engine-cowork"],
+     "tests": ["cd app && npx vitest run", "cd app && npx tsc -p tsconfig.engine.json --noEmit"]},
+    {"name": "content-voice", "brief": "kb/agents/content-voice.md", "dispatch": "auto", "owner_aliases": ["content"],
+     "tests": ["cd app && python -m qa.run --only content", "cd app && npx vitest run"]},
+    {"name": "docs", "brief": "kb/agents/docs.md", "dispatch": "auto",
+     "tests": ["cd app && python -m qa.run --only sources,requirements"]},
+    {"name": "pitch", "brief": "kb/agents/pitch.md", "dispatch": "auto", "tests": []},
+    {"name": "research", "brief": "kb/agents/research.md", "dispatch": "auto", "tests": []},
+    {"name": "qa", "brief": "kb/agents/qa.md", "dispatch": "auto", "tests": ["cd app && python -m qa.run"]},
+    {"name": "judge", "brief": "kb/agents/judge.md", "dispatch": "auto", "review": true, "tests": []},
+    {"name": "redteam", "brief": "kb/agents/redteam.md", "dispatch": "auto", "review": true, "tests": []},
+    {"name": "security-privacy", "brief": "kb/agents/security-privacy.md", "dispatch": "auto", "review": true, "tests": []},
+    {"name": "ux-designer", "brief": "kb/agents/ux-designer.md", "dispatch": "auto", "review": true, "tests": []},
+    {"name": "user-simulator", "brief": "kb/agents/user-simulator.md", "dispatch": "auto", "review": true, "tests": []},
+    {"name": "agronomist", "brief": "kb/agents/agronomist.md", "dispatch": "auto", "review": true, "tests": []},
+    {"name": "mathematician", "brief": "kb/agents/mathematician.md", "dispatch": "auto", "review": true, "tests": []},
+    {"name": "release-manager", "brief": "kb/agents/release-manager.md", "dispatch": "auto", "review": true, "tests": []},
+    {"name": "ml", "brief": "kb/agents/ml.md", "dispatch": "manual", "reason": "needs the laptop GPU; run in the ml Cursor chat"},
+    {"name": "geo", "brief": "kb/agents/geo.md", "dispatch": "manual", "reason": "needs satellite access on Windows"},
+    {"name": "ui", "brief": "kb/agents/ui.md", "dispatch": "manual", "reason": "Lovable builds the UI; send kb/prompts/lovable/* there", "owner_aliases": ["lovable"]},
+    {"name": "lead", "brief": "kb/MASTER_PROMPT.md", "dispatch": "manual", "reason": "lead decisions stay with Arthur and the lead chat"}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "temperature": 2.6,
+  "threshold": 0.22519762814044952,
+  "val_selective_acc": 0.9540212891780012,
+  "val_coverage": 1.0,
+  "val_acc": 0.9540212891780012,
+  "val_macro_f1": 0.9557281421450838,
+  "val_loss": 0.2972375773050686,
+  "bracol_val_macro_f1": 0.3075381140598532,
+  "arch": "mobilenetv3_small_100",
+  "aug": "sheet",
+  "head_only": false,
+  "run": "app/ml/sweep/sheet/run",
+  "best_checkpoint": "app/ml/sweep/sheet/run/best.pt",
+  "command": "train.py --arch mobilenetv3_small_100 --aug sheet --manifest C:\\Users\\artur\\Documents\\MIT_Hackathon_7\\app\\ml\\sweep\\manifest_v1.csv --run-dir C:\\Users\\artur\\Documents\\MIT_Hackathon_7\\app\\ml\\sweep\\sheet\\run --no-global --epochs 8 --patience 2 --batch 96",
+  "seed": 42
+}

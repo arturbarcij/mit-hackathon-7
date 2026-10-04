@@ -1,0 +1,9 @@
+
+ RUN  v4.1.11 /home/claude/jani/ws-pwa/build-npm
+
+
+ Test Files  3 passed (3)
+      Tests  13 passed (13)
+   Start at  00:12:34
+   Duration  2.52s (transform 355ms, setup 173ms, import 636ms, tests 25ms, environment 1.16s)
+

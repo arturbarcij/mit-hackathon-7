@@ -1,0 +1,140 @@
+{
+ "rules": [
+  {
+   "if": {
+    "uncertain_gte": 3
+   },
+   "then": "too_many_unsure",
+   "assumption": true,
+   "note": "3 or more unsure of 10 always goes to a person"
+  },
+  {
+   "if": {
+    "distinct_problems_gte": 2
+   },
+   "then": "mixed_problems",
+   "assumption": true,
+   "note": "two or more problem types always go to the officer"
+  },
+  {
+   "if": {
+    "dominant": "not_leaf"
+   },
+   "then": "not_a_leaf"
+  },
+  {
+   "if": {
+    "dominant": "healthy",
+    "affected_lte": 0
+   },
+   "then": "healthy_all",
+   "assumption": true,
+   "note": "no affected leaf among those classified"
+  },
+  {
+   "if": {
+    "dominant": "rust",
+    "affected_gte": 3,
+    "window": "pre_short_rains"
+   },
+   "then": "rust_high_pre_rains",
+   "sources": [
+    "S03"
+   ],
+   "assumption": true,
+   "note": "assumption: 3 of 10 leaves; officer to confirm (no Kenyan incidence threshold found, GUIDANCE.md section 6)"
+  },
+  {
+   "if": {
+    "dominant": "rust",
+    "affected_gte": 3,
+    "window": "pre_long_rains"
+   },
+   "then": "rust_high_pre_rains",
+   "sources": [
+    "S03"
+   ],
+   "assumption": true,
+   "note": "assumption: 3 of 10 leaves; officer to confirm (no Kenyan incidence threshold found, GUIDANCE.md section 6)"
+  },
+  {
+   "if": {
+    "dominant": "rust",
+    "affected_gte": 3,
+    "window": "short_rains"
+   },
+   "then": "rust_high_in_rains",
+   "sources": [
+    "S03"
+   ],
+   "assumption": true,
+   "note": "assumption: 3 of 10 leaves; officer to confirm (no Kenyan incidence threshold found, GUIDANCE.md section 6)"
+  },
+  {
+   "if": {
+    "dominant": "rust",
+    "affected_gte": 3,
+    "window": "long_rains"
+   },
+   "then": "rust_high_in_rains",
+   "sources": [
+    "S03"
+   ],
+   "assumption": true,
+   "note": "assumption: 3 of 10 leaves; officer to confirm (no Kenyan incidence threshold found, GUIDANCE.md section 6)"
+  },
+  {
+   "if": {
+    "dominant": "rust",
+    "affected_gte": 3,
+    "window": "dry"
+   },
+   "then": "rust_high_dry",
+   "sources": [
+    "S03"
+   ],
+   "assumption": true,
+   "note": "assumption: 3 of 10 leaves; officer to confirm (no Kenyan incidence threshold found, GUIDANCE.md section 6)"
+  },
+  {
+   "if": {
+    "dominant": "rust",
+    "affected_gte": 1
+   },
+   "then": "rust_low",
+   "assumption": true,
+   "note": "1 or 2 of 10: assumption, officer to confirm"
+  },
+  {
+   "if": {
+    "dominant": "cercospora",
+    "affected_gte": 1
+   },
+   "then": "cercospora",
+   "assumption": true,
+   "note": "any affected leaf goes to the officer"
+  },
+  {
+   "if": {
+    "dominant": "phoma",
+    "affected_gte": 1
+   },
+   "then": "phoma",
+   "assumption": true,
+   "note": "any affected leaf goes to the officer"
+  },
+  {
+   "if": {
+    "dominant": "miner",
+    "affected_gte": 1
+   },
+   "then": "miner",
+   "assumption": true,
+   "note": "any affected leaf goes to the officer"
+  },
+  {
+   "if": {},
+   "then": "ask_officer"
+  }
+ ]
+}

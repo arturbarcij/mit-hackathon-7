@@ -1,0 +1,179 @@
+{
+  "temperature": 3.5,
+  "threshold": 0.583230197429657,
+  "in_domain_test": {
+    "acc": 0.9697646708370569,
+    "macro_f1": 0.9691717923887975,
+    "per_class": {
+      "healthy": {
+        "precision": 0.9969719909159728,
+        "recall": 0.9969719909159728,
+        "f1": 0.9969719909159728,
+        "support": 1321
+      },
+      "rust": {
+        "precision": 0.9893964110929854,
+        "recall": 0.9934479934479934,
+        "f1": 0.9914180629342052,
+        "support": 1221
+      },
+      "cercospora": {
+        "precision": 0.9931129476584022,
+        "recall": 0.9890260631001372,
+        "f1": 0.9910652920962199,
+        "support": 1458
+      },
+      "phoma": {
+        "precision": 0.9188458070333634,
+        "recall": 0.9238440616500453,
+        "f1": 0.9213381555153707,
+        "support": 1103
+      },
+      "miner": {
+        "precision": 0.9236298292902066,
+        "recall": 0.9269612263300271,
+        "f1": 0.9252925292529253,
+        "support": 1109
+      },
+      "not_leaf": {
+        "precision": 0.9979716024340771,
+        "recall": 0.9800796812749004,
+        "f1": 0.9889447236180906,
+        "support": 502
+      }
+    },
+    "n": 6714
+  },
+  "uganda": {
+    "acc": 0.01650943396226415,
+    "macro_f1": 0.005413766434648105,
+    "per_class": {
+      "healthy": {
+        "precision": 1.0,
+        "recall": 0.01650943396226415,
+        "f1": 0.03248259860788863,
+        "support": 424
+      },
+      "rust": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "cercospora": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "phoma": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "miner": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "not_leaf": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      }
+    },
+    "n": 424
+  },
+  "rocole": {
+    "n": 0,
+    "acc": 0.0,
+    "macro_f1": 0.0,
+    "per_class": {}
+  },
+  "selective": {
+    "val_acc_accepted": 0.9521711768407803,
+    "val_coverage": 0.9396806623299823,
+    "test_acc_accepted": 0.9754425131557966,
+    "test_coverage": 0.9340184688710158
+  },
+  "ood": {
+    "not_leaf_safe_rate": 0.99800796812749,
+    "not_leaf_n": 502,
+    "mite_safe_rate": 0.0,
+    "mite_n": 0
+  },
+  "size_bytes": 3077051,
+  "latency_s": 0.004550249956082553,
+  "latency_n": 30,
+  "examples": [
+    {
+      "file": "ex_00.jpg",
+      "true": "rust",
+      "pred": "rust",
+      "confidence": 0.5268880128860474,
+      "abstained": true,
+      "top3": {
+        "rust": 0.5269,
+        "miner": 0.4118,
+        "phoma": 0.0447
+      }
+    },
+    {
+      "file": "ex_01.jpg",
+      "true": "healthy",
+      "pred": "healthy",
+      "confidence": 0.384854257106781,
+      "abstained": true,
+      "top3": {
+        "healthy": 0.3849,
+        "phoma": 0.1959,
+        "miner": 0.1336
+      }
+    },
+    {
+      "file": "ex_02.jpg",
+      "true": "miner",
+      "pred": "miner",
+      "confidence": 0.9993884563446045,
+      "abstained": false,
+      "top3": {
+        "miner": 0.9994,
+        "cercospora": 0.0003,
+        "phoma": 0.0003
+      }
+    },
+    {
+      "file": "ex_03.jpg",
+      "true": "phoma",
+      "pred": "phoma",
+      "confidence": 0.8850146532058716,
+      "abstained": false,
+      "top3": {
+        "phoma": 0.885,
+        "not_leaf": 0.1037,
+        "cercospora": 0.0084
+      }
+    },
+    {
+      "file": "ex_04.jpg",
+      "true": "phoma",
+      "pred": "phoma",
+      "confidence": 0.9617297649383545,
+      "abstained": false,
+      "top3": {
+        "phoma": 0.9617,
+        "miner": 0.0218,
+        "not_leaf": 0.0138
+      }
+    }
+  ],
+  "caveat": "These figures show that a small ImageNet-pretrained MobileNetV3-Small, fine-tuned on Kenyan JMuBEN/JMuBEN2 crops plus whatever BRACOL leaves we could extract, can separate the six training labels on a hash-grouped in-domain split. They do not show field accuracy on whole leaves still on the tree, on Kenyan varieties that are not labelled in the source sets, or on mixed infections. JMuBEN images are cropped to the lesion and were augmented without a source-image manifest; near-duplicate hashing reduces leakage but cannot remove it. The Uganda set is itself augmented, so a high number there would still not be a clean cross-country test. RoCoLe is Robusta, not Arabica, and is a field set. We do not report PlantVillage coffee accuracy because that set has no coffee. A single-leaf score is not a plot decision; the app uses ten leaves and abstains when confidence is low.",
+  "seed": 42,
+  "never_trained_on": [
+    "uganda",
+    "rocole"
+  ]
+}

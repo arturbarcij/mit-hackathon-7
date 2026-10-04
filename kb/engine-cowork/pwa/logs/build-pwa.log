@@ -1,0 +1,105 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+vite v8.1.5 building client environment for production...
+[2Ktransforming...✓ 1986 modules transformed.
+rendering chunks...
+computing gzip size...
+.output/public/precache-manifest.js                   0.61 kB
+.output/public/precache-manifest.json                 0.76 kB │ gzip:   0.33 kB
+.output/public/assets/OutlierMap-vh-t_kPv.css        15.09 kB │ gzip:   6.36 kB
+.output/public/assets/styles-DSeGUKfS.css            78.88 kB │ gzip:  13.53 kB
+.output/public/assets/geo-CV7VqzqG.js                 0.79 kB │ gzip:   0.46 kB
+.output/public/assets/rolldown-runtime-Dd_uD5pT.js    1.10 kB │ gzip:   0.62 kB
+.output/public/assets/OutlierMap-DN_XpTie.js          2.64 kB │ gzip:   1.46 kB
+.output/public/assets/officer-C_MMXsaq.js            21.65 kB │ gzip:   7.01 kB
+.output/public/assets/routes-mLxv5kU_.js             44.35 kB │ gzip:  14.21 kB
+.output/public/assets/selftest-LsV5WCrv.js           71.53 kB │ gzip:  23.71 kB
+.output/public/assets/answerText-BXZUvmYL.js         74.98 kB │ gzip:  22.73 kB
+.output/public/assets/leaflet-src-D6sPZXru.js       148.81 kB │ gzip:  43.39 kB
+.output/public/assets/index-3jwG5oHu.js             587.47 kB │ gzip: 173.32 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.66s
+vite v8.1.5 building ssr environment for production...
+[2Ktransforming...✓ 92 modules transformed.
+rendering chunks...
+computing gzip size...
+node_modules/.nitro/vite/services/ssr/assets/OutlierMap-vh-t_kPv.css                 15.09 kB │ gzip:  6.36 kB
+node_modules/.nitro/vite/services/ssr/assets/styles-DSeGUKfS.css                     78.88 kB │ gzip: 13.53 kB
+node_modules/.nitro/vite/services/ssr/assets/empty-plugin-adapters-D9UWiqvJ.js        0.22 kB │ gzip:  0.16 kB
+node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-CLn-9uYq.js   0.83 kB │ gzip:  0.41 kB
+node_modules/.nitro/vite/services/ssr/assets/geo-BLdF8Vhr.js                          1.06 kB │ gzip:  0.56 kB
+node_modules/.nitro/vite/services/ssr/assets/selftest-DqEoaYAb.js                     1.31 kB │ gzip:  0.69 kB
+node_modules/.nitro/vite/services/ssr/assets/start-DVAeTEvS.js                        2.00 kB │ gzip:  0.88 kB
+node_modules/.nitro/vite/services/ssr/assets/createCsrfMiddleware-B2To0gPJ.js         3.19 kB │ gzip:  1.01 kB
+node_modules/.nitro/vite/services/ssr/assets/OutlierMap-C2n6sYHm.js                   3.46 kB │ gzip:  1.61 kB
+node_modules/.nitro/vite/services/ssr/index.js                                        4.61 kB │ gzip:  1.92 kB
+node_modules/.nitro/vite/services/ssr/assets/client-DNo-bPIL.js                       5.75 kB │ gzip:  2.09 kB
+node_modules/.nitro/vite/services/ssr/assets/router-BuPD4CWn.js                       6.99 kB │ gzip:  2.10 kB
+node_modules/.nitro/vite/services/ssr/assets/officer-Bh8vFRWI.js                     30.53 kB │ gzip:  7.87 kB
+node_modules/.nitro/vite/services/ssr/assets/answerText-D2irQk40.js                  48.13 kB │ gzip: 11.85 kB
+node_modules/.nitro/vite/services/ssr/assets/routes-Bf0QROv_.js                      49.67 kB │ gzip: 12.15 kB
+node_modules/.nitro/vite/services/ssr/assets/server-DI-UKCha.js                      66.34 kB │ gzip: 16.95 kB
+
+✓ built in 604ms
+
+[nitro] o Building [Nitro] (preset: node-server, compatibility: 2026-10-04)
+[nitro] √ Generated public .output/public
+vite v8.1.5 building nitro environment for production...
+[2Ktransforming...✓ 2020 modules transformed.
+i Tracing dependencies:
+- tslib (2.8.1)
+√ Traced 1 dependencies (4 files) in 68ms.
+i Ensure your production environment matches the builder OS and architecture (linux-x64) to avoid native module issues.
+rendering chunks...
+computing gzip size...
+.output/server/_ssr/empty-plugin-adapters-D9UWiqvJ.mjs         0.23 kB │ gzip:   0.16 kB
+.output/server/_chunks/ssr-renderer.mjs                        0.60 kB │ gzip:   0.36 kB
+.output/server/_tanstack-start-manifest_v-CLn-9uYq.mjs         0.89 kB │ gzip:   0.44 kB
+.output/server/_ssr/geo-BLdF8Vhr.mjs                           1.20 kB │ gzip:   0.64 kB
+.output/server/_ssr/selftest-DqEoaYAb.mjs                      1.37 kB │ gzip:   0.75 kB
+.output/server/_runtime.mjs                                    1.58 kB │ gzip:   0.74 kB
+.output/server/_libs/tanstack__react-query.mjs                 1.60 kB │ gzip:   0.73 kB
+.output/server/_libs/radix-ui__primitive.mjs                   1.83 kB │ gzip:   0.72 kB
+.output/server/_ssr/start-DVAeTEvS.mjs                         1.90 kB │ gzip:   0.86 kB
+.output/server/_libs/ufo.mjs                                   2.21 kB │ gzip:   0.72 kB
+.output/server/_ssr/createCsrfMiddleware-B2To0gPJ.mjs          3.11 kB │ gzip:   1.01 kB
+.output/server/_libs/class-variance-authority+clsx.mjs         3.17 kB │ gzip:   1.24 kB
+.output/server/_ssr/OutlierMap-C2n6sYHm.mjs                    3.95 kB │ gzip:   1.76 kB
+.output/server/_ssr/ssr.mjs                                    4.55 kB │ gzip:   1.92 kB
+.output/server/_ssr/client-DNo-bPIL.mjs                        5.73 kB │ gzip:   2.11 kB
+.output/server/_libs/radix-ui__react-context+react.mjs         5.74 kB │ gzip:   1.67 kB
+.output/server/_ssr/router-BuPD4CWn.mjs                        7.67 kB │ gzip:   2.21 kB
+.output/server/_libs/supabase__functions-js.mjs               12.49 kB │ gzip:   3.44 kB
+.output/server/_libs/tanstack__history.mjs                    12.50 kB │ gzip:   3.70 kB
+.output/server/_libs/@radix-ui/react-switch+[...].mjs         13.30 kB │ gzip:   3.48 kB
+.output/server/_libs/@radix-ui/react-label+[...].mjs          14.63 kB │ gzip:   4.09 kB
+.output/server/index.mjs                                      14.79 kB │ gzip:   4.69 kB
+.output/server/_libs/@radix-ui/react-compose-refs+[...].mjs   17.61 kB │ gzip:   4.83 kB
+.output/server/_libs/lucide-react.mjs                         19.78 kB │ gzip:   4.23 kB
+.output/server/_libs/h3+rou3+srvx.mjs                         27.33 kB │ gzip:   7.19 kB
+.output/server/_libs/@tanstack/router-core+[...].mjs          29.60 kB │ gzip:   7.98 kB
+.output/server/_ssr/officer-Bh8vFRWI.mjs                      34.90 kB │ gzip:   8.05 kB
+.output/server/_libs/supabase__supabase-js.mjs                37.86 kB │ gzip:  11.17 kB
+.output/server/_libs/h3-v2+rou3+srvx.mjs                      41.61 kB │ gzip:  11.25 kB
+.output/server/_ssr/answerText-D2irQk40.mjs                   48.36 kB │ gzip:  11.93 kB
+.output/server/_libs/supabase__phoenix.mjs                    50.54 kB │ gzip:  12.76 kB
+.output/server/_ssr/routes-Bf0QROv_.mjs                       55.85 kB │ gzip:  12.36 kB
+.output/server/_ssr/server-DI-UKCha.mjs                       64.74 kB │ gzip:  16.81 kB
+.output/server/_libs/supabase__realtime-js.mjs                81.77 kB │ gzip:  20.89 kB
+.output/server/_libs/tanstack__query-core.mjs                 88.45 kB │ gzip:  21.18 kB
+.output/server/_libs/tailwind-merge.mjs                       88.92 kB │ gzip:  15.71 kB
+.output/server/_libs/onnxruntime-web.mjs                      97.61 kB │ gzip:  27.70 kB
+.output/server/_libs/supabase__postgrest-js.mjs              110.15 kB │ gzip:  23.14 kB
+.output/server/_libs/@supabase/storage-js+[...].mjs          126.25 kB │ gzip:  23.49 kB
+.output/server/_libs/leaflet.mjs                             242.42 kB │ gzip:  54.53 kB
+.output/server/_libs/supabase__auth-js.mjs                   319.47 kB │ gzip:  64.73 kB
+.output/server/_libs/@tanstack/react-router+[...].mjs        793.04 kB │ gzip: 166.61 kB
+
+✓ built in 757ms
+i Generated .output/nitro.json
+
+[nitro] √ You can preview this build using npx vite preview

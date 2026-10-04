@@ -4,12 +4,12 @@ Who may edit what. One owner per path. If you need a change in a path you do not
 
 ## Folder layout
 ```
-MIT_Hackathon_7/              Cursor workspace root (not a git repo)
+MIT_Hackathon_7/              Cursor workspace root = the git repo (github.com/arturbarcij/mit-hackathon-7)
   kb/                         knowledge base for agents (private, not in the repo)
   data_raw/                   downloaded datasets (never committed)
   .claude/agents/             Claude Code agent definitions
   .cursor/rules/              Cursor rules
-  app/                        THE GIT REPO (Lovable-synced, public after submission)
+  app/                        the web app (public with the repo after submission)
     src/  public/             web app
     ml/                       training and evaluation code
     backend/                  scripts that use API keys (audio rendering, research helpers)
@@ -30,11 +30,26 @@ MIT_Hackathon_7/              Cursor workspace root (not a git repo)
 | `app/vite.config.ts`, `app/public/ort/**` | engine | Cursor |
 | `app/tests/**` | engine | Cursor |
 | `app/public/model/**`, `app/ml/**` | ml | Cursor + local GPU |
+| `app/ml/research/**` (overnight research harness; reads app/ml, never writes outside its folder unless a flag says so) | lead | Claude |
 | `app/src/content/answers.json`, `rules.json`, `season.json`, `i18n/**` | content-voice | Cursor |
 | `app/public/audio/**`, `app/backend/scripts/**` | content-voice | Cursor + ElevenLabs |
 | `app/src/content/sources.json` | docs | Cursor |
 | `app/README.md`, `app/docs/**` (except numbers in EVALUATION.md), `app/LICENSE` | docs | Cursor / Claude |
 | `app/docs/EVALUATION.md` numbers and plots | ml | Cursor |
+| `app/geo/**`, `app/public/geo/**`, `kb/geo/**` | geo | Cursor (Windows, satellite access) |
+| `app/qa/**`, status and evidence columns of `app/docs/REQUIREMENTS.md` | qa | Claude / Cursor |
+| `kb/WORKFLOW.md`, `.cursor/commands/**` | lead | Claude / Cursor |
+| `kb/judge/**` | judge | Claude |
+| `kb/redteam/**` | redteam | Claude |
+| `kb/math/**` | mathematician (reviewer: statistics, sampling, decision rule, evaluation design) | Claude |
+| `kb/ux/**` | ux-designer (reviewer: accessibility, low-literacy UX, video style) | Claude |
+| `kb/usersim/**` | user-simulator (reviewer: persona walkthroughs of the live app) | Claude |
+| `kb/security/**` | security-privacy (reviewer: secrets, access, consent, licences, repo flip) | Claude |
+| `kb/release/**` | release-manager (submission checklist, consistency sweep, fallback, go / no-go) | Claude |
+| `kb/agronomy/**` | agronomist (reviewer: farmer and extension realism, advice safety, sampling protocol) | Claude |
+| `kb/pitch/**`, `video/COVERAGE.md` (video files under `video/` are never committed) | pitch | Claude |
+| `kb/engine-cowork/**` | engine-cowork (Cowork helper lanes for engine: PWA proof, parity, contract tests) | Claude (Cowork) |
+| `app/orchestrator/**` | lead (orchestrator code; agents may not edit it) | Claude |
 | `app/backend/.env` | Arthur only | by hand |
 
 ## Git rules

@@ -1,0 +1,83 @@
+
+ RUN  v4.1.11 /home/claude/jani/ws-conformance
+
+ ❯ specs/ui-compat/lovable-parse.spec.ts (10 tests | 5 failed) 15ms
+     ✓ passes its own unit-test example (P:P07) 2ms
+     × reads the CONTRACTS example verbatim (P:2) 5ms
+     ✓ reads an engine referral with plot P07 and keeps every field 2ms
+     × reads an engine referral with a numeric plot as in CONTRACTS (plot 2) 1ms
+     × reads an engine referral with no photos (N:0) 1ms
+     × reads an engine referral with no member or plot 1ms
+     ✓ keeps not_leaf leaves out of the healthy count 0ms
+     ✓ the SMS the farmer app sends today can be read by the officer dashboard 0ms
+     ✓ the farmer app SMS and engine buildReferral agree on every field except Q 1ms
+     × an empty member or plot field still gives an SMS the dashboard reads 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable officer dashboard parser (src/lib/parseReferral.ts) reads the engine output > reads the CONTRACTS example verbatim (P:2)
+AssertionError: expected null not to be null
+ ❯ specs/ui-compat/lovable-parse.spec.ts:31:118
+     29|
+     30|   it('reads the CONTRACTS example verbatim (P:2)', () => {
+     31|     expect(uiParse!('JANI1 M:OCC0412 P:2 D:20261004 N:10 R:6 C:0 H:0 L…
+       |                                                                                                                      ^
+     32|   });
+     33|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable officer dashboard parser (src/lib/parseReferral.ts) reads the engine output > reads an engine referral with a numeric plot as in CONTRACTS (plot 2)
+AssertionError: JANI1 M:OCC0412 P:2 D:20261004 N:10 R:6 C:0 H:0 L:1 U:1 A:rust_high_pre_rains Q:90 X:ask: expected null not to be null
+ ❯ specs/ui-compat/lovable-parse.spec.ts:44:36
+     42|   it('reads an engine referral with a numeric plot as in CONTRACTS (pl…
+     43|     const sms = build(check({ plotId: '2' }));
+     44|     expect(uiParse!(sms), sms).not.toBeNull();
+       |                                    ^
+     45|   });
+     46|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable officer dashboard parser (src/lib/parseReferral.ts) reads the engine output > reads an engine referral with no photos (N:0)
+AssertionError: JANI1 M:OCC0412 P:P07 D:20261004 N:0 R:0 C:0 H:0 L:0 U:0 A:ask_officer Q:0 X:ask: expected null not to be null
+ ❯ specs/ui-compat/lovable-parse.spec.ts:49:36
+     47|   it('reads an engine referral with no photos (N:0)', () => {
+     48|     const sms = build(check({ leaves: [], answerId: 'ask_officer' }));
+     49|     expect(uiParse!(sms), sms).not.toBeNull();
+       |                                    ^
+     50|   });
+     51|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable officer dashboard parser (src/lib/parseReferral.ts) reads the engine output > reads an engine referral with no member or plot
+AssertionError: JANI1 M:? P:? D:20261004 N:10 R:6 C:0 H:0 L:1 U:1 A:rust_high_pre_rains Q:90 X:ask: expected null not to be null
+ ❯ specs/ui-compat/lovable-parse.spec.ts:54:36
+     52|   it('reads an engine referral with no member or plot', () => {
+     53|     const sms = build(check({ memberId: undefined, plotId: undefined }…
+     54|     expect(uiParse!(sms), sms).not.toBeNull();
+       |                                    ^
+     55|   });
+     56|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable farmer app SMS (src/lib/referralSms.ts) against its own officer parser and the engine > an empty member or plot field still gives an SMS the dashboard reads
+AssertionError: JANI1 M:? P:? D:20261004 N:10 R:6 C:0 H:0 L:1 U:1 A:rust_high_pre_rains Q:90 X:ask: expected null not to be null
+ ❯ specs/ui-compat/lovable-parse.spec.ts:81:94
+     79|   });
+     80|   it('an empty member or plot field still gives an SMS the dashboard r…
+     81|     expect(uiParse!(ui({ memberId: '', plotId: '' })), ui({ memberId: …
+       |                                                                                              ^
+     82|   });
+     83| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 5 passed (10)
+   Start at  23:56:03
+   Duration  336ms (transform 124ms, setup 0ms, import 154ms, tests 15ms, environment 0ms)
+

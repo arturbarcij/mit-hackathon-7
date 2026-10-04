@@ -1,0 +1,17 @@
+--- a/vite.config.ts	2026-10-03 23:55:38.391718015 +0200
++++ b/vite.config.ts	2026-10-04 00:09:59.457241164 +0200
+@@ -5,6 +5,7 @@
+ //     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
+ // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
+ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
++import { janiPrecache } from "./pwa/precache-plugin";
+ 
+ export default defineConfig({
+   tanstackStart: {
+@@ -12,4 +13,6 @@
+     // nitro/vite builds from this
+     server: { entry: "server" },
+   },
++  // Engine: offline precache manifest for public/sw.js (client build only).
++  vite: { plugins: [janiPrecache()] },
+ });

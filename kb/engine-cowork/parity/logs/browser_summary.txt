@@ -1,0 +1,15 @@
+Chromium 141.0.7390.37 onnxruntime-web/wasm 1.30.0 numThreads 1, decode = createImageBitmap + OffscreenCanvas.getImageData
+
+fixture_int8_images (T=1.5) session create 543 ms
+  no-EXIF-rotation images: n=15 top1 agree 15/15 max logit diff 0.0001959 max prob diff 1.811e-05
+  EXIF-rotated images (Chrome rotates, PIL does not): n=5 top1 agree 4/5 max logit diff 0.001567 max prob diff 0.0001721
+  median ms: decode 16.6 preprocess 6.5 run 21.6; first run 65
+
+leaf_images (T=3.5) session create 93 ms
+  no-EXIF-rotation images: n=15 top1 agree 15/15 max logit diff 0.2818 max prob diff 0.004808
+  EXIF-rotated images (Chrome rotates, PIL does not): n=5 top1 agree 5/5 max logit diff 34.1 max prob diff 0.1675
+  median ms: decode 5.3 preprocess 3.6 run 13.5; first run 69
+
+leaf_parity_samples (T=3.5) session create 70 ms
+  no-EXIF-rotation images: n=10 top1 agree 10/10 max logit diff 0.1741 max prob diff 0.005573
+  median ms: decode 10.3 preprocess 2.2 run 15.7; first run 15

@@ -107,15 +107,29 @@ Fail-safe required: when the data is not enough for a definitive answer, the AI 
 
 ### 3.2 Our answer, one line per insight
 - **Fit her week, not a demo.** The smartphone check happens at the weekend, at the house, with her daughter. The follow-through happens on her own basic phone during the week.
+- **Several leaves, not one.** PlantVillage Nuru's field study in Kenya and Tanzania found single-leaf accuracy as low as 21 to 59%, rising to 74 to 88% when six leaves were assessed (Mrisho et al., Frontiers in Plant Science, 2020). Our 10-leaf plot check follows that evidence. See kb/research/PRIOR_ART.md.
 - **The protocol is the model's friend.** Noor picks 10 leaves from the rows she is worried about and brings them to the house. They are photographed on a plain sheet (exercise book page) in daylight. This mirrors standard rust-incidence sampling, fits "the phone is at the house", and narrows the gap between training images and real use, so a tiny model stays reliable.
 - **Split perception from decision.** AI does one thing: read leaf photos. The advice is a transparent rule table (incidence plus season timing) written from published Kenyan guidance and signed off by an extension officer. Every possible answer is in a fixed list. Nothing is generated at runtime.
 - **Generative AI at build time, not runtime.** ElevenLabs renders the fixed answer list into Swahili audio once. Clips ship with the app and play offline. Every clip is reviewed by a human before release.
 - **Abstain loudly.** Low confidence, disagreement across leaves, unreadable photo, or a non-leaf image all produce "not sure, ask the officer", with a ready referral.
-- **Ride the existing registry.** The cooperative already holds a member list. Referrals carry the member number, so the officer's two visits a year go to the plots that actually need them. Officer corrections become locally labelled training data.
+- **Ride the existing registry.** Kenya has one: KIAMIS, over 6.5 million farmers registered by mid-2025, handed from FAO to the Government in November 2025. Jani's referral carries the cooperative member number now and can carry a KIAMIS ID later. The cooperative also holds a member list. Referrals carry the member number, so the officer's two visits a year go to the plots that actually need them. Officer corrections become locally labelled training data.
 - **Localising AI, concretely:** the model gets better on Ondera's own leaves, labelled by Ondera's own officer, spoken in Ondera's own languages. Adding a new language means recording about 30 short clips, not training a model.
 
 ### 3.3 Why now (the timing hook)
 In Kenya, coffee leaf rust peaks soon after the rainy seasons; copper sprays start in mid October, just before the short rains, with a repeat about three weeks later (Coffee Leaf Rust in Kenya, Agronomy 2021, MDPI). Judging happens in October. The demo scenario is literally this week's decision.
+
+### 3.4 The system layer: "is it me, or is it everyone?"
+Annex B opens with "her coffee yields have slipped and she is not sure why". The first useful answer is not a diagnosis, it is a comparison. Kenyan cooperatives already record every member's delivery (the registry the brief calls the binding constraint). Comparing Noor's deliveries to similar farms nearby, plus free satellite greenness (Sentinel-2) and rainfall (NASA POWER / CHIRPS), separates three cases:
+- **everyone dropped and rain was low**: weather, nothing to diagnose on her farm;
+- **only she dropped and her canopy thinned**: a leaf problem is likely, so the cooperative nudges her (one SMS) to do a leaf check at the weekend;
+- **only she dropped but the canopy looks normal**: not a leaf problem as far as we can see, so the officer visits.
+Three layers, each doing only what it can do: **the map decides where to look, the phone decides what it is, the officer decides what to do.** The map lives on the cooperative/officer side (online); Noor's core feature stays offline on her phone. Delivery records and plot shapes are synthetic in the demo and labelled as such; satellite and rainfall are real. Owner: geo agent (`kb/agents/geo.md`). Priority: Tier 1b, it must never block the farmer app.
+
+### 3.5 The closed loop
+1. Cooperative map flags plot P07 as `canopy_loss_check_leaves`.
+2. Officer reviews and taps "send nudge" (the officer decides; nothing is sent automatically): SMS to Noor's basic phone, "Farms near you delivered about the same as last year; yours less. A leaf check this weekend can help find why."
+3. Saturday: Noor and her daughter run the 10-leaf check offline. Result plus her decision go back as a referral SMS.
+4. The referral appears on the same map, on her plot. The officer plans the visit. Corrections become local training data.
 
 ---
 
@@ -157,6 +171,7 @@ In Kenya, coffee leaf rust peaks soon after the rainy seasons; copper sprays sta
 
 ### 5.2 Budgets (measure and report every one)
 - Model file: target 3 MB or less, hard cap 5 MB.
+- Download cost line for docs: the 15 MB bundle is 6% of Safaricom's KSh 20 daily 250 MB bundle (tariff page, Oct 2026; re-check on the day), about 2 minutes at 1 Mbit/s.
 - Whole offline bundle (app + model + audio): target 15 MB or less. Report download time at 1 Mbit/s 3G and cost in a typical Kenyan data bundle (verify the price and cite it).
 - Inference: under 1 second per leaf on a low-end Android, or in Chrome DevTools with 4x CPU throttling if no device is available. State which.
 - Works in airplane mode after first load. Show this on camera.
@@ -183,9 +198,9 @@ Verify licence and size for each before use and record it in `DATA_CARD.md`.
 
 | Dataset | Content | Role | Known gap |
 |---|---|---|---|
-| JMuBEN (Mendeley, Kenya) | 22,591 Arabica leaf images: healthy, rust, cercospora, phoma, miner. Cropped, resized, partly augmented. | Main training set. Kenyan Arabica, our crop and country. | Augmented copies can leak across splits; split by source image where possible. Cropped leaves, so less background variety. |
-| BRACOL (Mendeley, Brazil) | Arabica leaf images with disease and pest labels | Second training source, different country and camera | Brazilian conditions; controlled background. |
-| Uganda coffee leaf dataset (Mendeley, k36wnd6knb) | 3,312 smartphone images in Ugandan farms: healthy, rust, phoma; daylight and low light | **Held-out cross-country test set** (East Africa, phone camera) | Only 3 classes; variety not stated. |
+| JMuBEN + JMuBEN2 (Mendeley, Kenya, CC BY 4.0) | JMuBEN: 22,588 images, rust, cercospora, phoma (549 MB). JMuBEN2: 35,962 images, healthy and miner (1.29 GB). Cropped, augmented, no source manifest. | Main training set. Kenyan Arabica, our crop and country. | Augmented copies will leak across splits unless near-duplicates are hashed first. Cropped to the lesion, so little background variety. Variety and county not stated. |
+| BRACOL (Mendeley, Brazil, CC BY 4.0) | 1,747 whole-leaf + 2,147 symptom images; healthy, miner, rust, cercospora. No phoma. Lower side on a white background, five phones. | Second training source; its white-background protocol matches ours | Brazilian conditions; no phoma; label mapping of 'brown leaf spot' to confirm. |
+| Uganda coffee leaf dataset (Mendeley k36wnd6knb, CC BY 4.0) | 3,322 files (stated 3,312), 256x256, smartphone, daylight and low light: healthy, rust, phoma. Augmented. | **Held-out cross-country test set** (East Africa, phone camera) | Only 3 classes; augmented copies may sit in the test set; variety not stated. |
 | RoCoLe (Ecuador, CC BY) | 1,560 Robusta field images: healthy, red spider mite, rust levels 1 to 4 | **Held-out field-condition test set**, rust severity sanity check | Robusta, not Arabica; Latin America. |
 | PlantDoc / PlantVillage (non-coffee leaves) + background photos | Negatives | Train the "not a coffee leaf" class | Not coffee by design. |
 | Our own photos | Any leaves we can photograph this weekend on a plain sheet | Smoke test of the capture protocol | Not coffee unless we find coffee; label honestly. |
@@ -194,11 +209,11 @@ Report what the model **cannot see**: coffee berry disease (berries), nutrient d
 
 ### 6.2 Problem data (why this matters, with source, year, country)
 Collect and cite primary sources. Candidates to verify:
-- Extension coverage in Kenya: Kenya Agricultural Sector Extension Policy (KASEP), Ministry of Agriculture, December 2023. Secondary figure in circulation: fewer than 5,000 public extension officers for over 8 million farmers versus an FAO-recommended 1:400 (Kilimo Trust, 2025). Use the primary figure if available.
+- Extension coverage in Kenya: **1 extension agent per 1,380 farmers** (Agriculture Extension Manual v1, Ministry of Agriculture and Livestock Development, Feb 2025) against a national target of 1:600 (ASTGS 2019 to 2029, cited in KASEP Dec 2023) and the FAO recommendation of 1:400. 6.4 million farming households (2019 census via KASEP). Do not use the 'fewer than 5,000 officers for 8 million farmers' figure: unverified secondary.
 - Rust impact: losses above 75% in severe outbreaks; peaks after rainy seasons; spray timing mid October (Agronomy 11(12):2590, 2021, review of CLR in Kenya).
-- Coffee yield trend for Kenya: FAOSTAT.
-- Phone vs smartphone ownership for women in Kenya: GSMA Mobile Gender Gap Report (latest year).
-- Mobile money use: Global Findex (World Bank).
+- Coffee yield for Kenya: FAOSTAT 2015 to 2024 (official flag). 2024: 49,500 t, 435.7 kg/ha; low point 2020 at 308.3 kg/ha. **The national series is not a steady decline; never claim one.** Noor's drop is a farm-level story. Cooperatives yield 414.7 kg/ha vs estates 578.1 (KNBS 2023/24).
+- Phones: 91.8% of Kenyan women own a mobile phone (Findex 2024); 42% of women vs 50% of men own a smartphone (GSMA Mobile Gender Gap Report 2025, 2024 survey). Supports the two-phone design.
+- Mobile money: 83.5% of women, 91.7% of men have a mobile money account (Findex 2024).
 - Network coverage in coffee areas: OpenCelliD.
 - Rainfall: CHIRPS and NASA POWER for the reference location.
 - Smallholder context: LSMS-ISA where relevant.
@@ -275,7 +290,7 @@ PDF content items: (a) problem statement sentence, (b) AI capabilities and why n
 **Video 1: Team introduction (covers a, e).** Real faces, real voices. Who we are, why this sector. Read the problem statement sentence. Close with what localising AI means to us.
 
 Problem statement (fill in verified evidence):
-> Because of Jani, Noor will know which coffee rows have leaf rust and can protect them before the short rains, on the weekend she checks, when she would otherwise find out only after the yield has dropped or when the extension officer next visits; we know because [verified extension coverage figure, source, year] and rust peaks after the rains with losses above 75% in severe outbreaks [Agronomy 2021].
+> Because of Jani, Noor will know which coffee rows have leaf rust and can protect them before the short rains, on the weekend she checks, when she would otherwise find out only after the yield has dropped or when the extension officer next visits; we know because Kenya has one extension agent per 1,380 farmers against a 1:400 FAO recommendation (Ministry of Agriculture, 2025) and rust peaks after the rains with losses above 75% in severe outbreaks (Agronomy, 2021).
 
 **Video 2: Product demo (covers c, d).** Screen recording plus phone on camera. Airplane mode visible. Leaves on a sheet, 10 photos, plot summary, Swahili audio plays, one Kikuyu clip plays, one abstention ("not sure, ask the officer"), referral SMS pre-filled, Noor taps the decision, officer dashboard receives and confirms. Caption the timeline of Noor's week.
 
@@ -295,7 +310,7 @@ Keep this as `REQUIREMENTS.md` with a Status column (todo / pass / fail) and an 
 | R2 | Core feature works offline (§06) | Service worker caches app, model, audio, rules | Airplane mode: full leaf check end to end | Video 2 clip |
 | R3 | Model small enough to side-load or send over weak link (§06) | int8 ONNX, at most 5 MB; bundle at most 15 MB | File sizes printed in build log; download time at 1 Mbit/s computed | EVALUATION.md |
 | R4 | At least one interaction in a named local language, voice or text (§06) | Swahili voice + text for all answers | Every answer ID has Swahili text and audio | Answer bank table |
-| R5 | Ready for "less-supported language" question (§06) | Kikuyu subset via MMS-TTS; process to add a language documented | Kikuyu clips play for at least 5 core answers; doc describes 30-clip recording path | LANGUAGES.md |
+| R5 | Ready for "less-supported language" question (§06) | Kikuyu subset via MMS-TTS (CC BY-NC 4.0, flagged in docs); process to add a language documented | Kikuyu clips play for at least 5 core answers; doc describes 30-clip recording path | LANGUAGES.md |
 | G1 | Human makes the final call (§06) | Act / wait / ask buttons; officer confirms | No code path performs an action without a user tap | Code review + demo |
 | G2 | Agentic steps check in with user (§06) | SMS opened pre-filled, user sends | Referral never auto-sends | Demo |
 | G3 | Avoid hallucinations (§06) | Fixed answer list; no generative runtime | Grep: no LLM calls in client; every rendered answer exists in the bank | Test |
@@ -341,6 +356,8 @@ app/README.md                   problem, user journey, AI value, stack, data, li
 
 Builders (active now): **research**, **ml**, **engine**, **ui** (Lovable), **content-voice**, **docs**. One brief each in `kb/agents/<name>.md`.
 Added later: **qa** (runs the Section 12 matrix, has veto on "done"), **redteam** (attacks the pass/fail safety gate), **judge** (scores us against the weighted criteria), **pitch** (videos, problem statement, submission form).
+Expert reviewers (added Sat 3 Oct, late): **mathematician** (statistics, sampling, decision rule, calibration, evaluation validity; reports in `kb/math/`) and **agronomist** (practising Kenyan coffee farmer and agronomist: protocol, advice cards, safety, cooperative realism; reports in `kb/agronomy/`). They review and route fixes; they never edit other agents' files.
+Second expert wave (Sun 3 Oct night): **ux-designer** (low-literacy and accessibility audit; `kb/ux/`), **user-simulator** (persona walkthroughs of the live app; `kb/usersim/`), **security-privacy** (secrets, access control, consent, licences; `kb/security/`), **release-manager** (submission checklist, consistency sweep, fallback, go / no-go from 09:30; `kb/release/`).
 Coordination: `kb/STATUS.md`, `kb/DECISIONS.md`, `kb/OWNERSHIP.md`, `kb/CONTRACTS.md`.
 
 ---

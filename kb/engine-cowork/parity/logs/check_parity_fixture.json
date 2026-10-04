@@ -1,0 +1,65 @@
+{
+ "summary": {
+  "pass": true,
+  "samples": 6,
+  "failures": 0,
+  "tol": 0.02,
+  "worstMaxProbDiff": 0.00002,
+  "temperature": 1.5,
+  "decoder": "sharp (libjpeg-turbo)",
+  "ortWeb": "1.30.0",
+  "node": "v22.22.0",
+  "preprocess": "/home/claude/jani/ws-parity/src/preprocess.ts",
+  "notes": []
+ },
+ "rows": [
+  {
+   "file": "00.jpg",
+   "size": "128x128",
+   "expected": "phoma",
+   "got": "phoma",
+   "maxProbDiff": 0.00001,
+   "ok": true
+  },
+  {
+   "file": "01.jpg",
+   "size": "256x120",
+   "expected": "cercospora",
+   "got": "cercospora",
+   "maxProbDiff": 0.00001,
+   "ok": true
+  },
+  {
+   "file": "02.jpg",
+   "size": "92x256",
+   "expected": "phoma",
+   "got": "phoma",
+   "maxProbDiff": 0.00001,
+   "ok": true
+  },
+  {
+   "file": "03.jpg",
+   "size": "1280x853",
+   "expected": "cercospora",
+   "got": "cercospora",
+   "maxProbDiff": 0.00002,
+   "ok": true
+  },
+  {
+   "file": "04.jpg",
+   "size": "1024x768",
+   "expected": "cercospora",
+   "got": "cercospora",
+   "maxProbDiff": 0.00001,
+   "ok": true
+  },
+  {
+   "file": "05.jpg",
+   "size": "2048x1024",
+   "expected": "phoma",
+   "got": "phoma",
+   "maxProbDiff": 0,
+   "ok": true
+  }
+ ]
+}

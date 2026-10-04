@@ -1,0 +1,758 @@
+{
+  "generated": "2026-10-03",
+  "environment": {
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+    "cores": 2,
+    "node": "v22.22.0",
+    "python": "3.13.16",
+    "pillow": "12.3.0",
+    "torch": "2.14.1+cu130",
+    "torchvision": "0.29.1+cu130",
+    "timm": "1.0.30",
+    "onnxruntime_python": "1.29.0",
+    "onnxruntime_web": "1.30.0",
+    "chromium": "141.0.7390.37",
+    "playwright_python": "1.56.0"
+  },
+  "preprocess_node": {
+    "decoders": {
+      "png": "pngjs",
+      "jpg": "jpeg-js"
+    },
+    "n_fixtures": 24,
+    "png_max_abs_levels": 0,
+    "png_max_abs_tensor": 0,
+    "png_all_bit_exact": true,
+    "jpg_max_abs_levels": 82,
+    "jpg_mean_abs_levels": 2.6539652644912133,
+    "jpg_max_abs_tensor": 1.429193988442421,
+    "jpg_note": "jpeg-js uses nearest neighbour chroma upsampling; PIL (libjpeg-turbo) uses fancy upsampling. On 4:4:4 JPEGs jpeg-js is within 3 levels of PIL. Not a production path.",
+    "per_image": [
+      {
+        "name": "00_gradient_640x480",
+        "width": 640,
+        "height": 480,
+        "resized": {
+          "width": 298,
+          "height": 224
+        },
+        "crop": {
+          "left": 37,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 2,
+        "jpg_mean_levels": 0.4777715773809524,
+        "jpg_exact_frac": 0.5261147427721088,
+        "preprocess_ms_node": 34.4
+      },
+      {
+        "name": "01_noise_640x480",
+        "width": 640,
+        "height": 480,
+        "resized": {
+          "width": 298,
+          "height": 224
+        },
+        "crop": {
+          "left": 37,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 23,
+        "jpg_mean_levels": 3.395069355867347,
+        "jpg_exact_frac": 0.10222682823129252,
+        "preprocess_ms_node": 9.4
+      },
+      {
+        "name": "02_checker_480x640",
+        "width": 480,
+        "height": 640,
+        "resized": {
+          "width": 224,
+          "height": 298
+        },
+        "crop": {
+          "left": 0,
+          "top": 37
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 28,
+        "jpg_mean_levels": 4.187679368622449,
+        "jpg_exact_frac": 0.17201450892857142,
+        "preprocess_ms_node": 7.2
+      },
+      {
+        "name": "03_leaf_480x640",
+        "width": 480,
+        "height": 640,
+        "resized": {
+          "width": 224,
+          "height": 298
+        },
+        "crop": {
+          "left": 0,
+          "top": 37
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 8,
+        "jpg_mean_levels": 0.6957310267857143,
+        "jpg_exact_frac": 0.3359707164115646,
+        "preprocess_ms_node": 8.2
+      },
+      {
+        "name": "04_gradient_1000x750",
+        "width": 1000,
+        "height": 750,
+        "resized": {
+          "width": 298,
+          "height": 224
+        },
+        "crop": {
+          "left": 37,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 2,
+        "jpg_mean_levels": 0.46166161777210885,
+        "jpg_exact_frac": 0.5414806547619048,
+        "preprocess_ms_node": 14.9
+      },
+      {
+        "name": "05_noise_1000x750",
+        "width": 1000,
+        "height": 750,
+        "resized": {
+          "width": 298,
+          "height": 224
+        },
+        "crop": {
+          "left": 37,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 8,
+        "jpg_mean_levels": 1.2942442602040816,
+        "jpg_exact_frac": 0.2516674638605442,
+        "preprocess_ms_node": 15.3
+      },
+      {
+        "name": "06_checker_3000x4000",
+        "width": 3000,
+        "height": 4000,
+        "resized": {
+          "width": 224,
+          "height": 298
+        },
+        "crop": {
+          "left": 0,
+          "top": 37
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 4,
+        "jpg_mean_levels": 0.28260522959183676,
+        "jpg_exact_frac": 0.7549293154761905,
+        "preprocess_ms_node": 191.7
+      },
+      {
+        "name": "07_leaf_3000x4000",
+        "width": 3000,
+        "height": 4000,
+        "resized": {
+          "width": 224,
+          "height": 298
+        },
+        "crop": {
+          "left": 0,
+          "top": 37
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 1,
+        "jpg_mean_levels": 0.6705662733843537,
+        "jpg_exact_frac": 0.32943372661564624,
+        "preprocess_ms_node": 192.2
+      },
+      {
+        "name": "08_gradient_300x300",
+        "width": 300,
+        "height": 300,
+        "resized": {
+          "width": 224,
+          "height": 224
+        },
+        "crop": {
+          "left": 0,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 3,
+        "jpg_mean_levels": 0.5036936649659864,
+        "jpg_exact_frac": 0.5061516794217688,
+        "preprocess_ms_node": 3.1
+      },
+      {
+        "name": "09_noise_300x300",
+        "width": 300,
+        "height": 300,
+        "resized": {
+          "width": 224,
+          "height": 224
+        },
+        "crop": {
+          "left": 0,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 82,
+        "jpg_mean_levels": 6.452586894132653,
+        "jpg_exact_frac": 0.069601668792517,
+        "preprocess_ms_node": 3.1
+      },
+      {
+        "name": "10_checker_224x224",
+        "width": 224,
+        "height": 224,
+        "resized": {
+          "width": 224,
+          "height": 224
+        },
+        "crop": {
+          "left": 0,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 81,
+        "jpg_mean_levels": 15.080144557823129,
+        "jpg_exact_frac": 0.2690064306972789,
+        "preprocess_ms_node": 6
+      },
+      {
+        "name": "11_leaf_224x224",
+        "width": 224,
+        "height": 224,
+        "resized": {
+          "width": 224,
+          "height": 224
+        },
+        "crop": {
+          "left": 0,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 52,
+        "jpg_mean_levels": 1.0746372767857142,
+        "jpg_exact_frac": 0.3636997767857143,
+        "preprocess_ms_node": 0.7
+      },
+      {
+        "name": "12_gradient_1920x1080",
+        "width": 1920,
+        "height": 1080,
+        "resized": {
+          "width": 398,
+          "height": 224
+        },
+        "crop": {
+          "left": 87,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 2,
+        "jpg_mean_levels": 0.47427056760204084,
+        "jpg_exact_frac": 0.5288318452380952,
+        "preprocess_ms_node": 36.7
+      },
+      {
+        "name": "13_noise_1920x1080",
+        "width": 1920,
+        "height": 1080,
+        "resized": {
+          "width": 398,
+          "height": 224
+        },
+        "crop": {
+          "left": 87,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 4,
+        "jpg_mean_levels": 0.6433487457482994,
+        "jpg_exact_frac": 0.4363772852891156,
+        "preprocess_ms_node": 35.6
+      },
+      {
+        "name": "14_checker_1013x777",
+        "width": 1013,
+        "height": 777,
+        "resized": {
+          "width": 292,
+          "height": 224
+        },
+        "crop": {
+          "left": 34,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 15,
+        "jpg_mean_levels": 1.5442575467687074,
+        "jpg_exact_frac": 0.27511160714285715,
+        "preprocess_ms_node": 15.4
+      },
+      {
+        "name": "15_leaf_1013x777",
+        "width": 1013,
+        "height": 777,
+        "resized": {
+          "width": 292,
+          "height": 224
+        },
+        "crop": {
+          "left": 34,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 4,
+        "jpg_mean_levels": 0.6854405824829932,
+        "jpg_exact_frac": 0.3213222789115646,
+        "preprocess_ms_node": 16.8
+      },
+      {
+        "name": "16_gradient_777x1013",
+        "width": 777,
+        "height": 1013,
+        "resized": {
+          "width": 224,
+          "height": 292
+        },
+        "crop": {
+          "left": 0,
+          "top": 34
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 2,
+        "jpg_mean_levels": 0.46599303784013607,
+        "jpg_exact_frac": 0.5369499362244898,
+        "preprocess_ms_node": 16.9
+      },
+      {
+        "name": "17_noise_777x1013",
+        "width": 777,
+        "height": 1013,
+        "resized": {
+          "width": 224,
+          "height": 292
+        },
+        "crop": {
+          "left": 0,
+          "top": 34
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 9,
+        "jpg_mean_levels": 1.2070511798469388,
+        "jpg_exact_frac": 0.26521975977891155,
+        "preprocess_ms_node": 16.2
+      },
+      {
+        "name": "18_checker_225x224",
+        "width": 225,
+        "height": 224,
+        "resized": {
+          "width": 225,
+          "height": 224
+        },
+        "crop": {
+          "left": 0,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 81,
+        "jpg_mean_levels": 15.107182716836734,
+        "jpg_exact_frac": 0.2686078337585034,
+        "preprocess_ms_node": 6.5
+      },
+      {
+        "name": "19_leaf_225x224",
+        "width": 225,
+        "height": 224,
+        "resized": {
+          "width": 225,
+          "height": 224
+        },
+        "crop": {
+          "left": 0,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 54,
+        "jpg_mean_levels": 1.1348187712585034,
+        "jpg_exact_frac": 0.3631284545068027,
+        "preprocess_ms_node": 0.6
+      },
+      {
+        "name": "20_gradient_4032x3024",
+        "width": 4032,
+        "height": 3024,
+        "resized": {
+          "width": 298,
+          "height": 224
+        },
+        "crop": {
+          "left": 37,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 2,
+        "jpg_mean_levels": 0.4810600021258503,
+        "jpg_exact_frac": 0.5192920918367347,
+        "preprocess_ms_node": 186.9
+      },
+      {
+        "name": "21_noise_4032x3024",
+        "width": 4032,
+        "height": 3024,
+        "resized": {
+          "width": 298,
+          "height": 224
+        },
+        "crop": {
+          "left": 37,
+          "top": 0
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 2,
+        "jpg_mean_levels": 0.3832310267857143,
+        "jpg_exact_frac": 0.6167889030612245,
+        "preprocess_ms_node": 194.5
+      },
+      {
+        "name": "22_checker_150x400",
+        "width": 150,
+        "height": 400,
+        "resized": {
+          "width": 224,
+          "height": 597
+        },
+        "crop": {
+          "left": 0,
+          "top": 186
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 36,
+        "jpg_mean_levels": 6.032512223639456,
+        "jpg_exact_frac": 0.11259034863945579,
+        "preprocess_ms_node": 9.7
+      },
+      {
+        "name": "23_leaf_150x400",
+        "width": 150,
+        "height": 400,
+        "resized": {
+          "width": 224,
+          "height": 597
+        },
+        "crop": {
+          "left": 0,
+          "top": 186
+        },
+        "png_max_levels": 0,
+        "png_exact_frac": 1,
+        "jpg_max_levels": 43,
+        "jpg_mean_levels": 0.9596088435374149,
+        "jpg_exact_frac": 0.2832097682823129,
+        "preprocess_ms_node": 4.2
+      }
+    ]
+  },
+  "preprocess_browser_chromium": {
+    "png_max_levels": 0,
+    "png_max_tensor_abs": 0,
+    "png_all_bit_exact": true,
+    "jpg_max_levels": 0,
+    "jpg_mean_levels": 0.0,
+    "jpg_max_tensor_abs": 0,
+    "jpg_exact_frac_mean": 1.0,
+    "per_image": [
+      {
+        "name": "00_gradient_640x480",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "01_noise_640x480",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "02_checker_480x640",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "03_leaf_480x640",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "04_gradient_1000x750",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "05_noise_1000x750",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "06_checker_3000x4000",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "07_leaf_3000x4000",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "08_gradient_300x300",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "09_noise_300x300",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "10_checker_224x224",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "11_leaf_224x224",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "12_gradient_1920x1080",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "13_noise_1920x1080",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "14_checker_1013x777",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "15_leaf_1013x777",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "16_gradient_777x1013",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "17_noise_777x1013",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "18_checker_225x224",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "19_leaf_225x224",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "20_gradient_4032x3024",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "21_noise_4032x3024",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "22_checker_150x400",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      },
+      {
+        "name": "23_leaf_150x400",
+        "png_max_levels": 0,
+        "jpg_max_levels": 0,
+        "jpg_mean_levels": 0,
+        "jpg_exact_frac": 1
+      }
+    ]
+  },
+  "model_parity": {
+    "model": "timm mobilenetv3_small_100, num_classes 6, untrained (seed 42), opset 17, dynamo=False; int8 = quantize_static QDQ QUInt8 act / QInt8 weights, 32 random calibration tensors",
+    "fp32_bytes": 6076658,
+    "int8_bytes": 1674552,
+    "python": {
+      "pt_vs_ort_fp32_max_abs": 1.4435499906539917e-08,
+      "pt_vs_ort_int8_max_abs": 0.00833137333393097,
+      "top1_pt_vs_ort_fp32": 1.0,
+      "top1_pt_vs_ort_int8": 0.875
+    },
+    "node_ort_web": {
+      "fp32_vs_python_ort_max_abs": 1.862645149230957e-08,
+      "int8_vs_python_ort_max_abs": 0.0002302506472915411,
+      "top1_fp32_vs_python_ort": 1,
+      "top1_int8_vs_python_ort": 1
+    },
+    "browser_ort_web": {
+      "logits_max_abs_diff": {
+        "fp32_vs_python_ort": 1.862645149230957e-08,
+        "fp32_vs_node_ort": 0.0,
+        "int8_vs_python_ort": 0.0002302506472915411,
+        "int8_vs_node_ort": 0.0,
+        "fp32_vs_pytorch": 2.421438694000244e-08,
+        "int8_vs_pytorch": 0.00833137333393097
+      },
+      "top1_agreement": {
+        "fp32_vs_python_ort": 1.0,
+        "int8_vs_python_ort": 1.0,
+        "fp32_vs_node_ort": 1.0,
+        "int8_vs_node_ort": 1.0,
+        "int8_vs_pytorch": 0.875
+      }
+    },
+    "note": "The int8 vs PyTorch top-1 figure (0.875) is for an untrained model whose logits are all within about 0.01 of zero, so int8 noise of 0.008 flips argmax. It says nothing about the trained model. What matters here is browser vs Python onnxruntime on the same int8 graph: 2.3e-4 max abs, 100 percent top-1."
+  },
+  "latency_ms": {
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+    "python_ort_1thread": {
+      "fp32_median": 2.2951230000671785,
+      "int8_median": 6.127945999992335
+    },
+    "node_ort_web_1thread": {
+      "fp32_median": 25.54,
+      "int8_median": 18.31,
+      "fp32_first": 94.85,
+      "int8_first": 100.13
+    },
+    "chromium_ort_web_1thread_unthrottled": {
+      "fp32_ms_median": 13.800000000046566,
+      "fp32_ms_first": 16.599999999976717,
+      "int8_ms_median": 15.400000000023283,
+      "int8_ms_first": 14.199999999953434,
+      "fp32_session_load_ms": 461.9000000000233,
+      "int8_session_load_ms": 197.90000000002328,
+      "preprocess_ms_median_png_fixtures": 14.400000000023283,
+      "fp32_ms_median_rerun": 13.199999999953434,
+      "int8_ms_median_rerun": 14.699999999953434,
+      "decode_12mp_jpeg_to_rgba_ms": 176.59999999997672,
+      "preprocess_12mp_ms": 177.30000000004657
+    },
+    "chromium_ort_web_1thread_cpu_throttle_4x": {
+      "fp32_ms_median": 57.59999999997672,
+      "int8_ms_median": 64.69999999995343,
+      "fp32_ms_first": 61.90000000002328,
+      "int8_ms_first": 62.09999999997672,
+      "decode_12mp_jpeg_to_rgba_ms": 560,
+      "preprocess_12mp_ms": 687.7000000000698
+    }
+  },
+  "ort_wasm_files_loaded_by_browser": [
+    {
+      "url": "ort/ort.wasm.min.mjs",
+      "status": 200,
+      "bytes": 50126
+    },
+    {
+      "url": "ort/ort-wasm-simd-threaded.mjs",
+      "status": 200,
+      "bytes": 24381
+    },
+    {
+      "url": "ort/ort-wasm-simd-threaded.wasm",
+      "status": 200,
+      "bytes": 14239897
+    }
+  ],
+  "ort_wasm_gzip_bytes": 3659955,
+  "page_errors": [
+    "console.error: Failed to load resource: the server responded with a status of 404 (File not found)"
+  ]
+}

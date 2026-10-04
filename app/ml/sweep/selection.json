@@ -1,0 +1,72 @@
+{
+  "winner": "v1",
+  "reason": "no qualifying candidate; keep v1",
+  "rule_time": "2026-10-04T00:39:05+02:00",
+  "v1": {
+    "name": "v1",
+    "arch": "mobilenetv3_small_100",
+    "aug": "v1",
+    "status": "ok",
+    "val_coverage": "0.9418",
+    "val_selective_acc": "0.9501",
+    "val_macro_f1": "0.9253",
+    "bracol_val_macro_f1": "0.4932",
+    "bytes": "3077051",
+    "quantization": "fp16",
+    "int8_parity": "1.000",
+    "qualifies": "0",
+    "note": "shipped v1; int8 parity failed so this row does not qualify under the int8 rule",
+    "finished": ""
+  },
+  "candidates": [
+    {
+      "name": "sheet",
+      "arch": "mobilenetv3_small_100",
+      "aug": "sheet",
+      "status": "ok",
+      "val_coverage": "1.0000",
+      "val_selective_acc": "0.9540",
+      "val_macro_f1": "0.9557",
+      "bracol_val_macro_f1": "0.3075",
+      "bytes": "3077051",
+      "quantization": "fp16",
+      "int8_parity": "1.000",
+      "qualifies": "0",
+      "note": "train.py --arch mobilenetv3_small_100 --aug sheet --manifest C:\\Users\\artur\\Documents\\MIT_Hackathon_7\\app\\ml\\sweep\\manifest_v1.csv --run-dir C:\\Users\\artur\\Documents\\MIT_Hackathon_7\\app\\ml\\sweep\\sheet\\run --no-global --epochs 8 --patience 2 --batch 96",
+      "finished": "2026-10-04T00:38:40+02:00"
+    },
+    {
+      "name": "large075",
+      "arch": "mobilenetv3_large_075",
+      "aug": "v1",
+      "status": "skipped",
+      "qualifies": "0",
+      "note": "untrained export 5450616 over 4.5 MB; untrained fp32=10838338 fp16=5450616",
+      "val_coverage": "",
+      "val_selective_acc": "",
+      "val_macro_f1": "",
+      "bracol_val_macro_f1": "",
+      "bytes": "5450616",
+      "quantization": "",
+      "int8_parity": "",
+      "finished": ""
+    },
+    {
+      "name": "combo",
+      "arch": "",
+      "aug": "",
+      "status": "skipped",
+      "qualifies": "0",
+      "note": "A and B did not qualify, or time cut",
+      "val_coverage": "",
+      "val_selective_acc": "",
+      "val_macro_f1": "",
+      "bracol_val_macro_f1": "",
+      "bytes": "",
+      "quantization": "",
+      "int8_parity": "",
+      "finished": ""
+    }
+  ],
+  "held_out_used_for_selection": false
+}

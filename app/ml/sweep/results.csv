@@ -1,0 +1,5 @@
+name,arch,aug,status,val_coverage,val_selective_acc,val_macro_f1,bracol_val_macro_f1,bytes,quantization,int8_parity,qualifies,note,finished
+v1,mobilenetv3_small_100,v1,ok,0.9418,0.9501,0.9253,0.4932,3077051,fp16,1.000,0,shipped v1; int8 parity failed so this row does not qualify under the int8 rule,
+sheet,mobilenetv3_small_100,sheet,ok,1.0000,0.9540,0.9557,0.3075,3077051,fp16,1.000,0,train.py --arch mobilenetv3_small_100 --aug sheet --manifest C:\Users\artur\Documents\MIT_Hackathon_7\app\ml\sweep\manifest_v1.csv --run-dir C:\Users\artur\Documents\MIT_Hackathon_7\app\ml\sweep\sheet\run --no-global --epochs 8 --patience 2 --batch 96,2026-10-04T00:38:40+02:00
+large075,mobilenetv3_large_075,v1,skipped,,,,,5450616,,,0,untrained export 5450616 over 4.5 MB; untrained fp32=10838338 fp16=5450616,
+combo,,,skipped,,,,,,,,0,"A and B did not qualify, or time cut",

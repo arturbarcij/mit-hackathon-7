@@ -1,0 +1,7 @@
+dataset,licence,role,n_raw,n_train,n_val,n_test,n_heldout,n_unused,notes
+bracol,CC BY 4.0,train/val/test,1343,792,173,175,0,203,Brazil Arabica; labels from dataset.csv predominant_stress; zip was truncated
+jmuben,CC BY 4.0,train/val/test,22588,15579,3369,3640,0,0,"Kenya Arabica; rust, cercospora, phoma; cropped and augmented"
+jmuben2,CC BY 4.0,train/val/test,35962,12746,2714,2397,0,18105,Kenya Arabica; healthy and miner; augmented; capped at 9000 after dedupe
+plantdoc,CC BY 4.0,train/val/test,2570,1804,380,386,0,0,non-coffee leaves used only as not_leaf
+synthetic_bg,synthetic,train/val/test,800,556,128,116,0,0,generated paper/wood/soil/skin/grey backgrounds; labelled synthetic
+uganda,CC BY 4.0,held-out test only,424,0,0,0,424,0,never trained on; augmented; prefix-to-class inferred

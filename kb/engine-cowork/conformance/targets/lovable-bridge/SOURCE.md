@@ -1,0 +1,2 @@
+Adapter only (ours). Wires the Lovable UI's own mock-mode logic into the CONTRACTS function names, exactly as src/routes/index.tsx (commit e47a8a7) calls it. Sources: targets/lovable-mock (src/engine) and targets/lovable-ui/src/lib (mockBridge.ts, referralSms.ts, parseReferral.ts), all read-only copies from Lovable.
+Run: ENGINE_DIR=./targets/lovable-bridge SRC_DIR=./targets/lovable-ui/src npx vitest run

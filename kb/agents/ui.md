@@ -32,6 +32,7 @@ Persistent elements: offline indicator, language switch, audio replay. A visible
 - Referral queue sorted by urgency (abstained or high incidence first), with member ID, plot, date, counts, confidence.
 - "Paste SMS" box: paste a referral SMS, it is parsed by the engine's `parseReferral` and creates a record. This shows how the SMS path works without a gateway; label it "simulated SMS gateway".
 - Referral detail: photos (only if shared), model labels, buttons "Confirm" / "Correct label" / "Visit needed". Corrections save to `corrections`.
+- **Outlier map (the centrepiece of /officer):** Leaflet map of `public/geo/plots.geojson` coloured by `reason` from `public/geo/outliers.json` (red `canopy_loss_check_leaves`, amber `drop_other_cause_ask_officer`, blue `area_wide_weather`, green `in_line_with_peers`, grey `not_enough_data`; pattern or icon as well as colour). Click a plot: own change vs peers bar, NDVI change, clear observations, confidence ("not sure" when low), and a button "Send leaf-check nudge" that shows the SMS text and opens the SMS app (the officer presses send; label "simulated SMS gateway"). Referrals from farmers appear as pins on their plot. Legend states "Deliveries and plot shapes are synthetic. Satellite: Copernicus Sentinel-2. Rainfall: NASA POWER."
 - Map of referrals (Leaflet + OpenStreetMap tiles; the officer side may be online).
 - Export corrections as CSV ("new labelled examples for the next model").
 - Seed 15 to 20 synthetic referrals, each with `synthetic = true` and a visible "synthetic" tag.

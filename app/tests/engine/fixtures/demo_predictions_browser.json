@@ -1,0 +1,474 @@
+{
+ "info": {
+  "version": "v1-2026-10-04",
+  "mock": false
+ },
+ "tLoad": 607,
+ "out": [
+  {
+   "name": "sample01_rust.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.322,
+    "edge": 0.773,
+    "leaf": 0.624,
+    "detail": "leaf_cut_off"
+   },
+   "label": "not_leaf",
+   "conf": 0.955,
+   "probs": {
+    "healthy": 0.0003862238749604816,
+    "rust": 0.020006053260378694,
+    "cercospora": 0.00889451142680353,
+    "phoma": 0.01477768383279875,
+    "miner": 0.0009249682659486384,
+    "not_leaf": 0.9550105593391098
+   },
+   "blur": 424.2,
+   "bright": 0.477,
+   "msGated": 54,
+   "msRaw": 164
+  },
+  {
+   "name": "sample02_rust.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.057,
+    "edge": 0.917,
+    "leaf": 0.887,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 0.9913,
+   "probs": {
+    "healthy": 0.000002575123949395323,
+    "rust": 0.0036799032720729254,
+    "cercospora": 0.0005047358981181728,
+    "phoma": 0.00012126840978247812,
+    "miner": 0.004435915486633749,
+    "not_leaf": 0.9912556018094434
+   },
+   "blur": 488.1,
+   "bright": 0.552,
+   "msGated": 26,
+   "msRaw": 44
+  },
+  {
+   "name": "sample03_rust.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.202,
+    "edge": 0.53,
+    "leaf": 0.563,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 0.9233,
+   "probs": {
+    "healthy": 0.0013716744960857524,
+    "rust": 0.013552119773978605,
+    "cercospora": 0.030290776194306892,
+    "phoma": 0.024648041689428368,
+    "miner": 0.006826511247884884,
+    "not_leaf": 0.9233108765983156
+   },
+   "blur": 450.6,
+   "bright": 0.403,
+   "msGated": 11,
+   "msRaw": 45
+  },
+  {
+   "name": "sample04_rust.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.04,
+    "edge": 0.837,
+    "leaf": 0.918,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 0.9908,
+   "probs": {
+    "healthy": 0.00007624096592579494,
+    "rust": 0.0034826959387063237,
+    "cercospora": 0.002497747187950942,
+    "phoma": 0.0030882958699893805,
+    "miner": 0.00010036431563559685,
+    "not_leaf": 0.9907546557217919
+   },
+   "blur": 4425.1,
+   "bright": 0.387,
+   "msGated": 14,
+   "msRaw": 51
+  },
+  {
+   "name": "sample05_rust.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.046,
+    "edge": 0.683,
+    "leaf": 0.773,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 0.6029,
+   "probs": {
+    "healthy": 0.015805726257387073,
+    "rust": 0.06085113790677166,
+    "cercospora": 0.11875805415595203,
+    "phoma": 0.11960147517143974,
+    "miner": 0.08205820456194006,
+    "not_leaf": 0.6029254019465096
+   },
+   "blur": 444.8,
+   "bright": 0.409,
+   "msGated": 7,
+   "msRaw": 43
+  },
+  {
+   "name": "sample06_rust.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.211,
+    "edge": 0.757,
+    "leaf": 0.732,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 0.8687,
+   "probs": {
+    "healthy": 0.0002408210620265918,
+    "rust": 0.021772997180648984,
+    "cercospora": 0.026487771502896024,
+    "phoma": 0.08074463576166416,
+    "miner": 0.0020751187704929615,
+    "not_leaf": 0.8686786557222712
+   },
+   "blur": 1209.8,
+   "bright": 0.444,
+   "msGated": 11,
+   "msRaw": 29
+  },
+  {
+   "name": "sample07_healthy.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.039,
+    "edge": 0.967,
+    "leaf": 0.912,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 0.8335,
+   "probs": {
+    "healthy": 0.00960981205963992,
+    "rust": 0.0015515965631103183,
+    "cercospora": 0.004100156025296749,
+    "phoma": 0.15098570928144742,
+    "miner": 0.00020829481784797352,
+    "not_leaf": 0.8335444312526576
+   },
+   "blur": 658.7,
+   "bright": 0.295,
+   "msGated": 9,
+   "msRaw": 27
+  },
+  {
+   "name": "sample08_healthy.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.024,
+    "edge": 0.882,
+    "leaf": 0.884,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 0.6666,
+   "probs": {
+    "healthy": 0.019404398918742845,
+    "rust": 0.0014439461485085735,
+    "cercospora": 0.00644011406930689,
+    "phoma": 0.2913383246796287,
+    "miner": 0.014802348941243909,
+    "not_leaf": 0.6665708672425691
+   },
+   "blur": 520.9,
+   "bright": 0.333,
+   "msGated": 8,
+   "msRaw": 27
+  },
+  {
+   "name": "sample09_healthy.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.012,
+    "edge": 0.028,
+    "leaf": 0.456,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 0.9981,
+   "probs": {
+    "healthy": 0.00006184590142560316,
+    "rust": 0.0006403520256221314,
+    "cercospora": 0.0005299641269287328,
+    "phoma": 0.0006276232205824571,
+    "miner": 0.000009330733346273029,
+    "not_leaf": 0.9981308839920947
+   },
+   "blur": 1908.8,
+   "bright": 0.433,
+   "msGated": 8,
+   "msRaw": 26
+  },
+  {
+   "name": "sample10_other.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.039,
+    "edge": 0.767,
+    "leaf": 0.773,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 0.9953,
+   "probs": {
+    "healthy": 0.00005540857640417714,
+    "rust": 0.00015652960946112515,
+    "cercospora": 0.00016346054331243555,
+    "phoma": 0.004321721640774103,
+    "miner": 0.000009960302111326063,
+    "not_leaf": 0.9952929193279367
+   },
+   "blur": 875.2,
+   "bright": 0.319,
+   "msGated": 13,
+   "msRaw": 29
+  },
+  {
+   "name": "sample11_berry.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.047,
+    "edge": 0.908,
+    "leaf": 0.94,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 0.984,
+   "probs": {
+    "healthy": 0.00023189819221158128,
+    "rust": 0.0012424594816542493,
+    "cercospora": 0.0010761585327270316,
+    "phoma": 0.010250950702423014,
+    "miner": 0.003204769168468576,
+    "not_leaf": 0.9839937639225156
+   },
+   "blur": 1260.5,
+   "bright": 0.454,
+   "msGated": 9,
+   "msRaw": 30
+  },
+  {
+   "name": "sample12_poor.jpg",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.024,
+    "edge": 0.969,
+    "leaf": 0.956,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 0.9584,
+   "probs": {
+    "healthy": 0.00120784894889843,
+    "rust": 0.0027081709925871416,
+    "cercospora": 0.0024381544816724316,
+    "phoma": 0.03473543436954094,
+    "miner": 0.0005476180082182812,
+    "not_leaf": 0.9583627731990827
+   },
+   "blur": 1047,
+   "bright": 0.223,
+   "msGated": 7,
+   "msRaw": 28
+  },
+  {
+   "name": "00.jpg",
+   "gated": "unsure",
+   "reason": "too_small",
+   "sheet": null,
+   "label": "unsure",
+   "conf": 0,
+   "probs": {
+    "healthy": 0,
+    "rust": 0,
+    "cercospora": 0,
+    "phoma": 0,
+    "miner": 0,
+    "not_leaf": 0
+   },
+   "blur": 17.8,
+   "bright": 0.578,
+   "msGated": 3,
+   "msRaw": 3
+  },
+  {
+   "name": "05.jpg",
+   "gated": "unsure",
+   "reason": "too_small",
+   "sheet": null,
+   "label": "unsure",
+   "conf": 0,
+   "probs": {
+    "healthy": 0,
+    "rust": 0,
+    "cercospora": 0,
+    "phoma": 0,
+    "miner": 0,
+    "not_leaf": 0
+   },
+   "blur": 11.7,
+   "bright": 0.702,
+   "msGated": 4,
+   "msRaw": 3
+  },
+  {
+   "name": "07.jpg",
+   "gated": "unsure",
+   "reason": "too_small",
+   "sheet": null,
+   "label": "unsure",
+   "conf": 0,
+   "probs": {
+    "healthy": 0,
+    "rust": 0,
+    "cercospora": 0,
+    "phoma": 0,
+    "miner": 0,
+    "not_leaf": 0
+   },
+   "blur": 42.5,
+   "bright": 0.53,
+   "msGated": 3,
+   "msRaw": 3
+  },
+  {
+   "name": "syn_leaf_on_page.png",
+   "gated": "unsure",
+   "reason": null,
+   "sheet": {
+    "paper": 0.855,
+    "edge": 0,
+    "leaf": 0.144
+   },
+   "label": "unsure",
+   "conf": 0.5781,
+   "probs": {
+    "healthy": 0.1598608842378341,
+    "rust": 0.005200546522953186,
+    "cercospora": 0.010069083561195116,
+    "phoma": 0.19037075287994357,
+    "miner": 0.056424646139828026,
+    "not_leaf": 0.5780740866582461
+   },
+   "blur": 317.6,
+   "bright": 0.831,
+   "msGated": 30,
+   "msRaw": 22
+  },
+  {
+   "name": "syn_skin_hand.png",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0,
+    "edge": 1,
+    "leaf": 1,
+    "detail": "no_page"
+   },
+   "label": "unsure",
+   "conf": 0.4742,
+   "probs": {
+    "healthy": 0.0759214060793829,
+    "rust": 0.005211916554079087,
+    "cercospora": 0.055037307079157764,
+    "phoma": 0.4742380708261037,
+    "miner": 0.14300688079873064,
+    "not_leaf": 0.24658441866254605
+   },
+   "blur": 139.1,
+   "bright": 0.593,
+   "msGated": 12,
+   "msRaw": 21
+  },
+  {
+   "name": "syn_plain_page.png",
+   "gated": "unsure",
+   "reason": "blurry",
+   "sheet": null,
+   "label": "unsure",
+   "conf": 0,
+   "probs": {
+    "healthy": 0,
+    "rust": 0,
+    "cercospora": 0,
+    "phoma": 0,
+    "miner": 0,
+    "not_leaf": 0
+   },
+   "blur": 48,
+   "bright": 0.915,
+   "msGated": 4,
+   "msRaw": 4
+  },
+  {
+   "name": "syn_noise.png",
+   "gated": "unsure",
+   "reason": "not_on_page",
+   "sheet": {
+    "paper": 0.075,
+    "edge": 0.874,
+    "leaf": 0.871,
+    "detail": "no_page"
+   },
+   "label": "not_leaf",
+   "conf": 1,
+   "probs": {
+    "healthy": 8.413960541424334e-9,
+    "rust": 0.00004285155948485775,
+    "cercospora": 3.2571652435469973e-7,
+    "phoma": 1.9889900257529908e-7,
+    "miner": 4.5068036137541185e-8,
+    "not_leaf": 0.9999565703429917
+   },
+   "blur": 15935.2,
+   "bright": 0.498,
+   "msGated": 23,
+   "msRaw": 25
+  }
+ ],
+ "offscreen": true,
+ "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+ "requests": [
+  "/index.html",
+  "/assets/index-DnvbYgJX.js",
+  "/model/model.json",
+  "/assets/ort.wasm.bundle.min-BS-qCmkF.js",
+  "/ort/ort-wasm-simd-threaded.mjs",
+  "/ort/ort-wasm-simd-threaded.wasm",
+  "/model/leaf.onnx"
+ ]
+}

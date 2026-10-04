@@ -1,0 +1,83 @@
+1
+00:00:00,200 --> 00:00:03,560
+Three layers. The map decides where to
+
+2
+00:00:03,560 --> 00:00:06,920
+look. The phone decides what it is.
+
+3
+00:00:06,920 --> 00:00:09,800
+The officer decides what to do.
+
+4
+00:00:10,200 --> 00:00:14,153
+A small convolutional network reads each leaf
+
+5
+00:00:14,153 --> 00:00:15,847
+on the phone:
+
+6
+00:00:15,847 --> 00:00:18,106
+[PENDING: ml] megabytes, [PENDING:
+
+7
+00:00:18,106 --> 00:00:19,800
+ml] milliseconds, offline.
+
+8
+00:00:20,200 --> 00:00:23,292
+Trained on Kenyan Arabica leaves, tested on
+
+9
+00:00:23,292 --> 00:00:25,058
+Uganda and Ecuador photos.
+
+10
+00:00:25,058 --> 00:00:26,383
+Cross-country accuracy: [PENDING:
+
+11
+00:00:26,383 --> 00:00:29,475
+ml]. It cannot see berries, nutrient problems
+
+12
+00:00:29,475 --> 00:00:30,800
+or other varieties.
+
+13
+00:00:31,200 --> 00:00:34,000
+SMS and spreadsheets need Noor to name
+
+14
+00:00:34,000 --> 00:00:36,800
+the disease. The model turns a photo
+
+15
+00:00:36,800 --> 00:00:38,000
+into that input.
+
+16
+00:00:38,000 --> 00:00:40,800
+The advice is a plain rule table.
+
+17
+00:00:41,200 --> 00:00:43,435
+No chatbot, only fixed answers.
+
+18
+00:00:43,435 --> 00:00:45,671
+Doubt means ask the officer.
+
+19
+00:00:45,671 --> 00:00:48,800
+Nothing is sent until Noor presses send.
+
+20
+00:00:49,200 --> 00:00:51,533
+React app, ONNX Runtime, Supabase.
+
+21
+00:00:51,533 --> 00:00:54,800
+Saturday at the house; follow-up by SMS.

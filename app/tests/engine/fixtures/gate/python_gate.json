@@ -1,0 +1,412 @@
+{
+ "generated_by": "app/scripts/make_gate_fixtures.py with kb/edge/sheet_gate.py",
+ "results": {
+  "public/demo/sample01_rust.jpg": {
+   "ok": false,
+   "reason": "leaf_cut_off",
+   "paper": 0.322,
+   "edge_touch": 0.774,
+   "leaf": 0.624,
+   "size": [
+    480,
+    640
+   ]
+  },
+  "public/demo/sample02_rust.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.058,
+   "edge_touch": 0.915,
+   "leaf": 0.885,
+   "size": [
+    480,
+    640
+   ]
+  },
+  "public/demo/sample03_rust.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.203,
+   "edge_touch": 0.53,
+   "leaf": 0.562,
+   "size": [
+    640,
+    480
+   ]
+  },
+  "public/demo/sample04_rust.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.042,
+   "edge_touch": 0.834,
+   "leaf": 0.915,
+   "size": [
+    480,
+    640
+   ]
+  },
+  "public/demo/sample05_rust.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.047,
+   "edge_touch": 0.682,
+   "leaf": 0.772,
+   "size": [
+    640,
+    360
+   ]
+  },
+  "public/demo/sample06_rust.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.212,
+   "edge_touch": 0.758,
+   "leaf": 0.731,
+   "size": [
+    480,
+    640
+   ]
+  },
+  "public/demo/sample07_healthy.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.04,
+   "edge_touch": 0.967,
+   "leaf": 0.91,
+   "size": [
+    480,
+    640
+   ]
+  },
+  "public/demo/sample08_healthy.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.025,
+   "edge_touch": 0.877,
+   "leaf": 0.881,
+   "size": [
+    640,
+    480
+   ]
+  },
+  "public/demo/sample09_healthy.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.02,
+   "edge_touch": 0.039,
+   "leaf": 0.459,
+   "size": [
+    427,
+    640
+   ]
+  },
+  "public/demo/sample10_other.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.039,
+   "edge_touch": 0.762,
+   "leaf": 0.77,
+   "size": [
+    640,
+    480
+   ]
+  },
+  "public/demo/sample11_berry.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.049,
+   "edge_touch": 0.905,
+   "leaf": 0.938,
+   "size": [
+    640,
+    480
+   ]
+  },
+  "public/demo/sample12_poor.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.024,
+   "edge_touch": 0.968,
+   "leaf": 0.955,
+   "size": [
+    640,
+    427
+   ]
+  },
+  "ml/parity_samples/00.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.014,
+   "edge_touch": 0.926,
+   "leaf": 0.979,
+   "size": [
+    128,
+    128
+   ]
+  },
+  "ml/parity_samples/01.jpg": {
+   "ok": false,
+   "reason": "leaf_cut_off",
+   "paper": 0.336,
+   "edge_touch": 0.565,
+   "leaf": 0.572,
+   "size": [
+    128,
+    128
+   ]
+  },
+  "ml/parity_samples/02.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.004,
+   "edge_touch": 0.992,
+   "leaf": 0.97,
+   "size": [
+    113,
+    256
+   ]
+  },
+  "ml/parity_samples/03.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.0,
+   "edge_touch": 1.0,
+   "leaf": 1.0,
+   "size": [
+    128,
+    128
+   ]
+  },
+  "ml/parity_samples/04.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.0,
+   "edge_touch": 0.996,
+   "leaf": 0.998,
+   "size": [
+    128,
+    128
+   ]
+  },
+  "ml/parity_samples/05.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.003,
+   "edge_touch": 0.952,
+   "leaf": 0.978,
+   "size": [
+    128,
+    128
+   ]
+  },
+  "ml/parity_samples/06.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.0,
+   "edge_touch": 1.0,
+   "leaf": 1.0,
+   "size": [
+    128,
+    128
+   ]
+  },
+  "ml/parity_samples/07.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.041,
+   "edge_touch": 0.837,
+   "leaf": 0.925,
+   "size": [
+    128,
+    128
+   ]
+  },
+  "ml/parity_samples/08.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.109,
+   "edge_touch": 0.784,
+   "leaf": 0.821,
+   "size": [
+    128,
+    128
+   ]
+  },
+  "ml/parity_samples/09.jpg": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.0,
+   "edge_touch": 1.0,
+   "leaf": 1.0,
+   "size": [
+    128,
+    128
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_clutter_blocks.png": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.017,
+   "edge_touch": 0.961,
+   "leaf": 0.957,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_dark_table.png": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.0,
+   "edge_touch": 1.0,
+   "leaf": 1.0,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_leaf_fills_frame.png": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.01,
+   "edge_touch": 0.948,
+   "leaf": 0.99,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_leaf_off_corner.png": {
+   "ok": false,
+   "reason": "leaf_cut_off",
+   "paper": 0.847,
+   "edge_touch": 0.211,
+   "leaf": 0.153,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_leaf_off_edge.png": {
+   "ok": true,
+   "reason": null,
+   "paper": 0.861,
+   "edge_touch": 0.12,
+   "leaf": 0.138,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_leaf_on_page.png": {
+   "ok": true,
+   "reason": null,
+   "paper": 0.855,
+   "edge_touch": 0.0,
+   "leaf": 0.144,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_leaf_on_page_portrait.png": {
+   "ok": true,
+   "reason": null,
+   "paper": 0.905,
+   "edge_touch": 0.0,
+   "leaf": 0.094,
+   "size": [
+    300,
+    400
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_leaf_on_soil.png": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.0,
+   "edge_touch": 1.0,
+   "leaf": 1.0,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_lined_page.png": {
+   "ok": false,
+   "reason": "leaf_too_small",
+   "paper": 1.0,
+   "edge_touch": 0.0,
+   "leaf": 0.0,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_noise.png": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.094,
+   "edge_touch": 0.841,
+   "leaf": 0.839,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_plain_page.png": {
+   "ok": false,
+   "reason": "leaf_too_small",
+   "paper": 1.0,
+   "edge_touch": 0.0,
+   "leaf": 0.0,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_rust_leaf_on_page.png": {
+   "ok": true,
+   "reason": null,
+   "paper": 0.837,
+   "edge_touch": 0.0,
+   "leaf": 0.162,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_skin_hand.png": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.0,
+   "edge_touch": 1.0,
+   "leaf": 1.0,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_skin_only.png": {
+   "ok": false,
+   "reason": "no_page",
+   "paper": 0.0,
+   "edge_touch": 1.0,
+   "leaf": 1.0,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "tests/engine/fixtures/gate/syn_tiny_leaf_on_page.png": {
+   "ok": false,
+   "reason": "leaf_too_small",
+   "paper": 0.984,
+   "edge_touch": 0.0,
+   "leaf": 0.016,
+   "size": [
+    400,
+    300
+   ]
+  }
+ }
+}

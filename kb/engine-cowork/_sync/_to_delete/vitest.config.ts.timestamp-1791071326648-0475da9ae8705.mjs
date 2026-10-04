@@ -1,0 +1,11 @@
+import "node:module";
+import { defineConfig } from "vitest/config";
+var vitest_config_default = defineConfig({ test: {
+	include: ["tests/engine/**/*.test.ts", "tests/engine/**/*.test.tsx"],
+	environment: "node",
+	testTimeout: 2e4
+} });
+//#endregion
+export { vitest_config_default as default };
+
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidml0ZXN0LmNvbmZpZy5qcyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvc2Vzc2lvbnMvcmN3LTAxbDJweWhicDd5MXp5cjlyd2ZoaW93MS9tbnQvTUlUX0hhY2thdGhvbl83L2FwcC92aXRlc3QuY29uZmlnLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGRlZmluZUNvbmZpZyB9IGZyb20gJ3ZpdGVzdC9jb25maWcnO1xuXG4vLyBFbmdpbmUgdGVzdHMgb25seS4gUHVyZSBsb2dpYyBydW5zIGluIG5vZGU7IGZpbGVzIHRoYXQgbmVlZCBhIERPTSBkZWNsYXJlXG4vLyBgLy8gQHZpdGVzdC1lbnZpcm9ubWVudCBqc2RvbWAgYXQgdGhlIHRvcC5cbmV4cG9ydCBkZWZhdWx0IGRlZmluZUNvbmZpZyh7XG4gIHRlc3Q6IHtcbiAgICBpbmNsdWRlOiBbJ3Rlc3RzL2VuZ2luZS8qKi8qLnRlc3QudHMnLCAndGVzdHMvZW5naW5lLyoqLyoudGVzdC50c3gnXSxcbiAgICBlbnZpcm9ubWVudDogJ25vZGUnLFxuICAgIHRlc3RUaW1lb3V0OiAyMDAwMCxcbiAgfSxcbn0pO1xuIl0sIm1hcHBpbmdzIjoiOztBQUlBLElBQUEsd0JBQWUsYUFBYSxFQUMxQixNQUFNO0NBQ0osU0FBUyxDQUFDLDZCQUE2Qiw0QkFBNEI7Q0FDbkUsYUFBYTtDQUNiLGFBQWE7QUFDZixFQUNGLENBQUMifQ==

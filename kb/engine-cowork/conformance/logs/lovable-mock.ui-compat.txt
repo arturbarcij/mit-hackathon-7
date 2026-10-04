@@ -1,0 +1,137 @@
+
+ RUN  v4.1.11 /home/claude/jani/ws-conformance
+
+ ❯ specs/ui-compat/lovable-parse.spec.ts (10 tests | 8 failed) 25ms
+     ✓ passes its own unit-test example (P:P07) 2ms
+     × reads the CONTRACTS example verbatim (P:2) 4ms
+     × reads an engine referral with plot P07 and keeps every field 2ms
+     × reads an engine referral with a numeric plot as in CONTRACTS (plot 2) 1ms
+     × reads an engine referral with no photos (N:0) 1ms
+     × reads an engine referral with no member or plot 2ms
+     × keeps not_leaf leaves out of the healthy count 1ms
+     ✓ the SMS the farmer app sends today can be read by the officer dashboard 1ms
+     × the farmer app SMS and engine buildReferral agree on every field except Q 8ms
+     × an empty member or plot field still gives an SMS the dashboard reads 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable officer dashboard parser (src/lib/parseReferral.ts) reads the engine output > reads the CONTRACTS example verbatim (P:2)
+AssertionError: expected null not to be null
+ ❯ specs/ui-compat/lovable-parse.spec.ts:31:118
+     29|
+     30|   it('reads the CONTRACTS example verbatim (P:2)', () => {
+     31|     expect(uiParse!('JANI1 M:OCC0412 P:2 D:20261004 N:10 R:6 C:0 H:0 L…
+       |                                                                                                                      ^
+     32|   });
+     33|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable officer dashboard parser (src/lib/parseReferral.ts) reads the engine output > reads an engine referral with plot P07 and keeps every field
+AssertionError: Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise.: expected null to be truthy
+
+- Expected:
+true
+
++ Received:
+null
+
+ ❯ specs/ui-compat/lovable-parse.spec.ts:38:20
+     36|     const sms = build(c);
+     37|     const p = normaliseParsed(uiParse!(sms));
+     38|     expect(p, sms).toBeTruthy();
+       |                    ^
+     39|     expect(p).toMatchObject({ memberId: 'OCC0412', plotId: 'P07', date…
+     40|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable officer dashboard parser (src/lib/parseReferral.ts) reads the engine output > reads an engine referral with a numeric plot as in CONTRACTS (plot 2)
+AssertionError: Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise.: expected null not to be null
+ ❯ specs/ui-compat/lovable-parse.spec.ts:44:36
+     42|   it('reads an engine referral with a numeric plot as in CONTRACTS (pl…
+     43|     const sms = build(check({ plotId: '2' }));
+     44|     expect(uiParse!(sms), sms).not.toBeNull();
+       |                                    ^
+     45|   });
+     46|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable officer dashboard parser (src/lib/parseReferral.ts) reads the engine output > reads an engine referral with no photos (N:0)
+AssertionError: Jani check: 0 leaves, 0 affected, 0 not sure. Main result: no clear problem. Farmer chose: ask. Please advise.: expected null not to be null
+ ❯ specs/ui-compat/lovable-parse.spec.ts:49:36
+     47|   it('reads an engine referral with no photos (N:0)', () => {
+     48|     const sms = build(check({ leaves: [], answerId: 'ask_officer' }));
+     49|     expect(uiParse!(sms), sms).not.toBeNull();
+       |                                    ^
+     50|   });
+     51|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable officer dashboard parser (src/lib/parseReferral.ts) reads the engine output > reads an engine referral with no member or plot
+AssertionError: Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise.: expected null not to be null
+ ❯ specs/ui-compat/lovable-parse.spec.ts:54:36
+     52|   it('reads an engine referral with no member or plot', () => {
+     53|     const sms = build(check({ memberId: undefined, plotId: undefined }…
+     54|     expect(uiParse!(sms), sms).not.toBeNull();
+       |                                    ^
+     55|   });
+     56|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable officer dashboard parser (src/lib/parseReferral.ts) reads the engine output > keeps not_leaf leaves out of the healthy count
+AssertionError: expected undefined to be 4 // Object.is equality
+
+- Expected:
+4
+
++ Received:
+undefined
+
+ ❯ specs/ui-compat/lovable-parse.spec.ts:60:32
+     58|     const c = check({ leaves: leaves({ not_leaf: 2, unsure: 1, rust: 3…
+     59|     const p = uiParse!(build(c));
+     60|     expect(p?.counts?.healthy).toBe(4);
+       |                                ^
+     61|   });
+     62| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable farmer app SMS (src/lib/referralSms.ts) against its own officer parser and the engine > the farmer app SMS and engine buildReferral agree on every field except Q
+AssertionError: UI and engine SMS bodies differ: expected 'JANI1 M:OCC0412 P:P07 D:20261004 N:10…' to be 'Jani check: 10 leaves, 7 affected, 1 …' // Object.is equality
+
+Expected: "Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise."
+Received: "JANI1 M:OCC0412 P:P07 D:20261004 N:10 R:6 C:0 H:0 L:1 U:1 A:rust_high_pre_rains X:ask"
+
+ ❯ specs/ui-compat/lovable-parse.spec.ts:78:60
+     76|   it('the farmer app SMS and engine buildReferral agree on every field…
+     77|     const strip = (t: string) => t.replace(/ Q:\d+/, '');
+     78|     expect(strip(ui()), 'UI and engine SMS bodies differ').toBe(strip(…
+       |                                                            ^
+     79|   });
+     80|   it('an empty member or plot field still gives an SMS the dashboard r…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+
+ FAIL  specs/ui-compat/lovable-parse.spec.ts > Lovable farmer app SMS (src/lib/referralSms.ts) against its own officer parser and the engine > an empty member or plot field still gives an SMS the dashboard reads
+AssertionError: JANI1 M:? P:? D:20261004 N:10 R:6 C:0 H:0 L:1 U:1 A:rust_high_pre_rains Q:90 X:ask: expected null not to be null
+ ❯ specs/ui-compat/lovable-parse.spec.ts:81:94
+     79|   });
+     80|   it('an empty member or plot field still gives an SMS the dashboard r…
+     81|     expect(uiParse!(ui({ memberId: '', plotId: '' })), ui({ memberId: …
+       |                                                                                              ^
+     82|   });
+     83| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 2 passed (10)
+   Start at  23:55:13
+   Duration  383ms (transform 93ms, setup 0ms, import 113ms, tests 25ms, environment 0ms)
+

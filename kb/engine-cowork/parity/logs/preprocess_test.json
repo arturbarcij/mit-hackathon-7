@@ -1,0 +1,436 @@
+{
+ "summary": {
+  "oracle": "torchvision 0.29.1+cu130 torch 2.14.1+cu130",
+  "pillow": "12.3.0",
+  "node": "v22.22.0",
+  "items": 39,
+  "failures": 0,
+  "worstResizeU8Diff": 0,
+  "worstCropU8Diff": 0,
+  "worstTensorAbsDiff": 0,
+  "speed": {
+   "exact_4000x3000": {
+    "medianMs": 120.6,
+    "minMs": 115.6,
+    "runs": 7
+   },
+   "fast_4000x3000": {
+    "medianMs": 76.5,
+    "minMs": 75.5,
+    "runs": 7
+   }
+  }
+ },
+ "rows": [
+  {
+   "name": "00_jmuben",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "01_jmuben",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "02_jmuben",
+   "size": "83x128",
+   "resized": "224x345",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "03_jmuben",
+   "size": "256x120",
+   "resized": "477x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "04_jmuben",
+   "size": "256x99",
+   "resized": "579x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "05_jmuben",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "06_jmuben2",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "07_jmuben2",
+   "size": "128x128",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "08_jmuben2",
+   "size": "92x256",
+   "resized": "224x623",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "09_jmuben2",
+   "size": "96x256",
+   "resized": "224x597",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "10_uganda",
+   "size": "256x256",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "11_uganda",
+   "size": "256x256",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "12_wild",
+   "size": "1280x853",
+   "resized": "336x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "13_wild",
+   "size": "513x684",
+   "resized": "224x298",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "14_wild",
+   "size": "1280x1947",
+   "resized": "224x340",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true,
+   "fastVsExactU8Max": 6,
+   "fastVsExactU8Count": 73866,
+   "fastVsExactTensorMax": 0.10504201054573059,
+   "fastVsPillowReducingGap2U8Max": 0
+  },
+  {
+   "name": "15_wild",
+   "size": "831x1024",
+   "resized": "224x276",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "16_wild",
+   "size": "1024x768",
+   "resized": "298x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "17_wild",
+   "size": "740x1024",
+   "resized": "224x309",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "18_bracol",
+   "size": "2048x1024",
+   "resized": "448x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true,
+   "fastVsExactU8Max": 5,
+   "fastVsExactU8Count": 38629,
+   "fastVsExactTensorMax": 0.08714595437049866,
+   "fastVsPillowReducingGap2U8Max": 0
+  },
+  {
+   "name": "19_bracol",
+   "size": "2048x1024",
+   "resized": "448x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true,
+   "fastVsExactU8Max": 5,
+   "fastVsExactU8Count": 36294,
+   "fastVsExactTensorMax": 0.08714598417282104,
+   "fastVsPillowReducingGap2U8Max": 0
+  },
+  {
+   "name": "s_224x224_noise",
+   "size": "224x224",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_225x224_noise",
+   "size": "225x224",
+   "resized": "225x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_227x224_noise",
+   "size": "227x224",
+   "resized": "227x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_229x224_noise",
+   "size": "229x224",
+   "resized": "229x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_224x231_noise",
+   "size": "224x231",
+   "resized": "224x231",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_225x225_noise",
+   "size": "225x225",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_3x5_noise",
+   "size": "3x5",
+   "resized": "224x373",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_1x1_noise",
+   "size": "1x1",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_100x150_grad",
+   "size": "100x150",
+   "resized": "224x336",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_223x500_noise",
+   "size": "223x500",
+   "resized": "224x502",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_300x200_edges",
+   "size": "300x200",
+   "resized": "336x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_449x449_noise",
+   "size": "449x449",
+   "resized": "224x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_1001x777_noise",
+   "size": "1001x777",
+   "resized": "288x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_13x997_noise",
+   "size": "13x997",
+   "resized": "224x17179",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_4000x50_noise",
+   "size": "4000x50",
+   "resized": "17920x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_50x4000_grad",
+   "size": "50x4000",
+   "resized": "224x17920",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_641x479_edges",
+   "size": "641x479",
+   "resized": "299x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true
+  },
+  {
+   "name": "s_4000x3000_noise",
+   "size": "4000x3000",
+   "resized": "298x224",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true,
+   "fastVsExactU8Max": 6,
+   "fastVsExactU8Count": 99631,
+   "fastVsExactTensorMax": 0.10457512736320496,
+   "fastVsPillowReducingGap2U8Max": 0
+  },
+  {
+   "name": "s_3024x4032_grad",
+   "size": "3024x4032",
+   "resized": "224x298",
+   "resizeMaxDiff": 0,
+   "resizeDiffCount": 0,
+   "cropMaxDiff": 0,
+   "tensorMaxDiff": 0,
+   "ok": true,
+   "fastVsExactU8Max": 1,
+   "fastVsExactU8Count": 12356,
+   "fastVsExactTensorMax": 0.01750713586807251,
+   "fastVsPillowReducingGap2U8Max": 0
+  }
+ ]
+}

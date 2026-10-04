@@ -23,15 +23,22 @@ Deliver one small, honest, calibrated coffee-leaf classifier that runs in the br
 `healthy`, `rust`, `cercospora`, `phoma`, `miner`, `not_leaf`
 
 ## Data
-Read `kb/research/DATASETS.md` when it exists. Until then use:
-| Role | Dataset | Notes |
+Read `kb/research/DATASETS.md` first: it has verified licences (all CC BY 4.0), sizes, working no-login download URLs and the "does not cover" lines. Key corrections it makes to the master prompt:
+- **JMuBEN (Mendeley t2r6rszp5c) holds only rust, cercospora, phoma** (22,588 images, 549 MB). **Healthy and miner are in JMuBEN2 (Mendeley tgv3zb82nd)**: healthy 18,984 and miner 16,978 (1.29 GB). Download both. Start the JMuBEN2 download first, it is the biggest.
+- Both are augmented with no source-image manifest, so near-duplicate hashing before splitting is mandatory, not optional.
+- Class imbalance: healthy 18,984 / miner 16,978 vs rust 8,336 / cercospora 7,681 / phoma 6,571. Use class-balanced sampling and cap the two big classes at about 9,000 each after dedupe.
+- **BRACOL (Brazil) has no phoma.** Map its "cercospora leaf spot" to `cercospora`; inspect "brown leaf spot" and only map it to `cercospora` if the label file says it is the same disease (brown eye spot), otherwise drop it. Its lower-side, white-background photos match our sheet-of-paper protocol, so they are valuable.
+- **Uganda set (k36wnd6knb) is augmented too** (rotations, flips, brightness) and has 3,322 files. It stays a held-out test set, but dedupe it by hash too and report "augmented copies may be present". File-name prefix to class mapping is inferred (`1_` healthy, `1200_` rust, `2300_` phoma): confirm by eye on 10 images each.
+- **RoCoLe**: split by plant code (`C#P#`), labels in `RoCoLe-classes.xlsx`. Skip the 697 MB VOC tarball.
+
+| Role | Dataset | Classes |
 |---|---|---|
-| Train / val / test | JMuBEN (Mendeley t2r6rszp5c), Kenyan Arabica, 5 classes | Contains augmented copies. Leakage risk. |
-| Train / val / test | BRACOL (Brazil, Arabica) | Map its labels to our classes; drop classes we do not support. |
-| Held-out test only | Uganda coffee leaf set (Mendeley k36wnd6knb): healthy, rust, phoma | Cross-country phone photos. Never train on it. |
-| Held-out test only | RoCoLe (Ecuador Robusta, CC BY): healthy, rust levels 1 to 4, red spider mite | Map rust levels to `rust`. Red spider mite is out of scope: report what the model does with it. Never train on it. |
-| `not_leaf` class | PlantDoc non-coffee leaves + photos of paper, hands, tables, soil | Keep it small and varied. |
-Try Kaggle mirrors if Mendeley downloads need a login. Record every source, licence and count in `ml/data_manifest.csv`.
+| Train / val / test | JMuBEN + JMuBEN2 (Kenya, Arabica) | all five |
+| Train / val / test | BRACOL (Brazil, Arabica) | healthy, miner, rust, cercospora |
+| Held-out test only | Uganda (phone photos) | healthy, rust, phoma |
+| Held-out test only | RoCoLe (Ecuador, Robusta, field) | healthy, rust; red spider mite = OOD probe |
+| `not_leaf` | PlantDoc (non-coffee leaves, CC BY 4.0) + your own photos of paper, hands, table, soil | negatives |
+Record every source, licence and count in `ml/data_manifest.csv`. Raw data goes in `MIT_Hackathon_7/data_raw/` (git-ignored).
 
 ## Tasks, in order
 

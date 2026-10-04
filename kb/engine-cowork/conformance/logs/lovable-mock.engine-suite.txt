@@ -1,0 +1,1727 @@
+
+ RUN  v4.1.11 /home/claude/jani/ws-conformance
+
+ ❯ specs/plot.spec.ts (25 tests | 10 failed) 125ms
+     ✓ is exported 2ms
+     ✓ empty input gives n 0, all counts 0, dominant none 1ms
+     ✓ healthy only gives dominant healthy, nothing affected 1ms
+     ✓ all unsure gives dominant none and uncertain = n; unsure is never forced into a class 0ms
+     × uncertain = unsure plus not_leaf 9ms
+     ✓ not_leaf more than half of n gives dominant not_leaf, even with diseased leaves 0ms
+     × not_leaf at exactly half of n is not dominant 2ms
+     × a disease beats healthy even when healthy is the majority 5ms
+     ✓ tie { rust: 2, cercospora: 2 } is broken in the order rust, cercospora, phoma, miner -> rust 1ms
+     ✓ tie { cercospora: 2, rust: 2 } is broken in the order rust, cercospora, phoma, miner -> rust 0ms
+     ✓ tie { cercospora: 3, phoma: 3 } is broken in the order rust, cercospora, phoma, miner -> cercospora 0ms
+     ✓ tie { phoma: 1, cercospora: 1 } is broken in the order rust, cercospora, phoma, miner -> cercospora 0ms
+     ✓ tie { phoma: 2, miner: 2 } is broken in the order rust, cercospora, phoma, miner -> phoma 0ms
+     ✓ tie { miner: 2, phoma: 2 } is broken in the order rust, cercospora, phoma, miner -> phoma 0ms
+     ✓ tie { miner: 1, rust: 1, cercospora: 1, phoma: 1 } is broken in the order rust, cercospora, phoma, miner -> rust 0ms
+     × tie { miner: 2, cercospora: 2, healthy: 6 } is broken in the order rust, cercospora, phoma, miner -> cercospora 1ms
+     ✓ affected and distinctProblems count disease labels only (not unsure, not not_leaf, not healthy) 0ms
+     ✓ a failed-quality leaf (label unsure) counts as uncertain, not affected 0ms
+     ✓ does not mutate its input 1ms
+     × seed 1: 400 random plots match the oracle 25ms
+     × seed 7: 400 random plots match the oracle 27ms
+     × seed 42: 400 random plots match the oracle 28ms
+     × seed 2026: 400 random plots match the oracle 10ms
+     × seed 31337: 400 random plots match the oracle 8ms
+     × invariants hold on 2000 random plots 1ms
+ ❯ specs/decide.spec.ts (51 tests | 46 failed) 100ms
+     ✓ fixtures were generated from the rules.json and answers.json under test 4ms
+     ✓ the QA evaluator produced the fixtures (not the fallback port) 1ms
+     ✓ every expected answer id exists in answers.json 1ms
+     ✓ decide is exported 0ms
+     × healthy / pre_short_rains (11 cases) 10ms
+     × healthy / short_rains (11 cases) 2ms
+     × healthy / pre_long_rains (11 cases) 1ms
+     × healthy / long_rains (11 cases) 1ms
+     × healthy / dry (11 cases) 1ms
+     × rust / pre_short_rains (136 cases) 2ms
+     × rust / short_rains (136 cases) 2ms
+     × rust / pre_long_rains (136 cases) 4ms
+     × rust / long_rains (136 cases) 2ms
+     × rust / dry (136 cases) 2ms
+     × cercospora / pre_short_rains (136 cases) 2ms
+     × cercospora / short_rains (136 cases) 2ms
+     × cercospora / pre_long_rains (136 cases) 2ms
+     × cercospora / long_rains (136 cases) 2ms
+     × cercospora / dry (136 cases) 2ms
+     × phoma / pre_short_rains (136 cases) 11ms
+     × phoma / short_rains (136 cases) 4ms
+     × phoma / pre_long_rains (136 cases) 1ms
+     × phoma / long_rains (136 cases) 1ms
+     × phoma / dry (136 cases) 1ms
+     × miner / pre_short_rains (136 cases) 1ms
+     × miner / short_rains (136 cases) 1ms
+     × miner / pre_long_rains (136 cases) 1ms
+     × miner / long_rains (136 cases) 1ms
+     × miner / dry (136 cases) 1ms
+     × not_leaf / pre_short_rains (136 cases) 1ms
+     × not_leaf / short_rains (136 cases) 3ms
+     × not_leaf / pre_long_rains (136 cases) 1ms
+     × not_leaf / long_rains (136 cases) 1ms
+     × not_leaf / dry (136 cases) 2ms
+     × none / pre_short_rains (11 cases) 0ms
+     × none / short_rains (11 cases) 0ms
+     × none / pre_long_rains (11 cases) 2ms
+     × none / long_rains (11 cases) 1ms
+     × none / dry (11 cases) 0ms
+     × summarisePlot then decide gives the QA answer on real leaf lists 6ms
+     × null summary 2ms
+     × undefined summary 1ms
+     × empty object 0ms
+     × string summary 1ms
+     × unknown dominant 1ms
+     × NaN affected 1ms
+     × negative uncertain 1ms
+     × string counts 1ms
+     × Infinity n 1ms
+     × invalid date 0ms
+     ✓ same input twice gives the same card and the summary is not mutated 0ms
+ ❯ specs/referral.spec.ts (18 tests | 15 failed) 29ms
+     ✓ is exported 1ms
+     × the CONTRACTS example check gives exactly the CONTRACTS example fields 7ms
+     ✓ at most 160 characters, GSM-7 basic charset only, one line 2ms
+     × Q is a whole percent from 0 to 100 1ms
+     × carries no names, even when the check object has name-like extra fields 1ms
+     × a member id typed with spaces and lower case still gives a parseable SMS 1ms
+     × a very long member id still fits in 160 characters 6ms
+     ✓ non-GSM characters in member or plot never reach the SMS 0ms
+     × n = 0 (no photos) still gives a valid JANI1 string 1ms
+     × all unsure gives U = N and zero disease counts 1ms
+     × U is summary.uncertain, so it includes not_leaf leaves and N = healthy + R + C + H + L + U 1ms
+     × missing member or plot still gives a valid JANI1 string 1ms
+     × missing decision still gives a valid JANI1 string 1ms
+     × is exported by the engine 2ms
+     × round-trips every field of the CONTRACTS example 0ms
+     × round-trips buildReferral output for 300 random checks 1ms
+     × D is the local calendar day of createdAt 1ms
+     × rejects text that is not a JANI1 referral 0ms
+ ✓ specs/guardrails.spec.ts (9 tests) 8ms
+ ❯ specs/season.spec.ts (23 tests | 20 failed) 37ms
+     ✓ uses only the five SeasonWindow names 2ms
+     ✓ covers every day of a leap year 1ms
+     ✓ marks every window that runs over New Year with wraps_year 0ms
+     × is exported 6ms
+     × matches season.json on every day of 2026 (local noon) 11ms
+     × matches season.json on every day of 2028 (local noon) 7ms
+     × 2026-09-30 is dry 1ms
+     × 2026-10-01 is pre_short_rains 0ms
+     × 2026-10-04 is pre_short_rains 1ms
+     × 2026-11-05 is pre_short_rains 0ms
+     × 2026-11-06 is short_rains 0ms
+     × 2026-12-15 is short_rains 0ms
+     × 2026-12-16 is dry 0ms
+     × 2026-12-31 is dry 0ms
+     × 2027-01-01 is dry 0ms
+     × 2027-02-19 is dry 0ms
+     × 2027-02-20 is pre_long_rains 0ms
+     × 2028-02-29 is pre_long_rains 0ms
+     × 2027-03-31 is pre_long_rains 0ms
+     × 2027-04-01 is long_rains 1ms
+     × 2027-05-31 is long_rains 0ms
+     × 2027-06-01 is dry 0ms
+     × uses the local calendar day in Kenya (00:30 on 1 Oct is already pre_short_rains) 0ms
+ ❯ specs/sms.spec.ts (7 tests | 1 failed) 13ms
+     ✓ is exported 2ms
+     ✓ Android: sms:<number>?body=<encoded> 1ms
+     ✓ iOS: sms:<number>&body=<encoded> 0ms
+     ✓ encodes spaces as %20 (not +) and reserved characters in the body 1ms
+     ✓ keeps a leading + on the number (international format) 0ms
+     × a number typed with spaces gives a link with no raw spaces 6ms
+     ✓ builds a link only; it does not navigate or open anything 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 92 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > healthy / pre_short_rains (11 cases)
+AssertionError: 11 of 11 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=0 uncertain=0 distinct=1 2026-10-04: id keep-watching != healthy_all; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=1 distinct=1 2026-10-04: id keep-watching != healthy_all; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=2 distinct=1 2026-10-04: id ask-officer != healthy_all; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=3 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=4 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=5 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > healthy / short_rains (11 cases)
+AssertionError: 11 of 11 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=0 uncertain=0 distinct=1 2026-11-20: id keep-watching != healthy_all; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=1 distinct=1 2026-11-20: id keep-watching != healthy_all; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=2 distinct=1 2026-11-20: id ask-officer != healthy_all; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=3 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=4 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=5 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > healthy / pre_long_rains (11 cases)
+AssertionError: 11 of 11 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=0 uncertain=0 distinct=1 2027-03-01: id keep-watching != healthy_all; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=1 distinct=1 2027-03-01: id keep-watching != healthy_all; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=2 distinct=1 2027-03-01: id ask-officer != healthy_all; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=3 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=4 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=5 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > healthy / long_rains (11 cases)
+AssertionError: 11 of 11 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=0 uncertain=0 distinct=1 2027-04-20: id keep-watching != healthy_all; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=1 distinct=1 2027-04-20: id keep-watching != healthy_all; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=2 distinct=1 2027-04-20: id ask-officer != healthy_all; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=3 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=4 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=5 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > healthy / dry (11 cases)
+AssertionError: 11 of 11 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=0 uncertain=0 distinct=1 2027-01-15: id keep-watching != healthy_all; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=1 distinct=1 2026-07-15: id keep-watching != healthy_all; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=2 distinct=1 2027-01-15: id ask-officer != healthy_all; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=3 distinct=1 2026-07-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=4 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=5 distinct=1 2026-07-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > rust / pre_short_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-10-04: id keep-watching != rust_low; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2026-10-04: id keep-watching != rust_low; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-10-04: id ask-officer != rust_low; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > rust / short_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-11-20: id keep-watching != rust_low; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2026-11-20: id keep-watching != rust_low; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-11-20: id ask-officer != rust_low; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > rust / pre_long_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2027-03-01: id keep-watching != rust_low; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-03-01: id keep-watching != rust_low; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2027-03-01: id ask-officer != rust_low; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > rust / long_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2027-04-20: id keep-watching != rust_low; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-04-20: id keep-watching != rust_low; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2027-04-20: id ask-officer != rust_low; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > rust / dry (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-07-15: id keep-watching != rust_low; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-01-15: id keep-watching != rust_low; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-07-15: id ask-officer != rust_low; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-07-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > cercospora / pre_short_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-10-04: id keep-watching != cercospora; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2026-10-04: id keep-watching != cercospora; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-10-04: id ask-officer != cercospora; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > cercospora / short_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-11-20: id keep-watching != cercospora; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2026-11-20: id keep-watching != cercospora; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-11-20: id ask-officer != cercospora; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > cercospora / pre_long_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2027-03-01: id keep-watching != cercospora; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-03-01: id keep-watching != cercospora; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2027-03-01: id ask-officer != cercospora; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > cercospora / long_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2027-04-20: id keep-watching != cercospora; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-04-20: id keep-watching != cercospora; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2027-04-20: id ask-officer != cercospora; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > cercospora / dry (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-07-15: id keep-watching != cercospora; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-01-15: id keep-watching != cercospora; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-07-15: id ask-officer != cercospora; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-07-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > phoma / pre_short_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-10-04: id keep-watching != phoma; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2026-10-04: id keep-watching != phoma; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-10-04: id ask-officer != phoma; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > phoma / short_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-11-20: id keep-watching != phoma; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2026-11-20: id keep-watching != phoma; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-11-20: id ask-officer != phoma; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > phoma / pre_long_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2027-03-01: id keep-watching != phoma; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-03-01: id keep-watching != phoma; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2027-03-01: id ask-officer != phoma; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > phoma / long_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2027-04-20: id keep-watching != phoma; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-04-20: id keep-watching != phoma; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2027-04-20: id ask-officer != phoma; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > phoma / dry (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-07-15: id keep-watching != phoma; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-01-15: id keep-watching != phoma; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-07-15: id ask-officer != phoma; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-07-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > miner / pre_short_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-10-04: id keep-watching != miner; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2026-10-04: id keep-watching != miner; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-10-04: id ask-officer != miner; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > miner / short_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-11-20: id keep-watching != miner; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2026-11-20: id keep-watching != miner; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-11-20: id ask-officer != miner; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > miner / pre_long_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2027-03-01: id keep-watching != miner; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-03-01: id keep-watching != miner; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2027-03-01: id ask-officer != miner; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > miner / long_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2027-04-20: id keep-watching != miner; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-04-20: id keep-watching != miner; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2027-04-20: id ask-officer != miner; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > miner / dry (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-07-15: id keep-watching != miner; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-01-15: id keep-watching != miner; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-07-15: id ask-officer != miner; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-07-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > not_leaf / pre_short_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-10-04: id keep-watching != not_a_leaf; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2026-10-04: id keep-watching != not_a_leaf; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-10-04: id ask-officer != not_a_leaf; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > not_leaf / short_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-11-20: id keep-watching != not_a_leaf; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2026-11-20: id keep-watching != not_a_leaf; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-11-20: id ask-officer != not_a_leaf; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > not_leaf / pre_long_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2027-03-01: id keep-watching != not_a_leaf; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-03-01: id keep-watching != not_a_leaf; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2027-03-01: id ask-officer != not_a_leaf; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > not_leaf / long_rains (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2027-04-20: id keep-watching != not_a_leaf; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-04-20: id keep-watching != not_a_leaf; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2027-04-20: id ask-officer != not_a_leaf; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > not_leaf / dry (136 cases)
+AssertionError: 136 of 136 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=1 uncertain=0 distinct=1 2026-07-15: id keep-watching != not_a_leaf; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=1 distinct=1 2027-01-15: id keep-watching != not_a_leaf; card id keep-watching is not in answers.json",
++   "affected=1 uncertain=2 distinct=1 2026-07-15: id ask-officer != not_a_leaf; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=3 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=4 distinct=1 2026-07-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=1 uncertain=5 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[30/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > none / pre_short_rains (11 cases)
+AssertionError: 11 of 11 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=0 uncertain=0 distinct=1 2026-10-04: id keep-watching != ask_officer; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=1 distinct=1 2026-10-04: id keep-watching != ask_officer; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=2 distinct=1 2026-10-04: id ask-officer != ask_officer; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=3 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=4 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=5 distinct=1 2026-10-04: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[31/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > none / short_rains (11 cases)
+AssertionError: 11 of 11 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=0 uncertain=0 distinct=1 2026-11-20: id keep-watching != ask_officer; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=1 distinct=1 2026-11-20: id keep-watching != ask_officer; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=2 distinct=1 2026-11-20: id ask-officer != ask_officer; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=3 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=4 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=5 distinct=1 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[32/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > none / pre_long_rains (11 cases)
+AssertionError: 11 of 11 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=0 uncertain=0 distinct=1 2027-03-01: id keep-watching != ask_officer; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=1 distinct=1 2027-03-01: id keep-watching != ask_officer; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=2 distinct=1 2027-03-01: id ask-officer != ask_officer; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=3 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=4 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=5 distinct=1 2027-03-01: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[33/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > none / long_rains (11 cases)
+AssertionError: 11 of 11 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=0 uncertain=0 distinct=1 2027-04-20: id keep-watching != ask_officer; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=1 distinct=1 2027-04-20: id keep-watching != ask_officer; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=2 distinct=1 2027-04-20: id ask-officer != ask_officer; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=3 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=4 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=5 distinct=1 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[34/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: 3510 QA decision-matrix cases > none / dry (11 cases)
+AssertionError: 11 of 11 cases wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "affected=0 uncertain=0 distinct=1 2026-07-15: id keep-watching != ask_officer; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=1 distinct=1 2027-01-15: id keep-watching != ask_officer; card id keep-watching is not in answers.json",
++   "affected=0 uncertain=2 distinct=1 2026-07-15: id ask-officer != ask_officer; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=3 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=4 distinct=1 2026-07-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "affected=0 uncertain=5 distinct=1 2027-01-15: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:69:79
+     67|         if (p.length) bad.push(`affected=${c.summary.affected} uncerta…
+     68|       }
+     69|       expect(bad.slice(0, 6), `${bad.length} of ${cases.length} cases …
+       |                                                                               ^
+     70|     });
+     71|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[35/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide(summarisePlot(leaves)): 612 pipeline cases > summarisePlot then decide gives the QA answer on real leaf lists
+AssertionError: 612 of 612 wrong: expected [ …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "[] 2026-10-04: id keep-watching != ask_officer; card id keep-watching is not in answers.json",
++   "[\"unsure\",\"unsure\",\"unsure\",\"unsure\",\"unsure\",\"unsure\",\"unsure\",\"unsure\",\"unsure\",\"unsure\"] 2026-11-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "[\"healthy\",\"healthy\",\"healthy\",\"healthy\",\"healthy\",\"healthy\",\"healthy\",\"healthy\",\"healthy\",\"healthy\"] 2027-03-01: id keep-watching != healthy_all; card id keep-watching is not in answers.json",
++   "[\"not_leaf\",\"not_leaf\",\"not_leaf\",\"not_leaf\",\"not_leaf\",\"not_leaf\",\"not_leaf\",\"not_leaf\",\"not_leaf\",\"not_leaf\"] 2027-04-20: id ask-officer != too_many_unsure; card id ask-officer is not in answers.json",
++   "[\"not_leaf\"] 2027-01-15: id keep-watching != not_a_leaf; card id keep-watching is not in answers.json",
++   "[\"not_leaf\",\"not_leaf\",\"healthy\"] 2026-10-04: id ask-officer != not_a_leaf; card id ask-officer is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:84:77
+     82|       if (p.length) bad.push(`${JSON.stringify(c.leaves)} ${c.date}: $…
+     83|     }
+     84|     expect(bad.slice(0, 6), `${bad.length} of ${fx.pipeline.length} wr…
+       |                                                                             ^
+     85|   });
+     86| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[36/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > null summary
+AssertionError: expected [Function] to not throw an error but 'TypeError: Cannot read properties of …' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"TypeError: Cannot read properties of null (reading 'uncertain')"
+
+ ❯ specs/decide.spec.ts:104:48
+    102|   it.each(garbage)('%s', (_name, s, d) => {
+    103|     let card: any;
+    104|     expect(() => { card = decide(s, d); }).not.toThrow();
+       |                                                ^
+    105|     expect(cardProblems(card, 'ask_officer')).toEqual([]);
+    106|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[37/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > undefined summary
+AssertionError: expected [Function] to not throw an error but 'TypeError: Cannot read properties of …' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"TypeError: Cannot read properties of undefined (reading 'uncertain')"
+
+ ❯ specs/decide.spec.ts:104:48
+    102|   it.each(garbage)('%s', (_name, s, d) => {
+    103|     let card: any;
+    104|     expect(() => { card = decide(s, d); }).not.toThrow();
+       |                                                ^
+    105|     expect(cardProblems(card, 'ask_officer')).toEqual([]);
+    106|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[38/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > empty object
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > string summary
+AssertionError: expected [Function] to not throw an error but 'TypeError: Cannot read properties of …' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"TypeError: Cannot read properties of undefined (reading 'not_leaf')"
+
+ ❯ specs/decide.spec.ts:104:48
+    102|   it.each(garbage)('%s', (_name, s, d) => {
+    103|     let card: any;
+    104|     expect(() => { card = decide(s, d); }).not.toThrow();
+       |                                                ^
+    105|     expect(cardProblems(card, 'ask_officer')).toEqual([]);
+    106|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39/92]⎯
+
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > unknown dominant
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > NaN affected
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > negative uncertain
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > string counts
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > Infinity n
+ FAIL  specs/decide.spec.ts > decide: garbage input gives ask_officer > invalid date
+AssertionError: expected [ …(2) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "id keep-watching != ask_officer",
++   "card id keep-watching is not in answers.json",
++ ]
+
+ ❯ specs/decide.spec.ts:105:47
+    103|     let card: any;
+    104|     expect(() => { card = decide(s, d); }).not.toThrow();
+    105|     expect(cardProblems(card, 'ask_officer')).toEqual([]);
+       |                                               ^
+    106|   });
+    107| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[40/92]⎯
+
+ FAIL  specs/plot.spec.ts > summarisePlot: named cases > uncertain = unsure plus not_leaf
+AssertionError: expected 2 to be 5 // Object.is equality
+
+- Expected
++ Received
+
+- 5
++ 2
+
+ ❯ specs/plot.spec.ts:48:25
+     46|   it('uncertain = unsure plus not_leaf', () => {
+     47|     const s = summarisePlot(leaves({ unsure: 2, not_leaf: 3, healthy: …
+     48|     expect(s.uncertain).toBe(5);
+       |                         ^
+     49|     expect(s.counts.not_leaf).toBe(3);
+     50|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[41/92]⎯
+
+ FAIL  specs/plot.spec.ts > summarisePlot: named cases > not_leaf at exactly half of n is not dominant
+AssertionError: expected 'not_leaf' to be 'none' // Object.is equality
+
+Expected: "none"
+Received: "not_leaf"
+
+ ❯ specs/plot.spec.ts:61:72
+     59|     expect(summarisePlot(leaves({ not_leaf: 5, rust: 5 })).dominant).t…
+     60|     expect(summarisePlot(leaves({ not_leaf: 5, healthy: 5 })).dominant…
+     61|     expect(summarisePlot(leaves({ not_leaf: 5, unsure: 5 })).dominant)…
+       |                                                                        ^
+     62|   });
+     63|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[42/92]⎯
+
+ FAIL  specs/plot.spec.ts > summarisePlot: named cases > a disease beats healthy even when healthy is the majority
+AssertionError: expected 'healthy' to be 'miner' // Object.is equality
+
+Expected: "miner"
+Received: "healthy"
+
+ ❯ specs/plot.spec.ts:65:70
+     63|
+     64|   it('a disease beats healthy even when healthy is the majority', () =…
+     65|     expect(summarisePlot(leaves({ healthy: 9, miner: 1 })).dominant).t…
+       |                                                                      ^
+     66|   });
+     67|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[43/92]⎯
+
+ FAIL  specs/plot.spec.ts > summarisePlot: named cases > tie { miner: 2, cercospora: 2, healthy: 6 } is broken in the order rust, cercospora, phoma, miner -> cercospora
+AssertionError: expected 'healthy' to be 'cercospora' // Object.is equality
+
+Expected: "cercospora"
+Received: "healthy"
+
+ ❯ specs/plot.spec.ts:75:50
+     73|   ];
+     74|   it.each(ties)('tie %o is broken in the order rust, cercospora, phoma…
+     75|     expect(summarisePlot(leaves(spec)).dominant).toBe(want);
+       |                                                  ^
+     76|     expect(summarisePlot(leaves(spec).reverse()).dominant).toBe(want);
+     77|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[44/92]⎯
+
+ FAIL  specs/plot.spec.ts > summarisePlot: seeded property tests against the oracle > seed 1: 400 random plots match the oracle
+AssertionError: 258 of 400 differ: expected [ …(5) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "[\"phoma\",\"unsure\",\"phoma\",\"phoma\",\"cercospora\",\"phoma\",\"cercospora\",\"cercospora\",\"phoma\",\"rust\",\"phoma\",\"not_leaf\",\"cercospora\"] got {\"n\":13,\"counts\":{\"healthy\":0,\"rust\":1,\"cercospora\":4,\"phoma\":6,\"miner\":0,\"not_leaf\":1},\"uncertain\":1,\"dominant\":\"phoma\",\"affected\":11,\"distinctProblems\":3} want {\"n\":13,\"counts\":{\"healthy\":0,\"rust\":1,\"cercospora\":4,\"phoma\":6,\"miner\":0,\"not_leaf\":1},\"uncertain\":2,\"dominant\":\"phoma\",\"affected\":11,\"distinctProblems\":3}",
++   "[\"not_leaf\",\"unsure\",\"unsure\",\"unsure\",\"healthy\"] got {\"n\":5,\"counts\":{\"healthy\":1,\"rust\":0,\"cercospora\":0,\"phoma\":0,\"miner\":0,\"not_leaf\":1},\"uncertain\":3,\"dominant\":\"healthy\",\"affected\":0,\"distinctProblems\":0} want {\"n\":5,\"counts\":{\"healthy\":1,\"rust\":0,\"cercospora\":0,\"phoma\":0,\"miner\":0,\"not_leaf\":1},\"uncertain\":4,\"dominant\":\"healthy\",\"affected\":0,\"distinctProblems\":0}",
++   "[\"healthy\",\"cercospora\",\"cercospora\",\"cercospora\",\"healthy\",\"cercospora\",\"miner\",\"healthy\",\"healthy\",\"healthy\",\"miner\",\"healthy\",\"healthy\",\"cercospora\"] got {\"n\":14,\"counts\":{\"healthy\":7,\"rust\":0,\"cercospora\":5,\"phoma\":0,\"miner\":2,\"not_leaf\":0},\"uncertain\":0,\"dominant\":\"healthy\",\"affected\":7,\"distinctProblems\":2} want {\"n\":14,\"counts\":{\"healthy\":7,\"rust\":0,\"cercospora\":5,\"phoma\":0,\"miner\":2,\"not_leaf\":0},\"uncertain\":0,\"dominant\":\"cercospora\",\"affected\":7,\"distinctProblems\":2}",
++   "[\"cercospora\",\"not_leaf\",\"not_leaf\",\"not_leaf\",\"unsure\",\"not_leaf\",\"unsure\",\"unsure\",\"unsure\",\"healthy\",\"miner\"] got {\"n\":11,\"counts\":{\"healthy\":1,\"rust\":0,\"cercospora\":1,\"phoma\":0,\"miner\":1,\"not_leaf\":4},\"uncertain\":4,\"dominant\":\"not_leaf\",\"affected\":2,\"distinctProblems\":2} want {\"n\":11,\"counts\":{\"healthy\":1,\"rust\":0,\"cercospora\":1,\"phoma\":0,\"miner\":1,\"not_leaf\":4},\"uncertain\":8,\"dominant\":\"cercospora\",\"affected\":2,\"distinctProblems\":2}",
++   "[\"not_leaf\",\"healthy\",\"not_leaf\",\"not_leaf\",\"miner\",\"miner\",\"healthy\",\"healthy\",\"healthy\",\"healthy\",\"healthy\",\"not_leaf\",\"unsure\",\"healthy\",\"healthy\",\"healthy\"] got {\"n\":16,\"counts\":{\"healthy\":9,\"rust\":0,\"cercospora\":0,\"phoma\":0,\"miner\":2,\"not_leaf\":4},\"uncertain\":1,\"dominant\":\"healthy\",\"affected\":2,\"distinctProblems\":1} want {\"n\":16,\"counts\":{\"healthy\":9,\"rust\":0,\"cercospora\":0,\"phoma\":0,\"miner\":2,\"not_leaf\":4},\"uncertain\":5,\"dominant\":\"miner\",\"affected\":2,\"distinctProblems\":1}",
++ ]
+
+ ❯ specs/plot.spec.ts:119:62
+    117|         if (JSON.stringify(got) !== JSON.stringify(want)) bad.push(`${…
+    118|       }
+    119|       expect(bad.slice(0, 5), `${bad.length} of 400 differ`).toEqual([…
+       |                                                              ^
+    120|     });
+    121|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[45/92]⎯
+
+ FAIL  specs/plot.spec.ts > summarisePlot: seeded property tests against the oracle > seed 7: 400 random plots match the oracle
+AssertionError: 250 of 400 differ: expected [ …(5) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "[\"healthy\",\"phoma\",\"healthy\",\"unsure\",\"healthy\",\"miner\",\"healthy\",\"healthy\",\"healthy\",\"healthy\",\"phoma\"] got {\"n\":11,\"counts\":{\"healthy\":7,\"rust\":0,\"cercospora\":0,\"phoma\":2,\"miner\":1,\"not_leaf\":0},\"uncertain\":1,\"dominant\":\"healthy\",\"affected\":3,\"distinctProblems\":2} want {\"n\":11,\"counts\":{\"healthy\":7,\"rust\":0,\"cercospora\":0,\"phoma\":2,\"miner\":1,\"not_leaf\":0},\"uncertain\":1,\"dominant\":\"phoma\",\"affected\":3,\"distinctProblems\":2}",
++   "[\"unsure\",\"not_leaf\",\"rust\",\"rust\",\"phoma\",\"phoma\",\"rust\",\"rust\",\"not_leaf\",\"phoma\",\"phoma\",\"miner\",\"unsure\",\"not_leaf\",\"not_leaf\"] got {\"n\":15,\"counts\":{\"healthy\":0,\"rust\":4,\"cercospora\":0,\"phoma\":4,\"miner\":1,\"not_leaf\":4},\"uncertain\":2,\"dominant\":\"rust\",\"affected\":9,\"distinctProblems\":3} want {\"n\":15,\"counts\":{\"healthy\":0,\"rust\":4,\"cercospora\":0,\"phoma\":4,\"miner\":1,\"not_leaf\":4},\"uncertain\":6,\"dominant\":\"rust\",\"affected\":9,\"distinctProblems\":3}",
++   "[\"not_leaf\",\"unsure\",\"unsure\",\"miner\",\"not_leaf\",\"healthy\",\"miner\",\"phoma\",\"not_leaf\",\"miner\",\"not_leaf\",\"unsure\",\"miner\"] got {\"n\":13,\"counts\":{\"healthy\":1,\"rust\":0,\"cercospora\":0,\"phoma\":1,\"miner\":4,\"not_leaf\":4},\"uncertain\":3,\"dominant\":\"miner\",\"affected\":5,\"distinctProblems\":2} want {\"n\":13,\"counts\":{\"healthy\":1,\"rust\":0,\"cercospora\":0,\"phoma\":1,\"miner\":4,\"not_leaf\":4},\"uncertain\":7,\"dominant\":\"miner\",\"affected\":5,\"distinctProblems\":2}",
++   "[\"healthy\",\"miner\",\"phoma\",\"cercospora\",\"healthy\",\"cercospora\",\"cercospora\",\"phoma\",\"not_leaf\",\"rust\",\"not_leaf\",\"cercospora\",\"phoma\",\"cercospora\",\"phoma\",\"rust\",\"not_leaf\"] got {\"n\":17,\"counts\":{\"healthy\":2,\"rust\":2,\"cercospora\":5,\"phoma\":4,\"miner\":1,\"not_leaf\":3},\"uncertain\":0,\"dominant\":\"cercospora\",\"affected\":12,\"distinctProblems\":4} want {\"n\":17,\"counts\":{\"healthy\":2,\"rust\":2,\"cercospora\":5,\"phoma\":4,\"miner\":1,\"not_leaf\":3},\"uncertain\":3,\"dominant\":\"cercospora\",\"affected\":12,\"distinctProblems\":4}",
++   "[\"not_leaf\",\"unsure\",\"not_leaf\",\"not_leaf\",\"unsure\",\"not_leaf\",\"miner\",\"not_leaf\",\"unsure\",\"unsure\"] got {\"n\":10,\"counts\":{\"healthy\":0,\"rust\":0,\"cercospora\":0,\"phoma\":0,\"miner\":1,\"not_leaf\":5},\"uncertain\":4,\"dominant\":\"not_leaf\",\"affected\":1,\"distinctProblems\":1} want {\"n\":10,\"counts\":{\"healthy\":0,\"rust\":0,\"cercospora\":0,\"phoma\":0,\"miner\":1,\"not_leaf\":5},\"uncertain\":9,\"dominant\":\"miner\",\"affected\":1,\"distinctProblems\":1}",
++ ]
+
+ ❯ specs/plot.spec.ts:119:62
+    117|         if (JSON.stringify(got) !== JSON.stringify(want)) bad.push(`${…
+    118|       }
+    119|       expect(bad.slice(0, 5), `${bad.length} of 400 differ`).toEqual([…
+       |                                                              ^
+    120|     });
+    121|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[46/92]⎯
+
+ FAIL  specs/plot.spec.ts > summarisePlot: seeded property tests against the oracle > seed 42: 400 random plots match the oracle
+AssertionError: 238 of 400 differ: expected [ …(5) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "[\"unsure\",\"unsure\",\"healthy\",\"unsure\",\"not_leaf\",\"unsure\",\"healthy\",\"healthy\",\"healthy\",\"not_leaf\",\"not_leaf\",\"not_leaf\",\"unsure\",\"healthy\",\"unsure\",\"unsure\",\"phoma\",\"unsure\"] got {\"n\":18,\"counts\":{\"healthy\":5,\"rust\":0,\"cercospora\":0,\"phoma\":1,\"miner\":0,\"not_leaf\":4},\"uncertain\":8,\"dominant\":\"healthy\",\"affected\":1,\"distinctProblems\":1} want {\"n\":18,\"counts\":{\"healthy\":5,\"rust\":0,\"cercospora\":0,\"phoma\":1,\"miner\":0,\"not_leaf\":4},\"uncertain\":12,\"dominant\":\"phoma\",\"affected\":1,\"distinctProblems\":1}",
++   "[\"miner\",\"not_leaf\",\"phoma\",\"healthy\",\"not_leaf\",\"phoma\"] got {\"n\":6,\"counts\":{\"healthy\":1,\"rust\":0,\"cercospora\":0,\"phoma\":2,\"miner\":1,\"not_leaf\":2},\"uncertain\":0,\"dominant\":\"phoma\",\"affected\":3,\"distinctProblems\":2} want {\"n\":6,\"counts\":{\"healthy\":1,\"rust\":0,\"cercospora\":0,\"phoma\":2,\"miner\":1,\"not_leaf\":2},\"uncertain\":2,\"dominant\":\"phoma\",\"affected\":3,\"distinctProblems\":2}",
++   "[\"not_leaf\",\"not_leaf\",\"healthy\",\"phoma\",\"healthy\",\"not_leaf\",\"cercospora\",\"healthy\",\"phoma\",\"not_leaf\",\"cercospora\",\"not_leaf\",\"phoma\",\"healthy\",\"not_leaf\",\"cercospora\"] got {\"n\":16,\"counts\":{\"healthy\":4,\"rust\":0,\"cercospora\":3,\"phoma\":3,\"miner\":0,\"not_leaf\":6},\"uncertain\":0,\"dominant\":\"not_leaf\",\"affected\":6,\"distinctProblems\":2} want {\"n\":16,\"counts\":{\"healthy\":4,\"rust\":0,\"cercospora\":3,\"phoma\":3,\"miner\":0,\"not_leaf\":6},\"uncertain\":6,\"dominant\":\"cercospora\",\"affected\":6,\"distinctProblems\":2}",
++   "[\"rust\",\"not_leaf\",\"cercospora\"] got {\"n\":3,\"counts\":{\"healthy\":0,\"rust\":1,\"cercospora\":1,\"phoma\":0,\"miner\":0,\"not_leaf\":1},\"uncertain\":0,\"dominant\":\"rust\",\"affected\":2,\"distinctProblems\":2} want {\"n\":3,\"counts\":{\"healthy\":0,\"rust\":1,\"cercospora\":1,\"phoma\":0,\"miner\":0,\"not_leaf\":1},\"uncertain\":1,\"dominant\":\"rust\",\"affected\":2,\"distinctProblems\":2}",
++   "[\"not_leaf\",\"phoma\",\"cercospora\",\"unsure\",\"cercospora\",\"miner\",\"miner\",\"miner\",\"miner\",\"cercospora\",\"cercospora\",\"cercospora\",\"cercospora\",\"not_leaf\",\"cercospora\",\"cercospora\",\"not_leaf\",\"cercospora\",\"cercospora\",\"cercospora\"] got {\"n\":20,\"counts\":{\"healthy\":0,\"rust\":0,\"cercospora\":11,\"phoma\":1,\"miner\":4,\"not_leaf\":3},\"uncertain\":1,\"dominant\":\"cercospora\",\"affected\":16,\"distinctProblems\":3} want {\"n\":20,\"counts\":{\"healthy\":0,\"rust\":0,\"cercospora\":11,\"phoma\":1,\"miner\":4,\"not_leaf\":3},\"uncertain\":4,\"dominant\":\"cercospora\",\"affected\":16,\"distinctProblems\":3}",
++ ]
+
+ ❯ specs/plot.spec.ts:119:62
+    117|         if (JSON.stringify(got) !== JSON.stringify(want)) bad.push(`${…
+    118|       }
+    119|       expect(bad.slice(0, 5), `${bad.length} of 400 differ`).toEqual([…
+       |                                                              ^
+    120|     });
+    121|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[47/92]⎯
+
+ FAIL  specs/plot.spec.ts > summarisePlot: seeded property tests against the oracle > seed 2026: 400 random plots match the oracle
+AssertionError: 242 of 400 differ: expected [ …(5) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "[\"cercospora\",\"healthy\",\"rust\",\"not_leaf\",\"cercospora\",\"rust\",\"rust\",\"cercospora\",\"cercospora\"] got {\"n\":9,\"counts\":{\"healthy\":1,\"rust\":3,\"cercospora\":4,\"phoma\":0,\"miner\":0,\"not_leaf\":1},\"uncertain\":0,\"dominant\":\"cercospora\",\"affected\":7,\"distinctProblems\":2} want {\"n\":9,\"counts\":{\"healthy\":1,\"rust\":3,\"cercospora\":4,\"phoma\":0,\"miner\":0,\"not_leaf\":1},\"uncertain\":1,\"dominant\":\"cercospora\",\"affected\":7,\"distinctProblems\":2}",
++   "[\"unsure\",\"miner\",\"miner\",\"not_leaf\",\"miner\",\"not_leaf\",\"unsure\",\"miner\",\"unsure\",\"healthy\",\"healthy\",\"miner\",\"unsure\",\"unsure\",\"not_leaf\",\"unsure\",\"not_leaf\",\"not_leaf\",\"miner\"] got {\"n\":19,\"counts\":{\"healthy\":2,\"rust\":0,\"cercospora\":0,\"phoma\":0,\"miner\":6,\"not_leaf\":5},\"uncertain\":6,\"dominant\":\"miner\",\"affected\":6,\"distinctProblems\":1} want {\"n\":19,\"counts\":{\"healthy\":2,\"rust\":0,\"cercospora\":0,\"phoma\":0,\"miner\":6,\"not_leaf\":5},\"uncertain\":11,\"dominant\":\"miner\",\"affected\":6,\"distinctProblems\":1}",
++   "[\"not_leaf\",\"phoma\",\"miner\",\"unsure\",\"cercospora\",\"healthy\",\"rust\",\"healthy\",\"unsure\",\"unsure\",\"rust\",\"rust\",\"cercospora\",\"phoma\",\"rust\",\"unsure\",\"unsure\",\"healthy\",\"unsure\",\"phoma\"] got {\"n\":20,\"counts\":{\"healthy\":3,\"rust\":4,\"cercospora\":2,\"phoma\":3,\"miner\":1,\"not_leaf\":1},\"uncertain\":6,\"dominant\":\"rust\",\"affected\":10,\"distinctProblems\":4} want {\"n\":20,\"counts\":{\"healthy\":3,\"rust\":4,\"cercospora\":2,\"phoma\":3,\"miner\":1,\"not_leaf\":1},\"uncertain\":7,\"dominant\":\"rust\",\"affected\":10,\"distinctProblems\":4}",
++   "[\"unsure\",\"rust\",\"unsure\",\"unsure\",\"miner\",\"miner\",\"healthy\",\"miner\",\"unsure\",\"unsure\",\"not_leaf\",\"cercospora\",\"rust\",\"not_leaf\",\"unsure\",\"unsure\",\"miner\",\"miner\"] got {\"n\":18,\"counts\":{\"healthy\":1,\"rust\":2,\"cercospora\":1,\"phoma\":0,\"miner\":5,\"not_leaf\":2},\"uncertain\":7,\"dominant\":\"miner\",\"affected\":8,\"distinctProblems\":3} want {\"n\":18,\"counts\":{\"healthy\":1,\"rust\":2,\"cercospora\":1,\"phoma\":0,\"miner\":5,\"not_leaf\":2},\"uncertain\":9,\"dominant\":\"miner\",\"affected\":8,\"distinctProblems\":3}",
++   "[\"phoma\",\"phoma\",\"healthy\",\"healthy\",\"rust\",\"healthy\",\"not_leaf\",\"cercospora\",\"healthy\",\"cercospora\",\"cercospora\",\"not_leaf\",\"phoma\",\"phoma\"] got {\"n\":14,\"counts\":{\"healthy\":4,\"rust\":1,\"cercospora\":3,\"phoma\":4,\"miner\":0,\"not_leaf\":2},\"uncertain\":0,\"dominant\":\"healthy\",\"affected\":8,\"distinctProblems\":3} want {\"n\":14,\"counts\":{\"healthy\":4,\"rust\":1,\"cercospora\":3,\"phoma\":4,\"miner\":0,\"not_leaf\":2},\"uncertain\":2,\"dominant\":\"phoma\",\"affected\":8,\"distinctProblems\":3}",
++ ]
+
+ ❯ specs/plot.spec.ts:119:62
+    117|         if (JSON.stringify(got) !== JSON.stringify(want)) bad.push(`${…
+    118|       }
+    119|       expect(bad.slice(0, 5), `${bad.length} of 400 differ`).toEqual([…
+       |                                                              ^
+    120|     });
+    121|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[48/92]⎯
+
+ FAIL  specs/plot.spec.ts > summarisePlot: seeded property tests against the oracle > seed 31337: 400 random plots match the oracle
+AssertionError: 242 of 400 differ: expected [ …(5) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "[\"unsure\",\"cercospora\",\"unsure\",\"unsure\",\"rust\",\"not_leaf\",\"cercospora\",\"unsure\",\"cercospora\",\"cercospora\",\"unsure\",\"unsure\",\"unsure\",\"unsure\"] got {\"n\":14,\"counts\":{\"healthy\":0,\"rust\":1,\"cercospora\":4,\"phoma\":0,\"miner\":0,\"not_leaf\":1},\"uncertain\":8,\"dominant\":\"cercospora\",\"affected\":5,\"distinctProblems\":2} want {\"n\":14,\"counts\":{\"healthy\":0,\"rust\":1,\"cercospora\":4,\"phoma\":0,\"miner\":0,\"not_leaf\":1},\"uncertain\":9,\"dominant\":\"cercospora\",\"affected\":5,\"distinctProblems\":2}",
++   "[\"not_leaf\",\"cercospora\",\"phoma\",\"unsure\",\"phoma\",\"rust\",\"cercospora\",\"not_leaf\",\"unsure\",\"not_leaf\",\"phoma\",\"phoma\",\"cercospora\",\"phoma\",\"cercospora\",\"phoma\",\"cercospora\"] got {\"n\":17,\"counts\":{\"healthy\":0,\"rust\":1,\"cercospora\":5,\"phoma\":6,\"miner\":0,\"not_leaf\":3},\"uncertain\":2,\"dominant\":\"phoma\",\"affected\":12,\"distinctProblems\":3} want {\"n\":17,\"counts\":{\"healthy\":0,\"rust\":1,\"cercospora\":5,\"phoma\":6,\"miner\":0,\"not_leaf\":3},\"uncertain\":5,\"dominant\":\"phoma\",\"affected\":12,\"distinctProblems\":3}",
++   "[\"not_leaf\",\"phoma\",\"cercospora\",\"cercospora\",\"not_leaf\",\"cercospora\",\"cercospora\",\"not_leaf\",\"unsure\",\"not_leaf\",\"not_leaf\",\"not_leaf\",\"not_leaf\",\"cercospora\",\"not_leaf\",\"unsure\",\"unsure\"] got {\"n\":17,\"counts\":{\"healthy\":0,\"rust\":0,\"cercospora\":5,\"phoma\":1,\"miner\":0,\"not_leaf\":8},\"uncertain\":3,\"dominant\":\"not_leaf\",\"affected\":6,\"distinctProblems\":2} want {\"n\":17,\"counts\":{\"healthy\":0,\"rust\":0,\"cercospora\":5,\"phoma\":1,\"miner\":0,\"not_leaf\":8},\"uncertain\":11,\"dominant\":\"cercospora\",\"affected\":6,\"distinctProblems\":2}",
++   "[\"phoma\",\"phoma\",\"rust\",\"not_leaf\",\"not_leaf\",\"unsure\",\"not_leaf\",\"unsure\",\"healthy\",\"miner\"] got {\"n\":10,\"counts\":{\"healthy\":1,\"rust\":1,\"cercospora\":0,\"phoma\":2,\"miner\":1,\"not_leaf\":3},\"uncertain\":2,\"dominant\":\"not_leaf\",\"affected\":4,\"distinctProblems\":3} want {\"n\":10,\"counts\":{\"healthy\":1,\"rust\":1,\"cercospora\":0,\"phoma\":2,\"miner\":1,\"not_leaf\":3},\"uncertain\":5,\"dominant\":\"phoma\",\"affected\":4,\"distinctProblems\":3}",
++   "[\"not_leaf\",\"not_leaf\",\"miner\",\"phoma\",\"phoma\",\"not_leaf\",\"phoma\",\"not_leaf\",\"miner\",\"not_leaf\",\"unsure\",\"not_leaf\",\"phoma\",\"not_leaf\"] got {\"n\":14,\"counts\":{\"healthy\":0,\"rust\":0,\"cercospora\":0,\"phoma\":4,\"miner\":2,\"not_leaf\":7},\"uncertain\":1,\"dominant\":\"not_leaf\",\"affected\":6,\"distinctProblems\":2} want {\"n\":14,\"counts\":{\"healthy\":0,\"rust\":0,\"cercospora\":0,\"phoma\":4,\"miner\":2,\"not_leaf\":7},\"uncertain\":8,\"dominant\":\"phoma\",\"affected\":6,\"distinctProblems\":2}",
++ ]
+
+ ❯ specs/plot.spec.ts:119:62
+    117|         if (JSON.stringify(got) !== JSON.stringify(want)) bad.push(`${…
+    118|       }
+    119|       expect(bad.slice(0, 5), `${bad.length} of 400 differ`).toEqual([…
+       |                                                              ^
+    120|     });
+    121|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[49/92]⎯
+
+ FAIL  specs/plot.spec.ts > summarisePlot: seeded property tests against the oracle > invariants hold on 2000 random plots
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ specs/plot.spec.ts:131:27
+    129|       expect(s.n).toBe(ls.length);
+    130|       expect(LABELS.reduce((a, l) => a + s.counts[l], 0) + unsure).toB…
+    131|       expect(s.uncertain).toBe(unsure + s.counts.not_leaf);
+       |                           ^
+    132|       expect(s.affected).toBeLessThanOrEqual(s.n);
+    133|       expect(s.distinctProblems).toBeLessThanOrEqual(Math.min(4, s.aff…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[50/92]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: JANI1 grammar > the CONTRACTS example check gives exactly the CONTRACTS example fields
+AssertionError: Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise.: expected null not to be null
+ ❯ specs/referral.spec.ts:24:24
+     22|     const sms = build(c);
+     23|     const m = sms.match(JANI1_RE);
+     24|     expect(m, sms).not.toBeNull();
+       |                        ^
+     25|     expect(sms.replace(/ Q:\d{1,3}/, ' Q:87')).toBe('JANI1 M:OCC0412 P…
+     26|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[51/92]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: JANI1 grammar > Q is a whole percent from 0 to 100
+TypeError: Cannot read properties of null (reading 'groups')
+ ❯ specs/referral.spec.ts:36:52
+     34|
+     35|   it('Q is a whole percent from 0 to 100', () => {
+     36|     const q = Number(build(check()).match(JANI1_RE)!.groups!.q);
+       |                                                    ^
+     37|     expect(Number.isInteger(q) && q >= 0 && q <= 100).toBe(true);
+     38|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[52/92]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: JANI1 grammar > carries no names, even when the check object has name-like extra fields
+AssertionError: expected 'Jani check: 10 leaves, 7 affected, 1 …' to match /^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(…/
+
+- Expected:
+/^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(?<p>[A-Za-z0-9-]{0,8}) D:(?<d>\d{8}) N:(?<n>\d{1,3}) R:(?<r>\d{1,3}) C:(?<c>\d{1,3}) H:(?<h>\d{1,3}) L:(?<l>\d{1,3}) U:(?<u>\d{1,3}) A:(?<a>[a-z0-9_]{1,40}) Q:(?<q>\d{1,3}) X:(?<x>act|wait|ask|-)?$/
+
++ Received:
+"Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise."
+
+ ❯ specs/referral.spec.ts:43:17
+     41|     const sms = build(check({ farmerName: 'Noor Wanjiku', name: 'Noor …
+     42|     expect(sms).not.toMatch(/noor|wanjiku/i);
+     43|     expect(sms).toMatch(JANI1_RE);
+       |                 ^
+     44|   });
+     45|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[53/92]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: JANI1 grammar > a member id typed with spaces and lower case still gives a parseable SMS
+AssertionError: Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise.: expected 'Jani check: 10 leaves, 7 affected, 1 …' to match /^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(…/
+
+- Expected:
+/^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(?<p>[A-Za-z0-9-]{0,8}) D:(?<d>\d{8}) N:(?<n>\d{1,3}) R:(?<r>\d{1,3}) C:(?<c>\d{1,3}) H:(?<h>\d{1,3}) L:(?<l>\d{1,3}) U:(?<u>\d{1,3}) A:(?<a>[a-z0-9_]{1,40}) Q:(?<q>\d{1,3}) X:(?<x>act|wait|ask|-)?$/
+
++ Received:
+"Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise."
+
+ ❯ specs/referral.spec.ts:48:22
+     46|   it('a member id typed with spaces and lower case still gives a parse…
+     47|     const sms = build(check({ memberId: ' occ 0412 ', plotId: ' p07 ' …
+     48|     expect(sms, sms).toMatch(JANI1_RE);
+       |                      ^
+     49|   });
+     50|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[54/92]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: JANI1 grammar > a very long member id still fits in 160 characters
+AssertionError: expected 'Jani check: 10 leaves, 7 affected, 1 …' to match /^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(…/
+
+- Expected:
+/^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(?<p>[A-Za-z0-9-]{0,8}) D:(?<d>\d{8}) N:(?<n>\d{1,3}) R:(?<r>\d{1,3}) C:(?<c>\d{1,3}) H:(?<h>\d{1,3}) L:(?<l>\d{1,3}) U:(?<u>\d{1,3}) A:(?<a>[a-z0-9_]{1,40}) Q:(?<q>\d{1,3}) X:(?<x>act|wait|ask|-)?$/
+
++ Received:
+"Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise."
+
+ ❯ specs/referral.spec.ts:54:17
+     52|     const sms = build(check({ memberId: 'OCC'.padEnd(200, '9') }));
+     53|     expect(sms.length).toBeLessThanOrEqual(160);
+     54|     expect(sms).toMatch(JANI1_RE);
+       |                 ^
+     55|   });
+     56|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[55/92]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: edge cases > n = 0 (no photos) still gives a valid JANI1 string
+AssertionError: Jani check: 0 leaves, 0 affected, 0 not sure. Main result: no clear problem. Farmer chose: ask. Please advise.: expected 'Jani check: 0 leaves, 0 affected, 0 n…' to match /^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(…/
+
+- Expected:
+/^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(?<p>[A-Za-z0-9-]{0,8}) D:(?<d>\d{8}) N:(?<n>\d{1,3}) R:(?<r>\d{1,3}) C:(?<c>\d{1,3}) H:(?<h>\d{1,3}) L:(?<l>\d{1,3}) U:(?<u>\d{1,3}) A:(?<a>[a-z0-9_]{1,40}) Q:(?<q>\d{1,3}) X:(?<x>act|wait|ask|-)?$/
+
++ Received:
+"Jani check: 0 leaves, 0 affected, 0 not sure. Main result: no clear problem. Farmer chose: ask. Please advise."
+
+ ❯ specs/referral.spec.ts:66:22
+     64|   it('n = 0 (no photos) still gives a valid JANI1 string', () => {
+     65|     const sms = build(check({ leaves: [], answerId: 'ask_officer' }));
+     66|     expect(sms, sms).toMatch(JANI1_RE);
+       |                      ^
+     67|     expect(sms).toContain(' N:0 ');
+     68|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[56/92]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: edge cases > all unsure gives U = N and zero disease counts
+TypeError: Cannot read properties of null (reading 'groups')
+ ❯ specs/referral.spec.ts:72:34
+     70|   it('all unsure gives U = N and zero disease counts', () => {
+     71|     const sms = build(check({ leaves: leaves({ unsure: 10 }), answerId…
+     72|     const g = sms.match(JANI1_RE)!.groups!;
+       |                                  ^
+     73|     expect([g.n, g.r, g.c, g.h, g.l, g.u]).toEqual(['10', '0', '0', '0…
+     74|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[57/92]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: edge cases > U is summary.uncertain, so it includes not_leaf leaves and N = healthy + R + C + H + L + U
+TypeError: Cannot read properties of null (reading 'groups')
+ ❯ specs/referral.spec.ts:78:34
+     76|   it('U is summary.uncertain, so it includes not_leaf leaves and N = h…
+     77|     const sms = build(check({ leaves: leaves({ not_leaf: 2, unsure: 1,…
+     78|     const g = sms.match(JANI1_RE)!.groups!;
+       |                                  ^
+     79|     expect(g.u).toBe('3');
+     80|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[58/92]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: edge cases > missing member or plot still gives a valid JANI1 string
+AssertionError: {} -> Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise.: expected 'Jani check: 10 leaves, 7 affected, 1 …' to match /^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(…/
+
+- Expected:
+/^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(?<p>[A-Za-z0-9-]{0,8}) D:(?<d>\d{8}) N:(?<n>\d{1,3}) R:(?<r>\d{1,3}) C:(?<c>\d{1,3}) H:(?<h>\d{1,3}) L:(?<l>\d{1,3}) U:(?<u>\d{1,3}) A:(?<a>[a-z0-9_]{1,40}) Q:(?<q>\d{1,3}) X:(?<x>act|wait|ask|-)?$/
+
++ Received:
+"Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise."
+
+ ❯ specs/referral.spec.ts:85:56
+     83|     for (const over of [{ memberId: undefined }, { plotId: undefined }…
+     84|       const sms = build(check(over));
+     85|       expect(sms, JSON.stringify(over) + ' -> ' + sms).toMatch(JANI1_R…
+       |                                                        ^
+     86|     }
+     87|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[59/92]⎯
+
+ FAIL  specs/referral.spec.ts > buildReferral: edge cases > missing decision still gives a valid JANI1 string
+AssertionError: Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise.: expected 'Jani check: 10 leaves, 7 affected, 1 …' to match /^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(…/
+
+- Expected:
+/^JANI1 M:(?<m>[A-Za-z0-9-]{0,16}) P:(?<p>[A-Za-z0-9-]{0,8}) D:(?<d>\d{8}) N:(?<n>\d{1,3}) R:(?<r>\d{1,3}) C:(?<c>\d{1,3}) H:(?<h>\d{1,3}) L:(?<l>\d{1,3}) U:(?<u>\d{1,3}) A:(?<a>[a-z0-9_]{1,40}) Q:(?<q>\d{1,3}) X:(?<x>act|wait|ask|-)?$/
+
++ Received:
+"Jani check: 10 leaves, 7 affected, 1 not sure. Main result: rust. Farmer chose: ask. Please advise."
+
+ ❯ specs/referral.spec.ts:91:22
+     89|   it('missing decision still gives a valid JANI1 string', () => {
+     90|     const sms = build(check({ decision: undefined }));
+     91|     expect(sms, sms).toMatch(JANI1_RE);
+       |                      ^
+     92|   });
+     93| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[60/92]⎯
+
+ FAIL  specs/referral.spec.ts > parseReferral: round trip > is exported by the engine
+AssertionError: expected 'undefined' to be 'function' // Object.is equality
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ specs/referral.spec.ts:96:72
+     94|
+     95| describe('parseReferral: round trip', () => {
+     96|   it('is exported by the engine', () => expect(typeof e.parseReferral)…
+       |                                                                        ^
+     97|
+     98|   it('round-trips every field of the CONTRACTS example', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[61/92]⎯
+
+ FAIL  specs/referral.spec.ts > parseReferral: round trip > round-trips every field of the CONTRACTS example
+TypeError: e.parseReferral is not a function
+ ❯ specs/referral.spec.ts:99:33
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[62/92]⎯
+
+ FAIL  specs/referral.spec.ts > parseReferral: round trip > round-trips buildReferral output for 300 random checks
+TypeError: e.parseReferral is not a function
+ ❯ specs/referral.spec.ts:115:35
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[63/92]⎯
+
+ FAIL  specs/referral.spec.ts > parseReferral: round trip > D is the local calendar day of createdAt
+AssertionError: expected undefined to be '20261004' // Object.is equality
+
+- Expected:
+"20261004"
+
++ Received:
+undefined
+
+ ❯ specs/referral.spec.ts:125:44
+    123|   it('D is the local calendar day of createdAt', () => {
+    124|     const sms = build(check({ createdAt: new Date(2026, 9, 4, 0, 30).t…
+    125|     expect(sms.match(JANI1_RE)?.groups?.d).toBe('20261004');
+       |                                            ^
+    126|   });
+    127|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[64/92]⎯
+
+ FAIL  specs/referral.spec.ts > parseReferral: round trip > rejects text that is not a JANI1 referral
+TypeError: e.parseReferral is not a function
+ ❯ specs/referral.spec.ts:129:107
+    127|
+    128|   it('rejects text that is not a JANI1 referral', () => {
+    129|     for (const t of ['hello', '', 'JANI2 M:OCC0412', 'JANI1', 'JANI1 M…
+       |                                                                                                           ^
+    130|   });
+    131| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[65/92]⎯
+
+ FAIL  specs/season.spec.ts > seasonWindow > is exported
+AssertionError: expected 'undefined' to be 'function' // Object.is equality
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ specs/season.spec.ts:39:55
+     37|
+     38| describe('seasonWindow', () => {
+     39|   it('is exported', () => expect(typeof seasonWindow).toBe('function')…
+       |                                                       ^
+     40|
+     41|   for (const year of [2026, 2028]) {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[66/92]⎯
+
+ FAIL  specs/season.spec.ts > seasonWindow > matches season.json on every day of 2026 (local noon)
+AssertionError: 365 days wrong: expected [ …(8) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "1/1: got threw seasonWindow is not a function, want dry",
++   "1/2: got threw seasonWindow is not a function, want dry",
++   "1/3: got threw seasonWindow is not a function, want dry",
++   "1/4: got threw seasonWindow is not a function, want dry",
++   "1/5: got threw seasonWindow is not a function, want dry",
++   "1/6: got threw seasonWindow is not a function, want dry",
++   "1/7: got threw seasonWindow is not a function, want dry",
++   "1/8: got threw seasonWindow is not a function, want dry",
++ ]
+
+ ❯ specs/season.spec.ts:50:59
+     48|         if (got !== want) bad.push(`${t.getMonth() + 1}/${t.getDate()}…
+     49|       }
+     50|       expect(bad.slice(0, 8), `${bad.length} days wrong`).toEqual([]);
+       |                                                           ^
+     51|     });
+     52|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[67/92]⎯
+
+ FAIL  specs/season.spec.ts > seasonWindow > matches season.json on every day of 2028 (local noon)
+AssertionError: 366 days wrong: expected [ …(8) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "1/1: got threw seasonWindow is not a function, want dry",
++   "1/2: got threw seasonWindow is not a function, want dry",
++   "1/3: got threw seasonWindow is not a function, want dry",
++   "1/4: got threw seasonWindow is not a function, want dry",
++   "1/5: got threw seasonWindow is not a function, want dry",
++   "1/6: got threw seasonWindow is not a function, want dry",
++   "1/7: got threw seasonWindow is not a function, want dry",
++   "1/8: got threw seasonWindow is not a function, want dry",
++ ]
+
+ ❯ specs/season.spec.ts:50:59
+     48|         if (got !== want) bad.push(`${t.getMonth() + 1}/${t.getDate()}…
+     49|       }
+     50|       expect(bad.slice(0, 8), `${bad.length} days wrong`).toEqual([]);
+       |                                                           ^
+     51|     });
+     52|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[68/92]⎯
+
+ FAIL  specs/season.spec.ts > seasonWindow > 2026-09-30 is dry
+ FAIL  specs/season.spec.ts > seasonWindow > 2026-10-01 is pre_short_rains
+ FAIL  specs/season.spec.ts > seasonWindow > 2026-10-04 is pre_short_rains
+ FAIL  specs/season.spec.ts > seasonWindow > 2026-11-05 is pre_short_rains
+ FAIL  specs/season.spec.ts > seasonWindow > 2026-11-06 is short_rains
+ FAIL  specs/season.spec.ts > seasonWindow > 2026-12-15 is short_rains
+ FAIL  specs/season.spec.ts > seasonWindow > 2026-12-16 is dry
+ FAIL  specs/season.spec.ts > seasonWindow > 2026-12-31 is dry
+ FAIL  specs/season.spec.ts > seasonWindow > 2027-01-01 is dry
+ FAIL  specs/season.spec.ts > seasonWindow > 2027-02-19 is dry
+ FAIL  specs/season.spec.ts > seasonWindow > 2027-02-20 is pre_long_rains
+ FAIL  specs/season.spec.ts > seasonWindow > 2028-02-29 is pre_long_rains
+ FAIL  specs/season.spec.ts > seasonWindow > 2027-03-31 is pre_long_rains
+ FAIL  specs/season.spec.ts > seasonWindow > 2027-04-01 is long_rains
+ FAIL  specs/season.spec.ts > seasonWindow > 2027-05-31 is long_rains
+ FAIL  specs/season.spec.ts > seasonWindow > 2027-06-01 is dry
+TypeError: seasonWindow is not a function
+ ❯ specs/season.spec.ts:62:12
+     60|   it.each(edges)('%s is %s', (iso, want) => {
+     61|     const [y, m, d] = iso.split('-').map(Number);
+     62|     expect(seasonWindow(new Date(y, m - 1, d, 12))).toBe(want);
+       |            ^
+     63|   });
+     64|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[69/92]⎯
+
+ FAIL  specs/season.spec.ts > seasonWindow > uses the local calendar day in Kenya (00:30 on 1 Oct is already pre_short_rains)
+TypeError: seasonWindow is not a function
+ ❯ specs/season.spec.ts:67:12
+     65|   it('uses the local calendar day in Kenya (00:30 on 1 Oct is already …
+     66|     expect(process.env.TZ).toBeTruthy();
+     67|     expect(seasonWindow(new Date(2026, 9, 1, 0, 30))).toBe('pre_short_…
+       |            ^
+     68|     expect(seasonWindow(new Date(2026, 8, 30, 23, 30))).toBe('dry');
+     69|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[70/92]⎯
+
+ FAIL  specs/sms.spec.ts > smsLink > a number typed with spaces gives a link with no raw spaces
+AssertionError: expected 'sms:0700 123 456?body=JANI1%20M%3AOCC…' not to match /\s/
+
+- Expected:
+/\s/
+
++ Received:
+"sms:0700 123 456?body=JANI1%20M%3AOCC0412%20P%3A2%20D%3A20261004%20N%3A10%20R%3A6%20C%3A0%20H%3A0%20L%3A1%20U%3A1%20A%3Arust_high_pre_rains%20Q%3A87%20X%3Aask"
+
+ ❯ specs/sms.spec.ts:48:47
+     46|   it('a number typed with spaces gives a link with no raw spaces', () …
+     47|     as(ANDROID);
+     48|     expect(smsLink('0700 123 456', BODY)).not.toMatch(/\s/);
+       |                                               ^
+     49|   });
+     50|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[71/92]⎯
+
+
+ Test Files  5 failed | 1 passed (6)
+      Tests  92 failed | 41 passed (133)
+   Start at  23:53:36
+   Duration  1.79s (transform 165ms, setup 0ms, import 289ms, tests 313ms, environment 1ms)
+

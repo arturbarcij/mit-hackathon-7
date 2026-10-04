@@ -1,0 +1,172 @@
+{
+  "date": "2026-10-04",
+  "stack": {
+    "@tanstack/react-start": "1.168.60",
+    "@tanstack/react-router": "1.170.41",
+    "@tanstack/router-plugin": "1.168.42",
+    "vite": "8.1.5",
+    "nitro": "3.0.260603-beta",
+    "nitroPresetUsedLocally": "node-server",
+    "@lovable.dev/vite-tanstack-config": "2.25.1 (from npm; 2.24.0 also on npm)",
+    "vite-plugin-pwa": "1.3.0",
+    "workbox-build": "7.4.x (dependency of vite-plugin-pwa)",
+    "onnxruntime-web": "1.30.0",
+    "@playwright/test": "1.56.0 (matches Chromium 1194 in /opt/pw-browsers)",
+    "react": "19.2",
+    "tailwindcss": "4.3.3"
+  },
+  "proven": {
+    "serviceWorkerRegistered": true,
+    "precacheComplete": true,
+    "offlineReloadAndInference": true,
+    "throttledInference": true,
+    "deadServerReloadAndInference": true,
+    "allOfflineRequestsFromServiceWorker": true
+  },
+  "precache": {
+    "entries": 14,
+    "bytes": 16567819,
+    "MB": 15.8,
+    "perUrlBytes": {
+      "/manifest.webmanifest": 399,
+      "/assets/workbox-window.prod.es5-Bd17z0YL.js": 5653,
+      "/assets/virtual_pwa-register-Dgn-_8kK.js": 1124,
+      "/assets/routes-KKXMwnU3.js": 2097,
+      "/assets/ort.wasm.bundle.min-C0jgzs2f.js": 70804,
+      "/assets/ort-wasm-simd-threaded-DcHrbrbl.wasm": 14239897,
+      "/assets/index-DW6nSyge.js": 341130,
+      "/assets/index-BoH_bwcK.css": 8881,
+      "/audio/sw/test.mp3": 8482,
+      "/content/answers.json": 20847,
+      "/icons/icon-192.png": 568,
+      "/icons/icon-512.png": 1902,
+      "/model/leaf.onnx": 1865272,
+      "/model/model.json": 763
+    },
+    "otherCaches": {},
+    "note": "The SSR HTML of '/' is cached at runtime in cache 'jani-pages' (NetworkFirst) on the first online visit; it is not in the precache."
+  },
+  "model": {
+    "fp32Bytes": 6076658,
+    "int8Bytes": 1865272,
+    "params": 1524006,
+    "arch": "timm mobilenetv3_small_100, untrained, 6 classes, opset 17, static QDQ QUInt8/QInt8 per-channel",
+    "argmaxInBrowser": 1,
+    "argmaxInPythonOnnxruntimeCpu": 3,
+    "noteOnArgmax": "Untrained weights give logits of about +/-0.01, so the argmax differs between ORT wasm and ORT CPU builds. Irrelevant for the caching proof; parity must be tested with the real trained model.",
+    "logitsBrowser": [
+      -0.0095,
+      0.0061,
+      -0.0053,
+      0.005,
+      -0.0011,
+      0.0002
+    ],
+    "logitsPython": [
+      -0.00780431879684329,
+      0.0051316069439053535,
+      -0.004169430583715439,
+      0.006414508447051048,
+      -0.0009621763019822538,
+      -0.000106908475572709
+    ]
+  },
+  "ortWasm": {
+    "fileRequestedAtRuntime": "/assets/ort-wasm-simd-threaded-<hash>.wasm (bundler-emitted copy of onnxruntime-web/dist/ort-wasm-simd-threaded.wasm)",
+    "bytes": 14239897,
+    "filesInDist_1_30_0": {
+      "ort-wasm-simd-threaded.wasm": 14239897,
+      "ort-wasm-simd-threaded.jsep.wasm": 28312028,
+      "ort-wasm-simd-threaded.jspi.wasm": 16758545,
+      "ort-wasm-simd-threaded.asyncify.wasm": 26781914,
+      "ort-wasm-simd-threaded.mjs": 24381
+    },
+    "olderVersions_ort-wasm-simd-threaded.wasm": {
+      "1.17.3": 10647985,
+      "1.20.1": 11246032,
+      "1.22.0": 11210254
+    }
+  },
+  "otherAssets": {
+    "mp3Bytes": 8482,
+    "answersJsonBytes": 20847
+  },
+  "timingsMs": {
+    "online": {
+      "fetchMs": 151,
+      "sessionCreateMs": 762,
+      "inferMs": 147
+    },
+    "offline": {
+      "fetchMs": 174,
+      "sessionCreateMs": 355,
+      "inferMs": 84
+    },
+    "offlineCpuThrottle4x": {
+      "fetchMs": 429,
+      "sessionCreateMs": 225,
+      "inferMs": 96
+    },
+    "deadServer": {
+      "fetchMs": 52,
+      "sessionCreateMs": 359,
+      "inferMs": 48
+    }
+  },
+  "offlineRequestsAllFromServiceWorker": [
+    {
+      "url": "/",
+      "fromSW": true
+    },
+    {
+      "url": "/assets/index-BoH_bwcK.css",
+      "fromSW": true
+    },
+    {
+      "url": "/assets/routes-KKXMwnU3.js",
+      "fromSW": true
+    },
+    {
+      "url": "/assets/index-DW6nSyge.js",
+      "fromSW": true
+    },
+    {
+      "url": "/assets/virtual_pwa-register-Dgn-_8kK.js",
+      "fromSW": true
+    },
+    {
+      "url": "/assets/workbox-window.prod.es5-Bd17z0YL.js",
+      "fromSW": true
+    },
+    {
+      "url": "/assets/ort.wasm.bundle.min-C0jgzs2f.js",
+      "fromSW": true
+    },
+    {
+      "url": "/model/model.json",
+      "fromSW": true
+    },
+    {
+      "url": "/model/leaf.onnx",
+      "fromSW": true
+    },
+    {
+      "url": "/audio/sw/test.mp3",
+      "fromSW": true
+    },
+    {
+      "url": "/content/answers.json",
+      "fromSW": true
+    },
+    {
+      "url": "/assets/ort-wasm-simd-threaded-DcHrbrbl.wasm",
+      "fromSW": true
+    }
+  ],
+  "budgetCheck": {
+    "budgetMB": 15,
+    "measuredPrecacheMB": 15.8,
+    "withinBudget": false,
+    "comment": "Over budget by 0.8 MB with onnxruntime-web 1.30.0 (wasm alone is 14.24 MB). Pin onnxruntime-web 1.22.0 (wasm 11.21 MB) or 1.20.1 to get about 12.8 MB total with this model."
+  }
+}

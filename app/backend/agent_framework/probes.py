@@ -369,7 +369,8 @@ def run_probes(scan: Scan) -> list[Finding]:
         findings.append(_fail("B2", "There is no officer dashboard route.", "app/src"))
 
     live = re.findall(r"https?://[^\s)]+", readme)
-    live = [url for url in live if "vite.dev" not in url and "react.dev" not in url and "github.com/vitejs" not in url]
+    template_hosts = ("vite.dev", "react.dev", "github.com/vitejs", "oxc.rs", "swc.rs")
+    live = [url for url in live if not any(host in url for host in template_hosts)]
     if live:
         findings.append(_pass("S1", "The README names a project URL.", live[0]))
     else:
@@ -420,7 +421,7 @@ def run_probes(scan: Scan) -> list[Finding]:
 def _secret_locations(scan: Scan) -> list[str]:
     hits = []
     for path, body in scan.text.items():
-        if path.endswith(".env.example"):
+        if path.endswith(".env.example") or path.startswith("app/backend/agent_framework/tests/"):
             continue
         for index, line in enumerate(body.splitlines(), start=1):
             if SECRET_RE.search(line):

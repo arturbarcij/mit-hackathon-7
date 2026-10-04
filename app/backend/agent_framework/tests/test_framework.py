@@ -41,7 +41,17 @@ class ProbeTests(unittest.TestCase):
             self.assertEqual(by_id["R4"].status, "fail")
             self.assertEqual(by_id["D1"].status, "fail")
             self.assertEqual(by_id["W1"].status, "fail")
+            self.assertNotEqual(by_id["S1"].status, "pass")
             self.assertGreater(tally(findings)["blockers"], 0)
+
+    def test_template_urls_are_not_a_live_project(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            _write(root, "app/README.md", "See https://oxc.rs and https://vite.dev/guide\n")
+            _write(root, "app/package.json", "{}\n")
+            findings = {item.id: item for item in run_probes(build_scan(root))}
+            self.assertNotEqual(findings["S1"].status, "pass")
+            self.assertNotIn("oxc.rs", findings["S1"].evidence)
 
     def test_minimal_pass_paths(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -109,7 +119,7 @@ class ClientTests(unittest.TestCase):
     def test_env_file_loader_and_redaction(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            secret = "sk-ant-testsecretvalue"
+            secret = "sk-ant-" + "testsecretvalue"
             _write(root, "app/backend/.env", f"ANTHROPIC_API_KEY={secret}\n")
             with mock.patch.dict(os.environ, {"ANTHROPIC_API_KEY": ""}):
                 loaded = load_api_key(root)

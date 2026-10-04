@@ -54,7 +54,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | PT2 | ffprobe checks + submission form text | pitch | Sun 13:00 | todo | needs V1 |
 | V1 | Three videos recorded and checked | Arthur (pitch later) | Sun 12:45 | todo | |
 | S1 | Submit, save confirmation, make repo public | Arthur | Sun 13:30 | todo | |
-| AF1 | Concurrent Claude review framework (`app/backend/agent_framework`) | lead | Sun 10:45 | doing | Read-only. Reports in `kb/agent-runs/`. Needs `ANTHROPIC_API_KEY` in `app/backend/.env` for the Claude wave. Static matrix runs without it. |
+| AF1 | Concurrent Claude review framework (`app/backend/agent_framework`) | lead | Sun 10:45 | done | Static check `kb/agent-runs/20261004T084219Z`: pass 0, fail 20, missing 6, 22 blockers. The tree is still the Vite starter. Claude wave did not run: `ANTHROPIC_API_KEY` is not in this environment. |
 
 ## Lane rhythm (one person running four lanes)
 | Lane | Machine | Runs alone for | Check it |
@@ -108,3 +108,4 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 - Sun 00:20: Claude (lead). Sent Lovable follow-up umsg_01m41tcrs5fw281bgepzf47hgx (answers.json text per language, 160-char referral with member/plot/date, remove auto officer role, insert cap, synthetic badges, publish). PWA left to engine-cowork. Untracked the challenge PDF and ignored *.pdf; QA secrets_git now passes. PDF is still in the initial commit history and kb/ is tracked: decide before making the repo public. Gemini prompt: kb/prompts/09b_gemini_crosscheck.md.
 - Sun (early): research verified and shipped kb/research. JSON valid, all cited S-ids defined, wild set 254 files present with no ND licence, 176 price rows with KES derivation checked, pass-2 quotes match saved pages. kb/research/raw/ (third-party page copies) is git-ignored and stays local. raw/crosscheck_cowork_20261003.md lists upgrades (CA 4G 97.3%, KMSA OND onset, ElevenLabs v3 Swahili) not yet merged into EVIDENCE.
 - Sun 10:40: lead. Agent framework added at `app/backend/agent_framework`. Roster: qa, redteam, judge, engine, ui, content, docs, ml. They share one evidence pack and return JSON. Static probes do not treat `kb/STATUS.md` or `kb/research` as proof that `app/` contains the product.
+- Sun 10:45: lead. Static check of this checkout: pass 0, fail 20, missing 6. Blockers include no PWA, no model, no answer bank, no officer route, Vite starter still in `app/src/App.tsx`. Claude reviewers were not called. Put `ANTHROPIC_API_KEY` in `app/backend/.env` and rerun `PYTHONPATH=app/backend python3 -m agent_framework --root .`

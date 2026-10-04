@@ -63,7 +63,7 @@ Coordinate the exact field names with the engine agent in `kb/CONTRACTS.md`.
 - **Kikuyu**: translate the 8 most important entries (`how_to_pick_leaves`, `healthy_all`, `rust_high_pre_rains`, `too_many_unsure`, `ask_officer`, `decision_act`, `decision_wait`, `decision_ask`) with NLLB-200 (`facebook/nllb-200-distilled-600M`, `eng_Latn` to `kik_Latn`). Mark them `machine_nllb, pending native review`. The UI shows that label.
 
 ## 4. Audio, target 00:30 Sun
-- **Swahili and English: ElevenLabs.** Key `ELEVENLABS_API_KEY` in `app/backend/.env`. Check the current model list at elevenlabs.io/docs/overview/models and use the newest model that lists Swahili (`swa`). Pick one calm, clear voice and keep it for every clip. Output mp3, mono, 22.05 kHz, 48 to 64 kbps.
+- **Swahili and English: ElevenLabs.** Check the current model list at elevenlabs.io/docs/overview/models and use the newest model that lists Swahili (`swa`). Pick one calm, clear voice and keep it for every clip. Output mp3, mono, 22.05 kHz, 48 to 64 kbps.
 - **Kikuyu: Meta MMS-TTS** `facebook/mms-tts-kik` via `transformers` `VitsModel`, run locally on CPU. Convert to the same mp3 settings with ffmpeg.
 - File names: `public/audio/<lang>/<answer_id>.mp3`. Write `public/audio/manifest.json` with id, lang, bytes, duration, engine, text hash.
 - Budget: all audio together at most 4 MB.
@@ -72,7 +72,7 @@ Coordinate the exact field names with the engine agent in `kb/CONTRACTS.md`.
 ## Rules
 - Content is safety-critical. If unsure, the answer is "ask the officer".
 - No em dashes. Plain words. British English in the English text.
-- Never commit the API key. Never call ElevenLabs from the app at runtime.
+- Never call ElevenLabs from the app at runtime.
 
 ## Done when
 - Every required ID exists in all three languages (Kikuyu: the 8 listed), with sources or an assumption flag.

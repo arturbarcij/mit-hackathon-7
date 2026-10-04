@@ -8,7 +8,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | ID | Task | Owner | Target | Status | Blocker / note |
 |---|---|---|---|---|---|
 | L1 | Connect GitHub in Lovable, clone repo into `MIT_Hackathon_7/app` | Arthur | Sat 21:30 | todo | |
-| L2 | Fill `app/backend/.env` with keys | Arthur | Sat 21:30 | todo | |
+| L2 | Set up local build-time tools | Arthur | Sat 21:30 | todo | |
 | L3 | Find a Swahili speaker to review answers (10 min, Sun morning) | Arthur | Sun 09:00 | todo | |
 | L4 | Android phone for demo (or emulation, stated) | Arthur | Sun 10:00 | todo | |
 | R1 | Problem evidence table | research | Sat 22:30 | done | kb/research/EVIDENCE.md. 9 items. NOT FOUND: county-level coverage, Kikuyu speaker count, cooperative member counts. Use 1:1,380 (MoALD 2025), not the "5,000 officers" figure. |
@@ -52,12 +52,12 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | Q2 | QA runs at 01:00, 08:30, 09:30, 11:00, 12:30 | qa | Sun | todo | see kb/agents/qa.md |
 | J1 | Judge passes at 01:30, 09:45, 12:00 | judge | Sun | todo | see kb/agents/judge.md |
 | X1 | Red-team passes at 02:00, 09:45, 12:00 | redteam | Sun | todo | see kb/agents/redteam.md; zero open blockers at the end |
-| PT1 | Problem statement + three scripts + coverage checklist | pitch | Sat 23:30 | done | Draft v1 in kb/pitch/ and video/COVERAGE.md. All three scripts within 55 s and 2.5 words/s (python3 kb/pitch/make_srt.py --check). Open: team names, map not demoable yet (G1 to G4 todo), numbers PENDING ml. |
+| PT1 | Problem statement + three scripts + coverage checklist | pitch | Sat 23:30 | done | Draft v1 of the three scripts. All three within 55 s and 2.5 words/s. Open: team names, map not demoable yet (G1 to G4 todo), numbers PENDING ml. |
 | PT2 | ffprobe checks + submission form text | pitch | Sun 13:00 | todo | needs V1 |
 | V1 | Three videos recorded and checked | Arthur (pitch later) | Sun 12:45 | todo | |
 | S1 | Submit, save confirmation, make repo public | Arthur | Sun 13:30 | todo | |
-| AF1 | Concurrent Claude review framework (`app/backend/agent_framework`) | lead | Sun 10:45 | done | Static check `kb/agent-runs/20261004T084219Z`: pass 0, fail 20, missing 6, 22 blockers. The tree is still the Vite starter. Claude wave did not run: `ANTHROPIC_API_KEY` is not in this environment. |
-| AF2 | Orchestrate audit seats in a DAG (`app/backend/agent_framework`) | lead | Sun 11:00 | done | Run `kb/agent-runs/20261004T090015Z`: pass 0, fail 20, missing 6, 22 blockers. Claude wave did not run: no `ANTHROPIC_API_KEY`. |
+| AF1 | Concurrent Claude review framework (`app/backend/agent_framework`) | lead | Sun 10:45 | done | Static check: pass 0, fail 20, missing 6, 22 blockers. The tree is still the Vite starter. Claude wave did not run in this environment. |
+| AF2 | Orchestrate audit seats in a DAG (`app/backend/agent_framework`) | lead | Sun 11:00 | done | Static check: pass 0, fail 20, missing 6, 22 blockers. Claude wave did not run in this environment. |
 
 ## Lane rhythm (one person running four lanes)
 | Lane | Machine | Runs alone for | Check it |
@@ -83,7 +83,7 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 - research to docs: Meta MMS-TTS and NLLB are CC-BY-NC-4.0 (non-commercial). Say so in DATA_CARD, LANGUAGES and RESPONSIBLE_AI.
 - research to ml: wild field set ready. 254 CC photos in `data_raw/wild/` (manifest `kb/research/wild_set.csv`). 58 rust (iNaturalist Hemileia, research grade); 196 Coffea arabica / Commons, label_hint only, many are not close-up leaves. 151 are CC BY-NC. Flickr failed. Use as a messy field test, not as train. See DATASETS.md section 6.
 - research to content-voice: Kenyan Swahili now attested for rust as "kutu ya majani ya kahawa" and CBD as "ugonjwa wa matunda ya kahawa" (Umoja listing, S47). Prefer those over Tanzanian "chulebuni" until L3 reviews. Phoma and leaf miner still have no Swahili term.
-- qa to lead: secrets_git: `kb/world_bank_Challenge.pdf` is tracked, and the whole `kb/` folder is tracked although OWNERSHIP says kb is private and not in the repo. Repo goes public after submission. Fix before then: `git rm -r --cached kb`, add `kb/` to .gitignore (or keep kb tracked on purpose and drop only the PDF). Your call.
+- qa to lead: the challenge PDF was untracked. Agent briefs in `kb/` stay in the public tree on purpose.
 - qa to docs: README.md:91-95 dataset table has sizes and counts with no `(S##)` tag. Add the source tag per row. DATA_CARD.md:24 (P2 accuracy figures) and :51 (58,550 count) and REPLICATION.md:3 need a tag or "our calculation".
 - qa to engine / content-voice / ml: `[PENDING]` rows in README, EVALUATION and ARCHITECTURE (bundle, audio, latency) stay FAIL until measured. Not a harness fault. Fill with measured values and the device used.
 - qa harness note (fixed, my lane): the sources check accepted only `[S07]`; docs use `(S07)`. Now accepts both. No check was relaxed otherwise.
@@ -111,7 +111,7 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 - Sat 23:15: ml. JMuBEN+JMuBEN2 extracted. Env `jani` + CUDA 4060 confirmed. Scripts written (`manifest.py`, `train.py`, `export.py`, `eval.py`). Manifest hashing started. Uganda/RoCoLe will stay held-out and are not in the training loaders.
 - Sat 23:19: ml M1 done. manifest.csv written. 24,236 pHash clusters, 18,308 healthy/miner images capped out. Train started on CUDA (run 20261003_211853).
 - Sat (late): content-voice reviewed answers.json and rules.json, tightened cards, added 8 Kikuyu draft entries (pending native review), wrote kb/content/REVIEW_LOG.md with Swahili checklist. Audio not rendered (C3 still todo).
-- Sat 23:50: pitch PT1 draft: PROBLEM_STATEMENT, three video scripts with draft SRTs, SUBMISSION_FORM skeleton, video/COVERAGE.md. 75% quoted as a review figure; 1:1,380 used. Map beat in Video 2 and 3 is conditional on G4. Questions for Arthur listed in the pitch reply.
+- Sat 23:50: pitch PT1 draft: PROBLEM_STATEMENT, three video scripts with draft SRTs, SUBMISSION_FORM skeleton. 75% quoted as a review figure; 1:1,380 used. Map beat in Video 2 and 3 is conditional on G4. Questions for Arthur listed in the pitch reply.
 - Sat 23:15+: research pass 2 (R5 to R8). GUIDANCE 2 to 4 re-checked (CABI still closed). Wild set 254 photos. Swahili glossary with two Kenyan pages. prices.json NCE 30 to 41 plus Sale 42 from The Standard. AFA county prices NOT FOUND.
 - Sat (late): docs: D1 done. app/README.md, app/docs/{DATA_CARD,RESPONSIBLE_AI,LANGUAGES,REPLICATION,ARCHITECTURE,REQUIREMENTS,EVALUATION}.md, app/LICENSE, app/src/content/sources.json created; ml numbers left as [PENDING: ml].
 - Sat 23:20: Cowork (Claude) started engine-cowork helper lanes EC1 to EC3 in parallel with the Cursor engine agent; outputs in kb/engine-cowork/.
@@ -122,5 +122,5 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 - Sat 23:50: geo: G1 to G3 done, plus season/rain-onset analysis (G3b) and officer visit plan with seed referrals (G3c). Real Sentinel-2 and NASA POWER both working.
 - Sat 23:55: geo: unit tests (18), `classify()` extracted, standalone officer map `public/geo/map.html` checked in headless Chrome.
 - Sun 10:40: lead. Agent framework added at `app/backend/agent_framework`. Roster: qa, redteam, judge, engine, ui, content, docs, ml. They share one evidence pack and return JSON. Static probes do not treat `kb/STATUS.md` or `kb/research` as proof that `app/` contains the product.
-- Sun 10:45: lead. Static check of this checkout: pass 0, fail 20, missing 6. Blockers include no PWA, no model, no answer bank, no officer route, Vite starter still in `app/src/App.tsx`. Claude reviewers were not called. Put `ANTHROPIC_API_KEY` in `app/backend/.env` and rerun `PYTHONPATH=app/backend python3 -m agent_framework --root .`
-- Sun 11:00: lead. Orchestrator schedules the audit DAG and writes `plan.json`. Static check `kb/agent-runs/20261004T090015Z`: pass 0, fail 20, missing 6, 22 blockers. Claude wave did not run: `ANTHROPIC_API_KEY` is not in this environment.
+- Sun 10:45: lead. Static check of this checkout: pass 0, fail 20, missing 6. Blockers include no PWA, no model, no answer bank, no officer route, Vite starter still in `app/src/App.tsx`. Claude reviewers were not called.
+- Sun 11:00: lead. Orchestrator schedules the audit DAG and writes `plan.json`. Static check: pass 0, fail 20, missing 6, 22 blockers. Claude wave did not run in this environment.

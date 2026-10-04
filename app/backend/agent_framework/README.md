@@ -1,6 +1,6 @@
 # Jani agent framework
 
-Read-only audit orchestrator. Seats run in dependency order, call the Claude API on one evidence pack, and write a report. They do not edit the app.
+Read-only audit orchestrator. Seats run in dependency order, share one evidence pack, and write a local report. They do not edit the app.
 
 ## Run
 
@@ -16,7 +16,7 @@ That command orchestrates the DAG. The same run with the flag written out:
 PYTHONPATH=app/backend python3 -m agent_framework --root . --orchestrate
 ```
 
-Static file matrix only, no API call:
+Static file matrix only:
 
 ```bash
 PYTHONPATH=app/backend python3 -m agent_framework --root . --static-only
@@ -42,13 +42,9 @@ An agent starts only after every seat it depends on has finished. Independent se
 
 The direct edges into qa stay in the graph on purpose. If a middle seat is filtered out, qa still waits for each remaining builder.
 
-## Key
+## Setup
 
-`ANTHROPIC_API_KEY` in the environment, or in `app/backend/.env`. That file is git-ignored. The runner never prints the key. Do not put the key in a `VITE_` variable.
-
-If the key is missing, the static matrix still runs once. Each Claude call is marked blocked, with the error in that seat's JSON. The run still writes `plan.json` and `summary.md`. The runner does not invent model output.
-
-Optional: `CLAUDE_MODEL` (default `claude-sonnet-5-5`).
+Claude access is optional. If it is not configured, the static matrix still runs once. Each model seat is marked blocked. The run still writes a plan and a summary. The runner does not invent model output.
 
 ## Roster
 
@@ -56,7 +52,7 @@ research, ml, engine, ui, content, docs, qa, redteam, judge. Briefs are in `kb/a
 
 ## Output
 
-`kb/agent-runs/<stamp>/`
+The runner writes a local report directory (not tracked):
 
 - `plan.json`: nodes, edges, and state
 - `<agent>.json`: one file per seat

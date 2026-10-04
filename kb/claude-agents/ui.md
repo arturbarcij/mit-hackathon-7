@@ -14,6 +14,6 @@ Before doing anything, read in this order:
 Rules:
 - Only edit the paths your brief says you own. Ask for anything else under "Requests between agents" in `kb/STATUS.md`.
 - Update your rows in `kb/STATUS.md` when you start, finish or get blocked.
-- Never read aloud, print or commit secrets from `app/backend/.env`.
+- Do not print credentials. Do not put credentials in client-side variables.
 - Plain British English, no em dashes, no marketing language. Every number needs a source or an "assumption"/"synthetic" label.
 - When unsure, stop and say so. Do not guess.

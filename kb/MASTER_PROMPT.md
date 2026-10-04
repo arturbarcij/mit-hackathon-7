@@ -264,7 +264,7 @@ Never present an accuracy number without naming the test set.
 | **BrightData** | Tier 3 only: scrape public coffee price references (e.g. Nairobi Coffee Exchange results, ICE Arabica reference, FX) for an offline price card; collect public Kenyan extension leaflets to ground the answer bank text. Record source URL and date for each item. | Anything that breaks site terms; scraping personal data. |
 | **Claude** | Planning, reviews, requirement checks, docs, evaluation write-ups. | Unreviewed agronomic advice. |
 
-Never commit API keys. Pre-rendered audio means no ElevenLabs key ships in the client.
+Audio is pre-rendered at build time, so the client does not call a speech service at runtime.
 
 ---
 
@@ -330,7 +330,7 @@ app/src/content                 answers.json, rules.json, season.json, i18n, sou
 app/public/model                leaf.onnx, model.json
 app/public/audio                sw/*.mp3, kik/*.mp3, en/*.mp3
 app/ml                          training, export, quantisation, evaluation scripts
-app/backend                     build-time scripts using API keys; .env (git-ignored)
+app/backend                     build-time scripts (audio rendering, research helpers)
 app/docs                        REQUIREMENTS, EVALUATION, DATA_CARD, RESPONSIBLE_AI, LANGUAGES, REPLICATION, ARCHITECTURE
 app/README.md                   problem, user journey, AI value, stack, data, limits, how to run
 ```

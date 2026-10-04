@@ -21,7 +21,7 @@ Score what is in the tree today, not the plan.
 - Do not invent a live URL or a video.
 
 ## You own
-The judge section of `kb/agent-runs/**`. You do not edit the product.
+A written score report. You do not edit the product.
 
 ## Done when
 The report has a sentence per criterion and a pass or fail on the gate.

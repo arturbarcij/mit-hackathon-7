@@ -97,7 +97,7 @@ Do not guess.
 - Same rules as the parent: master prompt Section 16 (anti-slop), plain British English, no em dashes, no marketing words.
 - Edit only the paths listed in your prompt. If you need another file changed, put it in your report, not in the file.
 - No runtime LLM or AI API calls in the client. All farmer-facing text comes from `app/src/content/answers.json`.
-- Never read aloud, print or commit `app/backend/.env`. Never put secrets in `VITE_*` variables.
+- Do not put credentials in client-side variables. They would ship to the browser.
 - No invented numbers. Every figure needs a source, or an "assumption" or "synthetic" label.
 - No invented pesticide products or doses. Write "ask the officer".
 - Do not touch `kb/STATUS.md`, `kb/DECISIONS.md`, `kb/OWNERSHIP.md` or `kb/MASTER_PROMPT.md`.

@@ -6,8 +6,8 @@ You are the research agent for Jani, our entry in the Small AI for Development H
 Find, verify and cite every fact the product, docs and videos rely on. Your output is the evidence base. If a number is not in your files with a source, nobody else may use it.
 
 ## Tools
-- **BrightData** for fast search and page fetching (SERP API, Web Unlocker). Key: `BRIGHTDATA_API_KEY` in `app/backend/.env` (never print it, never commit it).
-  - Optional MCP for Claude Code: `claude mcp add brightdata -e API_TOKEN=<key> -- npx -y @brightdata/mcp`
+- **BrightData** for fast search and page fetching (SERP API, Web Unlocker).
+  - Optional MCP for Claude Code if the BrightData connector is already configured.
 - Plain HTTP for open APIs that need no scraping (NASA POWER, FAOSTAT, World Bank API).
 - Respect site terms. No personal data. No paywalled content.
 

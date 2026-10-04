@@ -1,0 +1,6 @@
+__pycache__/
+*.pt
+*.pth
+runs/smoke/
+runs/*/model/
+runs/*/parity_samples/

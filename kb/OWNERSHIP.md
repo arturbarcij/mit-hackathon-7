@@ -36,6 +36,11 @@ MIT_Hackathon_7/              Cursor workspace root (not a git repo)
 | `app/README.md`, `app/docs/**` (except numbers in EVALUATION.md), `app/LICENSE` | docs | Cursor / Claude |
 | `app/docs/EVALUATION.md` numbers and plots | ml | Cursor |
 | `app/backend/.env` | Arthur only | by hand |
+| `app/backend/agent_framework/**` | lead | Cursor |
+| `kb/agents/qa.md`, `kb/agents/redteam.md`, `kb/agents/judge.md` | lead | Cursor |
+| `kb/agent-runs/**` | lead (generated check reports) | Cursor |
+
+The orchestrator under `app/backend/agent_framework/` writes `kb/agent-runs/` only. Every seat is an audit. Builder seats report gaps and do not take ownership of product paths.
 
 ## Git rules
 - Lovable writes to `main`. Cursor agents pull before every push, commit small, never force-push, never rewrite history.

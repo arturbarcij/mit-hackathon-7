@@ -140,6 +140,9 @@ def main():
         out.update({"reached": reached, "per_split": res})
         if reached:
             out["threshold"] = max(r["threshold"] for r in res.values())
+            out["threshold_set_on"] = sorted(
+                name for name, r in res.items() if r.get("threshold") == out["threshold"]
+            )
         return out
 
     all_targets = sorted(set(a.report_targets) | {a.target} | ({a.fallback_target} if a.fallback_target else set()))
@@ -156,6 +159,16 @@ def main():
         threshold = 1.0
         print(f"WARNING: accepted accuracy never reaches {chosen['target']}; threshold falls back to 1.0 (abstain on almost everything)")
     accepted = conf >= threshold
+    # The shipped threshold is the strictest split. Coverage on `chosen` must be
+    # measured there, not at the lower pooled-only threshold.
+    if chosen.get("reached") and len(conf):
+        chosen["coverage"] = float(accepted.mean())
+        chosen["n_accepted"] = int(accepted.sum())
+        chosen["accepted_accuracy"] = float(correct[accepted].mean()) if accepted.any() else None
+        chosen["coverage_note"] = (
+            "coverage and accepted_accuracy are on the pooled set at the shipped threshold, "
+            "the highest threshold that still meets the target on every split"
+        )
     per_split = {}
     for sp in splits:
         m = part == sp

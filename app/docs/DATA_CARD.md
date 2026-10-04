@@ -6,7 +6,7 @@ Every figure has a source id in square brackets. The ids point to `app/src/conte
 
 All sources were accessed on 3 October 2026.
 
-Status: first draft. Model training and the final split are still in progress (ml agent). Sections that depend on the trained model say "pending ml".
+Status: first draft. This branch includes the CPU v2 model and `EVALUATION.md`. Rows below that were written from the earlier research pass still name their own sources. Where a figure disagrees with `kb/research/EVIDENCE.md`, use the evidence file.
 
 ## 1. Problem data
 
@@ -16,6 +16,7 @@ Why the problem matters. Each row gives country, year and source.
 |---|---|---|---|---|
 | The extension staff to farmer ratio "has not improved" | Kenya | 2023 | KASEP, Ministry of Agriculture [kasep-2023] | primary |
 | Government target: 1 extension officer per 600 farmers by 2029 | Kenya | 2023 (target 2029) | KASEP [kasep-2023] | primary |
+| 1 extension officer per 1,380 farmers | Kenya | 2025 | Agriculture Extension Manual, Ministry of Agriculture [moald-extension-manual-2025] | primary |
 | 1 extension officer per 1,093 farm households, against an FAO-recommended 1:400 | Kenya | 2013/14 paper; data year not stated | Odongo, Agricultural Information Worldwide [odongo-aiw-2014]; repeated by The Guardian in 2024 [guardian-2024] | secondary, older |
 | Extension ratio "at best 1: 1000" nationally, up to 1:2000 in some counties | Kenya | about 2019 (article undated) | Kilimo News [kilimonews-extension] | secondary |
 | About 6.4 million farming households | Kenya | 2019 census, quoted 2023 | KASEP [kasep-2023] | primary (quoting census) |
@@ -37,7 +38,7 @@ Why the problem matters. Each row gives country, year and source.
 | Safaricom daily bundles: KES 5 for 7 MB, KES 10 for 15 MB, KES 20 for 50 MB; out-of-bundle rate KES 4.57 per MB | Kenya | page live on 3 Oct 2026 | [safaricom-data-faq], [safaricom-data-terms] | primary (operator pages disagree; we use the smaller bundle sizes) |
 
 Problem data we looked for and did not find:
-- A primary, current national extension ratio. KASEP gives none.
+- KASEP gives no current ratio. The 2025 Agriculture Extension Manual gives 1:1,380, which is the figure to use (`kb/research/EVIDENCE.md` E1). The 1:1,093 row is an older secondary estimate.
 - Mobile coverage for the coffee counties (Nyeri, Kiambu, Murang'a, Kirinyaga, Embu). Only national figures are published in the sources checked. We do not claim coverage on Noor's slope.
 - A count of Gĩkũyũ speakers. The census counts ethnicity, not home language.
 

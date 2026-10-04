@@ -538,5 +538,14 @@
     "url": "https://statskenya.co.ke/at-stats-kenya/about/tribe-and-ethnicity-in-kenya-number-of-people-by-tribe/93/",
     "accessed": "2026-10-03",
     "used_for": "7b: Kikuyu ethnic population 8,148,668 (secondary, quoting 2019 census Vol IV)"
+  },
+  {
+    "id": "moald-extension-manual-2025",
+    "title": "Agriculture Extension Manual (Version 1), Food Systems Resilience Project",
+    "publisher": "Ministry of Agriculture and Livestock Development, Kenya",
+    "year": 2025,
+    "url": "https://fsrp.go.ke/sites/default/files/2025-08/Agriculture%20Extension%20Manual%20v1%20final.pdf",
+    "accessed": "2026-10-03",
+    "used_for": "E1: 1 extension officer per 1,380 farmers. Same document as kb/research/sources.json S02."
   }
 ]

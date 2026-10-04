@@ -94,7 +94,8 @@
     "bytes": 1642557,
     "arch": "mobilenetv3_small_100",
     "quantisation": "int8 weight-only QDQ",
-    "threshold_target_val_accuracy": 0.95
+    "threshold_target_val_accuracy": 0.95,
+    "threshold_set_on": ["uganda_calib"]
   },
   "parity_samples": {
     "dir": "/workspace/app/ml/parity_samples",

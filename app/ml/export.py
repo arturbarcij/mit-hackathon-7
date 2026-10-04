@@ -487,6 +487,7 @@ def main():
         "arch": ckpt["arch"],
         "quantisation": "int8 static QDQ" if method == "static" else "int8 weight-only QDQ",
         "threshold_target_val_accuracy": cal.get("chosen", {}).get("target"),
+        "threshold_set_on": cal.get("chosen", {}).get("threshold_set_on"),
     }
     (out / "model.json").write_text(json.dumps(model_json, indent=2) + "\n")
 

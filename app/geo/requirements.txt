@@ -1,0 +1,9 @@
+numpy>=2.0
+scipy>=1.13
+rasterio>=1.4
+pystac-client>=0.8
+shapely>=2.0
+pyproj>=3.6
+requests>=2.31
+matplotlib>=3.8
+pytest>=8

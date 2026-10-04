@@ -42,10 +42,12 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | D1 | Doc skeletons | docs | Sat 22:30 | done | Skeletons and research-derived sections filled. Open TODO(owner) and [PENDING: ml] markers are in app/README.md and app/docs/*. |
 | D2 | DATA_CARD, RESPONSIBLE_AI, LANGUAGES, REPLICATION | docs | Sun 10:30 | todo | needs R1, R3, M5 |
 | D3 | README final | docs | Sun 11:00 | todo | |
-| G1 | Synthetic plots + Sentinel-2 STAC working | geo | Sat 23:45 | todo | Cursor chat 3 |
-| G2 | NDVI per plot per dry season | geo | Sun 01:15 | todo | cut line 02:00 |
-| G3 | Deliveries, rainfall, outlier model, outputs | geo | Sun 01:45 | todo | |
-| G4 | Officer map renders outliers + referrals | ui | Sun 09:00 | todo | needs G3 |
+| G1 | Synthetic plots + Sentinel-2 STAC working | geo | Sat 23:45 | done | 80 synthetic plots, 63 members, on perennial-looking land at Mathira West, Nyeri. Earth Search STAC, tile 37MBV, SCL mask |
+| G2 | NDVI per plot per dry season | geo | Sun 01:15 | done | 4 dry-season composites (1 Jan to 15 Mar, 2023 to 2026, 12 to 15 scenes each) plus a wet-season 2025 composite. No cut needed |
+| G3 | Deliveries, rainfall, outlier model, outputs | geo | Sun 01:45 | done | `public/geo/plots.geojson`, `outliers.json`, `ndvi_change.png`. 78 of 80 planted cases as expected; 30 seeds: 98% match, 0.27 false outliers per 63 normal plots (synthetic). Contract `kb/geo/CONTRACT.md`, report `kb/geo/REPORT.md` |
+| G3b | Rain onset and season windows from NASA POWER | geo | Sun 01:45 | done | `app/geo/data/season_support.json`. Short-rains onset median 19 Oct, sd 17 days, before 15 Oct in 47% of years |
+| G3c | Officer visit plan (ranked, tiers, 8-stop route) and 18 synthetic seed referrals | geo | Sun 01:45 | done | `public/geo/visit_plan.json`, `referrals_seed.json`. Top 8 hold 93% of planted problems over 30 seeds vs 15% by chance (synthetic) |
+| G4 | Officer map renders outliers + referrals | ui | Sun 09:00 | todo | Reference map in `app/public/geo/map.html` (fallback). G3 done: see `kb/geo/CONTRACT.md`, also `visit_plan.json` and `referrals_seed.json` |
 | Q1 | QA harness built (`app/qa`) | qa (Claude) | Sat 22:00 | done | run: `python -m qa.run` from app/ |
 | Q2 | QA runs at 01:00, 08:30, 09:30, 11:00, 12:30 | qa | Sun | todo | see kb/agents/qa.md |
 | J1 | Judge passes at 01:30, 09:45, 12:00 | judge | Sun | todo | see kb/agents/judge.md |
@@ -88,6 +90,13 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 
 - cowork-claude to research / content-voice / docs (Sat 23:40): independent cross-check in kb/research/raw/crosscheck_cowork_20261003.md. Confirms EVIDENCE/GUIDANCE/DATASETS. Upgrades: CA 4G 97.3% (Jun 2025) and smartphones 63.7% of phones (Mar 2026); KMSA OND 2026 onset forecast 2nd to 3rd week Oct for the coffee counties (why-now); out-of-bundle worst case KSh 64.5 for 15 MB. For C3: ElevenLabs Swahili needs model eleven_v3 (Multilingual v2 and Flash v2.5 do not do Swahili). Batian is intermediate rust resistance, never "resistant".
 
+- geo to lead: `kb/agents/geo.md` and MASTER_PROMPT sections 3.4 and 3.5 are not on `main`, so geo built from the task text. If they differ from `kb/geo/CONTRACT.md`, tell geo which wins. Please add `app/geo/**`, `app/public/geo/**`, `kb/geo/**` to `kb/OWNERSHIP.md`.
+- geo to engine: please add a "Geo outputs" section to `kb/CONTRACTS.md` pointing to `kb/geo/CONTRACT.md`.
+- geo to research: NASA POWER gives short-rains onset median 19 Oct, sd 17 days, onset by 15 Oct in 47% of years and by 1 Oct in 13% (simplified rule, assumption). A fixed "mid October" window is right about half the time. Cross-check against `season.json` and the KMSA OND forecast. Details and suggested windows in `app/geo/data/season_support.json`.
+- geo to lead and engine: because onset varies by weeks, consider one yes/no question in the farmer flow ("have the rains started?") feeding `seasonWindow`. The person answers; the tool does not guess. Your call.
+- geo to engine and content-voice: `kb/agents/content-voice.md` puts `distinct_problems_gte: 2` before the rust rule, but the contract example `JANI1 ... R:6 ... L:1 ... A:rust_high_pre_rains` has two problems. Rule order and example disagree. Geo seeds follow the rule order and give Noor 6 rust only.
+- geo to ui: officer map reads `/geo/plots.geojson`, `/geo/outliers.json`, `/geo/visit_plan.json` (ranked plots, route, signal text) and `/geo/referrals_seed.json` (18 synthetic referrals matching the `referrals` table plus `sms`, `lon`, `lat`). Overlay `/geo/ndvi_change.png` with `overlay.bounds`. Always show a ranked plot with its `signals`. Mark everything synthetic. Rules in `kb/geo/CONTRACT.md`.
+
 ## Log
 - Sat 21:00: kb set up, six agent briefs written.
 - Sat 21:25: Bright Data MCP configured; research agent started in Cursor.
@@ -110,6 +119,8 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 - Sun 00:45: engine shipped the offline farmer flow with a mock model, fixed answer bank, rule table, referral SMS, and a simulated officer queue. No trained model and no voice clips yet.
 - Sun 01:10: browser pass on the production preview at 360px. Fill-10 summary was 6 rust and 1 unsure, card rust_high_pre_rains, referral JANI1 under 160 characters, blur sample could not be kept, offline reload served the app. Officer seed now inserts the syn-01 to syn-16 rows even when a farmer check is already marked synthetic. Chrome DevTools offline does not change navigator.onLine, so the header pill stayed "On the network".
 - Sun (early): research verified and shipped kb/research. JSON valid, all cited S-ids defined, wild set 254 files present with no ND licence, 176 price rows with KES derivation checked, pass-2 quotes match saved pages. kb/research/raw/ (third-party page copies) is git-ignored and stays local. raw/crosscheck_cowork_20261003.md lists upgrades (CA 4G 97.3%, KMSA OND onset, ElevenLabs v3 Swahili) not yet merged into EVIDENCE.
+- Sat 23:50: geo: G1 to G3 done, plus season/rain-onset analysis (G3b) and officer visit plan with seed referrals (G3c). Real Sentinel-2 and NASA POWER both working.
+- Sat 23:55: geo: unit tests (18), `classify()` extracted, standalone officer map `public/geo/map.html` checked in headless Chrome.
 - Sun 10:40: lead. Agent framework added at `app/backend/agent_framework`. Roster: qa, redteam, judge, engine, ui, content, docs, ml. They share one evidence pack and return JSON. Static probes do not treat `kb/STATUS.md` or `kb/research` as proof that `app/` contains the product.
 - Sun 10:45: lead. Static check of this checkout: pass 0, fail 20, missing 6. Blockers include no PWA, no model, no answer bank, no officer route, Vite starter still in `app/src/App.tsx`. Claude reviewers were not called. Put `ANTHROPIC_API_KEY` in `app/backend/.env` and rerun `PYTHONPATH=app/backend python3 -m agent_framework --root .`
 - Sun 11:00: lead. Orchestrator schedules the audit DAG and writes `plan.json`. Static check `kb/agent-runs/20261004T090015Z`: pass 0, fail 20, missing 6, 22 blockers. Claude wave did not run: `ANTHROPIC_API_KEY` is not in this environment.

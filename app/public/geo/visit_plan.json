@@ -1,0 +1,811 @@
+{
+ "version": "geo-1",
+ "generatedAt": "2026-10-03T21:39:28Z",
+ "season": "2025/26",
+ "synthetic": {
+  "deliveries": true,
+  "referrals": true,
+  "plots": true,
+  "satellite": false
+ },
+ "assumptions": {
+  "capacityPerVisitDay": 8,
+  "circuity": 1.4,
+  "office": {
+   "name": "Cooperative office (synthetic location)",
+   "lon": 37.07,
+   "lat": -0.478
+  },
+  "weights": {
+   "canopy_strong": 40,
+   "canopy_moderate": 25,
+   "delivery_drop": 30,
+   "delivery_drop_moderate": 15,
+   "delivery_spike": 20,
+   "leaf_rust_high": 40,
+   "leaf_other_problem": 25,
+   "leaf_abstained": 25,
+   "data_gap": 5
+  },
+  "tiers": {
+   "A": "40 points or more: visit now",
+   "B": "20 to 39: call the member or check records",
+   "C": "below: no action from this map"
+  },
+  "note": "Points are a transparent sum of signals, not a probability. Weights are assumptions and need real visit outcomes to tune."
+ },
+ "tiers": {
+  "A": 16,
+  "B": 9,
+  "C": 55
+ },
+ "route": {
+  "stops": [
+   {
+    "stop": 1,
+    "plotId": "OCC0694-1",
+    "memberId": "OCC0694",
+    "plot": 1,
+    "lon": 37.052609,
+    "lat": -0.472186,
+    "legKm": 2.9,
+    "points": 70,
+    "independentSignals": 2,
+    "tier": "A",
+    "signals": [
+     {
+      "source": "deliveries",
+      "text": "Deliveries fell 64% against the cooperative median. Synthetic record."
+     },
+     {
+      "source": "leaf_check",
+      "text": "Farmer's leaf check: 5 of 10 leaves show rust. Asked for the officer. Synthetic."
+     }
+    ]
+   },
+   {
+    "stop": 2,
+    "plotId": "OCC0412-2",
+    "memberId": "OCC0412",
+    "plot": 2,
+    "lon": 37.050951,
+    "lat": -0.467965,
+    "legKm": 0.7,
+    "points": 110,
+    "independentSignals": 3,
+    "tier": "A",
+    "signals": [
+     {
+      "source": "satellite",
+      "text": "Canopy fell much more than nearby plots (NDVI 0.832 to 0.362). Real Sentinel-2."
+     },
+     {
+      "source": "deliveries",
+      "text": "Deliveries fell 58% against the cooperative median. Synthetic record."
+     },
+     {
+      "source": "leaf_check",
+      "text": "Farmer's leaf check: 6 of 10 leaves show rust. Asked for the officer. Synthetic."
+     }
+    ]
+   },
+   {
+    "stop": 3,
+    "plotId": "OCC0376-2",
+    "memberId": "OCC0376",
+    "plot": 2,
+    "lon": 37.056292,
+    "lat": -0.469166,
+    "legKm": 0.9,
+    "points": 70,
+    "independentSignals": 2,
+    "tier": "A",
+    "signals": [
+     {
+      "source": "deliveries",
+      "text": "Deliveries fell 65% against the cooperative median. Synthetic record."
+     },
+     {
+      "source": "leaf_check",
+      "text": "Farmer's leaf check: 8 of 10 leaves show rust. Asked for the officer. Synthetic."
+     }
+    ]
+   },
+   {
+    "stop": 4,
+    "plotId": "OCC0629-1",
+    "memberId": "OCC0629",
+    "plot": 1,
+    "lon": 37.060266,
+    "lat": -0.462334,
+    "legKm": 1.2,
+    "points": 70,
+    "independentSignals": 2,
+    "tier": "A",
+    "signals": [
+     {
+      "source": "deliveries",
+      "text": "Deliveries fell 62% against the cooperative median. Synthetic record."
+     },
+     {
+      "source": "leaf_check",
+      "text": "Farmer's leaf check: 7 of 10 leaves show rust. Asked for the officer. Synthetic."
+     }
+    ]
+   },
+   {
+    "stop": 5,
+    "plotId": "OCC0413-1",
+    "memberId": "OCC0413",
+    "plot": 1,
+    "lon": 37.050952,
+    "lat": -0.456046,
+    "legKm": 1.7,
+    "points": 95,
+    "independentSignals": 3,
+    "tier": "A",
+    "signals": [
+     {
+      "source": "satellite",
+      "text": "Canopy fell much more than nearby plots (NDVI 0.621 to 0.156). Real Sentinel-2."
+     },
+     {
+      "source": "deliveries",
+      "text": "Deliveries fell 47%, a moderate drop. Synthetic record."
+     },
+     {
+      "source": "leaf_check",
+      "text": "Farmer's leaf check: 7 of 10 leaves show rust. Asked for the officer. Synthetic."
+     }
+    ]
+   },
+   {
+    "stop": 6,
+    "plotId": "OCC0368-1",
+    "memberId": "OCC0368",
+    "plot": 1,
+    "lon": 37.056257,
+    "lat": -0.449784,
+    "legKm": 1.3,
+    "points": 65,
+    "independentSignals": 2,
+    "tier": "A",
+    "signals": [
+     {
+      "source": "satellite",
+      "text": "Canopy fell much more than nearby plots (NDVI 0.735 to 0.443). Real Sentinel-2."
+     },
+     {
+      "source": "leaf_check",
+      "text": "Farmer's leaf check asked for the officer (cercospora). Synthetic."
+     }
+    ]
+   },
+   {
+    "stop": 7,
+    "plotId": "OCC0860-1",
+    "memberId": "OCC0860",
+    "plot": 1,
+    "lon": 37.063903,
+    "lat": -0.443023,
+    "legKm": 1.6,
+    "points": 95,
+    "independentSignals": 3,
+    "tier": "A",
+    "signals": [
+     {
+      "source": "satellite",
+      "text": "Canopy fell much more than nearby plots (NDVI 0.787 to 0.479). Real Sentinel-2."
+     },
+     {
+      "source": "deliveries",
+      "text": "Deliveries fell 63% against the cooperative median. Synthetic record."
+     },
+     {
+      "source": "leaf_check",
+      "text": "Farmer's leaf check asked for the officer (miner). Synthetic."
+     }
+    ]
+   },
+   {
+    "stop": 8,
+    "plotId": "OCC0452-1",
+    "memberId": "OCC0452",
+    "plot": 1,
+    "lon": 37.083882,
+    "lat": -0.457365,
+    "legKm": 3.8,
+    "points": 55,
+    "independentSignals": 2,
+    "tier": "A",
+    "signals": [
+     {
+      "source": "deliveries",
+      "text": "Deliveries fell 48%, a moderate drop. Synthetic record."
+     },
+     {
+      "source": "leaf_check",
+      "text": "Farmer's leaf check: 7 of 10 leaves show rust. Asked for the officer. Synthetic."
+     }
+    ]
+   }
+  ],
+  "totalKm": 18.0,
+  "randomOrderMeanKm": 28.1,
+  "note": "Straight-line distance times 1.4, closed loop from the office. Not road routing."
+ },
+ "ranking": [
+  {
+   "rank": 1,
+   "plotId": "OCC0412-2",
+   "memberId": "OCC0412",
+   "plot": 2,
+   "points": 110,
+   "tier": "A",
+   "independentSignals": 3,
+   "geoStatus": "outlier",
+   "nextStep": "visit",
+   "referralId": "seed-01",
+   "signals": [
+    {
+     "source": "satellite",
+     "text": "Canopy fell much more than nearby plots (NDVI 0.832 to 0.362). Real Sentinel-2."
+    },
+    {
+     "source": "deliveries",
+     "text": "Deliveries fell 58% against the cooperative median. Synthetic record."
+    },
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check: 6 of 10 leaves show rust. Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 2,
+   "plotId": "OCC0413-1",
+   "memberId": "OCC0413",
+   "plot": 1,
+   "points": 95,
+   "tier": "A",
+   "independentSignals": 3,
+   "geoStatus": "outlier",
+   "nextStep": "visit",
+   "referralId": "seed-05",
+   "signals": [
+    {
+     "source": "satellite",
+     "text": "Canopy fell much more than nearby plots (NDVI 0.621 to 0.156). Real Sentinel-2."
+    },
+    {
+     "source": "deliveries",
+     "text": "Deliveries fell 47%, a moderate drop. Synthetic record."
+    },
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check: 7 of 10 leaves show rust. Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 3,
+   "plotId": "OCC0860-1",
+   "memberId": "OCC0860",
+   "plot": 1,
+   "points": 95,
+   "tier": "A",
+   "independentSignals": 3,
+   "geoStatus": "outlier",
+   "nextStep": "visit",
+   "referralId": "seed-02",
+   "signals": [
+    {
+     "source": "satellite",
+     "text": "Canopy fell much more than nearby plots (NDVI 0.787 to 0.479). Real Sentinel-2."
+    },
+    {
+     "source": "deliveries",
+     "text": "Deliveries fell 63% against the cooperative median. Synthetic record."
+    },
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check asked for the officer (miner). Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 4,
+   "plotId": "OCC0376-2",
+   "memberId": "OCC0376",
+   "plot": 2,
+   "points": 70,
+   "tier": "A",
+   "independentSignals": 2,
+   "geoStatus": "outlier",
+   "nextStep": "call_member",
+   "referralId": "seed-04",
+   "signals": [
+    {
+     "source": "deliveries",
+     "text": "Deliveries fell 65% against the cooperative median. Synthetic record."
+    },
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check: 8 of 10 leaves show rust. Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 5,
+   "plotId": "OCC0629-1",
+   "memberId": "OCC0629",
+   "plot": 1,
+   "points": 70,
+   "tier": "A",
+   "independentSignals": 2,
+   "geoStatus": "outlier",
+   "nextStep": "call_member",
+   "referralId": "seed-03",
+   "signals": [
+    {
+     "source": "deliveries",
+     "text": "Deliveries fell 62% against the cooperative median. Synthetic record."
+    },
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check: 7 of 10 leaves show rust. Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 6,
+   "plotId": "OCC0694-1",
+   "memberId": "OCC0694",
+   "plot": 1,
+   "points": 70,
+   "tier": "A",
+   "independentSignals": 2,
+   "geoStatus": "unsure",
+   "nextStep": "ask_officer",
+   "referralId": "seed-08",
+   "signals": [
+    {
+     "source": "deliveries",
+     "text": "Deliveries fell 64% against the cooperative median. Synthetic record."
+    },
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check: 5 of 10 leaves show rust. Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 7,
+   "plotId": "OCC0368-1",
+   "memberId": "OCC0368",
+   "plot": 1,
+   "points": 65,
+   "tier": "A",
+   "independentSignals": 2,
+   "geoStatus": "outlier",
+   "nextStep": "visit",
+   "referralId": "seed-06",
+   "signals": [
+    {
+     "source": "satellite",
+     "text": "Canopy fell much more than nearby plots (NDVI 0.735 to 0.443). Real Sentinel-2."
+    },
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check asked for the officer (cercospora). Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 8,
+   "plotId": "OCC0452-1",
+   "memberId": "OCC0452",
+   "plot": 1,
+   "points": 55,
+   "tier": "A",
+   "independentSignals": 2,
+   "geoStatus": "unsure",
+   "nextStep": "ask_officer",
+   "referralId": "seed-07",
+   "signals": [
+    {
+     "source": "deliveries",
+     "text": "Deliveries fell 48%, a moderate drop. Synthetic record."
+    },
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check: 7 of 10 leaves show rust. Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 9,
+   "plotId": "OCC0953-1",
+   "memberId": "OCC0953",
+   "plot": 1,
+   "points": 55,
+   "tier": "A",
+   "independentSignals": 2,
+   "geoStatus": "outlier",
+   "nextStep": "visit",
+   "referralId": null,
+   "signals": [
+    {
+     "source": "satellite",
+     "text": "Canopy fell much more than nearby plots (NDVI 0.808 to 0.454). Real Sentinel-2."
+    },
+    {
+     "source": "deliveries",
+     "text": "Deliveries fell 50%, a moderate drop. Synthetic record."
+    }
+   ]
+  },
+  {
+   "rank": 10,
+   "plotId": "OCC0328-1",
+   "memberId": "OCC0328",
+   "plot": 1,
+   "points": 40,
+   "tier": "A",
+   "independentSignals": 1,
+   "geoStatus": "normal",
+   "nextStep": "none",
+   "referralId": "seed-10",
+   "signals": [
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check: 3 of 10 leaves show rust. Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 11,
+   "plotId": "OCC0443-1",
+   "memberId": "OCC0443",
+   "plot": 1,
+   "points": 40,
+   "tier": "A",
+   "independentSignals": 1,
+   "geoStatus": "normal",
+   "nextStep": "none",
+   "referralId": "seed-09",
+   "signals": [
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check: 3 of 10 leaves show rust. Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 12,
+   "plotId": "OCC0443-3",
+   "memberId": "OCC0443",
+   "plot": 3,
+   "points": 40,
+   "tier": "A",
+   "independentSignals": 1,
+   "geoStatus": "normal",
+   "nextStep": "none",
+   "referralId": "seed-15",
+   "signals": [
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check: 5 of 10 leaves show rust. Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 13,
+   "plotId": "OCC0459-1",
+   "memberId": "OCC0459",
+   "plot": 1,
+   "points": 40,
+   "tier": "A",
+   "independentSignals": 1,
+   "geoStatus": "outlier",
+   "nextStep": "visit",
+   "referralId": null,
+   "signals": [
+    {
+     "source": "satellite",
+     "text": "Canopy fell much more than nearby plots (NDVI 0.708 to 0.583). Real Sentinel-2."
+    }
+   ]
+  },
+  {
+   "rank": 14,
+   "plotId": "OCC0548-1",
+   "memberId": "OCC0548",
+   "plot": 1,
+   "points": 40,
+   "tier": "A",
+   "independentSignals": 1,
+   "geoStatus": "outlier",
+   "nextStep": "visit",
+   "referralId": null,
+   "signals": [
+    {
+     "source": "satellite",
+     "text": "Canopy fell much more than nearby plots (NDVI 0.797 to 0.498). Real Sentinel-2."
+    }
+   ]
+  },
+  {
+   "rank": 15,
+   "plotId": "OCC0893-1",
+   "memberId": "OCC0893",
+   "plot": 1,
+   "points": 40,
+   "tier": "A",
+   "independentSignals": 1,
+   "geoStatus": "normal",
+   "nextStep": "none",
+   "referralId": "seed-11",
+   "signals": [
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check: 8 of 10 leaves show rust. Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 16,
+   "plotId": "OCC0943-1",
+   "memberId": "OCC0943",
+   "plot": 1,
+   "points": 40,
+   "tier": "A",
+   "independentSignals": 1,
+   "geoStatus": "normal",
+   "nextStep": "none",
+   "referralId": "seed-16",
+   "signals": [
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check: 3 of 10 leaves show rust. Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 17,
+   "plotId": "OCC0434-1",
+   "memberId": "OCC0434",
+   "plot": 1,
+   "points": 30,
+   "tier": "B",
+   "independentSignals": 1,
+   "geoStatus": "unsure",
+   "nextStep": "ask_officer",
+   "referralId": null,
+   "signals": [
+    {
+     "source": "deliveries",
+     "text": "Deliveries fell 60% against the cooperative median. Synthetic record."
+    }
+   ]
+  },
+  {
+   "rank": 18,
+   "plotId": "OCC0965-1",
+   "memberId": "OCC0965",
+   "plot": 1,
+   "points": 30,
+   "tier": "B",
+   "independentSignals": 1,
+   "geoStatus": "outlier",
+   "nextStep": "call_member",
+   "referralId": null,
+   "signals": [
+    {
+     "source": "deliveries",
+     "text": "Deliveries fell 67% against the cooperative median. Synthetic record."
+    }
+   ]
+  },
+  {
+   "rank": 19,
+   "plotId": "OCC0167-1",
+   "memberId": "OCC0167",
+   "plot": 1,
+   "points": 25,
+   "tier": "B",
+   "independentSignals": 1,
+   "geoStatus": "normal",
+   "nextStep": "none",
+   "referralId": "seed-13",
+   "signals": [
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check asked for the officer (cercospora). Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 20,
+   "plotId": "OCC0378-1",
+   "memberId": "OCC0378",
+   "plot": 1,
+   "points": 25,
+   "tier": "B",
+   "independentSignals": 1,
+   "geoStatus": "normal",
+   "nextStep": "none",
+   "referralId": "seed-12",
+   "signals": [
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check could not decide (3 of 10 leaves unsure). Asked for the officer. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 21,
+   "plotId": "OCC0405-1",
+   "memberId": "OCC0405",
+   "plot": 1,
+   "points": 25,
+   "tier": "B",
+   "independentSignals": 1,
+   "geoStatus": "normal",
+   "nextStep": "none",
+   "referralId": "seed-17",
+   "signals": [
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check asked for the officer (miner). Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 22,
+   "plotId": "OCC0606-2",
+   "memberId": "OCC0606",
+   "plot": 2,
+   "points": 25,
+   "tier": "B",
+   "independentSignals": 1,
+   "geoStatus": "normal",
+   "nextStep": "none",
+   "referralId": "seed-14",
+   "signals": [
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check asked for the officer (miner). Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 23,
+   "plotId": "OCC0970-1",
+   "memberId": "OCC0970",
+   "plot": 1,
+   "points": 25,
+   "tier": "B",
+   "independentSignals": 1,
+   "geoStatus": "normal",
+   "nextStep": "none",
+   "referralId": "seed-18",
+   "signals": [
+    {
+     "source": "leaf_check",
+     "text": "Farmer's leaf check asked for the officer (miner). Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 24,
+   "plotId": "OCC0158-1",
+   "memberId": "OCC0158",
+   "plot": 1,
+   "points": 20,
+   "tier": "B",
+   "independentSignals": 1,
+   "geoStatus": "outlier",
+   "nextStep": "call_member",
+   "referralId": null,
+   "signals": [
+    {
+     "source": "deliveries",
+     "text": "Deliveries rose 145% against the cooperative median. Check the records. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 25,
+   "plotId": "OCC0378-4",
+   "memberId": "OCC0378",
+   "plot": 4,
+   "points": 20,
+   "tier": "B",
+   "independentSignals": 1,
+   "geoStatus": "outlier",
+   "nextStep": "call_member",
+   "referralId": null,
+   "signals": [
+    {
+     "source": "deliveries",
+     "text": "Deliveries rose 210% against the cooperative median. Check the records. Synthetic."
+    }
+   ]
+  },
+  {
+   "rank": 26,
+   "plotId": "OCC0693-1",
+   "memberId": "OCC0693",
+   "plot": 1,
+   "points": 15,
+   "tier": "C",
+   "independentSignals": 1,
+   "geoStatus": "normal",
+   "nextStep": "none",
+   "referralId": null,
+   "signals": [
+    {
+     "source": "deliveries",
+     "text": "Deliveries fell 47%, a moderate drop. Synthetic record."
+    }
+   ]
+  },
+  {
+   "rank": 27,
+   "plotId": "OCC0307-1",
+   "memberId": "OCC0307",
+   "plot": 1,
+   "points": 5,
+   "tier": "C",
+   "independentSignals": 0,
+   "geoStatus": "unsure",
+   "nextStep": "ask_officer",
+   "referralId": null,
+   "signals": [
+    {
+     "source": "records",
+     "text": "Data too thin to judge: short history."
+    }
+   ]
+  },
+  {
+   "rank": 28,
+   "plotId": "OCC0378-2",
+   "memberId": "OCC0378",
+   "plot": 2,
+   "points": 5,
+   "tier": "C",
+   "independentSignals": 0,
+   "geoStatus": "unsure",
+   "nextStep": "ask_officer",
+   "referralId": null,
+   "signals": [
+    {
+     "source": "records",
+     "text": "Data too thin to judge: missing delivery record."
+    }
+   ]
+  },
+  {
+   "rank": 29,
+   "plotId": "OCC0848-1",
+   "memberId": "OCC0848",
+   "plot": 1,
+   "points": 5,
+   "tier": "C",
+   "independentSignals": 0,
+   "geoStatus": "unsure",
+   "nextStep": "ask_officer",
+   "referralId": null,
+   "signals": [
+    {
+     "source": "records",
+     "text": "Data too thin to judge: short history."
+    }
+   ]
+  }
+ ],
+ "referralsLinked": 18,
+ "independentAgreement": 9
+}

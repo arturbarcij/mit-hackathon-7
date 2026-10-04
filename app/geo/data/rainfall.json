@@ -1,0 +1,85 @@
+{
+ "source": "NASA POWER daily API, PRECTOTCORR (mm/day), community AG",
+ "url": "https://power.larc.nasa.gov/api/temporal/daily/point",
+ "point": {
+  "lon": 37.07,
+  "lat": -0.46
+ },
+ "gridNote": "POWER grid is about 0.5 x 0.625 degrees; one value covers the whole cooperative area",
+ "period": "19910101/20260930",
+ "climatology": {
+  "years": "1991-2020",
+  "long_rains": {
+   "meanMm": 458.6,
+   "sdMm": 184.3,
+   "years": 30
+  },
+  "short_rains": {
+   "meanMm": 407.0,
+   "sdMm": 165.0,
+   "years": 30
+  }
+ },
+ "coffeeYears": {
+  "2022/23": {
+   "short_rains": {
+    "year": 2022,
+    "totalMm": 333.4,
+    "anomalyPct": -18.1,
+    "z": -0.45
+   },
+   "long_rains": {
+    "year": 2023,
+    "totalMm": 676.5,
+    "anomalyPct": 47.5,
+    "z": 1.18
+   },
+   "coffeeYearTotalMm": 1438.1
+  },
+  "2023/24": {
+   "short_rains": {
+    "year": 2023,
+    "totalMm": 753.6,
+    "anomalyPct": 85.2,
+    "z": 2.1
+   },
+   "long_rains": {
+    "year": 2024,
+    "totalMm": 1023.7,
+    "anomalyPct": 123.2,
+    "z": 3.07
+   },
+   "coffeeYearTotalMm": 2324.5
+  },
+  "2024/25": {
+   "short_rains": {
+    "year": 2024,
+    "totalMm": 462.6,
+    "anomalyPct": 13.7,
+    "z": 0.34
+   },
+   "long_rains": {
+    "year": 2025,
+    "totalMm": 498.9,
+    "anomalyPct": 8.8,
+    "z": 0.22
+   },
+   "coffeeYearTotalMm": 1636.0
+  },
+  "2025/26": {
+   "short_rains": {
+    "year": 2025,
+    "totalMm": 353.1,
+    "anomalyPct": -13.2,
+    "z": -0.33
+   },
+   "long_rains": {
+    "year": 2026,
+    "totalMm": 541.0,
+    "anomalyPct": 18.0,
+    "z": 0.45
+   },
+   "coffeeYearTotalMm": 1308.6
+  }
+ }
+}

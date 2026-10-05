@@ -1,32 +1,34 @@
-# React + TypeScript + Vite
+# Jani
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Jani is a coffee leaf check for Noor's household phone. She picks 10 leaves at the weekend, photographs them on a plain page, and gets one fixed answer: act, wait, or ask the extension officer. The phone can be offline after the first load.
 
-Currently, two official plugins are available:
+The advice is a rule table, not a generated sentence. Every line the farmer hears is in `src/content/answers.json`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What works in this copy
 
-## React Compiler
+- Language choice: Kiswahili, Gĩkũyũ, English. Kiswahili is a draft. Gĩkũyũ is a machine draft on eight lines, pending a native speaker.
+- Spoken consent. Nothing is sent unless she taps.
+- Photo check for blur, darkness and size, then a label. Unclear leaves stay "not sure".
+- Plot summary, action card, and her own decision.
+- Referral text of at most 160 characters. The SMS app opens only when she taps. This copy also keeps the message on the phone, because there is no live SMS gateway. That queue is labelled simulated.
+- Officer list, pasted-message box, label correction, and a CSV export. Seed rows are labelled synthetic.
+- Installable page with an offline cache.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What this copy does not do
 
-## Expanding the Oxlint configuration
+- There is no trained model file yet. Labels come from a mock: the sample name, the file name, or a rough colour guess. The screen says **Mock model**. There is no accuracy number, because there is no test-set result to report.
+- Voice clips are not recorded yet. The play button says so, and the text stays on screen.
+- The officer list is on this phone. It is not a shared cooperative server.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Run
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+cd app
+npm install
+npm test
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Open the site, then use "Fill 10 synthetic leaves" to walk the October rust case without farm photos. Those pictures are synthetic.
+
+`npm run build` writes the offline bundle to `dist/`.

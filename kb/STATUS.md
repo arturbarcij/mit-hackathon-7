@@ -20,13 +20,13 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | R7 | Swahili glossary | research | Sun 01:30 | done | kb/research/swahili_glossary.md. Kenyan: kutu ya majani ya kahawa, ugonjwa wa matunda ya kahawa (Umoja); magonjwa ya kahawa (Radio Jambo). Phoma and leaf miner Swahili still NOT FOUND. Reviewer (L3) must confirm. |
 | R8 | Prices (optional) | research | Sun 02:30 | done | kb/research/prices.json. NCE USD/50kg sales 30 to 41 from PDFs; Sale 42 from The Standard (Sh44,462 / 50 kg, 17,765 bags, Sh841.3m). AFA county prices NOT FOUND. |
 | R9 | Prior art: scrape AI Repository agriculture cases (kb/prompts/10_prior_art.md) | research | Sun 00:30 | todo | PRIOR_ART.md started by Claude |
-| M1 | Data download, manifest, dedupe, splits | ml | Sat 22:30 | done | This branch: 6 datasets, rotation-aware dedupe (992 groups; 216 Uganda phoma images were JMuBEN copies, excluded). `app/ml/manifest.csv`. not_leaf is thin (407 PlantDoc images). |
-| M2 | Train v1 | ml | Sun 00:30 | done | This branch ships v2 in `app/public/model/` (v2-2026-10-04, 1.64 MB). Uganda test (same farms as uganda_train, not cross-country): acc 0.838, F1 0.866, abstains 54.7%, accepted accuracy 98.7%. RoCoLe abstains 97.8%, rust recall 0.03. v1 was Uganda 0.17, RoCoLe 0.0. |
-| M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | done | v2: temperature 0.971, threshold 0.985 (target 95%; 96.2% accepted accuracy on Uganda calib at 46.2% coverage; fitted on fp32 logits, shipped model is int8). Blank pages accepted as a disease: 2 of 300 (v1: 125). |
-| M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | done | 1.64 MB weight-only int8, 10 parity samples. Engine preprocessing matched within 3e-7 in Node. v2 browser parity passed on Chromium after the box-filter downscale. |
-| M5 | EVALUATION.md | ml | Sun 02:00 | done | `app/docs/EVALUATION.md` has v1 vs v2 and how independent each test set is. Still open: v2 browser timing and an airplane-mode run. |
-| E1 | Engine with mock model + hooks | engine | Sat 23:30 | todo | needs L1 |
-| E2 | PWA offline caching | engine | Sun 00:30 | todo | |
+| M1 | Data download, manifest, dedupe, splits | ml | Sat 22:30 | done | 63,687 files. pHash: 1,244,500 near-dup pairs, 24,236 clusters. After cap: train 31,477 / val 6,764 / test 6,714. Uganda 424 held-out only. RoCoLe not on disk yet. |
+| M2 | Train v1 | ml | Sun 00:30 | doing | run `ml/runs/20261003_211853`, CUDA 4060, full fine-tune (not head-only). Epoch 1 in progress. |
+| M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | todo | bundled at the end of train.py |
+| M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | todo | |
+| M5 | EVALUATION.md | ml | Sun 02:00 | todo | |
+| E1 | Engine with mock model + hooks | engine | Sat 23:30 | done | Mock labels, quality gate, rules, referral, IndexedDB, farmer flow and officer queue in the app. Real ONNX still waits on M4. |
+| E2 | PWA offline caching | engine | Sun 00:30 | done | vite-plugin-pwa. Precache 348 KiB before model and audio. Production preview reloaded from the service worker while Chrome DevTools was set to offline. |
 | E3 | Real model integrated, parity in browser | engine | Sun 08:30 | todo | needs M4 |
 | E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | todo | |
 | EC1 | PWA offline proof on a Lovable mirror (TanStack Start, ort wasm, Playwright offline), bundle size | engine-cowork (Claude Cowork) | Sun 00:45 | doing | recipe for E2/E4 lands in kb/engine-cowork/pwa/; never edits app/src/engine or app/tests |
@@ -36,10 +36,10 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | U0 | Connect Lovable to GitHub (new repo jani-web), clone into MIT_Hackathon_7/web | Arthur | Sat 23:15 | todo | Lovable creates a new repo; web/ is git-ignored by the root repo |
 | U2 | Officer dashboard, tables, seed data, outlier map (L2 sent) | ui | Sun 00:15 | doing | message umsg_01m41rsrzhf1brge8fntzkh6t1 |
 | U3 | Wire real engine hooks, publish live URL | ui | Sun 09:30 | todo | needs E1 |
-| C1 | answers.json + rules.json | content-voice | Sat 23:00 | done | This branch: 30 cards, 13 rules, season.json copied. The 2-of-10 rust trigger is an assumption, officer to confirm. Check with `python3 app/backend/scripts/validate_content.py`. |
-| C2 | Swahili + Kikuyu translations | content-voice | Sat 23:30 | partial | This branch: Swahili for all 30 cards, Kikuyu for 8 core cards, machine-drafted. Needs L3 native review via `kb/content/ANSWERS_REVIEW.md`. Audio (C3) not started. |
+| C1 | answers.json + rules.json | content-voice | Sat 23:00 | done | reviewed against GUIDANCE.md; QA content checks pass; thresholds all flagged assumption |
+| C2 | Swahili + Kikuyu translations | content-voice | Sat 23:30 | partial | Swahili draft only (Gemini check not run). Kikuyu 8 core drafted by Claude, low confidence, not native-reviewed; see kb/content/REVIEW_LOG.md |
 | C3 | Audio rendered (ElevenLabs, MMS) | content-voice | Sun 00:30 | todo | needs L2 |
-| D1 | Doc skeletons | docs | Sat 22:30 | done | This branch: 7 docs in `app/docs/`, `app/src/content/sources.json`, `app/LICENSE`. EVALUATION.md includes the CPU v2 numbers. |
+| D1 | Doc skeletons | docs | Sat 22:30 | done | Skeletons and research-derived sections filled. Open TODO(owner) and [PENDING: ml] markers are in app/README.md and app/docs/*. |
 | D2 | DATA_CARD, RESPONSIBLE_AI, LANGUAGES, REPLICATION | docs | Sun 10:30 | todo | needs R1, R3, M5 |
 | D3 | README final | docs | Sun 11:00 | todo | |
 | G1 | Synthetic plots + Sentinel-2 STAC working | geo | Sat 23:45 | todo | Cursor chat 3 |
@@ -67,10 +67,10 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 ## Measured budgets
 | Item | Target | Measured |
 |---|---|---|
-| leaf.onnx | at most 5 MB | |
-| Total offline precache | at most 15 MB | |
-| Audio total | at most 4 MB | |
-| Inference per leaf (4x throttle) | under 1 s | |
+| leaf.onnx | at most 5 MB | not in this copy |
+| Total offline precache | at most 15 MB | 348 KiB (production build, no model, no audio) |
+| Audio total | at most 4 MB | 0 (clips not rendered) |
+| Inference per leaf (4x throttle) | under 1 s | not measured: no ONNX file |
 
 ## Requests between agents
 - engine-cowork to engine: Cowork runs three helper lanes in parallel with you (EC1 to EC3). They write only to kb/engine-cowork/** and never touch app/src/engine or app/tests. Adopt what helps: a proven PWA recipe for Lovable's TanStack Start stack, a TS preprocessing module matching train.py eval_transform (Resize(224) on the shorter side with PIL bilinear, centre crop, ImageNet normalisation), and a vitest suite that checks any engine against CONTRACTS.md. Heads-up: Lovable's mock engine drifts from CONTRACTS (summarisePlot semantics, free-text referral instead of JANI1, hard-coded cards instead of rules.json and answers.json).
@@ -85,13 +85,6 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 - qa harness note (fixed, my lane): the sources check accepted only `[S07]`; docs use `(S07)`. Now accepts both. No check was relaxed otherwise.
 
 - cowork-claude to research / content-voice / docs (Sat 23:40): independent cross-check in kb/research/raw/crosscheck_cowork_20261003.md. Confirms EVIDENCE/GUIDANCE/DATASETS. Upgrades: CA 4G 97.3% (Jun 2025) and smartphones 63.7% of phones (Mar 2026); KMSA OND 2026 onset forecast 2nd to 3rd week Oct for the coffee counties (why-now); out-of-bundle worst case KSh 64.5 for 15 MB. For C3: ElevenLabs Swahili needs model eleven_v3 (Multilingual v2 and Flash v2.5 do not do Swahili). Batian is intermediate rust resistance, never "resistant".
-
-
-- content-voice to engine: decide tests should include a late-February date (`pre_long_rains`) and unsure counts 1 and 2. Healthy plus 1 or 2 unsure leaves returns `ask_officer`, not `healthy_all`.
-- docs to engine (from the review of the engine PR): (1) check results are saved even without main consent; gate saving on consent or change the consent wording with content-voice. (2) `sync.ts` photo upload must not use public URLs; photos stay private to the officer. (3) PIN falls back to a weak hash on plain HTTP; say in RESPONSIBLE_AI that this is acceptable on HTTPS only. (4) Abstention is the `not_leaf` class plus the threshold; there is no separate OOD score. (5) If the model file is missing, the UI must show the mock badge rather than failing silently.
-- docs to ui: when a missing Kikuyu clip falls back to Swahili, show a small Swahili label.
-- ml to lead (decision, affects the demo): v2 threshold 0.985 accepts about 46% of Uganda phone-photo leaves (96% accuracy on those). With `uncertain_gte: 3`, a 10-leaf check would return `too_many_unsure` about 97% of the time (binomial estimate, independent leaves). Options: (A) keep the per-leaf threshold and change the rule to `uncertain_gte: 6`, deciding on the confident leaves (a result in about 53% of checks); (B) threshold 0.691 (90% accepted accuracy, 79% coverage) and keep `uncertain_gte: 3` (about 65%); (C) both (about 99%). Lead recommendation on this branch: (A). Arthur to choose.
-- ml cleanup before the next export: `calibration.json` `chosen` pairs threshold 0.985 with pooled coverage 1.0 and accuracy 0.971, which is misleading. `model.json` `threshold_target_val_accuracy` should say the threshold was set on uganda_calib.
 
 ## Log
 - Sat 21:00: kb set up, six agent briefs written.
@@ -112,5 +105,7 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 - Sat (late): docs: D1 done. app/README.md, app/docs/{DATA_CARD,RESPONSIBLE_AI,LANGUAGES,REPLICATION,ARCHITECTURE,REQUIREMENTS,EVALUATION}.md, app/LICENSE, app/src/content/sources.json created; ml numbers left as [PENDING: ml].
 - Sat 23:20: Cowork (Claude) started engine-cowork helper lanes EC1 to EC3 in parallel with the Cursor engine agent; outputs in kb/engine-cowork/.
 - Sun 00:20: Claude (lead). Sent Lovable follow-up umsg_01m41tcrs5fw281bgepzf47hgx (answers.json text per language, 160-char referral with member/plot/date, remove auto officer role, insert cap, synthetic badges, publish). PWA left to engine-cowork. Untracked the challenge PDF and ignored *.pdf; QA secrets_git now passes. PDF is still in the initial commit history and kb/ is tracked: decide before making the repo public. Gemini prompt: kb/prompts/09b_gemini_crosscheck.md.
+- Sun 00:45: engine shipped the offline farmer flow with a mock model, fixed answer bank, rule table, referral SMS, and a simulated officer queue. No trained model and no voice clips yet.
+- Sun 01:10: browser pass on the production preview at 360px. Fill-10 summary was 6 rust and 1 unsure, card rust_high_pre_rains, referral JANI1 under 160 characters, blur sample could not be kept, offline reload served the app. Officer seed now inserts the syn-01 to syn-16 rows even when a farmer check is already marked synthetic. Chrome DevTools offline does not change navigator.onLine, so the header pill stayed "On the network".
 - Sun (early): research verified and shipped kb/research. JSON valid, all cited S-ids defined, wild set 254 files present with no ND licence, 176 price rows with KES derivation checked, pass-2 quotes match saved pages. kb/research/raw/ (third-party page copies) is git-ignored and stays local. raw/crosscheck_cowork_20261003.md lists upgrades (CA 4G 97.3%, KMSA OND onset, ElevenLabs v3 Swahili) not yet merged into EVIDENCE.
-- Sun: merged origin/main into this branch. Kept the verified research files from main (EVIDENCE, GUIDANCE, DATASETS, season.json, sources.json, plus prices, wild set and the glossary). Status rows M1 to M5, C1, C2 and D1 describe the files in this branch. Main's board had also noted a separate local GPU run (`ml/runs/20261003_211853`) that is not in this branch.
+- Mon: merged origin/main (PR 6 farmer content) into this branch. answers.json, rules.json and season.json taken from main.

@@ -1,31 +1,36 @@
 import react from '@vitejs/plugin-react'
-import { VitePWA } from 'vite-plugin-pwa'
 import { defineConfig } from 'vite'
+import { VitePWA } from 'vite-plugin-pwa'
 
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    // PWA settings below are owned by the engine agent.
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'icon-192.png', 'icon-512.png'],
+      includeAssets: ['favicon.svg', 'pwa-192.png', 'pwa-512.png', 'pwa-maskable-512.png'],
       manifest: {
         name: 'Jani',
         short_name: 'Jani',
-        description: 'Coffee leaf check for the household phone. Works offline after install.',
-        theme_color: '#145c32',
-        background_color: '#f7f4ec',
-        display: 'standalone',
+        description: 'Check coffee leaves for disease, offline.',
         start_url: '/',
-        lang: 'sw',
+        scope: '/',
+        display: 'standalone',
+        background_color: '#ffffff',
+        theme_color: '#2f6b3a',
         icons: [
-          { src: 'icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
-          { src: 'icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
+          { src: 'pwa-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+          { src: 'pwa-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          { src: 'pwa-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,json,woff2,onnx,wasm,mp3}'],
+        globPatterns: ['**/*.{js,mjs,css,html,svg,png,json,onnx,wasm,gz,mp3}'],
         maximumFileSizeToCacheInBytes: 15 * 1024 * 1024,
-        navigateFallback: '/index.html',
+        navigateFallback: 'index.html',
+        cleanupOutdatedCaches: true,
       },
     }),
   ],

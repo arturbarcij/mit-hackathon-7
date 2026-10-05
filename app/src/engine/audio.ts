@@ -1,43 +1,53 @@
-import type { Lang } from './types.ts'
+import type { Lang } from './types';
 
-let current: HTMLAudioElement | null = null
+let current: HTMLAudioElement | null = null;
+
+const base = () => import.meta.env.BASE_URL ?? '/';
+
+export function audioUrl(answerId: string, lang: Lang): string {
+  return `${base()}audio/${lang}/${encodeURIComponent(answerId)}.mp3`;
+}
+
+/** Order of attempts: the chosen language, then Swahili, then nothing (text only). */
+export function audioFallbackChain(lang: Lang): Lang[] {
+  return lang === 'sw' ? ['sw'] : [lang, 'sw'];
+}
+
+type Outcome = 'played' | 'missing' | 'blocked';
+
+function tryPlay(url: string): Promise<Outcome> {
+  return new Promise((resolve) => {
+    if (typeof Audio === 'undefined') {
+      resolve('missing');
+      return;
+    }
+    const el = new Audio(url);
+    current = el;
+    el.addEventListener('ended', () => resolve('played'), { once: true });
+    el.addEventListener('pause', () => resolve('played'), { once: true });
+    el.addEventListener('error', () => resolve('missing'), { once: true });
+    el.play().catch((e: unknown) => {
+      // NotAllowedError means the browser wants a tap first; another language file would hit the same wall.
+      resolve((e as { name?: string })?.name === 'NotAllowedError' ? 'blocked' : 'missing');
+    });
+  });
+}
 
 /**
- * Play a pre-rendered clip. Falls back from the chosen language to Swahili,
- * then English. If no file exists, resolve without throwing so the text stands.
- * Returns true when a clip actually started.
+ * Plays public/audio/<lang>/<answerId>.mp3 and resolves when it ends. Never rejects: if the clip is
+ * missing it tries Swahili, and if that is missing too it resolves quietly so the UI shows text only.
  */
-export async function play(answerId: string, lang: Lang): Promise<boolean> {
-  stop()
-  const order: Lang[] = lang === 'en' ? ['en', 'sw'] : lang === 'kik' ? ['kik', 'sw', 'en'] : ['sw', 'en']
-  for (const code of order) {
-    const started = await startClip(`/audio/${code}/${answerId}.mp3`)
-    if (started) return true
+export async function play(answerId: string, lang: Lang): Promise<void> {
+  stop();
+  for (const l of audioFallbackChain(lang)) {
+    const outcome = await tryPlay(audioUrl(answerId, l));
+    if (outcome !== 'missing') return;
   }
-  return false
 }
 
 export function stop(): void {
-  if (!current) return
-  current.pause()
-  current.src = ''
-  current = null
-}
-
-function startClip(url: string): Promise<boolean> {
-  return new Promise((resolve) => {
-    const audio = new Audio(url)
-    current = audio
-    const finish = (ok: boolean) => {
-      audio.removeEventListener('playing', onPlaying)
-      audio.removeEventListener('error', onError)
-      if (!ok && current === audio) current = null
-      resolve(ok)
-    }
-    const onPlaying = () => finish(true)
-    const onError = () => finish(false)
-    audio.addEventListener('playing', onPlaying)
-    audio.addEventListener('error', onError)
-    void audio.play().catch(() => finish(false))
-  })
+  if (current) {
+    current.pause();
+    current = null;
+  }
 }

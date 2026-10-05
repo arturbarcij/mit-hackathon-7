@@ -1,69 +1,75 @@
-import seasonFile from '../content/season.json' with { type: 'json' }
-import type { SeasonWindow } from './types.ts'
+import { loadContent } from './content';
+import type { SeasonWindow } from './types';
 
-interface SeasonWindowSpec {
-  name: string
-  start_month: number
-  start_day: number
-  end_month: number
-  end_day: number
-  wraps_year?: boolean
+export const SEASON_WINDOWS: readonly SeasonWindow[] = [
+  'pre_short_rains',
+  'short_rains',
+  'pre_long_rains',
+  'long_rains',
+  'dry',
+];
+
+export interface SeasonRange {
+  name: SeasonWindow;
+  startMonth: number;
+  startDay: number;
+  endMonth: number;
+  endDay: number;
 }
 
-const windows = seasonFile.windows as SeasonWindowSpec[]
+function isWindowName(x: unknown): x is SeasonWindow {
+  return typeof x === 'string' && (SEASON_WINDOWS as readonly string[]).includes(x);
+}
 
-/**
- * Map the research calendar onto the five decision windows.
- * Spray windows win over the rain windows they overlap, because the decision
- * is whether to spray before the rains (S03).
- * A date within 14 days before a spray window is included. season.json says
- * to treat window edges as plus or minus two weeks. That lead-in is an
- * assumption so the week before mid-October is the spray decision, not a dry
- * week. 3 Oct 2026 is inside that lead-in.
- */
-const EDGE_LEAD_DAYS = 14
+function validDayOfMonth(m: unknown, d: unknown): boolean {
+  return Number.isInteger(m) && Number.isInteger(d) && (m as number) >= 1 && (m as number) <= 12 && (d as number) >= 1 && (d as number) <= 31;
+}
+
+/** Accepts the research format `{ windows: [{ name, start_month, start_day, end_month, end_day }] }`. */
+export function normaliseSeason(raw: unknown): SeasonRange[] {
+  const list = Array.isArray(raw) ? raw : (raw as { windows?: unknown } | null)?.windows;
+  if (!Array.isArray(list)) return [];
+  const out: SeasonRange[] = [];
+  for (const w of list) {
+    if (!w || typeof w !== 'object') continue;
+    const r = w as Record<string, unknown>;
+    if (!isWindowName(r.name)) continue;
+    if (!validDayOfMonth(r.start_month, r.start_day) || !validDayOfMonth(r.end_month, r.end_day)) continue;
+    out.push({
+      name: r.name,
+      startMonth: r.start_month as number,
+      startDay: r.start_day as number,
+      endMonth: r.end_month as number,
+      endDay: r.end_day as number,
+    });
+  }
+  return out;
+}
+
+function ordinal(month: number, day: number): number {
+  return month * 100 + day;
+}
+
+function inRange(range: SeasonRange, month: number, day: number): boolean {
+  const start = ordinal(range.startMonth, range.startDay);
+  const end = ordinal(range.endMonth, range.endDay);
+  const now = ordinal(month, day);
+  return start <= end ? now >= start && now <= end : now >= start || now <= end;
+}
+
+/** First listed window that contains the date wins. Anything uncovered is `dry`. */
+export function seasonWindowFrom(ranges: SeasonRange[], date: Date): SeasonWindow {
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  for (const r of ranges) {
+    if (inRange(r, month, day)) return r.name;
+  }
+  return 'dry';
+}
+
+let cached: SeasonRange[] | null = null;
 
 export function seasonWindow(date: Date): SeasonWindow {
-  const shortSpray = spec('spray_before_short_rains')
-  const longSpray = spec('spray_before_long_rains')
-
-  if (contains(date, shortSpray) || daysBeforeStart(date, shortSpray) <= EDGE_LEAD_DAYS) {
-    return 'pre_short_rains'
-  }
-  if (
-    (contains(date, longSpray) && !contains(date, spec('long_rains'))) ||
-    daysBeforeStart(date, longSpray) <= EDGE_LEAD_DAYS
-  ) {
-    return 'pre_long_rains'
-  }
-  if (contains(date, spec('short_rains'))) return 'short_rains'
-  if (contains(date, spec('long_rains'))) return 'long_rains'
-  return 'dry'
-}
-
-function spec(name: string): SeasonWindowSpec {
-  const found = windows.find((item) => item.name === name)
-  if (!found) throw new Error(`Missing season window ${name}`)
-  return found
-}
-
-function monthDay(date: Date): number {
-  return (date.getMonth() + 1) * 100 + date.getDate()
-}
-
-function contains(date: Date, window: SeasonWindowSpec): boolean {
-  const cur = monthDay(date)
-  const start = window.start_month * 100 + window.start_day
-  const end = window.end_month * 100 + window.end_day
-  if (window.wraps_year || start > end) return cur >= start || cur <= end
-  return cur >= start && cur <= end
-}
-
-function daysBeforeStart(date: Date, window: SeasonWindowSpec): number {
-  const start = new Date(date.getFullYear(), window.start_month - 1, window.start_day)
-  const from = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
-  const to = Date.UTC(start.getFullYear(), start.getMonth(), start.getDate())
-  const days = Math.round((to - from) / 86_400_000)
-  if (days <= 0) return Number.POSITIVE_INFINITY
-  return days
+  cached ??= normaliseSeason(loadContent().season);
+  return seasonWindowFrom(cached, date);
 }

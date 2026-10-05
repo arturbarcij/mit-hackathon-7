@@ -1,0 +1,54 @@
+{
+  "placeholder": false,
+  "note": "Rain windows for a Nyeri coffee area from NASA POWER daily PRECTOTCORR 1991 to 2020, cross-checked with Nyeri county and KMD descriptions and the Agronomy 2021 spray timing. Pre-rains windows are 4 weeks before onset (assumption). Method: kb/research/SEASON.md.",
+  "location": {
+    "name": "Mathira West, Nyeri county, Kenya (coffee zone)",
+    "lat": -0.42,
+    "lon": 36.95
+  },
+  "source": ["nasa_power_daily_1991_2020", "nasa_power_climatology_2001_2020", "agronomy_2021_clr_review", "nyeri_pcra_2023", "nyeri_cidp_2013", "moalf_nyeri_crp_2016", "kmd_nyeri_mam_2026"],
+  "windows": [
+    {
+      "name": "pre_long_rains",
+      "start_month": 2,
+      "start_day": 15,
+      "end_month": 3,
+      "end_day": 14
+    },
+    {
+      "name": "long_rains",
+      "start_month": 3,
+      "start_day": 15,
+      "end_month": 5,
+      "end_day": 25
+    },
+    {
+      "name": "dry",
+      "start_month": 5,
+      "start_day": 26,
+      "end_month": 9,
+      "end_day": 16
+    },
+    {
+      "name": "pre_short_rains",
+      "start_month": 9,
+      "start_day": 17,
+      "end_month": 10,
+      "end_day": 14
+    },
+    {
+      "name": "short_rains",
+      "start_month": 10,
+      "start_day": 15,
+      "end_month": 12,
+      "end_day": 15
+    },
+    {
+      "name": "dry",
+      "start_month": 12,
+      "start_day": 16,
+      "end_month": 2,
+      "end_day": 14
+    }
+  ]
+}

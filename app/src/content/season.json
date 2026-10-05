@@ -1,118 +1,54 @@
 {
-  "_meta": {
-    "owner": "research agent",
-    "accessed": "2026-10-03",
-    "read_me": "Windows are inclusive, month and day, in the farmer's local calendar. A window with wraps_year true runs from the start date through 31 Dec into the next year. 'basis' says what supports each window: climatology (NASA POWER, modelled), published (peer-reviewed or extension source), or my_reading (my own interpretation, check with an officer). Source IDs point to kb/research/sources.json.",
-    "confidence": "Rainfall figures are modelled reanalysis (MERRA-2 via NASA POWER), not rain-gauge data, and the grid cell is coarse. Treat window edges as plus or minus two weeks. CHIRPS was not done (time).",
-    "not_supported": "No source gives a disease-incidence threshold for Kenya. These windows set timing only."
-  },
+  "placeholder": false,
+  "note": "Rain windows for a Nyeri coffee area from NASA POWER daily PRECTOTCORR 1991 to 2020, cross-checked with Nyeri county and KMD descriptions and the Agronomy 2021 spray timing. Pre-rains windows are 4 weeks before onset (assumption). Method: kb/research/SEASON.md.",
   "location": {
-    "name": "Nyeri area, central Kenya (East of the Rift Valley)",
-    "latitude": -0.42,
-    "longitude": 36.95,
-    "county": "Nyeri",
-    "grid_elevation_m": 2115.76,
-    "note": "Point chosen as a representative Nyeri coffee zone. The reanalysis grid elevation is 2115.76 m (from the API header). I did not look up the elevation of real coffee farms, so the fit between this grid cell and a given farm is unchecked."
+    "name": "Mathira West, Nyeri county, Kenya (coffee zone)",
+    "lat": -0.42,
+    "lon": 36.95
   },
-  "source": [
-    {"id": "S33", "what": "NASA POWER daily API v2.10.0, PRECTOTCORR (corrected precipitation), community AG, 1 Jan 1991 to 31 Dec 2020 (30 years). Header reports source MERRA2.", "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=PRECTOTCORR&community=AG&longitude=36.95&latitude=-0.42&start=19910101&end=20201231&format=JSON", "confidence": "modelled"},
-    {"id": "S03", "what": "Gichuru et al. 2021, Agronomy 11(12), 2590, review of coffee leaf rust in Kenya: rainfall regions, rust peaks and fungicide timing.", "url": "https://www.mdpi.com/2073-4395/11/12/2590", "confidence": "primary"},
-    {"id": "S17", "what": "Infonet Biovision (icipe): copper before the onset of rains.", "confidence": "secondary"}
-  ],
+  "source": ["nasa_power_daily_1991_2020", "nasa_power_climatology_2001_2020", "agronomy_2021_clr_review", "nyeri_pcra_2023", "nyeri_cidp_2013", "moalf_nyeri_crp_2016", "kmd_nyeri_mam_2026"],
   "windows": [
     {
+      "name": "pre_long_rains",
+      "start_month": 2,
+      "start_day": 15,
+      "end_month": 3,
+      "end_day": 14
+    },
+    {
       "name": "long_rains",
-      "start_month": 3, "start_day": 15, "end_month": 5, "end_day": 31,
-      "basis": ["climatology", "published"],
-      "justification": "NASA POWER mean rainfall per half-month: 15 to 31 Mar 63.7 mm, 1 to 15 Apr 82.8, 16 to 30 Apr 127.1, 1 to 15 May 91.2, 16 to 31 May 54.0. April is the wettest month (mean 209.9 mm). Published: S03 says that East of the Rift 'the long rains start in March through May'. Onset (my method, below): median 20 Mar, middle half of years 10 to 29 Mar, 1 in 10 years later than 4 Apr.",
-      "sources": ["S33", "S03"]
+      "start_month": 3,
+      "start_day": 15,
+      "end_month": 5,
+      "end_day": 25
+    },
+    {
+      "name": "dry",
+      "start_month": 5,
+      "start_day": 26,
+      "end_month": 9,
+      "end_day": 16
+    },
+    {
+      "name": "pre_short_rains",
+      "start_month": 9,
+      "start_day": 17,
+      "end_month": 10,
+      "end_day": 31
     },
     {
       "name": "short_rains",
-      "start_month": 10, "start_day": 15, "end_month": 12, "end_day": 15,
-      "basis": ["climatology", "published"],
-      "justification": "NASA POWER mean rainfall per half-month: 16 to 31 Oct 82.2 mm, 1 to 15 Nov 98.3, 16 to 30 Nov 85.0, 1 to 15 Dec 57.6, 16 to 31 Dec 36.5. November is the wettest month of the season (mean 183.3 mm). Published: S03 says East of the Rift 'short rains start in October through December'. Onset (my method, below): median 16 Oct counting from 15 Sep, or 20 Oct counting from 1 Oct; middle half of years 7 to 28 Oct.",
-      "sources": ["S33", "S03"]
+      "start_month": 11,
+      "start_day": 1,
+      "end_month": 12,
+      "end_day": 15
     },
     {
-      "name": "dry_mid_year",
-      "start_month": 6, "start_day": 1, "end_month": 10, "end_day": 14,
-      "basis": ["climatology"],
-      "justification": "Drier, not dry. NASA POWER half-month means stay between 25.2 mm (1 to 15 Jul) and 47.5 mm (1 to 15 Oct, rising). Monthly means June 63.7 mm, July 60.5, August 69.6, September 56.6. Do not treat this as zero rain: the lowest monthly total in 30 years for June to September was 18.3 mm (July), and the highest 128.5 mm (September).",
-      "sources": ["S33"]
-    },
-    {
-      "name": "dry_early_year",
-      "start_month": 12, "start_day": 16, "end_month": 3, "end_day": 14,
-      "wraps_year": true,
-      "basis": ["climatology"],
-      "justification": "The driest spell. NASA POWER half-month means: 16 to 31 Dec 36.5 mm, 1 to 15 Jan 33.2, 16 to 31 Jan 25.9, 1 to 15 Feb 22.3, 16 to 28 Feb 16.0 (lowest of the year), 1 to 15 Mar 39.7. February mean 38.3 mm.",
-      "sources": ["S33"]
-    },
-    {
-      "name": "rust_peak_after_short_rains",
-      "start_month": 1, "start_day": 1, "end_month": 3, "end_day": 31,
-      "basis": ["published"],
-      "justification": "S03: 'In areas East of Rift, the long rains start in March through May and short rains start in October through December resulting in two CLR peaks in May to June and January to March'. This window is the January to March peak.",
-      "sources": ["S03"]
-    },
-    {
-      "name": "rust_peak_after_long_rains",
-      "start_month": 5, "start_day": 1, "end_month": 6, "end_day": 30,
-      "basis": ["published"],
-      "justification": "Same S03 sentence: the May to June peak. S03 also says the disease peak 'comes soon after the rainy seasons'.",
-      "sources": ["S03"]
-    },
-    {
-      "name": "spray_before_short_rains",
-      "start_month": 10, "start_day": 15, "end_month": 11, "end_day": 5,
-      "basis": ["published", "my_reading"],
-      "justification": "S03: 'fungicide sprays for CLR control in Kenya starts in mid-October, just before the start of short rains followed by a second spray, three weeks after the first spray'. Start date = 'mid-October' taken as 15 Oct (my reading). End = 15 Oct plus 21 days = 5 Nov (my arithmetic). For Nyeri the NASA POWER median onset of the short rains is 16 to 20 Oct, so mid-October is at or near onset, not long before it. Product and dose are not in this file.",
-      "sources": ["S03", "S33"]
-    },
-    {
-      "name": "spray_before_long_rains",
-      "start_month": 2, "start_day": 20, "end_month": 4, "end_day": 21,
-      "basis": ["published", "my_reading"],
-      "justification": "S03: 'For the long rain period, the first spray is applied in late February or early March followed by one or two sprays at three weeks intervals for copper formulations and four-week intervals for other formulations.' Start = 20 Feb for 'late February' (my reading). End = 10 Mar plus two 21-day intervals = 21 Apr (my arithmetic, copper schedule). For Nyeri the median long-rains onset is 20 Mar, so a late-February start is about four weeks before it, which agrees with S17: 'Spray with copper before the onset of rains'.",
-      "sources": ["S03", "S17", "S33"]
+      "name": "dry",
+      "start_month": 12,
+      "start_day": 16,
+      "end_month": 2,
+      "end_day": 14
     }
-  ],
-  "onset_statistics": {
-    "method": "MY METHOD, not a published standard. Marteau-style rule on daily PRECTOTCORR, applied to 1991 to 2020 (30 years). Onset is the first day, on or after the search start date, on which the 3-day rainfall total is 20 mm or more and no dry spell (days under 1 mm) longer than 10 consecutive days follows in the next 30 days. Search windows: long rains 1 Mar to 31 May; short rains 1 Oct to 31 Dec, and separately 15 Sep to 31 Dec. All 30 years produced an onset in every case. Script: kb/research/season_method.py (downloads the data and prints these numbers).",
-    "long_rains_onset": {"n_years": 30, "p10": "01 Mar", "p25": "10 Mar", "median": "20 Mar", "p75": "29 Mar", "p90": "04 Apr"},
-    "short_rains_onset_search_from_1_oct": {"n_years": 30, "p10": "04 Oct", "p25": "10 Oct", "median": "20 Oct", "p75": "28 Oct", "p90": "02 Nov"},
-    "short_rains_onset_search_from_15_sep": {"n_years": 30, "p10": "25 Sep", "p25": "07 Oct", "median": "16 Oct", "p75": "28 Oct", "p90": "02 Nov"},
-    "note": "Searching from 1 Oct cuts off early onsets, so the 15 Sep version is the better estimate of the true spread. Likewise the long-rains 10th percentile (01 Mar) equals the search start, so early onsets are cut off there too; the true early tail is earlier than shown. The window start of 15 Oct for the short rains sits at about the median."
-  },
-  "monthly_rainfall_mm_1991_2020": {
-    "1": {"mean": 59.1, "min": 4.7, "max": 287.9, "stdev": 61.0},
-    "2": {"mean": 38.3, "min": 2.2, "max": 119.7, "stdev": 29.8},
-    "3": {"mean": 103.4, "min": 16.0, "max": 332.4, "stdev": 62.1},
-    "4": {"mean": 209.9, "min": 71.2, "max": 633.5, "stdev": 111.4},
-    "5": {"mean": 145.2, "min": 48.4, "max": 262.5, "stdev": 56.7},
-    "6": {"mean": 63.7, "min": 18.4, "max": 126.7, "stdev": 26.0},
-    "7": {"mean": 60.5, "min": 18.3, "max": 118.1, "stdev": 21.4},
-    "8": {"mean": 69.6, "min": 26.0, "max": 119.4, "stdev": 21.3},
-    "9": {"mean": 56.6, "min": 21.6, "max": 128.5, "stdev": 23.9},
-    "10": {"mean": 129.6, "min": 39.3, "max": 337.5, "stdev": 72.0},
-    "11": {"mean": 183.3, "min": 56.9, "max": 391.7, "stdev": 77.3},
-    "12": {"mean": 94.1, "min": 12.3, "max": 236.7, "stdev": 54.8},
-    "annual_mean": 1213.5
-  },
-  "semi_monthly_mean_mm_1991_2020": {
-    "note": "a = days 1 to 15, b = day 16 to month end.",
-    "1a": 33.2, "1b": 25.9, "2a": 22.3, "2b": 16.0, "3a": 39.7, "3b": 63.7,
-    "4a": 82.8, "4b": 127.1, "5a": 91.2, "5b": 54.0, "6a": 35.1, "6b": 28.6,
-    "7a": 25.2, "7b": 35.3, "8a": 33.1, "8b": 36.5, "9a": 30.6, "9b": 26.0,
-    "10a": 47.5, "10b": 82.2, "11a": 98.3, "11b": 85.0, "12a": 57.6, "12b": 36.5
-  },
-  "limits": [
-    "Modelled reanalysis (MERRA-2), not gauge data; coarse grid.",
-    "One point only. Coffee zones in Nyeri differ by altitude and by side of the Aberdares; the farmer's own date and weather matter more than this file.",
-    "Onset rule is my own. A different rule shifts dates by days to weeks.",
-    "Spray windows follow the Kenyan review and may not fit a year with a late or early onset. S03 says the programme 'needs to be monitored and varied in response to weather patterns'.",
-    "Rainfall per half-month averages hide that rust likes 'light and broken rain' (S03). Mean totals do not capture that."
-  ],
-  "suggested_use_for_rules": "Use the window names as season flags. For the rule table: 'in_rains' = long_rains or short_rains; 'before_rains' = spray_before_long_rains or spray_before_short_rains; 'rust_peak' = either rust_peak window. Windows overlap on purpose (a date can be in a rain window and a spray window)."
+  ]
 }

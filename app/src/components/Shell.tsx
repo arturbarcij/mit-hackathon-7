@@ -39,7 +39,8 @@ export function Speak({ answerId }: { answerId: string }) {
         type="button"
         className="secondary"
         onClick={() => {
-          void play(answerId, lang).then((ok) => setMissing(!ok))
+          setMissing(false)
+          void play(answerId, lang)
         }}
       >
         <Mark kind="speaker" />

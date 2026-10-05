@@ -1,0 +1,53 @@
+{
+  "placeholder": true,
+  "note": "Placeholder windows (assumption). Replace with research season.json.",
+  "location": {
+    "name": "Nyeri highlands (placeholder)",
+    "lat": -0.42,
+    "lon": 36.95
+  },
+  "windows": [
+    {
+      "name": "pre_long_rains",
+      "start_month": 2,
+      "start_day": 15,
+      "end_month": 3,
+      "end_day": 14
+    },
+    {
+      "name": "long_rains",
+      "start_month": 3,
+      "start_day": 15,
+      "end_month": 5,
+      "end_day": 31
+    },
+    {
+      "name": "pre_short_rains",
+      "start_month": 9,
+      "start_day": 15,
+      "end_month": 10,
+      "end_day": 14
+    },
+    {
+      "name": "short_rains",
+      "start_month": 10,
+      "start_day": 15,
+      "end_month": 12,
+      "end_day": 15
+    },
+    {
+      "name": "dry",
+      "start_month": 12,
+      "start_day": 16,
+      "end_month": 2,
+      "end_day": 14
+    },
+    {
+      "name": "dry",
+      "start_month": 6,
+      "start_day": 1,
+      "end_month": 9,
+      "end_day": 14
+    }
+  ]
+}

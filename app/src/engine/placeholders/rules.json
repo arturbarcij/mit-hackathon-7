@@ -1,0 +1,91 @@
+[
+  {
+    "if": {
+      "uncertain_gte": 3
+    },
+    "then": "too_many_unsure"
+  },
+  {
+    "if": {
+      "dominant": "not_leaf"
+    },
+    "then": "not_a_leaf"
+  },
+  {
+    "if": {
+      "distinct_problems_gte": 2
+    },
+    "then": "mixed_problems"
+  },
+  {
+    "if": {
+      "dominant": "rust",
+      "affected_gte": 3,
+      "window": "pre_short_rains"
+    },
+    "then": "rust_high_pre_rains"
+  },
+  {
+    "if": {
+      "dominant": "rust",
+      "affected_gte": 3,
+      "window": "short_rains"
+    },
+    "then": "rust_high_in_rains"
+  },
+  {
+    "if": {
+      "dominant": "rust",
+      "affected_gte": 3,
+      "window": "long_rains"
+    },
+    "then": "rust_high_in_rains"
+  },
+  {
+    "if": {
+      "dominant": "rust",
+      "affected_gte": 3
+    },
+    "then": "rust_high_dry"
+  },
+  {
+    "if": {
+      "dominant": "rust",
+      "affected_gte": 1
+    },
+    "then": "rust_low"
+  },
+  {
+    "if": {
+      "dominant": "cercospora",
+      "affected_gte": 1
+    },
+    "then": "cercospora"
+  },
+  {
+    "if": {
+      "dominant": "phoma",
+      "affected_gte": 1
+    },
+    "then": "phoma"
+  },
+  {
+    "if": {
+      "dominant": "miner",
+      "affected_gte": 1
+    },
+    "then": "miner"
+  },
+  {
+    "if": {
+      "dominant": "healthy",
+      "affected_lte": 0,
+      "uncertain_lte": 0
+    },
+    "then": "healthy_all"
+  },
+  {
+    "if": {},
+    "then": "ask_officer"
+  }
+]

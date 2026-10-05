@@ -124,3 +124,4 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 - Sun 10:40: lead. Agent framework added at `app/backend/agent_framework`. Roster: qa, redteam, judge, engine, ui, content, docs, ml. They share one evidence pack and return JSON. Static probes do not treat `kb/STATUS.md` or `kb/research` as proof that `app/` contains the product.
 - Sun 10:45: lead. Static check of this checkout: pass 0, fail 20, missing 6. Blockers include no PWA, no model, no answer bank, no officer route, Vite starter still in `app/src/App.tsx`. Claude reviewers were not called.
 - Sun 11:00: lead. Orchestrator schedules the audit DAG and writes `plan.json`. Static check: pass 0, fail 20, missing 6, 22 blockers. Claude wave did not run in this environment.
+- Mon: merged origin/main into the engine PR so it can merge.

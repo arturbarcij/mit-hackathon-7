@@ -2,9 +2,9 @@
 
 A small, offline leaf-check tool for coffee farmers in Kenya. It reads photos of 10 leaves on a phone, says what it sees or says it is not sure, and sends a short SMS to the cooperative if Noor asks for help.
 
-Live URL: `TODO(ui)` (Lovable publish)
-Repo: `TODO(Arthur)` GitHub link (made public after submission)
-Videos: `TODO(pitch)`
+Live URL: https://jani-farm-assist.lovable.app
+Repo: https://github.com/arturbarcij/mit-hackathon-7
+Videos: three clips, each under 60 seconds, submitted with the entry.
 
 Entry to the World Bank Youth Summit x Hack-Nation Small AI for Development Hackathon, Annex B (agriculture). Items marked `TODO(owner)` or `[PENDING: owner]` are not done or not measured yet.
 
@@ -156,7 +156,7 @@ npm run dev        # farmer app at /, officer list at /officer
 Open the site, then use "Fill 10 synthetic leaves" to walk the October rust case without farm photos. Those pictures are synthetic.
 
 Model training, export and evaluation: [ml/README.md](ml/README.md).
-API keys live in `backend/.env`, which is git-ignored. Audio is pre-rendered, so no key ships in the client.
+Audio is pre-rendered at build time, so the client does not call a speech service at runtime.
 
 Requirements and test status: [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md). Reuse for another crop or country (example: cocoa in Côte d'Ivoire): [docs/REPLICATION.md](docs/REPLICATION.md).
 

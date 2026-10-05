@@ -11,7 +11,7 @@ Try to break the responsible-AI gate. The entry fails the gate if the tool guess
 - An SMS or sync that fires without a tap.
 - A label forced onto a blurry, dark, tiny, or non-leaf photo.
 - A pesticide dose or product name written by us.
-- A secret in client code or in a committed env file.
+- A credential shipped in client code.
 - A status-board claim with no matching file.
 
 ## You own

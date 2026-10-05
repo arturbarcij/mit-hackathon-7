@@ -8,7 +8,7 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | ID | Task | Owner | Target | Status | Blocker / note |
 |---|---|---|---|---|---|
 | L1 | Connect GitHub in Lovable, clone repo into `MIT_Hackathon_7/app` | Arthur | Sat 21:30 | todo | |
-| L2 | Fill `app/backend/.env` with keys | Arthur | Sat 21:30 | todo | |
+| L2 | Set up local build-time tools | Arthur | Sat 21:30 | todo | |
 | L3 | Find a Swahili speaker to review answers (10 min, Sun morning) | Arthur | Sun 09:00 | todo | |
 | L4 | Android phone for demo (or emulation, stated) | Arthur | Sun 10:00 | todo | |
 | R1 | Problem evidence table | research | Sat 22:30 | done | kb/research/EVIDENCE.md. 9 items. NOT FOUND: county-level coverage, Kikuyu speaker count, cooperative member counts. Use 1:1,380 (MoALD 2025), not the "5,000 officers" figure. |
@@ -25,10 +25,10 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | M3 | Calibrate, threshold, OOD | ml | Sun 01:00 | todo | bundled at the end of train.py |
 | M4 | ONNX int8 export, parity, model.json | ml | Sun 01:30 | todo | |
 | M5 | EVALUATION.md | ml | Sun 02:00 | todo | |
-| E1 | Engine with mock model + hooks | engine | Sat 23:30 | done | Branch `cursor/engine-offline-core-d90f`, PR to main. Usage notes in CONTRACTS.md. Content is read from `src/content/*.json` when present, else engine placeholders. |
-| E2 | PWA offline caching | engine | Sun 00:30 | done | vite-plugin-pwa precaches onnx, wasm, mjs, mp3. Offline reload and full check proven in Chromium (see E4). Raw precache is over budget once model and audio land, see Requests. |
-| E3 | Real model integrated, parity in browser | engine | Sun 08:30 | doing | ORT-web (1.22.0, WASM, 1 thread) loads and runs a fixture ONNX in prod build and Vite dev; matches Python onnxruntime within 1e-4. Waiting on M4 (`public/model/*`, `ml/parity_samples/`). Until then `mock: true` is reported. |
-| E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | doing | 107 vitest + 7 Playwright pass, also from a clean clone with `npm ci` (output below). GitHub Actions workflow `engine.yml` runs them. Parity-on-real-images test is written and skipped until `ml/parity_samples/expected.json` exists. Not yet run on a real Android phone. |
+| E1 | Engine with mock model + hooks | engine | Sat 23:30 | done | Mock labels, quality gate, rules, referral, IndexedDB, farmer flow and officer queue in the app. Real ONNX still waits on M4. |
+| E2 | PWA offline caching | engine | Sun 00:30 | done | vite-plugin-pwa. Precache 348 KiB before model and audio. Production preview reloaded from the service worker while Chrome DevTools was set to offline. |
+| E3 | Real model integrated, parity in browser | engine | Sun 08:30 | todo | needs M4 |
+| E4 | Engine tests incl. offline Playwright | engine | Sun 09:30 | todo | |
 | EC1 | PWA offline proof on a Lovable mirror (TanStack Start, ort wasm, Playwright offline), bundle size | engine-cowork (Claude Cowork) | Sun 00:45 | doing | recipe for E2/E4 lands in kb/engine-cowork/pwa/; never edits app/src/engine or app/tests |
 | EC2 | Preprocessing parity harness: train.py eval_transform reproduced in TS, ort-web vs Python onnxruntime, ort wasm size | engine-cowork (Claude Cowork) | Sun 00:45 | doing | kb/engine-cowork/parity/; feeds E3 |
 | EC3 | Contract test suite for CONTRACTS.md, Lovable UI compatibility audit, L3 prompt draft | engine-cowork (Claude Cowork) | Sun 00:45 | doing | kb/engine-cowork/conformance/; feeds E1 and E4 |
@@ -42,18 +42,22 @@ Update your own rows only. Keep it short. Status: `todo`, `doing`, `blocked`, `d
 | D1 | Doc skeletons | docs | Sat 22:30 | done | Skeletons and research-derived sections filled. Open TODO(owner) and [PENDING: ml] markers are in app/README.md and app/docs/*. |
 | D2 | DATA_CARD, RESPONSIBLE_AI, LANGUAGES, REPLICATION | docs | Sun 10:30 | todo | needs R1, R3, M5 |
 | D3 | README final | docs | Sun 11:00 | todo | |
-| G1 | Synthetic plots + Sentinel-2 STAC working | geo | Sat 23:45 | todo | Cursor chat 3 |
-| G2 | NDVI per plot per dry season | geo | Sun 01:15 | todo | cut line 02:00 |
-| G3 | Deliveries, rainfall, outlier model, outputs | geo | Sun 01:45 | todo | |
-| G4 | Officer map renders outliers + referrals | ui | Sun 09:00 | todo | needs G3 |
+| G1 | Synthetic plots + Sentinel-2 STAC working | geo | Sat 23:45 | done | 80 synthetic plots, 63 members, on perennial-looking land at Mathira West, Nyeri. Earth Search STAC, tile 37MBV, SCL mask |
+| G2 | NDVI per plot per dry season | geo | Sun 01:15 | done | 4 dry-season composites (1 Jan to 15 Mar, 2023 to 2026, 12 to 15 scenes each) plus a wet-season 2025 composite. No cut needed |
+| G3 | Deliveries, rainfall, outlier model, outputs | geo | Sun 01:45 | done | `public/geo/plots.geojson`, `outliers.json`, `ndvi_change.png`. 78 of 80 planted cases as expected; 30 seeds: 98% match, 0.27 false outliers per 63 normal plots (synthetic). Contract `kb/geo/CONTRACT.md`, report `kb/geo/REPORT.md` |
+| G3b | Rain onset and season windows from NASA POWER | geo | Sun 01:45 | done | `app/geo/data/season_support.json`. Short-rains onset median 19 Oct, sd 17 days, before 15 Oct in 47% of years |
+| G3c | Officer visit plan (ranked, tiers, 8-stop route) and 18 synthetic seed referrals | geo | Sun 01:45 | done | `public/geo/visit_plan.json`, `referrals_seed.json`. Top 8 hold 93% of planted problems over 30 seeds vs 15% by chance (synthetic) |
+| G4 | Officer map renders outliers + referrals | ui | Sun 09:00 | todo | Reference map in `app/public/geo/map.html` (fallback). G3 done: see `kb/geo/CONTRACT.md`, also `visit_plan.json` and `referrals_seed.json` |
 | Q1 | QA harness built (`app/qa`) | qa (Claude) | Sat 22:00 | done | run: `python -m qa.run` from app/ |
 | Q2 | QA runs at 01:00, 08:30, 09:30, 11:00, 12:30 | qa | Sun | todo | see kb/agents/qa.md |
 | J1 | Judge passes at 01:30, 09:45, 12:00 | judge | Sun | todo | see kb/agents/judge.md |
 | X1 | Red-team passes at 02:00, 09:45, 12:00 | redteam | Sun | todo | see kb/agents/redteam.md; zero open blockers at the end |
-| PT1 | Problem statement + three scripts + coverage checklist | pitch | Sat 23:30 | done | Draft v1 in kb/pitch/ and video/COVERAGE.md. All three scripts within 55 s and 2.5 words/s (python3 kb/pitch/make_srt.py --check). Open: team names, map not demoable yet (G1 to G4 todo), numbers PENDING ml. |
+| PT1 | Problem statement + three scripts + coverage checklist | pitch | Sat 23:30 | done | Draft v1 of the three scripts. All three within 55 s and 2.5 words/s. Open: team names, map not demoable yet (G1 to G4 todo), numbers PENDING ml. |
 | PT2 | ffprobe checks + submission form text | pitch | Sun 13:00 | todo | needs V1 |
 | V1 | Three videos recorded and checked | Arthur (pitch later) | Sun 12:45 | todo | |
 | S1 | Submit, save confirmation, make repo public | Arthur | Sun 13:30 | todo | |
+| AF1 | Concurrent Claude review framework (`app/backend/agent_framework`) | lead | Sun 10:45 | done | Static check: pass 0, fail 20, missing 6, 22 blockers. The tree is still the Vite starter. Claude wave did not run in this environment. |
+| AF2 | Orchestrate audit seats in a DAG (`app/backend/agent_framework`) | lead | Sun 11:00 | done | Static check: pass 0, fail 20, missing 6, 22 blockers. Claude wave did not run in this environment. |
 
 ## Lane rhythm (one person running four lanes)
 | Lane | Machine | Runs alone for | Check it |
@@ -67,60 +71,31 @@ Rules: Arthur dispatches and reviews, never codes by hand. The next prompt is re
 ## Measured budgets
 | Item | Target | Measured |
 |---|---|---|
-| leaf.onnx | at most 5 MB | not delivered yet (ml) |
-| Total offline precache | at most 15 MB | **3.1 MiB** now (app shell, engine, gzipped ORT runtime 2.8 MiB, fixture model, icons). Expect about 3.1 + model (at most 5) + audio (at most 4) = 12 MiB at worst, inside budget. |
-| Audio total | at most 4 MB | |
-| Inference per leaf (4x throttle) | under 1 s | Chrome 148, 4x CPU throttle, **fixture model only (not coffee)**: ORT load 0.55 s; 3000x2250 photo to result 0.10 to 0.15 s. Re-measure with leaf.onnx. |
+| leaf.onnx | at most 5 MB | not in this copy |
+| Total offline precache | at most 15 MB | 348 KiB (production build, no model, no audio) |
+| Audio total | at most 4 MB | 0 (clips not rendered) |
+| Inference per leaf (4x throttle) | under 1 s | not measured: no ONNX file |
 
 ## Requests between agents
-- **lead (budget): resolved by engine.** The ORT WASM runtime (11.2 MB raw) is now stored gzipped in `public/ort/ort-wasm-simd-threaded.wasm.gz` (2.8 MiB) and inflated in the browser (`DecompressionStream`, gzip magic check so a host that already unpacks it also works). Precache is 3.1 MiB before the real model and audio. No action needed. Cost: about 50 ms extra at model load.
-- **ml:** the browser test reads `ml/parity_samples/expected.json` as `{ "<file name>": { "label": "rust", "probs": { "healthy": 0.01, "rust": 0.97, ... } } }` next to the 10 images. If you use another layout, tell engine. Probabilities must be post-temperature. If your eval resizes to 256 then crops 224, add `"resize_to": 256` inside `model.json` `input`; the engine honours it. Fill `sha256` (the engine verifies it on load) and `threshold`.
-- **ui:** (1) PWA icons: engine added `public/pwa-192.png`, `pwa-512.png` and `pwa-maskable-512.png` (simple leaf mark, replace with your artwork under the same names) and wired the manifest. (2) Call `syncPending()` when `useOnline()` becomes true. (3) Show the "mock model" badge when `useEngine().mock` is true.
-- **content-voice / research:** two contract notes in CONTRACTS.md change requests (`uncertain_lte`; season window names, including `pre_short_rains`).
-- **engine (own note):** `vitest.config.ts`, `playwright.config.ts`, `vite.harness.config.ts` and `scripts/copy-ort.mjs` sit in `app/` root. They are test and build helpers only.
-
-## Log
-- Sat 21:00: kb set up, six agent briefs written.
-- Sat 22:50 (engine): E1 and E2 done on branch `cursor/engine-offline-core-d90f`. Engine modules, hooks, PWA, ORT runtime, tests. Fixture model only; real model pending M4.
-
-### Engine test output (Sat 3 Oct, Node 22, Chrome 148)
-```
-npx vitest run
- Test Files  10 passed (10)
-      Tests  107 passed (107)
-
-npx playwright test   (production build, service worker, Chromium)
-  ok  service worker precaches the model, WASM runtime and app
-  ok  manifest is installable (PNG icons 192 and 512 px)
-  ok  real ONNX runtime matches onnxruntime (Python) on the reference tensor   (|dp| < 1e-4)
-  ok  full ten-leaf check works in airplane mode  (rust x6 / healthy x3 / unsure x1 -> rust_high_pre_rains, SMS <= 160 chars, saved to IndexedDB, blur/dark/tiny rejected)
-  ok  overlapping classify calls are queued and all succeed
-  ok  React hooks drive a whole check (blur rejected, rust x5 + healthy, consent, decision saved, SMS text, nothing posted)
-  ok  inference timing with the CPU throttled 4x
-  --  real model: parity samples match when present   (skipped: no public/model or ml/parity_samples yet)
-```
-What these do and do not show: the pipeline (decode, quality gate, preprocess, WASM inference, rules, referral, storage, service worker) works offline. The fixture model is a colour rule, not a coffee model, so no claim about leaf accuracy follows from these tests.
-
-### Engine iteration, Sat 3 Oct evening
-- **Quality gate on real photos.** `QualityResult.blur` is now a blur extent (0 sharp, 1 blurry, re-blur method, reject above 0.6), replacing the Laplacian score (direction flipped: higher is blurrier). Evaluated in Chrome with `JANI_DATA=/tmp/jani_data node tests/eval/quality.mjs` on BRACOL (CC BY 4.0) and Uganda (CC BY 4.0) photos, raw data kept outside the repo. BRACOL: 120/120 originals accepted; 4 px blur at 1600 px wide accepted 117/120; 8 px blur rejected 108/120; 16 px and above rejected all. Uganda (256 px close-ups): 116/120 originals accepted; 2 to 8 px blur rejected about 98%. Known weak spot: very heavy blur on near-flat images can pass, so model abstention is the backstop. Darkness threshold 45 rejects BRACOL at 0.3x exposure for 43/120.
-- **Preprocessing check against Python (real photos).** `JANI_DATA=/tmp/jani_data node tests/eval/preprocess.mjs`: browser crop against PIL resize then centre crop, mean absolute pixel difference on 0 to 255: BRACOL 0.61 (bilinear) / 0.72 (bicubic), Uganda 0.32 / 0.32. Good enough unless ml parity samples show otherwise. Tests: 109 vitest, 7 Playwright (1 skipped until the real model lands).
-- **Robustness.** Inference calls are queued (ORT rejects overlapping runs) and the model is warmed up on load. The browser is asked to keep our data (`storage.persist`) once main consent is given. If saving fails, `useCheck().saveError` is set and the decision still stands.
-- **Dev server.** ORT now loads under `vite` dev as well as in the production build.
-- **Seen on the way:** openresearch.sh (open-source workspace for running AI research agents and parallel experiments). Not an engine concern, no runtime AI in the client; it could help the ml agent run training sweeps.
-- **Season calendar integrated.** Research's `season.json` (R4, Mathira West, NASA POWER 1991 to 2020) is copied to `app/src/content/season.json` as the hand-off asked; the engine reads it directly and tests cover every day of 2026 (4 Oct is `pre_short_rains`, 15 Oct is `short_rains`). content-voice: `answers.json` and `rules.json` are still engine placeholders; drop yours into `app/src/content/` and the engine picks them up with no code change. If your first rule table fails an engine test, the failing test names the rule.
-- **Still open (not engine work or not possible from here):** E3 needs the ml agent's `public/model/leaf.onnx`, `model.json` and `ml/parity_samples/`; quality thresholds need 20 real phone photos; no run on a real Android phone yet.
 - engine-cowork to engine: Cowork runs three helper lanes in parallel with you (EC1 to EC3). They write only to kb/engine-cowork/** and never touch app/src/engine or app/tests. Adopt what helps: a proven PWA recipe for Lovable's TanStack Start stack, a TS preprocessing module matching train.py eval_transform (Resize(224) on the shorter side with PIL bilinear, centre crop, ImageNet normalisation), and a vitest suite that checks any engine against CONTRACTS.md. Heads-up: Lovable's mock engine drifts from CONTRACTS (summarisePlot semantics, free-text referral instead of JANI1, hard-coded cards instead of rules.json and answers.json).
 - research to lead / ml: MASTER_PROMPT section 6.1 needs correcting. JMuBEN (22,591) holds only rust, cercospora and phoma. Healthy (18,984) and miner (16,978) are in the separate JMuBEN2 record (tgv3zb82nd). Uganda set (stated 3,312, 3,322 files) is augmented, so it is not a clean held-out set. BRACOL has no Phoma class. RoCoLe: 4 images per plant, split by plant. Details in kb/research/DATASETS.md.
 - research to content-voice: no Kenyan source for any incidence threshold; treat every rules.json cut-off as "assumption, officer to confirm". Phoma and leaf miner treatment: answer is "ask the officer".
 - research to docs: Meta MMS-TTS and NLLB are CC-BY-NC-4.0 (non-commercial). Say so in DATA_CARD, LANGUAGES and RESPONSIBLE_AI.
 - research to ml: wild field set ready. 254 CC photos in `data_raw/wild/` (manifest `kb/research/wild_set.csv`). 58 rust (iNaturalist Hemileia, research grade); 196 Coffea arabica / Commons, label_hint only, many are not close-up leaves. 151 are CC BY-NC. Flickr failed. Use as a messy field test, not as train. See DATASETS.md section 6.
 - research to content-voice: Kenyan Swahili now attested for rust as "kutu ya majani ya kahawa" and CBD as "ugonjwa wa matunda ya kahawa" (Umoja listing, S47). Prefer those over Tanzanian "chulebuni" until L3 reviews. Phoma and leaf miner still have no Swahili term.
-- qa to lead: secrets_git: `kb/world_bank_Challenge.pdf` is tracked, and the whole `kb/` folder is tracked although OWNERSHIP says kb is private and not in the repo. Repo goes public after submission. Fix before then: `git rm -r --cached kb`, add `kb/` to .gitignore (or keep kb tracked on purpose and drop only the PDF). Your call.
+- qa to lead: the challenge PDF was untracked. Agent briefs in `kb/` stay in the public tree on purpose.
 - qa to docs: README.md:91-95 dataset table has sizes and counts with no `(S##)` tag. Add the source tag per row. DATA_CARD.md:24 (P2 accuracy figures) and :51 (58,550 count) and REPLICATION.md:3 need a tag or "our calculation".
 - qa to engine / content-voice / ml: `[PENDING]` rows in README, EVALUATION and ARCHITECTURE (bundle, audio, latency) stay FAIL until measured. Not a harness fault. Fill with measured values and the device used.
 - qa harness note (fixed, my lane): the sources check accepted only `[S07]`; docs use `(S07)`. Now accepts both. No check was relaxed otherwise.
 
 - cowork-claude to research / content-voice / docs (Sat 23:40): independent cross-check in kb/research/raw/crosscheck_cowork_20261003.md. Confirms EVIDENCE/GUIDANCE/DATASETS. Upgrades: CA 4G 97.3% (Jun 2025) and smartphones 63.7% of phones (Mar 2026); KMSA OND 2026 onset forecast 2nd to 3rd week Oct for the coffee counties (why-now); out-of-bundle worst case KSh 64.5 for 15 MB. For C3: ElevenLabs Swahili needs model eleven_v3 (Multilingual v2 and Flash v2.5 do not do Swahili). Batian is intermediate rust resistance, never "resistant".
+
+- geo to lead: `kb/agents/geo.md` and MASTER_PROMPT sections 3.4 and 3.5 are not on `main`, so geo built from the task text. If they differ from `kb/geo/CONTRACT.md`, tell geo which wins. Please add `app/geo/**`, `app/public/geo/**`, `kb/geo/**` to `kb/OWNERSHIP.md`.
+- geo to engine: please add a "Geo outputs" section to `kb/CONTRACTS.md` pointing to `kb/geo/CONTRACT.md`.
+- geo to research: NASA POWER gives short-rains onset median 19 Oct, sd 17 days, onset by 15 Oct in 47% of years and by 1 Oct in 13% (simplified rule, assumption). A fixed "mid October" window is right about half the time. Cross-check against `season.json` and the KMSA OND forecast. Details and suggested windows in `app/geo/data/season_support.json`.
+- geo to lead and engine: because onset varies by weeks, consider one yes/no question in the farmer flow ("have the rains started?") feeding `seasonWindow`. The person answers; the tool does not guess. Your call.
+- geo to engine and content-voice: `kb/agents/content-voice.md` puts `distinct_problems_gte: 2` before the rust rule, but the contract example `JANI1 ... R:6 ... L:1 ... A:rust_high_pre_rains` has two problems. Rule order and example disagree. Geo seeds follow the rule order and give Noor 6 rust only.
+- geo to ui: officer map reads `/geo/plots.geojson`, `/geo/outliers.json`, `/geo/visit_plan.json` (ranked plots, route, signal text) and `/geo/referrals_seed.json` (18 synthetic referrals matching the `referrals` table plus `sms`, `lon`, `lat`). Overlay `/geo/ndvi_change.png` with `overlay.bounds`. Always show a ranked plot with its `signals`. Mark everything synthetic. Rules in `kb/geo/CONTRACT.md`.
 
 ## Log
 - Sat 21:00: kb set up, six agent briefs written.
@@ -136,9 +111,17 @@ What these do and do not show: the pipeline (decode, quality gate, preprocess, W
 - Sat 23:15: ml. JMuBEN+JMuBEN2 extracted. Env `jani` + CUDA 4060 confirmed. Scripts written (`manifest.py`, `train.py`, `export.py`, `eval.py`). Manifest hashing started. Uganda/RoCoLe will stay held-out and are not in the training loaders.
 - Sat 23:19: ml M1 done. manifest.csv written. 24,236 pHash clusters, 18,308 healthy/miner images capped out. Train started on CUDA (run 20261003_211853).
 - Sat (late): content-voice reviewed answers.json and rules.json, tightened cards, added 8 Kikuyu draft entries (pending native review), wrote kb/content/REVIEW_LOG.md with Swahili checklist. Audio not rendered (C3 still todo).
-- Sat 23:50: pitch PT1 draft: PROBLEM_STATEMENT, three video scripts with draft SRTs, SUBMISSION_FORM skeleton, video/COVERAGE.md. 75% quoted as a review figure; 1:1,380 used. Map beat in Video 2 and 3 is conditional on G4. Questions for Arthur listed in the pitch reply.
+- Sat 23:50: pitch PT1 draft: PROBLEM_STATEMENT, three video scripts with draft SRTs, SUBMISSION_FORM skeleton. 75% quoted as a review figure; 1:1,380 used. Map beat in Video 2 and 3 is conditional on G4. Questions for Arthur listed in the pitch reply.
 - Sat 23:15+: research pass 2 (R5 to R8). GUIDANCE 2 to 4 re-checked (CABI still closed). Wild set 254 photos. Swahili glossary with two Kenyan pages. prices.json NCE 30 to 41 plus Sale 42 from The Standard. AFA county prices NOT FOUND.
 - Sat (late): docs: D1 done. app/README.md, app/docs/{DATA_CARD,RESPONSIBLE_AI,LANGUAGES,REPLICATION,ARCHITECTURE,REQUIREMENTS,EVALUATION}.md, app/LICENSE, app/src/content/sources.json created; ml numbers left as [PENDING: ml].
 - Sat 23:20: Cowork (Claude) started engine-cowork helper lanes EC1 to EC3 in parallel with the Cursor engine agent; outputs in kb/engine-cowork/.
 - Sun 00:20: Claude (lead). Sent Lovable follow-up umsg_01m41tcrs5fw281bgepzf47hgx (answers.json text per language, 160-char referral with member/plot/date, remove auto officer role, insert cap, synthetic badges, publish). PWA left to engine-cowork. Untracked the challenge PDF and ignored *.pdf; QA secrets_git now passes. PDF is still in the initial commit history and kb/ is tracked: decide before making the repo public. Gemini prompt: kb/prompts/09b_gemini_crosscheck.md.
+- Sun 00:45: engine shipped the offline farmer flow with a mock model, fixed answer bank, rule table, referral SMS, and a simulated officer queue. No trained model and no voice clips yet.
+- Sun 01:10: browser pass on the production preview at 360px. Fill-10 summary was 6 rust and 1 unsure, card rust_high_pre_rains, referral JANI1 under 160 characters, blur sample could not be kept, offline reload served the app. Officer seed now inserts the syn-01 to syn-16 rows even when a farmer check is already marked synthetic. Chrome DevTools offline does not change navigator.onLine, so the header pill stayed "On the network".
 - Sun (early): research verified and shipped kb/research. JSON valid, all cited S-ids defined, wild set 254 files present with no ND licence, 176 price rows with KES derivation checked, pass-2 quotes match saved pages. kb/research/raw/ (third-party page copies) is git-ignored and stays local. raw/crosscheck_cowork_20261003.md lists upgrades (CA 4G 97.3%, KMSA OND onset, ElevenLabs v3 Swahili) not yet merged into EVIDENCE.
+- Sat 23:50: geo: G1 to G3 done, plus season/rain-onset analysis (G3b) and officer visit plan with seed referrals (G3c). Real Sentinel-2 and NASA POWER both working.
+- Sat 23:55: geo: unit tests (18), `classify()` extracted, standalone officer map `public/geo/map.html` checked in headless Chrome.
+- Sun 10:40: lead. Agent framework added at `app/backend/agent_framework`. Roster: qa, redteam, judge, engine, ui, content, docs, ml. They share one evidence pack and return JSON. Static probes do not treat `kb/STATUS.md` or `kb/research` as proof that `app/` contains the product.
+- Sun 10:45: lead. Static check of this checkout: pass 0, fail 20, missing 6. Blockers include no PWA, no model, no answer bank, no officer route, Vite starter still in `app/src/App.tsx`. Claude reviewers were not called.
+- Sun 11:00: lead. Orchestrator schedules the audit DAG and writes `plan.json`. Static check: pass 0, fail 20, missing 6, 22 blockers. Claude wave did not run in this environment.
+- Mon: merged origin/main into the engine PR so it can merge.

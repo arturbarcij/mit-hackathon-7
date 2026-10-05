@@ -1,7 +1,6 @@
 desktop.ini
 .env
 .env.*
-!.env.example
 *.pem
 node_modules/
 dist/
@@ -12,6 +11,12 @@ __pycache__/
 app/geo/cache/
 data_raw/
 web/
+video/
+kb/agent-runs/
+jani-farm-assist/
+jani-farm-assist-local.zip
+_local_geo_wip/
+_local_public_geo_wip/
 
 # challenge brief is not ours to redistribute
 *.pdf
